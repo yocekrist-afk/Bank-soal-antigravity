@@ -5,7 +5,7 @@ Portal pembelajaran interaktif, bank soal, dan generator naskah ujian berbasis w
 ## 🚀 Fitur Utama
 1. **Modul Rangkuman Materi**: Meliputi 19 bab lengkap Semester 1 & 2 untuk 5 mata pelajaran (Matematika, IPAS, Bahasa Indonesia, Pendidikan Pancasila, Bahasa Inggris).
 2. **Mode Kuis & Latihan Anak**: Dilengkapi gamifikasi (XP, Level, Streak), efek suara audio sintetis, dan pembahasan instan.
-3. **Bank Soal Lengkap**: Tersedia 80+ butir soal terverifikasi lengkap dengan tingkat kesulitan, level kognitif Taksonomi Bloom (C1–C6), dan filter pencarian.
+3. **Bank Soal Lengkap**: Tersedia 230+ butir soal terverifikasi (minimal 10 soal di setiap bab untuk seluruh 5 mata pelajaran) lengkap dengan tingkat kesulitan, level kognitif Taksonomi Bloom (C1–C6), dan filter pencarian.
 4. **Import Soal Fleksibel**: Mampu mengimpor file kuis berformat HTML maupun JSON secara otomatis.
 5. **Generator Naskah Ujian (Cetak/PDF)**: Membuat lembar ujian Sumatif Tengah Semester (STS) atau Sumatif Akhir Semester (SAS) lengkap dengan kunci jawaban guru.
 6. **Sidebar Responsif & Collapsible**: Mempermudah navigasi antarfitur dengan cepat (dukungan shortcut `Ctrl + B`).
