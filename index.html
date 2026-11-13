@@ -874,6 +874,48 @@
   </div>
 
   <!-- ========================================================================= -->
+  <!-- MODAL: MODUL PENJELASAN MATERI LENGKAP                                     -->
+  <!-- ========================================================================= -->
+  <div id="modal-study-guide" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="app-card w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-5 shadow-2xl relative">
+      <div class="flex items-center justify-between border-b border-[var(--card-border)] pb-3">
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">📖</span>
+          <div>
+            <h3 class="font-bold text-sm text-[var(--text-main)]" id="study-modal-title">Modul Penjelasan Materi</h3>
+            <p class="text-[11px] text-[var(--text-muted)]" id="study-modal-subtitle">Kurikulum Merdeka SD Kelas 6</p>
+          </div>
+        </div>
+        <button onclick="closeStudyGuideModal()" class="text-base text-[var(--text-muted)] hover:text-[var(--text-main)]">✕</button>
+      </div>
+
+      <div class="space-y-4 text-xs">
+        <div>
+          <span class="font-bold uppercase tracking-wider text-[11px] text-[var(--theme-primary)]">Rangkuman Pembahasan Materi:</span>
+          <p class="mt-1 leading-relaxed text-[var(--text-main)] bg-[#f8fcfd] p-3.5 rounded-xl border border-[var(--card-border)]" id="study-modal-summary"></p>
+        </div>
+
+        <div>
+          <span class="font-bold uppercase tracking-wider text-[11px] text-[var(--theme-primary)]">Poin-Poin Konsep & Rumus Kunci:</span>
+          <ul class="mt-1.5 space-y-2 pl-1" id="study-modal-keypoints"></ul>
+        </div>
+
+        <div id="study-modal-example-box" class="p-4 rounded-xl bg-amber-50/80 border border-amber-200/90 text-amber-950 space-y-1.5">
+          <span class="font-bold text-xs flex items-center gap-1.5">💡 Contoh Soal & Langkah Pembahasan:</span>
+          <p class="leading-relaxed text-xs" id="study-modal-example"></p>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-4 border-t border-[var(--card-border)]">
+        <button onclick="closeStudyGuideModal()" class="px-4 py-2 rounded-xl text-xs btn-outline-white">Tutup</button>
+        <button id="study-modal-btn-start" class="px-5 py-2 rounded-xl text-xs btn-primary-teal font-bold shadow-xs">
+          🎮 Sudah Paham? Mulai Kerjakan Soal Bab Ini →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
   <!-- MODAL: UJIAN / TRYOUT BARU (PERSIS SCREENSHOT 4)                          -->
   <!-- ========================================================================= -->
   <div id="modal-new-exam" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
@@ -1399,38 +1441,57 @@
               <!-- Title -->
               <h4 class="font-extrabold text-sm text-[var(--text-main)] leading-snug">` + m.bab + `</h4>
 
-              <!-- Summary -->
-              <p class="text-xs text-[var(--text-muted)] leading-relaxed bg-[#f8fcfd] p-3 rounded-xl border border-[var(--card-border)]">
-                ` + escapeHtml(m.summary) + `
-              </p>
-
-              <!-- Key Concepts -->
-              ` + (keyPointsHtml ? `
-                <div class="space-y-1.5 pt-1">
-                  <div class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Konsep Inti:</div>
-                  <ul class="space-y-1.5 pl-1">
-                    ` + keyPointsHtml + `
-                  </ul>
+              <!-- Bagian 1: Penjelasan Materi Pembelajaran -->
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold text-[var(--theme-primary)] uppercase tracking-wider flex items-center gap-1.5">
+                    <span>📘</span>
+                    <span>1. Penjelasan Materi & Teori</span>
+                  </span>
+                  <button onclick="openStudyGuideModal('` + m.id + `')" class="text-[11px] text-[var(--theme-primary)] hover:underline font-bold flex items-center gap-1">
+                    <span>🔍 Baca Panduan Penuh</span>
+                  </button>
                 </div>
-              ` : '') + `
 
-              <!-- Example -->
-              ` + (m.example ? `
-                <div class="p-3 rounded-xl bg-amber-50/80 border border-amber-200/90 text-xs text-amber-900 space-y-1">
-                  <span class="font-bold flex items-center gap-1">💡 Contoh / Penerapan Soal:</span>
-                  <p class="leading-relaxed text-[11px]">` + escapeHtml(m.example) + `</p>
-                </div>
-              ` : '') + `
+                <!-- Rangkuman -->
+                <p class="text-xs text-[var(--text-muted)] leading-relaxed bg-[#f8fcfd] p-3 rounded-xl border border-[var(--card-border)]">
+                  ` + escapeHtml(m.summary) + `
+                </p>
+
+                <!-- Key Concepts -->
+                ` + (keyPointsHtml ? `
+                  <div class="space-y-1.5 pt-0.5">
+                    <div class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Konsep & Rumus Inti:</div>
+                    <ul class="space-y-1.5 pl-0.5">
+                      ` + keyPointsHtml + `
+                    </ul>
+                  </div>
+                ` : '') + `
+
+                <!-- Example -->
+                ` + (m.example ? `
+                  <div class="p-3 rounded-xl bg-amber-50/80 border border-amber-200/90 text-xs text-amber-900 space-y-1">
+                    <span class="font-bold flex items-center gap-1">💡 Contoh Soal & Pembahasan:</span>
+                    <p class="leading-relaxed text-[11px]">` + escapeHtml(m.example) + `</p>
+                  </div>
+                ` : '') + `
+              </div>
             </div>
 
-            <!-- Action Buttons -->
-            <div class="pt-3 border-t border-[var(--card-border)] flex flex-wrap items-center justify-between gap-2">
-              <button onclick="practiceModule('` + m.id + `', '` + m.bab + `')" class="px-3.5 py-1.5 text-xs btn-primary-teal flex items-center gap-1.5 font-bold shadow-xs">
-                <span>🎮 Latihan Kuis CBT</span>
-              </button>
-              <button onclick="filterBankByBab('` + m.bab + `')" class="px-3 py-1.5 text-xs btn-outline-white flex items-center gap-1">
-                <span>📚 Lihat Soal (` + babQuestions.length + `)</span>
-              </button>
+            <!-- Bagian 2: Evaluasi & Latihan Soal untuk Dikerjakan -->
+            <div class="pt-3 border-t border-[var(--card-border)] space-y-2">
+              <div class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-wider flex items-center justify-between">
+                <span>✏️ 2. Latihan Soal Bab Ini:</span>
+                <span class="text-emerald-600 font-bold">` + babQuestions.length + ` Butir Soal Siap Pakai</span>
+              </div>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <button onclick="practiceModule('` + m.id + `', '` + m.bab + `')" class="px-4 py-2 text-xs btn-primary-teal flex items-center gap-1.5 font-bold shadow-xs">
+                  <span>🎮 Kerjakan Kuis (CBT)</span>
+                </button>
+                <button onclick="filterBankByBab('` + m.bab + `')" class="px-3 py-2 text-xs btn-outline-white flex items-center gap-1 font-medium">
+                  <span>📚 Lihat Kunci Jawaban</span>
+                </button>
+              </div>
             </div>
           </div>
         `;
@@ -1438,6 +1499,43 @@
 
       // Scroll top smoothly
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openStudyGuideModal(moduleId) {
+      const m = (window.KURIKULUM_SD6 || []).find(item => item.id === moduleId);
+      if (!m) return;
+
+      document.getElementById('study-modal-title').textContent = m.bab;
+      document.getElementById('study-modal-subtitle').textContent = m.subject + ' • Fase C Kurikulum Merdeka • Semester ' + m.semester;
+      document.getElementById('study-modal-summary').textContent = m.summary || '';
+
+      const kpList = document.getElementById('study-modal-keypoints');
+      kpList.innerHTML = (m.keyPoints || []).map(kp => `
+        <li class="flex items-start gap-2.5 text-xs text-[var(--text-main)]">
+          <span class="text-[var(--theme-primary)] font-bold text-sm shrink-0">✓</span>
+          <span class="leading-relaxed">` + escapeHtml(kp) + `</span>
+        </li>
+      `).join('');
+
+      const exBox = document.getElementById('study-modal-example-box');
+      if (m.example) {
+        exBox.style.display = 'block';
+        document.getElementById('study-modal-example').textContent = m.example;
+      } else {
+        exBox.style.display = 'none';
+      }
+
+      const btnStart = document.getElementById('study-modal-btn-start');
+      btnStart.onclick = function() {
+        closeStudyGuideModal();
+        practiceModule(m.id, m.bab);
+      };
+
+      document.getElementById('modal-study-guide').classList.remove('hidden');
+    }
+
+    function closeStudyGuideModal() {
+      document.getElementById('modal-study-guide').classList.add('hidden');
     }
 
     function backToSubjectList() {
