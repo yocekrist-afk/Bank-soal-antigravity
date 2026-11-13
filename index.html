@@ -325,22 +325,22 @@
       <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 flex-1 space-y-6">
 
         <!-- ========================================================================= -->
-        <!-- TAB 1: MATA PELAJARAN (PERSIS GAYA KARTU GRID PSIKOGRAM SCREENSHOT 1)      -->
+        <!-- TAB 1: MATA PELAJARAN (HANYA MATA PELAJARAN -> KLIK UNTUK LIHAT SUBTES)   -->
         <!-- ========================================================================= -->
         <section id="tab-content-curriculum" class="space-y-6">
           
-          <!-- Overview Cards Grid (Persis Screenshot 1 Psikogram) -->
-          <div>
-            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <!-- VIEW 1: DAFTAR MATA PELAJARAN UTAMA (BERSIH & LUAS) -->
+          <div id="view-subject-list" class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-2">
               <div>
-                <h3 class="font-bold text-sm text-[var(--text-main)]">Daftar Paket Mata Pelajaran Fase C</h3>
-                <p class="text-xs text-[var(--text-muted)]">Pilih bidang studi untuk melihat subtes kompetensi, rangkuman materi, atau memulai latihan CBT.</p>
+                <h3 class="font-extrabold text-sm text-[var(--text-main)]">Daftar Mata Pelajaran Fase C SD Kelas 6</h3>
+                <p class="text-xs text-[var(--text-muted)]">Klik pada salah satu mata pelajaran di bawah ini untuk membuka daftar subtes, materi rangkuman, dan latihan kuis.</p>
               </div>
 
               <!-- Filter Semester Selector -->
               <div class="flex items-center gap-2">
                 <span class="text-xs text-[var(--text-muted)]">Semester:</span>
-                <select id="curr-semester-filter" onchange="renderSubjectCards(); renderCurriculumChapters();" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--card-bg)] border border-[var(--input-border)] text-[var(--text-main)] focus:outline-none focus:border-[var(--theme-primary)]">
+                <select id="curr-semester-filter" onchange="renderSubjectCards();" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--card-bg)] border border-[var(--input-border)] text-[var(--text-main)] focus:outline-none focus:border-[var(--theme-primary)]">
                   <option value="ALL">Semua Semester (1 & 2)</option>
                   <option value="1">Semester 1 (Ganjil)</option>
                   <option value="2">Semester 2 (Genap)</option>
@@ -354,21 +354,45 @@
             </div>
           </div>
 
-          <!-- Detail Bab & Rangkuman Kurikulum Merdeka -->
-          <div class="pt-4 border-t border-[var(--card-border)]">
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <h3 class="font-bold text-sm text-[var(--text-main)]">Rincian Bab & Rangkuman Inti</h3>
-                <p class="text-xs text-[var(--text-muted)]">Cakupan 19 bab lengkap kelas 6 SD Kurikulum Merdeka.</p>
+          <!-- VIEW 2: DAFTAR SUBTES DARI MATA PELAJARAN YANG DIKLIK (LEGA & FLEKSIBEL) -->
+          <div id="view-subtest-detail" class="space-y-5 hidden">
+            <!-- Breadcrumb & Detail Header Card -->
+            <div class="app-card p-4 flex flex-wrap items-center justify-between gap-3 bg-[var(--card-bg)] border border-[var(--card-border)] shadow-xs">
+              <div class="flex items-center gap-3">
+                <button onclick="backToSubjectList()" class="px-3.5 py-1.5 text-xs btn-outline-white flex items-center gap-1.5 font-bold hover:border-[var(--theme-primary)] transition shadow-xs">
+                  <span>←</span>
+                  <span>Kembali ke Daftar Mapel</span>
+                </button>
+                <div class="h-5 w-px bg-[var(--card-border)] hidden sm:block"></div>
+                <div class="flex items-center gap-2.5">
+                  <div id="detail-subject-badge" class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-sm shadow-xs">MT</div>
+                  <div>
+                    <h3 class="font-extrabold text-sm text-[var(--text-main)]" id="detail-subject-title">Matematika</h3>
+                    <p class="text-[11px] text-[var(--text-muted)] font-medium" id="detail-subject-sub">Fase C SD Kelas 6 • 6 Subtes Bab • 60 Butir Soal</p>
+                  </div>
+                </div>
               </div>
-              <div class="flex items-center gap-1.5" id="subject-pill-filters">
-                <!-- Subject Filter Pills -->
+
+              <!-- Quick Action Buttons for the Subject -->
+              <div class="flex items-center gap-2">
+                <button onclick="startSubjectAllCBT()" class="px-3.5 py-1.5 text-xs btn-primary-teal flex items-center gap-1.5 shadow-xs font-semibold">
+                  <span>🎮 Uji Semua Bab (CBT)</span>
+                </button>
+                <button onclick="openSubjectInBank()" class="px-3 py-1.5 text-xs btn-outline-white flex items-center gap-1.5">
+                  <span>📚 Buka di Bank Soal</span>
+                </button>
               </div>
             </div>
 
-            <!-- Chapter Grid -->
-            <div id="curriculum-chapters-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <!-- Rendered dynamically -->
+            <!-- Subtest/Bab Grid (Lega & Informatif) -->
+            <div>
+              <div class="flex items-center justify-between mb-3 px-1">
+                <h4 class="font-bold text-xs uppercase tracking-wider text-[var(--text-muted)]">Daftar Subtes & Rangkuman Kurikulum Merdeka</h4>
+                <span class="text-xs text-[var(--theme-primary)] font-semibold" id="detail-subtest-counter">6 Subtes Tersedia</span>
+              </div>
+              <div id="detail-subtest-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Rendered dynamically by openSubjectSubtests() -->
+              </div>
             </div>
           </div>
         </section>
@@ -1189,7 +1213,11 @@
 
       if (tabId === 'curriculum') {
         renderSubjectCards();
-        renderCurriculumChapters();
+        if (selectedSubjectMeta) {
+          openSubjectSubtests(selectedSubjectMeta.code);
+        } else {
+          backToSubjectList();
+        }
       } else if (tabId === 'bank') {
         renderBankTable();
       } else if (tabId === 'analytics') {
@@ -1252,43 +1280,182 @@
       }
     ];
 
+    let selectedSubjectMeta = null;
+
     function renderSubjectCards() {
       const grid = document.getElementById('subject-cards-grid');
       if (!grid) return;
 
+      const semFilter = document.getElementById('curr-semester-filter') ? document.getElementById('curr-semester-filter').value : 'ALL';
+
       grid.innerHTML = SUBJECT_METAS.map(meta => {
         let count = 0;
+        let chList = [];
         if (meta.specialModule) {
+          chList = (window.KURIKULUM_SD6 || []).filter(m => m.id === meta.specialModule);
           count = questions.filter(q => q.moduleId === meta.specialModule).length;
         } else {
+          chList = (window.KURIKULUM_SD6 || []).filter(m => m.subject === meta.subject);
           count = questions.filter(q => q.subject === meta.subject).length;
         }
 
+        if (semFilter !== 'ALL' && !meta.specialModule) {
+          chList = chList.filter(m => String(m.semester) === String(semFilter));
+        }
+
         return `
-          <div class="app-card p-5 flex flex-col justify-between space-y-4 hover:border-[var(--theme-primary)] transition">
+          <div onclick="openSubjectSubtests('` + meta.code + `')" class="app-card p-5 flex flex-col justify-between space-y-4 hover:border-[var(--theme-primary)] hover:shadow-lg cursor-pointer transition group bg-[var(--card-bg)] border border-[var(--card-border)]">
             <div class="space-y-3">
-              <div class="w-10 h-10 rounded-xl ` + meta.colorBg + ` text-white flex items-center justify-center font-black text-sm shadow-sm">
-                ` + meta.code + `
+              <div class="flex items-center justify-between">
+                <div class="w-11 h-11 rounded-2xl ` + meta.colorBg + ` text-white flex items-center justify-center font-black text-sm shadow-sm group-hover:scale-105 transition">
+                  ` + meta.code + `
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[var(--app-bg)] text-[var(--theme-primary)] border border-[var(--card-border)]">
+                  ` + chList.length + ` Subtes Bab
+                </span>
               </div>
               <div>
-                <h4 class="font-extrabold text-sm text-[var(--text-main)]">` + meta.name + `</h4>
+                <h4 class="font-extrabold text-sm text-[var(--text-main)] group-hover:text-[var(--theme-primary)] transition">` + meta.name + `</h4>
                 <p class="text-[11px] text-[var(--text-muted)] font-medium">` + meta.sub + ` • ` + count + ` Butir Soal</p>
               </div>
               <p class="text-xs text-[var(--text-muted)] leading-relaxed">` + meta.desc + `</p>
             </div>
 
-            <div class="pt-3 border-t border-[var(--card-border)] flex items-center justify-between gap-2">
-              <button onclick="startSubjectCBT('` + meta.subject + `', '` + (meta.specialModule || '') + `')" class="px-3 py-1.5 text-xs btn-primary-teal flex items-center gap-1 shadow-xs">
-                <span>🎮</span>
-                <span>Latihan CBT</span>
+            <div class="pt-3 border-t border-[var(--card-border)] flex items-center justify-between gap-2" onclick="event.stopPropagation()">
+              <button onclick="openSubjectSubtests('` + meta.code + `')" class="px-3.5 py-1.5 text-xs btn-primary-teal flex items-center gap-1.5 shadow-xs font-semibold">
+                <span>📖 Buka Subtes</span>
+                <span>→</span>
               </button>
-              <button onclick="filterBankBySubject('` + meta.subject + `')" class="px-2.5 py-1.5 text-xs btn-outline-white">
-                Buka Soal (` + count + `)
+              <button onclick="startSubjectCBT('` + meta.subject + `', '` + (meta.specialModule || '') + `')" class="px-2.5 py-1.5 text-xs btn-outline-white flex items-center gap-1">
+                <span>🎮 CBT</span>
               </button>
             </div>
           </div>
         `;
       }).join('');
+    }
+
+    function openSubjectSubtests(code) {
+      const meta = SUBJECT_METAS.find(m => m.code === code) || SUBJECT_METAS[0];
+      selectedSubjectMeta = meta;
+
+      const viewList = document.getElementById('view-subject-list');
+      const viewDetail = document.getElementById('view-subtest-detail');
+      if (viewList) viewList.classList.add('hidden');
+      if (viewDetail) viewDetail.classList.remove('hidden');
+
+      // Update Header Info
+      const badgeEl = document.getElementById('detail-subject-badge');
+      if (badgeEl) {
+        badgeEl.className = 'w-9 h-9 rounded-xl ' + meta.colorBg + ' text-white flex items-center justify-center font-black text-sm shadow-xs';
+        badgeEl.textContent = meta.code;
+      }
+
+      document.getElementById('detail-subject-title').textContent = meta.name;
+
+      let qCount = 0;
+      let chList = [];
+      if (meta.specialModule) {
+        chList = (window.KURIKULUM_SD6 || []).filter(m => m.id === meta.specialModule);
+        qCount = questions.filter(q => q.moduleId === meta.specialModule).length;
+      } else {
+        chList = (window.KURIKULUM_SD6 || []).filter(m => m.subject === meta.subject);
+        qCount = questions.filter(q => q.subject === meta.subject).length;
+      }
+
+      document.getElementById('detail-subject-sub').textContent = meta.sub + ' • ' + chList.length + ' Subtes Bab • ' + qCount + ' Butir Soal Siap Pakai';
+      document.getElementById('detail-subtest-counter').textContent = chList.length + ' Subtes Bab Tersedia';
+
+      // Render spacious subtest cards
+      const subGrid = document.getElementById('detail-subtest-grid');
+      if (!subGrid) return;
+
+      subGrid.innerHTML = chList.map((m, idx) => {
+        const babQuestions = questions.filter(q => q.moduleId === m.id || q.topic === m.bab);
+        const pgCount = babQuestions.filter(q => q.type === 'PG').length;
+        const esaiCount = babQuestions.filter(q => q.type === 'ESAI').length;
+
+        const keyPointsHtml = (m.keyPoints || []).map(kp => `
+          <li class="flex items-start gap-2 text-xs text-[var(--text-main)]">
+            <span class="text-[var(--theme-primary)] font-bold shrink-0 mt-0.5">✓</span>
+            <span>` + escapeHtml(kp) + `</span>
+          </li>
+        `).join('');
+
+        return `
+          <div class="app-card p-5 space-y-4 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between bg-[var(--card-bg)] border border-[var(--card-border)]">
+            <div class="space-y-3.5">
+              <!-- Subtest Top Badges -->
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-[var(--theme-primary-light)] text-[var(--theme-primary)]">
+                  Subtes ` + (idx + 1) + ` • Semester ` + m.semester + `
+                </span>
+                <div class="flex items-center gap-1.5 text-xs text-[var(--text-muted)] font-semibold">
+                  <span class="px-2 py-0.5 rounded bg-[var(--app-bg)] border border-[var(--card-border)]">` + pgCount + ` PG</span>
+                  ` + (esaiCount > 0 ? '<span class="px-2 py-0.5 rounded bg-[var(--app-bg)] border border-[var(--card-border)]">' + esaiCount + ' Esai</span>' : '') + `
+                </div>
+              </div>
+
+              <!-- Title -->
+              <h4 class="font-extrabold text-sm text-[var(--text-main)] leading-snug">` + m.bab + `</h4>
+
+              <!-- Summary -->
+              <p class="text-xs text-[var(--text-muted)] leading-relaxed bg-[#f8fcfd] p-3 rounded-xl border border-[var(--card-border)]">
+                ` + escapeHtml(m.summary) + `
+              </p>
+
+              <!-- Key Concepts -->
+              ` + (keyPointsHtml ? `
+                <div class="space-y-1.5 pt-1">
+                  <div class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Konsep Inti:</div>
+                  <ul class="space-y-1.5 pl-1">
+                    ` + keyPointsHtml + `
+                  </ul>
+                </div>
+              ` : '') + `
+
+              <!-- Example -->
+              ` + (m.example ? `
+                <div class="p-3 rounded-xl bg-amber-50/80 border border-amber-200/90 text-xs text-amber-900 space-y-1">
+                  <span class="font-bold flex items-center gap-1">💡 Contoh / Penerapan Soal:</span>
+                  <p class="leading-relaxed text-[11px]">` + escapeHtml(m.example) + `</p>
+                </div>
+              ` : '') + `
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pt-3 border-t border-[var(--card-border)] flex flex-wrap items-center justify-between gap-2">
+              <button onclick="practiceModule('` + m.id + `', '` + m.bab + `')" class="px-3.5 py-1.5 text-xs btn-primary-teal flex items-center gap-1.5 font-bold shadow-xs">
+                <span>🎮 Latihan Kuis CBT</span>
+              </button>
+              <button onclick="filterBankByBab('` + m.bab + `')" class="px-3 py-1.5 text-xs btn-outline-white flex items-center gap-1">
+                <span>📚 Lihat Soal (` + babQuestions.length + `)</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Scroll top smoothly
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function backToSubjectList() {
+      const viewList = document.getElementById('view-subject-list');
+      const viewDetail = document.getElementById('view-subtest-detail');
+      if (viewDetail) viewDetail.classList.add('hidden');
+      if (viewList) viewList.classList.remove('hidden');
+      selectedSubjectMeta = null;
+    }
+
+    function startSubjectAllCBT() {
+      if (!selectedSubjectMeta) return;
+      startSubjectCBT(selectedSubjectMeta.subject, selectedSubjectMeta.specialModule || '');
+    }
+
+    function openSubjectInBank() {
+      if (!selectedSubjectMeta) return;
+      filterBankBySubject(selectedSubjectMeta.subject);
     }
 
     function filterBankBySubject(subject) {
@@ -1312,44 +1479,6 @@
 
       initCBT(subset, subject);
       switchTab('quiz');
-    }
-
-    function renderCurriculumChapters() {
-      const semFilter = document.getElementById('curr-semester-filter').value;
-      const filtered = (window.KURIKULUM_SD6 || []).filter(m => {
-        if (semFilter !== 'ALL' && String(m.semester) !== String(semFilter)) return false;
-        if (currentSubjectFilter !== 'ALL' && m.subject !== currentSubjectFilter) return false;
-        return true;
-      });
-
-      const grid = document.getElementById('curriculum-chapters-grid');
-      if (!grid) return;
-
-      grid.innerHTML = filtered.map(m => {
-        const qCount = questions.filter(q => q.moduleId === m.id || q.topic === m.bab).length;
-        return `
-          <div class="app-card p-4 space-y-3">
-            <div class="flex items-center justify-between gap-2">
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[var(--theme-primary-light)] text-[var(--theme-primary)]">
-                ` + m.subject + ` • Sem ` + m.semester + `
-              </span>
-              <span class="text-xs font-semibold text-[var(--text-muted)]">` + qCount + ` Soal</span>
-            </div>
-
-            <h4 class="font-bold text-xs text-[var(--text-main)]">` + m.bab + `</h4>
-            <p class="text-xs text-[var(--text-muted)] line-clamp-2">` + m.summary + `</p>
-
-            <div class="pt-2 flex items-center justify-between text-xs">
-              <button onclick="practiceModule('` + m.id + `', '` + m.bab + `')" class="text-[var(--theme-primary)] hover:underline font-semibold flex items-center gap-1">
-                <span>🎮 Latihan Bab Ini</span>
-              </button>
-              <button onclick="filterBankByBab('` + m.bab + `')" class="text-[var(--text-muted)] hover:text-[var(--text-main)]">
-                Lihat Soal →
-              </button>
-            </div>
-          </div>
-        `;
-      }).join('');
     }
 
     function filterBankByBab(babTitle) {
@@ -2313,7 +2442,9 @@
 
     function refreshAll() {
       renderSubjectCards();
-      renderCurriculumChapters();
+      if (selectedSubjectMeta) {
+        openSubjectSubtests(selectedSubjectMeta.code);
+      }
       renderBankTable();
       renderAnalytics();
       const dashEl = document.getElementById('dash-total-q');
