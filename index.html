@@ -457,6 +457,10 @@
                         <option value="Bahasa Indonesia">B. Indonesia</option>
                         <option value="Pendidikan Pancasila">Pancasila</option>
                         <option value="Bahasa Inggris">B. Inggris</option>
+                        <option value="Muatan Lokal (PLBJ)">PLBJ (Mulok)</option>
+                        <option value="Pendidikan Agama Islam">PAI</option>
+                        <option value="PJOK">PJOK</option>
+                        <option value="Seni Budaya dan Prakarya">Seni Budaya</option>
                       </select>
                     </th>
                     <th class="p-2">
@@ -701,6 +705,10 @@
                   <option value="Bahasa Indonesia">Bahasa Indonesia</option>
                   <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
                   <option value="Bahasa Inggris">Bahasa Inggris</option>
+                  <option value="Muatan Lokal (PLBJ)">Muatan Lokal (PLBJ)</option>
+                  <option value="Pendidikan Agama Islam">Pendidikan Agama Islam</option>
+                  <option value="PJOK">PJOK</option>
+                  <option value="Seni Budaya dan Prakarya">Seni Budaya dan Prakarya</option>
                 </select>
               </div>
               <div>
@@ -961,6 +969,10 @@
               <option value="Bahasa Indonesia">Bahasa Indonesia</option>
               <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
               <option value="Bahasa Inggris">Bahasa Inggris</option>
+              <option value="Muatan Lokal (PLBJ)">Muatan Lokal (PLBJ)</option>
+              <option value="Pendidikan Agama Islam">Pendidikan Agama Islam</option>
+              <option value="PJOK">PJOK</option>
+              <option value="Seni Budaya dan Prakarya">Seni Budaya dan Prakarya</option>
             </select>
           </div>
           <div>
@@ -1016,6 +1028,10 @@
             <option value="Bahasa Indonesia">Bahasa Indonesia</option>
             <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
             <option value="Bahasa Inggris">Bahasa Inggris</option>
+            <option value="Muatan Lokal (PLBJ)">Muatan Lokal (PLBJ)</option>
+            <option value="Pendidikan Agama Islam">Pendidikan Agama Islam</option>
+            <option value="PJOK">PJOK</option>
+            <option value="Seni Budaya dan Prakarya">Seni Budaya dan Prakarya</option>
           </select>
         </div>
         <div>
@@ -1194,7 +1210,7 @@
     }
 
     function resetDefaultData() {
-      if (confirm('Kembalikan bank soal ke 232 butir soal bawaan asli?')) {
+      if (confirm('Kembalikan bank soal ke 398 butir soal kurikulum lengkap?')) {
         questions = JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6 || []));
         saveData();
         refreshAll();
@@ -1296,7 +1312,7 @@
         name: 'Bahasa Indonesia',
         sub: 'Literasi & Komunikasi',
         colorBg: 'bg-purple-600',
-        desc: 'Unsur Cerita & Surat Resmi, Teks Eksplanasi, Fakta vs Opini, Kalimat Efektif, Pidato, Ungkapan, dan Peribahasa.',
+        desc: 'Teks Eksplanasi, Fakta vs Opini, Naskah Pidato, Poster Persuasif, Literasi Blog, Teks Debat, Fiksi Ilmiah, & Kuitansi.',
         subject: 'Bahasa Indonesia'
       },
       {
@@ -1312,14 +1328,46 @@
         name: 'Bahasa Inggris',
         sub: 'English for Elementary 6',
         colorBg: 'bg-amber-600',
-        desc: 'Simple Past Tense (Past Activities), To Be Was/Were, Future Plans (Will), dan Kosakata Profesi Masa Depan.',
+        desc: 'Simple Past Tense, Future Plans (Will), Traditional and Modern Games, How to Play Procedures, & Imperatives.',
         subject: 'Bahasa Inggris'
+      },
+      {
+        code: 'PL',
+        name: 'Muatan Lokal (PLBJ)',
+        sub: 'Budaya & Lingkungan Betawi',
+        colorBg: 'bg-orange-600',
+        desc: 'Bab 6 Batik Betawi (Pucuk Rebung, Ciliwung, Rasamala, Salakanagara, Loreng Ondel-ondel), Alat Membatik & Nglorot.',
+        subject: 'Muatan Lokal (PLBJ)'
+      },
+      {
+        code: 'AG',
+        name: 'Pendidikan Agama Islam',
+        sub: 'PAI dan Budi Pekerti',
+        colorBg: 'bg-teal-600',
+        desc: 'Kandungan Surah Al-\'Alaq, Asmaulhusna Al-Ghaffar, Iman Hari Akhir & Takdir, Zakat Fitrah, dan Khulafaurasyidin.',
+        subject: 'Pendidikan Agama Islam'
+      },
+      {
+        code: 'PJ',
+        name: 'PJOK',
+        sub: 'Olahraga & Kesehatan',
+        colorBg: 'bg-lime-600',
+        desc: 'Permainan Bola Besar (Voli, Sepak Bola), Bola Kecil, Kebugaran Jasmani (Push-up, Shuttle Run), Atletik, & Renang.',
+        subject: 'PJOK'
+      },
+      {
+        code: 'SB',
+        name: 'Seni Budaya & Prakarya',
+        sub: 'SBdP SD Fase C',
+        colorBg: 'bg-fuchsia-600',
+        desc: 'Karya Rupa 3D, Makrame, Mosaik, Tangga Nada Mayor, Lagu Daerah (Gundhul Pacul), Sasando, dan Pola Lantai Tari.',
+        subject: 'Seni Budaya dan Prakarya'
       },
       {
         code: 'TS',
         name: 'Paket Spesial Tata Surya',
         sub: 'IPAS Bab 5 Antariksa',
-        colorBg: 'bg-teal-700',
+        colorBg: 'bg-teal-800',
         desc: '52 butir soal komprehensif susunan planet, gerak rotasi/revolusi bumi, gerhana matahari/bulan, dan sistem kalender.',
         subject: 'IPAS',
         specialModule: 'IPAS-B5'
@@ -1922,7 +1970,92 @@
                 </button>
               </div>
 
-              <!-- Quick Quiz 6: Tryout Akbar Semua Mapel -->
+              <!-- Quick Quiz 6: English Unit 4 -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-700 border border-amber-200">🇬🇧 English Unit 4</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">50 Soal Lengkap</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Traditional & Modern Games</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Congklak, Hopscotch, Marbles, Jump rope, Action verbs, Tools, How to Play, Imperative sentences, & sequence words.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('games')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis English (50 Soal)
+                </button>
+              </div>
+
+              <!-- Quick Quiz 7: PLBJ Batik Betawi -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-orange-500/10 text-orange-700 border border-orange-200">🏮 Mulok PLBJ</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">10 Soal PG</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Kuis Batik Betawi (Bab 6)</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Motif Ciliwung, Pucuk Rebung, Rasamala, Salakanagara, Loreng Ondel-ondel, Nusa Kelapa, canting, malam, dan nglorot.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('plbj')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis Batik Betawi
+                </button>
+              </div>
+
+              <!-- Quick Quiz 8: Pendidikan Agama Islam -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-teal-500/10 text-teal-700 border border-teal-200">🕌 Agama Islam</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">10 Soal Acak</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Kuis Pendidikan Agama Islam</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Surah Al-'Alaq, Asmaulhusna Al-Ghaffar, Iman Hari Akhir (Kiamat), Qada Qadar, Zakat Fitrah, dan sahabat Khulafaurasyidin.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('pai')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis PAI
+                </button>
+              </div>
+
+              <!-- Quick Quiz 9: PJOK -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-lime-500/10 text-lime-800 border border-lime-200">🏃 Olahraga</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">10 Soal Acak</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Kuis Kebugaran Jasmani PJOK</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Permainan bola voli & sepak bola, latihan kekuatan push-up, shuttle run, renang gaya dada, dan pola hidup sehat.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('pjok')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis PJOK
+                </button>
+              </div>
+
+              <!-- Quick Quiz 10: Seni Budaya & Prakarya -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-fuchsia-500/10 text-fuchsia-700 border border-fuchsia-200">🎨 Seni Budaya</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">10 Soal Acak</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Kuis Ragam Seni & SBdP</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Karya 3 dimensi, makrame, mosaik, tangga nada mayor, lagu daerah Gundhul Pacul, alat musik Sasando, & tari tradisi.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('sbdp')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis SBdP
+                </button>
+              </div>
+
+              <!-- Quick Quiz 11: Tryout Akbar Semua Mapel -->
               <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between bg-gradient-to-br from-amber-500/5 to-teal-500/5 border-amber-300">
                 <div class="space-y-2">
                   <div class="flex items-center justify-between">
@@ -1931,7 +2064,7 @@
                   </div>
                   <h4 class="font-bold text-sm text-[var(--text-main)]">Tryout Akbar Fase C (Semua Mapel)</h4>
                   <p class="text-xs text-[var(--text-muted)] leading-relaxed">
-                    Kombinasi komprehensif soal Matematika, IPAS, Bahasa Indonesia, Pancasila, dan Bahasa Inggris untuk menguji kesiapan ujian.
+                    Kombinasi komprehensif seluruh 9 mata pelajaran Fase C Kurikulum Merdeka untuk menguji kesiapan ujian sekolah.
                   </p>
                 </div>
                 <button onclick="startQuickQuiz('akbar')" class="w-full py-2 px-3 text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white rounded-xl shadow-xs transition flex items-center justify-center gap-2 cursor-pointer">
@@ -1963,6 +2096,10 @@
                   <option value="Bahasa Indonesia">Bahasa Indonesia</option>
                   <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
                   <option value="Bahasa Inggris">Bahasa Inggris</option>
+                  <option value="Muatan Lokal (PLBJ)">Muatan Lokal (PLBJ)</option>
+                  <option value="Pendidikan Agama Islam">Pendidikan Agama Islam</option>
+                  <option value="PJOK">PJOK (Olahraga)</option>
+                  <option value="Seni Budaya dan Prakarya">Seni Budaya & Prakarya</option>
                 </select>
               </div>
 
@@ -2086,6 +2223,26 @@
         pool = questions.filter(q => q.subject === 'Pendidikan Pancasila' && q.type === 'PG');
         title = 'Kuis Nilai Luhur Pancasila';
         targetCount = 15;
+      } else if (quizKey === 'games') {
+        pool = questions.filter(q => q.moduleId === 'ENG-U4' && q.type === 'PG');
+        title = 'English Unit 4: Traditional & Modern Games (50 Soal)';
+        targetCount = 50;
+      } else if (quizKey === 'plbj') {
+        pool = questions.filter(q => q.subject.includes('PLBJ') && q.type === 'PG');
+        title = 'Kuis Batik Betawi (PLBJ Bab 6)';
+        targetCount = 10;
+      } else if (quizKey === 'pai') {
+        pool = questions.filter(q => q.subject.includes('Agama') && q.type === 'PG');
+        title = 'Kuis Pendidikan Agama Islam (PAI)';
+        targetCount = 10;
+      } else if (quizKey === 'pjok') {
+        pool = questions.filter(q => q.subject === 'PJOK' && q.type === 'PG');
+        title = 'Kuis Olahraga & Kebugaran PJOK';
+        targetCount = 10;
+      } else if (quizKey === 'sbdp') {
+        pool = questions.filter(q => q.subject.includes('Seni') && q.type === 'PG');
+        title = 'Kuis Ragam Seni & SBdP';
+        targetCount = 10;
       } else if (quizKey === 'akbar') {
         pool = questions.filter(q => q.type === 'PG');
         title = 'Tryout Akbar Fase C (Semua Mata Pelajaran)';
