@@ -1,0 +1,2021 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PintarSD6 — Portal Kurikulum Merdeka, Modul Belajar & Bank Soal SD Kelas 6</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen flex flex-col">
+  <!-- Overlay Backdrop untuk Mobile Sidebar -->
+  <div id="sidebar-backdrop" onclick="toggleSidebar(false)" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 hidden transition-opacity duration-300"></div>
+
+  <div class="flex-1 flex overflow-hidden min-h-screen">
+    <!-- ========================================================================= -->
+    <!-- COLLAPSIBLE / TOGGLEABLE SIDEBAR                                          -->
+    <!-- ========================================================================= -->
+    <aside id="app-sidebar" class="bg-[var(--card)] border-r border-[var(--border)] fixed inset-y-0 left-0 z-50 flex flex-col transition-all duration-300 ease-in-out -translate-x-full lg:translate-x-0 w-64 no-print shadow-xl lg:shadow-none select-none">
+      <!-- Sidebar Header -->
+      <div class="p-4 border-b border-[var(--border)] flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3 overflow-hidden">
+          <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-extrabold text-sm shrink-0 shadow-sm">
+            SD6
+          </div>
+          <div class="sidebar-text truncate">
+            <h2 class="font-bold text-sm tracking-tight text-[var(--foreground)] truncate">PintarSD6 Pro</h2>
+            <p class="text-[11px] text-[var(--muted-foreground)] truncate">Fase C Kurikulum Merdeka</p>
+          </div>
+        </div>
+        <!-- Close button mobile -->
+        <button onclick="toggleSidebar(false)" class="lg:hidden p-1.5 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]" title="Tutup Menu">
+          ✕
+        </button>
+      </div>
+
+      <!-- User Gamification Badge (Mini) -->
+      <div class="p-3.5 mx-3 my-2.5 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center gap-3 sidebar-text">
+        <div class="text-xl">⭐</div>
+        <div class="truncate">
+          <div class="flex items-center gap-1.5">
+            <strong id="sidebar-xp" class="text-xs font-bold text-amber-400">0 XP</strong>
+            <span class="text-[10px] text-[var(--muted-foreground)]">• Kelas 6</span>
+          </div>
+          <div id="sidebar-level" class="text-[11px] text-[var(--foreground)] font-medium truncate">Level 1: Penjelajah</div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu Items -->
+      <nav class="flex-1 px-3 py-2 space-y-1 overflow-y-auto">
+        <div class="px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] sidebar-text">
+          Fitur Utama
+        </div>
+
+        <button onclick="switchTab('curriculum'); autoCloseSidebarOnMobile();" id="side-tab-curriculum" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left bg-[var(--primary)] text-[var(--primary-foreground)]">
+          <span class="text-base shrink-0">📖</span>
+          <span class="sidebar-text truncate">1. Modul & Rangkuman</span>
+        </button>
+
+        <button onclick="switchTab('quiz'); autoCloseSidebarOnMobile();" id="side-tab-quiz" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+          <span class="text-base shrink-0">🎮</span>
+          <span class="sidebar-text truncate">2. Mode Kuis Anak</span>
+        </button>
+
+        <button onclick="switchTab('bank'); autoCloseSidebarOnMobile();" id="side-tab-bank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+          <span class="text-base shrink-0">📚</span>
+          <span class="sidebar-text truncate">3. Bank Soal Lengkap</span>
+        </button>
+
+        <button onclick="switchTab('builder'); autoCloseSidebarOnMobile();" id="side-tab-builder" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+          <span class="text-base shrink-0">⚡</span>
+          <span class="sidebar-text truncate">4. Generator Ujian (PDF)</span>
+        </button>
+
+        <button onclick="switchTab('analytics'); autoCloseSidebarOnMobile();" id="side-tab-analytics" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+          <span class="text-base shrink-0">📊</span>
+          <span class="sidebar-text truncate">5. Rapor & Analisis</span>
+        </button>
+
+        <!-- Quick Subject Shortcut Filters -->
+        <div class="pt-4 pb-1.5 px-2.5 text-[11px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] sidebar-text">
+          Pintasan Mata Pelajaran
+        </div>
+        <div class="space-y-0.5 sidebar-text">
+          <button onclick="quickFilterSubject('Matematika')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>📐 Matematika</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">6 Bab</span>
+          </button>
+          <button onclick="quickFilterSubject('IPAS')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>🌍 IPAS (IPA-IPS)</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">6 Bab</span>
+          </button>
+          <button onclick="quickFilterSubject('Bahasa Indonesia')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>📖 B. Indonesia</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">3 Bab</span>
+          </button>
+          <button onclick="quickFilterSubject('Pendidikan Pancasila')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>🦅 Pancasila</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">2 Bab</span>
+          </button>
+          <button onclick="quickFilterSubject('Bahasa Inggris')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>🇬🇧 B. Inggris</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">2 Bab</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer (Quick Actions) -->
+      <div class="p-3 border-t border-[var(--border)] space-y-1.5 bg-[var(--card)]">
+        <button onclick="openModal(); autoCloseSidebarOnMobile();" class="w-full py-2 px-3 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center gap-2 shadow-sm transition">
+          <span>+</span>
+          <span class="sidebar-text truncate">Tambah Soal Baru</span>
+        </button>
+
+        <button onclick="toggleSidebarCollapse()" id="btn-collapse-sidebar" class="hidden lg:flex w-full py-1.5 px-3 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] items-center justify-center gap-2 transition" title="Kecilkan/Perluas Sidebar">
+          <span id="collapse-icon">◀</span>
+          <span class="sidebar-text truncate">Kecilkan Sidebar</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ========================================================================= -->
+    <!-- MAIN CONTENT AREA (DENGAN MARGIN SESUAI STATUS SIDEBAR)                   -->
+    <!-- ========================================================================= -->
+    <div id="main-content-wrapper" class="flex-1 flex flex-col min-w-0 transition-all duration-300 ease-in-out lg:ml-64">
+      <!-- Top App Bar -->
+      <header class="border-b border-[var(--border)] bg-[var(--card)] sticky top-0 z-30 no-print">
+        <div class="px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
+          <!-- Toggle Sidebar Button & Title -->
+          <div class="flex items-center gap-3">
+            <button onclick="toggleSidebar()" class="p-2 rounded-xl border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] hover:bg-[var(--secondary)] transition flex items-center gap-1.5" title="Buka/Tutup Menu Sidebar (Ctrl+B)">
+              <span class="text-base">☰</span>
+              <span class="text-xs font-medium hidden sm:inline">Menu</span>
+            </button>
+
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="font-bold text-sm sm:text-base tracking-tight text-[var(--foreground)]" id="current-menu-title">1. Modul & Rangkuman Materi</h1>
+                <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-semibold border border-emerald-500/30 hidden md:inline">Kurikulum Merdeka SD 6</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Top Tools -->
+          <div class="flex items-center gap-2">
+            <button onclick="toggleSound()" id="btn-sound" class="px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)]">
+              🔊 Suara
+            </button>
+
+            <button onclick="exportCSV()" class="hidden sm:inline-flex px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+              📊 CSV
+            </button>
+
+            <button onclick="exportJSON()" class="hidden sm:inline-flex px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+              ⬇ JSON
+            </button>
+
+            <!-- Universal Import Button (HTML & JSON) -->
+            <label class="px-2.5 py-1.5 rounded-lg text-xs font-semibold border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 transition cursor-pointer flex items-center gap-1.5" title="Impor file soal HTML (Kuis) atau JSON">
+              <span>⬆</span>
+              <span>Impor File (HTML/JSON)</span>
+              <input type="file" id="import-any-file" accept=".html,.htm,.json" class="hidden" onchange="handleFileImport(event)" />
+            </label>
+
+            <button onclick="openModal()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-sm">
+              + Soal
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Top Tabs Bar (Tetap Sinkron dengan Sidebar) -->
+        <div class="px-4 sm:px-6 pb-2 pt-1 flex items-center gap-1.5 overflow-x-auto no-scrollbar border-t border-[var(--border)]/50">
+          <button onclick="switchTab('curriculum')" id="tab-curriculum" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 bg-[var(--primary)] text-[var(--primary-foreground)]">
+            📖 Modul Materi
+          </button>
+          <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+            🎮 Mode Kuis Anak
+          </button>
+          <button onclick="switchTab('bank')" id="tab-bank" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+            📚 Bank Soal
+          </button>
+          <button onclick="switchTab('builder')" id="tab-builder" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+            ⚡ Naskah Ujian (PDF)
+          </button>
+          <button onclick="switchTab('analytics')" id="tab-analytics" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+            📊 Rapor & Analisis
+          </button>
+        </div>
+      </header>
+
+      <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-5 space-y-6 flex-1">
+    <!-- Ringkasan KPI Atas -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 no-print">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">Cakupan Kurikulum Kelas 6</span>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-400 font-semibold" id="kpi-modules-count">18 Bab</span>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-bold tracking-tight" id="kpi-total-questions">32</span>
+          <span class="text-xs text-[var(--muted-foreground)]">soal siap pakai (5 Mapel)</span>
+        </div>
+      </div>
+
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">Keseimbangan Tingkat Kesulitan</span>
+          <span class="text-xs text-emerald-400 font-medium">Proporsional</span>
+        </div>
+        <div class="mt-2.5 flex items-center gap-1.5 h-2.5 rounded-full overflow-hidden bg-[var(--background)]">
+          <div id="bar-easy" class="bg-emerald-500 h-full transition-all" style="width: 30%"></div>
+          <div id="bar-medium" class="bg-amber-500 h-full transition-all" style="width: 50%"></div>
+          <div id="bar-hard" class="bg-rose-500 h-full transition-all" style="width: 20%"></div>
+        </div>
+        <div class="mt-2 flex justify-between text-xs text-[var(--muted-foreground)]">
+          <span id="lbl-easy">Mudah: 0</span>
+          <span id="lbl-medium">Sedang: 0</span>
+          <span id="lbl-hard">Sulit: 0</span>
+        </div>
+      </div>
+
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">Penalaran HOTS (C4–C6)</span>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-400 font-semibold">Standar ANBK/US</span>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-bold tracking-tight" id="kpi-hots">0%</span>
+          <span class="text-xs text-[var(--muted-foreground)]" id="kpi-hots-detail">0 dari 0 soal</span>
+        </div>
+      </div>
+
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">Rekor Belajar Siswa</span>
+          <span class="text-xs text-amber-400 font-semibold" id="kpi-streak">🔥 Streak: 0</span>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-bold tracking-tight" id="kpi-avg-score">0</span>
+          <span class="text-xs text-[var(--muted-foreground)]" id="kpi-quiz-count">rata-rata dari 0 kuis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 1: MODUL BELAJAR & RANGKUMAN MATERI SD KELAS 6 (SEMESTER 1 & 2)       -->
+    <!-- ========================================================================= -->
+    <section id="view-curriculum" class="space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-semibold text-[var(--muted-foreground)] mr-1">Filter Mata Pelajaran:</span>
+          <button onclick="setCurrSubject('ALL')" id="csubj-ALL" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white">Semua Mapel (5)</button>
+          <button onclick="setCurrSubject('Matematika')" id="csubj-Matematika" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">📐 Matematika</button>
+          <button onclick="setCurrSubject('IPAS')" id="csubj-IPAS" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🌍 IPAS (Sains & Sosial)</button>
+          <button onclick="setCurrSubject('Bahasa Indonesia')" id="csubj-Bahasa Indonesia" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">📖 Bahasa Indonesia</button>
+          <button onclick="setCurrSubject('Pendidikan Pancasila')" id="csubj-Pendidikan Pancasila" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🦅 Pendidikan Pancasila</button>
+          <button onclick="setCurrSubject('Bahasa Inggris')" id="csubj-Bahasa Inggris" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🇬🇧 Bahasa Inggris</button>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <label class="text-xs text-[var(--muted-foreground)]">Semester:</label>
+          <select id="curr-semester" onchange="renderCurriculum()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="ALL">Semester 1 & 2 (Lengkap)</option>
+            <option value="1">Semester 1 (Ganjil)</option>
+            <option value="2">Semester 2 (Genap)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Daftar Modul Bab -->
+      <div id="curriculum-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 2: MODE KUIS & LATIHAN ANAK SD (INTERAKTIF + GAMIFIKASI)              -->
+    <!-- ========================================================================= -->
+    <section id="view-quiz" class="hidden space-y-4">
+      <!-- Pengaturan Cepat Kuis -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-3">
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Pilih Mata Pelajaran Kuis</label>
+            <select id="quiz-subject-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+              <option value="ALL">🌟 Semua Mata Pelajaran (Campuran)</option>
+              <option value="Matematika">📐 Matematika Kelas 6</option>
+              <option value="IPAS">🌍 IPAS (Sains & Sosial) Kelas 6</option>
+              <option value="Bahasa Indonesia">📖 Bahasa Indonesia Kelas 6</option>
+              <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila Kelas 6</option>
+              <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris Kelas 6</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Semester</label>
+            <select id="quiz-semester-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+              <option value="ALL">Semester 1 & 2</option>
+              <option value="1">Semester 1 (Ganjil)</option>
+              <option value="2">Semester 2 (Genap)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Mode Belajar</label>
+            <select id="quiz-mode-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+              <option value="INSTANT">💡 Mode Belajar Anak (Langsung Bahas Tiap Soal)</option>
+              <option value="EXAM">⏱️ Mode Simulasi Ujian CBT (Nilai di Akhir)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold" id="quiz-streak-badge">
+            🔥 Streak Benar: 0
+          </div>
+          <div class="px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-mono text-xs font-bold" id="quiz-timer">
+            ⏱ 20:00
+          </div>
+          <button onclick="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500">
+            🔄 Acak Ulang Kuis
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-5">
+        <!-- Area Pertanyaan Kuis -->
+        <div class="lg:col-span-3 bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm flex flex-col justify-between min-h-[430px]">
+          <div id="cbt-active-container" class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[var(--border)]">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-3 py-1 rounded-lg bg-indigo-600 text-white text-xs font-bold" id="cbt-q-number">Soal #1</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--background)] border border-[var(--border)] font-medium" id="cbt-q-subject">Matematika</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]" id="cbt-q-bloom">C3</span>
+              </div>
+              <span class="text-xs font-semibold text-emerald-400" id="cbt-q-points">+10 XP</span>
+            </div>
+
+            <div class="text-sm sm:text-base leading-relaxed font-medium py-2 whitespace-pre-line" id="cbt-q-text"></div>
+
+            <!-- Pilihan Jawaban A-D -->
+            <div class="space-y-2.5" id="cbt-options-list"></div>
+
+            <!-- Kotak Pembahasan Langsung (Muncul pada Mode Belajar Anak) -->
+            <div id="cbt-instant-feedback" class="hidden p-4 rounded-xl border text-xs space-y-1.5"></div>
+          </div>
+
+          <!-- Area Hasil Akhir Kuis -->
+          <div id="cbt-result-container" class="hidden space-y-5 py-2"></div>
+
+          <!-- Navigasi Bawah Kuis -->
+          <div id="cbt-footer-nav" class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[var(--border)] mt-6">
+            <button onclick="cbtPrev()" class="px-4 py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)]">
+              ← Soal Sebelumnya
+            </button>
+
+            <label class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-medium bg-amber-500/15 text-amber-400 border border-amber-500/30 cursor-pointer">
+              <input type="checkbox" id="cbt-flag-checkbox" onchange="cbtToggleFlag()" />
+              <span>🚩 Tandai Ragu-ragu</span>
+            </label>
+
+            <div class="flex items-center gap-2">
+              <button onclick="cbtNext()" class="px-4 py-2 rounded-lg text-xs font-medium bg-indigo-600 text-white hover:bg-indigo-500">
+                Soal Selanjutnya →
+              </button>
+              <button onclick="finishCBT()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-500">
+                🏆 Selesai & Lihat Nilai
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Peta Nomor Soal -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-4 h-fit">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Peta Nomor Soal</h3>
+            <p class="text-xs text-[var(--muted-foreground)] mt-0.5" id="cbt-topic-subtitle">Semua Bab</p>
+          </div>
+          <div id="cbt-number-grid" class="grid grid-cols-5 gap-2"></div>
+          <div class="pt-3 border-t border-[var(--border)] space-y-1.5 text-xs text-[var(--muted-foreground)]">
+            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-emerald-600 inline-block"></span> Sudah Dijawab</div>
+            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-amber-500 inline-block"></span> Ragu-ragu</div>
+            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-[var(--background)] border border-[var(--border)] inline-block"></span> Belum Dijawab</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 3: BANK SOAL LENGKAP SD KELAS 6 (CRUD & MULTI-FILTER)                 -->
+    <!-- ========================================================================= -->
+    <section id="view-bank" class="hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+          <div class="sm:col-span-2">
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Cari Kata Kunci Soal / Bab / Pembahasan</label>
+            <input
+              type="text"
+              id="filter-search"
+              oninput="renderBank()"
+              placeholder="Contoh: pecahan, tata surya, proklamasi, pidato..."
+              class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Mata Pelajaran</label>
+            <select id="filter-subject" onchange="renderBank()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+              <option value="ALL">Semua Mapel</option>
+              <option value="Matematika">Matematika</option>
+              <option value="IPAS">IPAS</option>
+              <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+              <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
+              <option value="Bahasa Inggris">Bahasa Inggris</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Semester</label>
+            <select id="filter-semester" onchange="renderBank()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+              <option value="ALL">Semester 1 & 2</option>
+              <option value="1">Semester 1 (Ganjil)</option>
+              <option value="2">Semester 2 (Genap)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Tingkat Kesulitan</label>
+            <select id="filter-difficulty" onchange="renderBank()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+              <option value="ALL">Semua Kesulitan</option>
+              <option value="Mudah">Mudah</option>
+              <option value="Sedang">Sedang</option>
+              <option value="Sulit">Sulit</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Level Kognitif</label>
+            <select id="filter-bloom" onchange="renderBank()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+              <option value="ALL">Semua (C1–C6)</option>
+              <option value="C1">C1 - Mengingat</option>
+              <option value="C2">C2 - Memahami</option>
+              <option value="C3">C3 - Menerapkan</option>
+              <option value="C4">C4 - Menganalisis (HOTS)</option>
+              <option value="C5">C5 - Mengevaluasi (HOTS)</option>
+              <option value="C6">C6 - Mencipta (HOTS)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border)] text-xs">
+          <div class="flex items-center gap-3">
+            <span class="text-[var(--muted-foreground)]" id="filter-result-count">Menampilkan 0 soal</span>
+            <label class="inline-flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="toggle-show-answers" onchange="renderBank()" checked />
+              <span>Tampilkan Kunci & Pembahasan Langkah demi Langkah</span>
+            </label>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="resetFilters()" class="text-xs text-indigo-400 hover:underline">Reset Filter</button>
+            <span>•</span>
+            <button onclick="resetDefaultData()" class="text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)]">Kembalikan Bank Soal Bawaan SD Kelas 6</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="question-list" class="space-y-3"></div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 4: GENERATOR PAKET UJIAN SEKOLAH / SUMATIF (CETAK PDF)                -->
+    <!-- ========================================================================= -->
+    <section id="view-builder" class="hidden space-y-5">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm space-y-4 no-print h-fit">
+          <div>
+            <h2 class="text-base font-bold">Generator Naskah Ujian SD Kelas 6</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">Susun lembar Sumatif Tengah Semester (STS), Sumatif Akhir Semester (SAS), atau Ujian Sekolah secara otomatis.</p>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-medium mb-1">Judul Lembar Ujian</label>
+              <input type="text" id="pkg-title" value="Sumatif Akhir Semester (SAS) — Kelas VI SD" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-xs font-medium mb-1">Mata Pelajaran</label>
+                <select id="pkg-subject" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+                  <option value="ALL">Campuran Semua Mapel</option>
+                  <option value="Matematika">Matematika</option>
+                  <option value="IPAS">IPAS</option>
+                  <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                  <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
+                  <option value="Bahasa Inggris">Bahasa Inggris</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-medium mb-1">Cakupan Semester</label>
+                <select id="pkg-semester" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+                  <option value="ALL">Semester 1 & 2</option>
+                  <option value="1">Semester 1 (Ganjil)</option>
+                  <option value="2">Semester 2 (Genap)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-xs font-medium mb-1">Jumlah Butir Soal</label>
+                <input type="number" id="pkg-count" value="10" min="1" max="50" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium mb-1">Alokasi Waktu (Menit)</label>
+                <input type="number" id="pkg-time" value="45" min="10" max="180" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] space-y-2">
+              <div class="text-xs font-semibold">Komposisi Tingkat Kesulitan (%)</div>
+              <div class="grid grid-cols-3 gap-2 text-xs">
+                <div>
+                  <span class="text-emerald-400 block mb-1">Mudah %</span>
+                  <input type="number" id="pkg-easy" value="30" min="0" max="100" class="w-full px-2 py-1.5 rounded bg-[var(--card)] border border-[var(--border)]" />
+                </div>
+                <div>
+                  <span class="text-amber-400 block mb-1">Sedang %</span>
+                  <input type="number" id="pkg-medium" value="50" min="0" max="100" class="w-full px-2 py-1.5 rounded bg-[var(--card)] border border-[var(--border)]" />
+                </div>
+                <div>
+                  <span class="text-rose-400 block mb-1">Sulit %</span>
+                  <input type="number" id="pkg-hard" value="20" min="0" max="100" class="w-full px-2 py-1.5 rounded bg-[var(--card)] border border-[var(--border)]" />
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-1 text-xs">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="pkg-shuffle-q" checked />
+                <span>Acak urutan nomor soal</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="pkg-shuffle-opt" checked />
+                <span>Acak urutan pilihan jawaban (A–D)</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="pkg-include-key" checked />
+                <span>Lampirkan Kunci Jawaban & Pembahasan Guru</span>
+              </label>
+            </div>
+
+            <div class="pt-2 flex flex-col gap-2">
+              <button onclick="generateExamPackage()" class="w-full py-2.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-sm">
+                ⚡ Buat Naskah Ujian Sekarang
+              </button>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="startQuizFromPackage()" class="py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+                  🎮 Kerjakan di Mode Kuis
+                </button>
+                <button onclick="window.print()" class="py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+                  🖨️ Cetak Naskah / PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pratinjau Lembar Naskah -->
+        <div class="lg:col-span-2 bg-[var(--card)] border border-[var(--border)] rounded-xl p-6 shadow-sm space-y-5" id="exam-paper-preview"></div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 5: RAPOR BELAJAR & ANALITIK KURIKULUM                                 -->
+    <!-- ========================================================================= -->
+    <section id="view-analytics" class="hidden space-y-5">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm space-y-4">
+          <div>
+            <h3 class="text-sm font-bold">Distribusi Level Kognitif (Taksonomi Bloom C1–C6)</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">Keseimbangan soal pemahaman dasar (LOTS), penerapan (MOTS), dan penalaran tingkat tinggi (HOTS).</p>
+          </div>
+          <div id="bloom-chart" class="space-y-3 pt-2"></div>
+        </div>
+
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm space-y-4">
+          <div>
+            <h3 class="text-sm font-bold">Sebaran Soal per Mata Pelajaran Kelas 6</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">Jumlah soal Semester 1 & Semester 2 serta rincian tingkat kesulitannya.</p>
+          </div>
+          <div id="subject-chart" class="space-y-3 pt-2"></div>
+        </div>
+      </div>
+
+      <!-- Riwayat Kuis Siswa -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm space-y-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-bold">🏅 Riwayat Nilai Latihan & Simulasi Ujian Siswa</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">Catatan otomatis setiap kali siswa menyelesaikan sesi kuis atau simulasi ujian.</p>
+          </div>
+          <button onclick="clearHistory()" class="text-xs text-rose-400 hover:underline">Reset Riwayat Nilai</button>
+        </div>
+        <div id="quiz-history-list" class="space-y-2 text-xs"></div>
+      </div>
+    </section>
+  </main>
+  </div> <!-- Penutup #main-content-wrapper -->
+  </div> <!-- Penutup .flex-1 .flex -->
+
+  <!-- MODAL TAMBAH / EDIT SOAL SD KELAS 6 -->
+  <div id="question-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-xl space-y-4">
+      <div class="flex items-center justify-between border-b border-[var(--border)] pb-3">
+        <h2 class="text-base font-bold" id="modal-title">Tambah Butir Soal SD Kelas 6</h2>
+        <button onclick="closeModal()" class="text-xs px-2.5 py-1 rounded-lg border border-[var(--border)] hover:bg-[var(--background)]">✕ Tutup</button>
+      </div>
+
+      <input type="hidden" id="form-id" />
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div>
+          <label class="block text-xs font-medium mb-1">Mata Pelajaran</label>
+          <select id="form-subject" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="Matematika">Matematika</option>
+            <option value="IPAS">IPAS</option>
+            <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+            <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
+            <option value="Bahasa Inggris">Bahasa Inggris</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium mb-1">Semester</label>
+          <select id="form-semester" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="1">Semester 1 (Ganjil)</option>
+            <option value="2">Semester 2 (Genap)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium mb-1">Tipe Soal</label>
+          <select id="form-type" onchange="toggleFormType()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="PG">Pilihan Ganda (A–D)</option>
+            <option value="ESAI">Uraian / Esai</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+        <div class="sm:col-span-2">
+          <label class="block text-xs font-medium mb-1">Bab / Topik Materi</label>
+          <input type="text" id="form-topic" placeholder="Contoh: Bab 1: Pecahan dan Desimal" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium mb-1">Kesulitan</label>
+          <select id="form-difficulty" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="Mudah">Mudah</option>
+            <option value="Sedang" selected>Sedang</option>
+            <option value="Sulit">Sulit</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium mb-1">Level Bloom</label>
+          <select id="form-bloom" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="C1">C1 - Mengingat</option>
+            <option value="C2">C2 - Memahami</option>
+            <option value="C3" selected>C3 - Menerapkan</option>
+            <option value="C4">C4 - Menganalisis</option>
+            <option value="C5">C5 - Mengevaluasi</option>
+            <option value="C6">C6 - Mencipta</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">Pertanyaan Soal</label>
+        <textarea id="form-question" rows="3" placeholder="Tuliskan soal dengan bahasa yang jelas untuk siswa kelas 6 SD..." class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]"></textarea>
+      </div>
+
+      <div id="form-pg-section" class="space-y-2">
+        <label class="text-xs font-semibold block">Pilihan Jawaban A–D (Pilih bulatan pada jawaban yang benar)</label>
+        <div class="space-y-2" id="form-options-container"></div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">Pembahasan Langkah demi Langkah</label>
+        <textarea id="form-explanation" rows="3" placeholder="Tuliskan cara pengerjaan atau penjelasan jawaban yang benar..." class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]"></textarea>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-3 border-t border-[var(--border)]">
+        <button onclick="closeModal()" class="px-4 py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)]">Batal</button>
+        <button onclick="saveQuestion()" class="px-5 py-2 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white">💾 Simpan Soal</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*__DATA_PLACEHOLDER__*/
+
+    const STORAGE_KEY_Q = 'pintarsd6_questions_v2';
+    const STORAGE_KEY_STATS = 'pintarsd6_stats_v2';
+
+    let questions = [];
+    let currentPackage = [];
+    let currSelectedSubject = 'ALL';
+
+    // Student Gamification & Quiz State
+    let studentStats = {
+      xp: 120,
+      bestStreak: 0,
+      history: []
+    };
+
+    let cbtQuestions = [];
+    let cbtIndex = 0;
+    let cbtAnswers = {};
+    let cbtFlags = {};
+    let cbtLocked = {};
+    let cbtStreak = 0;
+    let cbtTimerInterval = null;
+    let cbtRemainingSeconds = 1200;
+
+    // Web Audio Sound Effects for Kids
+    let audioCtx = null;
+    let soundOn = true;
+
+    function playTone(type) {
+      if (!soundOn) return;
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx && AudioContext) audioCtx = new AudioContext();
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const now = audioCtx.currentTime;
+        const notes = type === 'correct' ? [523.25, 659.25, 783.99] : type === 'finish' ? [523.25, 659.25, 783.99, 1046.5] : [240, 190];
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = type === 'wrong' ? 'sawtooth' : 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.09);
+          gain.gain.setValueAtTime(0.05, now + idx * 0.09);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.09 + 0.25);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + idx * 0.09);
+          osc.stop(now + idx * 0.09 + 0.26);
+        });
+      } catch (e) {}
+    }
+
+    function toggleSound() {
+      soundOn = !soundOn;
+      document.getElementById('btn-sound').textContent = soundOn ? '🔊 Suara Aktif' : '🔇 Bisu';
+    }
+
+    function loadData() {
+      try {
+        const rawQ = localStorage.getItem(STORAGE_KEY_Q);
+        questions = rawQ ? JSON.parse(rawQ) : JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      } catch (e) {
+        questions = JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      }
+
+      try {
+        const rawS = localStorage.getItem(STORAGE_KEY_STATS);
+        if (rawS) studentStats = JSON.parse(rawS);
+      } catch (e) {}
+    }
+
+    function saveData() {
+      try {
+        localStorage.setItem(STORAGE_KEY_Q, JSON.stringify(questions));
+        localStorage.setItem(STORAGE_KEY_STATS, JSON.stringify(studentStats));
+      } catch (e) {}
+    }
+
+    function resetDefaultData() {
+      questions = JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      saveData();
+      refreshAll();
+    }
+
+    let isSidebarOpenMobile = false;
+    let isSidebarCollapsed = false;
+
+    function toggleSidebar(forceState = null) {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      const wrapper = document.getElementById('main-content-wrapper');
+
+      if (window.innerWidth < 1024) {
+        // Mobile / Small Screen
+        isSidebarOpenMobile = forceState !== null ? forceState : !isSidebarOpenMobile;
+        if (isSidebarOpenMobile) {
+          sidebar.classList.remove('-translate-x-full');
+          backdrop.classList.remove('hidden');
+        } else {
+          sidebar.classList.add('-translate-x-full');
+          backdrop.classList.add('hidden');
+        }
+      } else {
+        // Desktop: toggle between normal (w-64) and completely hidden (0px) or collapsed
+        const isHiddenDesktop = sidebar.classList.contains('lg:-translate-x-full');
+        if (isHiddenDesktop) {
+          sidebar.classList.remove('lg:-translate-x-full');
+          wrapper.classList.remove('lg:ml-0');
+          wrapper.classList.add(isSidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64');
+        } else {
+          sidebar.classList.add('lg:-translate-x-full');
+          wrapper.classList.remove('lg:ml-64', 'lg:ml-16');
+          wrapper.classList.add('lg:ml-0');
+        }
+      }
+    }
+
+    function toggleSidebarCollapse() {
+      const sidebar = document.getElementById('app-sidebar');
+      const wrapper = document.getElementById('main-content-wrapper');
+      const icon = document.getElementById('collapse-icon');
+      const texts = document.querySelectorAll('.sidebar-text');
+
+      isSidebarCollapsed = !isSidebarCollapsed;
+      if (isSidebarCollapsed) {
+        sidebar.classList.remove('w-64');
+        sidebar.classList.add('w-16');
+        wrapper.classList.remove('lg:ml-64');
+        wrapper.classList.add('lg:ml-16');
+        icon.textContent = '▶';
+        texts.forEach((el) => el.classList.add('hidden'));
+      } else {
+        sidebar.classList.remove('w-16');
+        sidebar.classList.add('w-64');
+        wrapper.classList.remove('lg:ml-16');
+        wrapper.classList.add('lg:ml-64');
+        icon.textContent = '◀';
+        texts.forEach((el) => el.classList.remove('hidden'));
+      }
+    }
+
+    function autoCloseSidebarOnMobile() {
+      if (window.innerWidth < 1024) {
+        toggleSidebar(false);
+      }
+    }
+
+    function quickFilterSubject(subj) {
+      setCurrSubject(subj);
+      switchTab('curriculum');
+      autoCloseSidebarOnMobile();
+    }
+
+    // Keyboard shortcut: Ctrl + B to toggle sidebar
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+        e.preventDefault();
+        toggleSidebar();
+      }
+    });
+
+    function updateGamificationHeader() {
+      const xpEl = document.getElementById('sidebar-xp');
+      if (xpEl) xpEl.textContent = `${studentStats.xp} XP`;
+      const level = Math.floor(studentStats.xp / 100) + 1;
+      const titles = ['Penjelajah Muda', 'Detektif Sains', 'Ksatria Angka', 'Bintang Kelas 6', 'Juara Olimpiade', 'Master Nusantara'];
+      const title = titles[Math.min(level - 1, titles.length - 1)];
+      const sideLevelEl = document.getElementById('sidebar-level');
+      if (sideLevelEl) sideLevelEl.textContent = `Level ${level}: ${title}`;
+
+      document.getElementById('kpi-streak').textContent = `🔥 Rekor Streak: ${studentStats.bestStreak}`;
+      const hCount = studentStats.history.length;
+      const avg = hCount
+        ? Math.round(studentStats.history.reduce((a, b) => a + b.score, 0) / hCount)
+        : 0;
+      document.getElementById('kpi-avg-score').textContent = hCount ? `${avg}/100` : 'Siap Mulai';
+      document.getElementById('kpi-quiz-count').textContent = `${hCount} sesi latihan selesai`;
+    }
+
+    function switchTab(tab) {
+      const tabs = ['curriculum', 'quiz', 'bank', 'builder', 'analytics'];
+      const titles = {
+        curriculum: '1. Modul & Rangkuman Materi',
+        quiz: '2. Mode Kuis & Latihan Anak',
+        bank: '3. Bank Soal Lengkap SD Kelas 6',
+        builder: '4. Generator Naskah Ujian Sekolah',
+        analytics: '5. Rapor Belajar & Analisis Kurikulum'
+      };
+
+      const titleEl = document.getElementById('current-menu-title');
+      if (titleEl && titles[tab]) titleEl.textContent = titles[tab];
+
+      tabs.forEach((t) => {
+        const view = document.getElementById('view-' + t);
+        const topBtn = document.getElementById('tab-' + t);
+        const sideBtn = document.getElementById('side-tab-' + t);
+
+        if (t === tab) {
+          view.classList.remove('hidden');
+          if (topBtn) topBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 bg-[var(--primary)] text-[var(--primary-foreground)]';
+          if (sideBtn) sideBtn.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left bg-[var(--primary)] text-[var(--primary-foreground)] shadow-xs';
+        } else {
+          view.classList.add('hidden');
+          if (topBtn) topBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]';
+          if (sideBtn) sideBtn.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]';
+        }
+      });
+
+      if (tab === 'quiz' && cbtQuestions.length === 0) {
+        startNewQuiz();
+      } else if (tab === 'builder' && currentPackage.length === 0) {
+        generateExamPackage();
+      } else if (tab === 'analytics') {
+        renderAnalytics();
+      }
+    }
+
+    // Update KPI Cards
+    function updateKPIs() {
+      const total = questions.length;
+      document.getElementById('kpi-total-questions').textContent = total;
+      document.getElementById('kpi-modules-count').textContent = `${window.KURIKULUM_SD6.length} Bab Materi`;
+
+      const easy = questions.filter((q) => q.difficulty === 'Mudah').length;
+      const medium = questions.filter((q) => q.difficulty === 'Sedang').length;
+      const hard = questions.filter((q) => q.difficulty === 'Sulit').length;
+
+      const pEasy = total ? Math.round((easy / total) * 100) : 0;
+      const pMed = total ? Math.round((medium / total) * 100) : 0;
+      const pHard = total ? Math.max(0, 100 - pEasy - pMed) : 0;
+
+      document.getElementById('bar-easy').style.width = `${pEasy}%`;
+      document.getElementById('bar-medium').style.width = `${pMed}%`;
+      document.getElementById('bar-hard').style.width = `${pHard}%`;
+
+      document.getElementById('lbl-easy').textContent = `Mudah: ${easy}`;
+      document.getElementById('lbl-medium').textContent = `Sedang: ${medium}`;
+      document.getElementById('lbl-hard').textContent = `Sulit: ${hard}`;
+
+      const hotsCount = questions.filter((q) => ['C4', 'C5', 'C6'].includes(q.bloom)).length;
+      const hotsPct = total ? Math.round((hotsCount / total) * 100) : 0;
+      document.getElementById('kpi-hots').textContent = `${hotsPct}%`;
+      document.getElementById('kpi-hots-detail').textContent = `${hotsCount} dari ${total} soal`;
+
+      updateGamificationHeader();
+    }
+
+    // =========================================================================
+    // TAB 1: MODUL KURIKULUM MERDEKA SD KELAS 6
+    // =========================================================================
+    function setCurrSubject(subj) {
+      currSelectedSubject = subj;
+      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris'];
+      allBtns.forEach((s) => {
+        const el = document.getElementById('csubj-' + s);
+        if (!el) return;
+        if (s === subj) {
+          el.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white';
+        } else {
+          el.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)] hover:border-indigo-500/40';
+        }
+      });
+      renderCurriculum();
+    }
+
+    function renderCurriculum() {
+      const sem = document.getElementById('curr-semester').value;
+      const filtered = window.KURIKULUM_SD6.filter((m) => {
+        if (currSelectedSubject !== 'ALL' && m.subject !== currSelectedSubject) return false;
+        if (sem !== 'ALL' && String(m.semester) !== String(sem)) return false;
+        return true;
+      });
+
+      const grid = document.getElementById('curriculum-grid');
+      grid.innerHTML = filtered.map((m) => {
+        const relatedQs = questions.filter((q) => q.moduleId === m.id || q.topic === m.bab);
+        return `
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm flex flex-col justify-between space-y-4 hover:border-indigo-500/40 transition">
+            <div class="space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-indigo-500/15 text-indigo-400">${escapeHtml(m.subject)}</span>
+                  <span class="px-2 py-0.5 rounded text-xs bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">Semester ${m.semester}</span>
+                </div>
+                <span class="text-xs font-medium text-emerald-400">${relatedQs.length} Soal Latihan</span>
+              </div>
+
+              <div>
+                <h3 class="text-sm sm:text-base font-bold text-[var(--foreground)]">${escapeHtml(m.bab)}</h3>
+                <p class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed">${escapeHtml(m.summary)}</p>
+              </div>
+
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] space-y-1.5">
+                <div class="text-xs font-bold text-indigo-400">📌 Rangkuman Konsep & Rumus Penting:</div>
+                <ul class="list-disc list-inside text-xs space-y-1 text-[var(--foreground)] leading-relaxed">
+                  ${m.keyPoints.map((kp) => `<li>${escapeHtml(kp)}</li>`).join('')}
+                </ul>
+              </div>
+
+              <div class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/25 text-xs">
+                <span class="font-bold text-emerald-400">💡 Contoh Penerapan:</span>
+                <span class="text-[var(--foreground)] ml-1">${escapeHtml(m.example)}</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 pt-3 border-t border-[var(--border)]">
+              <button onclick="practiceModule('${m.id}', '${escapeHtml(m.bab)}')" class="flex-1 py-2 px-3 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition">
+                🎯 Latihan Kuis Bab Ini (${relatedQs.length})
+              </button>
+              <button onclick="filterBankByTopic('${escapeHtml(m.bab)}')" class="py-2 px-3 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+                📚 Lihat Bank Soal
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function practiceModule(moduleId, babTitle) {
+      const subset = questions.filter((q) => (q.moduleId === moduleId || q.topic === babTitle) && q.type === 'PG');
+      if (subset.length === 0) {
+        alert('Belum ada soal Pilihan Ganda pada bab ini.');
+        return;
+      }
+      initCBT(subset, babTitle);
+      switchTab('quiz');
+    }
+
+    function filterBankByTopic(babTitle) {
+      document.getElementById('filter-search').value = babTitle;
+      document.getElementById('filter-subject').value = 'ALL';
+      document.getElementById('filter-semester').value = 'ALL';
+      renderBank();
+      switchTab('bank');
+    }
+
+    // =========================================================================
+    // TAB 2: KUIS PETUALANGAN ANAK SD & SIMULATOR CBT
+    // =========================================================================
+    function startNewQuiz() {
+      const subj = document.getElementById('quiz-subject-select').value;
+      const sem = document.getElementById('quiz-semester-select').value;
+
+      let pool = questions.filter((q) => q.type === 'PG');
+      if (subj !== 'ALL') pool = pool.filter((q) => q.subject === subj);
+      if (sem !== 'ALL') pool = pool.filter((q) => String(q.semester) === String(sem));
+
+      if (pool.length === 0) pool = questions.filter((q) => q.type === 'PG');
+      const shuffled = shuffleArray(pool);
+      const label = subj === 'ALL' ? 'Campuran Semua Mata Pelajaran' : `${subj} (Semester ${sem === 'ALL' ? '1 & 2' : sem})`;
+      initCBT(shuffled, label);
+    }
+
+    function initCBT(customList, labelTitle = 'Latihan SD Kelas 6') {
+      cbtQuestions = customList && customList.length ? customList : shuffleArray(questions.filter((q) => q.type === 'PG'));
+      cbtIndex = 0;
+      cbtAnswers = {};
+      cbtFlags = {};
+      cbtLocked = {};
+      cbtStreak = 0;
+      cbtRemainingSeconds = cbtQuestions.length * 120;
+
+      document.getElementById('cbt-topic-subtitle').textContent = labelTitle;
+      document.getElementById('quiz-streak-badge').textContent = `🔥 Streak Benar: 0`;
+      document.getElementById('cbt-active-container').classList.remove('hidden');
+      document.getElementById('cbt-footer-nav').classList.remove('hidden');
+      document.getElementById('cbt-result-container').classList.add('hidden');
+
+      if (cbtTimerInterval) clearInterval(cbtTimerInterval);
+      cbtTimerInterval = setInterval(() => {
+        if (cbtRemainingSeconds > 0) {
+          cbtRemainingSeconds--;
+          const m = String(Math.floor(cbtRemainingSeconds / 60)).padStart(2, '0');
+          const s = String(cbtRemainingSeconds % 60).padStart(2, '0');
+          document.getElementById('quiz-timer').textContent = `⏱ ${m}:${s}`;
+        } else {
+          finishCBT();
+        }
+      }, 1000);
+
+      renderCBTQuestion();
+    }
+
+    function renderCBTQuestion() {
+      const q = cbtQuestions[cbtIndex];
+      if (!q) return;
+
+      const quizMode = document.getElementById('quiz-mode-select').value; // INSTANT or EXAM
+      document.getElementById('cbt-q-number').textContent = `Soal #${cbtIndex + 1} / ${cbtQuestions.length}`;
+      document.getElementById('cbt-q-subject').textContent = `${q.subject} • ${q.topic}`;
+      document.getElementById('cbt-q-bloom').textContent = `${q.bloom} (${q.difficulty})`;
+      document.getElementById('cbt-q-points').textContent = `+${q.points} XP`;
+      document.getElementById('cbt-q-text').textContent = q.question;
+      document.getElementById('cbt-flag-checkbox').checked = !!cbtFlags[cbtIndex];
+
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      const userAns = cbtAnswers[cbtIndex];
+      const isRevealed = quizMode === 'INSTANT' && userAns !== undefined;
+
+      const optContainer = document.getElementById('cbt-options-list');
+      optContainer.innerHTML = (q.options || []).map((opt, idx) => {
+        const selected = userAns === idx;
+        let btnStyle = 'bg-[var(--background)] border-[var(--border)] text-[var(--foreground)] hover:border-indigo-500/40';
+        let badgeStyle = 'bg-[var(--card)] border border-[var(--border)]';
+
+        if (isRevealed) {
+          if (idx === q.correctIndex) {
+            btnStyle = 'bg-emerald-500/20 border-emerald-500 text-emerald-300 font-semibold';
+            badgeStyle = 'bg-emerald-600 text-white';
+          } else if (selected && idx !== q.correctIndex) {
+            btnStyle = 'bg-rose-500/20 border-rose-500 text-rose-300';
+            badgeStyle = 'bg-rose-600 text-white';
+          }
+        } else if (selected) {
+          btnStyle = 'bg-indigo-600/20 border-indigo-500 text-[var(--foreground)] font-semibold';
+          badgeStyle = 'bg-indigo-600 text-white';
+        }
+
+        return `
+          <button
+            onclick="selectCBTOption(${idx})"
+            class="w-full text-left px-4 py-3 rounded-xl border text-xs sm:text-sm flex items-center gap-3 transition ${btnStyle}"
+          >
+            <span class="w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs ${badgeStyle}">${letters[idx]}</span>
+            <span class="flex-1">${escapeHtml(opt)}</span>
+            ${isRevealed && idx === q.correctIndex ? '<span class="text-emerald-400 font-bold">✓ Benar</span>' : ''}
+            ${isRevealed && selected && idx !== q.correctIndex ? '<span class="text-rose-400 font-bold">✕ Pilihanmu</span>' : ''}
+          </button>
+        `;
+      }).join('');
+
+      const fbBox = document.getElementById('cbt-instant-feedback');
+      if (isRevealed) {
+        const isCorrect = userAns === q.correctIndex;
+        fbBox.classList.remove('hidden');
+        fbBox.className = `p-4 rounded-xl border text-xs space-y-1.5 ${
+          isCorrect ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-amber-500/10 border-amber-500/30'
+        }`;
+        fbBox.innerHTML = `
+          <div class="font-bold text-sm ${isCorrect ? 'text-emerald-400' : 'text-amber-400'}">
+            ${isCorrect ? '🎉 Hebat Sekali! Jawabanmu Benar!' : `💡 Belum Tepat — Jawaban yang benar adalah ${letters[q.correctIndex]}`}
+          </div>
+          <div class="text-[var(--foreground)] leading-relaxed">
+            <strong>Penjelasan:</strong> ${escapeHtml(q.explanation)}
+          </div>
+        `;
+      } else {
+        fbBox.classList.add('hidden');
+      }
+
+      // Render Number Grid
+      const grid = document.getElementById('cbt-number-grid');
+      grid.innerHTML = cbtQuestions.map((item, i) => {
+        const isCurrent = i === cbtIndex;
+        const isFlagged = !!cbtFlags[i];
+        const ans = cbtAnswers[i];
+
+        let cls = 'bg-[var(--background)] border-[var(--border)] text-[var(--foreground)]';
+        if (isFlagged) {
+          cls = 'bg-amber-500 text-black font-bold border-amber-400';
+        } else if (ans !== undefined) {
+          if (quizMode === 'INSTANT') {
+            cls = ans === item.correctIndex
+              ? 'bg-emerald-600 text-white font-bold border-emerald-500'
+              : 'bg-rose-600 text-white font-bold border-rose-500';
+          } else {
+            cls = 'bg-indigo-600 text-white font-bold border-indigo-500';
+          }
+        }
+
+        return `
+          <button
+            onclick="jumpCBT(${i})"
+            class="h-9 rounded-lg border text-xs transition ${cls} ${isCurrent ? 'ring-2 ring-indigo-400' : ''}"
+          >
+            ${i + 1}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectCBTOption(idx) {
+      const quizMode = document.getElementById('quiz-mode-select').value;
+      const q = cbtQuestions[cbtIndex];
+
+      if (quizMode === 'INSTANT' && cbtLocked[cbtIndex]) {
+        return; // Prevent changing answer after instant reveal
+      }
+
+      cbtAnswers[cbtIndex] = idx;
+
+      if (quizMode === 'INSTANT') {
+        cbtLocked[cbtIndex] = true;
+        if (idx === q.correctIndex) {
+          cbtStreak++;
+          studentStats.xp += Number(q.points) || 10;
+          if (cbtStreak > studentStats.bestStreak) studentStats.bestStreak = cbtStreak;
+          playTone('correct');
+        } else {
+          cbtStreak = 0;
+          playTone('wrong');
+        }
+        document.getElementById('quiz-streak-badge').textContent = `🔥 Streak Benar: ${cbtStreak}`;
+        saveData();
+        updateGamificationHeader();
+      }
+
+      renderCBTQuestion();
+    }
+
+    function cbtToggleFlag() {
+      cbtFlags[cbtIndex] = document.getElementById('cbt-flag-checkbox').checked;
+      renderCBTQuestion();
+    }
+
+    function cbtPrev() {
+      if (cbtIndex > 0) {
+        cbtIndex--;
+        renderCBTQuestion();
+      }
+    }
+
+    function cbtNext() {
+      if (cbtIndex < cbtQuestions.length - 1) {
+        cbtIndex++;
+        renderCBTQuestion();
+      }
+    }
+
+    function jumpCBT(i) {
+      cbtIndex = i;
+      renderCBTQuestion();
+    }
+
+    function finishCBT() {
+      if (cbtTimerInterval) clearInterval(cbtTimerInterval);
+      playTone('finish');
+
+      let earnedPoints = 0;
+      let maxPoints = 0;
+      let correctCount = 0;
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+
+      const reviewHtml = cbtQuestions.map((q, idx) => {
+        const pts = Number(q.points) || 10;
+        maxPoints += pts;
+        const userAns = cbtAnswers[idx];
+        const isCorrect = userAns === q.correctIndex;
+        if (isCorrect) {
+          earnedPoints += pts;
+          correctCount++;
+        }
+
+        return `
+          <div class="p-3.5 rounded-xl bg-[var(--background)] border ${isCorrect ? 'border-emerald-500/40' : 'border-rose-500/40'} space-y-1.5 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="font-bold">Soal #${idx + 1} • ${q.subject} (${q.topic})</span>
+              <span class="font-semibold ${isCorrect ? 'text-emerald-400' : 'text-rose-400'}">
+                ${isCorrect ? `✓ Benar (+${pts})` : '✕ Belum Tepat (0)'}
+              </span>
+            </div>
+            <div class="text-[var(--foreground)] font-medium">${escapeHtml(q.question)}</div>
+            <div class="text-[var(--muted-foreground)]">
+              Jawabanmu: <strong>${userAns !== undefined ? `${letters[userAns]}. ${escapeHtml(q.options[userAns])}` : 'Tidak dijawab'}</strong> •
+              Kunci Jawaban: <strong class="text-emerald-400">${letters[q.correctIndex]}. ${escapeHtml(q.options[q.correctIndex])}</strong>
+            </div>
+            <div class="text-[var(--muted-foreground)] pt-1 border-t border-[var(--border)]">
+              <strong>Pembahasan:</strong> ${escapeHtml(q.explanation)}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const finalScore = maxPoints ? Math.round((earnedPoints / maxPoints) * 100) : 0;
+
+      // Record History
+      studentStats.history.unshift({
+        date: new Date().toLocaleString('id-ID'),
+        topic: document.getElementById('cbt-topic-subtitle').textContent,
+        score: finalScore,
+        correct: correctCount,
+        total: cbtQuestions.length
+      });
+      studentStats.xp += Math.round(finalScore / 5);
+      saveData();
+      updateGamificationHeader();
+
+      let predicate = 'Perlu Latihan Lagi 💪';
+      if (finalScore >= 90) predicate = 'Sangat Istimewa (Bintang 5 ⭐⭐⭐⭐⭐)';
+      else if (finalScore >= 75) predicate = 'Bagus Sekali (Bintang 4 ⭐⭐⭐⭐)';
+      else if (finalScore >= 60) predicate = 'Cukup Baik (Bintang 3 ⭐⭐⭐)';
+
+      document.getElementById('cbt-active-container').classList.add('hidden');
+      document.getElementById('cbt-footer-nav').classList.add('hidden');
+      const resEl = document.getElementById('cbt-result-container');
+      resEl.classList.remove('hidden');
+      resEl.innerHTML = `
+        <div class="p-5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div class="text-xs font-semibold uppercase text-indigo-400">${predicate}</div>
+            <h3 class="text-2xl font-bold mt-1">Nilai Akhir: ${finalScore} / 100</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">Menjawab benar ${correctCount} dari ${cbtQuestions.length} soal (${earnedPoints} dari ${maxPoints} poin)</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="startNewQuiz()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500">
+              🔄 Mainkan Kuis Baru
+            </button>
+            <button onclick="switchTab('curriculum')" class="px-4 py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)]">
+              📖 Baca Rangkuman Materi
+            </button>
+          </div>
+        </div>
+        <div class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1">
+          ${reviewHtml}
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // TAB 3: BANK SOAL LENGKAP (CRUD)
+    // =========================================================================
+    function getDifficultyBadge(diff) {
+      if (diff === 'Mudah') return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30';
+      if (diff === 'Sedang') return 'bg-amber-500/15 text-amber-400 border-amber-500/30';
+      return 'bg-rose-500/15 text-rose-400 border-rose-500/30';
+    }
+
+    function renderBank() {
+      const search = document.getElementById('filter-search').value.trim().toLowerCase();
+      const subj = document.getElementById('filter-subject').value;
+      const sem = document.getElementById('filter-semester').value;
+      const diff = document.getElementById('filter-difficulty').value;
+      const bloom = document.getElementById('filter-bloom').value;
+      const showAnswers = document.getElementById('toggle-show-answers').checked;
+
+      const filtered = questions.filter((q) => {
+        if (subj !== 'ALL' && q.subject !== subj) return false;
+        if (sem !== 'ALL' && String(q.semester) !== String(sem)) return false;
+        if (diff !== 'ALL' && q.difficulty !== diff) return false;
+        if (bloom !== 'ALL' && q.bloom !== bloom) return false;
+        if (search) {
+          const hay = `${q.id} ${q.subject} ${q.topic} ${q.question} ${q.explanation}`.toLowerCase();
+          if (!hay.includes(search)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('filter-result-count').textContent = `Menampilkan ${filtered.length} dari ${questions.length} butir soal SD Kelas 6`;
+
+      const container = document.getElementById('question-list');
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-8 text-center space-y-2">
+            <div class="text-sm font-semibold">Tidak ditemukan soal yang sesuai filter</div>
+            <p class="text-xs text-[var(--muted-foreground)]">Klik tombol Reset Filter untuk menampilkan seluruh soal.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      container.innerHTML = filtered.map((q) => {
+        const isHots = ['C4', 'C5', 'C6'].includes(q.bloom);
+        const optionsHtml = q.type === 'PG'
+          ? `<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+              ${(q.options || []).map((opt, idx) => {
+                const isCorrect = showAnswers && idx === q.correctIndex;
+                return `
+                  <div class="px-3 py-2 rounded-lg text-xs border flex items-start gap-2 ${
+                    isCorrect
+                      ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300 font-medium'
+                      : 'bg-[var(--background)] border-[var(--border)] text-[var(--foreground)]'
+                  }">
+                    <span class="font-bold">${letters[idx]}.</span>
+                    <span class="flex-1">${escapeHtml(opt)}</span>
+                    ${isCorrect ? '<span class="text-emerald-400 font-bold">✓</span>' : ''}
+                  </div>
+                `;
+              }).join('')}
+            </div>`
+          : `<div class="text-xs italic text-[var(--muted-foreground)] pt-1">Soal Uraian / Esai Terbuka</div>`;
+
+        const explanationHtml = showAnswers
+          ? `<div class="mt-3 p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/25 text-xs space-y-1">
+              <div class="font-semibold text-indigo-400">
+                🔑 Kunci & Pembahasan ${q.type === 'PG' ? `(Jawaban: ${letters[q.correctIndex]})` : '(Pedoman Penskoran Uraian)'}:
+              </div>
+              <p class="text-[var(--foreground)] leading-relaxed">${escapeHtml(q.explanation)}</p>
+            </div>`
+          : '';
+
+        return `
+          <article class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 shadow-sm space-y-3 hover:border-indigo-500/40 transition">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">${escapeHtml(q.id)}</span>
+                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-md bg-indigo-500/15 text-indigo-400">${escapeHtml(q.subject)}</span>
+                <span class="text-xs px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">Sem ${q.semester || 1}</span>
+                <span class="text-xs text-[var(--muted-foreground)]">• ${escapeHtml(q.topic)}</span>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="text-xs px-2 py-0.5 rounded border font-medium ${getDifficultyBadge(q.difficulty)}">${q.difficulty}</span>
+                <span class="text-xs px-2 py-0.5 rounded border border-[var(--border)] bg-[var(--background)] font-medium">
+                  ${q.bloom} ${isHots ? '🔥 HOTS' : ''}
+                </span>
+                <span class="text-xs px-2 py-0.5 rounded border border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)]">
+                  ${q.points} Poin
+                </span>
+              </div>
+            </div>
+
+            <div class="text-sm font-medium leading-relaxed text-[var(--foreground)] whitespace-pre-line">${escapeHtml(q.question)}</div>
+
+            ${optionsHtml}
+            ${explanationHtml}
+
+            <div class="flex items-center justify-end gap-2 pt-2 border-t border-[var(--border)] text-xs">
+              <button onclick="duplicateQuestion('${q.id}')" class="px-2.5 py-1 rounded border border-[var(--border)] hover:bg-[var(--background)] text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+                📋 Duplikat
+              </button>
+              <button onclick="editQuestion('${q.id}')" class="px-2.5 py-1 rounded border border-[var(--border)] hover:bg-[var(--background)] text-indigo-400">
+                ✏️ Edit
+              </button>
+              <button onclick="deleteQuestion('${q.id}')" class="px-2.5 py-1 rounded border border-[var(--border)] hover:bg-rose-500/15 text-rose-400">
+                🗑️ Hapus
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function resetFilters() {
+      document.getElementById('filter-search').value = '';
+      document.getElementById('filter-subject').value = 'ALL';
+      document.getElementById('filter-semester').value = 'ALL';
+      document.getElementById('filter-difficulty').value = 'ALL';
+      document.getElementById('filter-bloom').value = 'ALL';
+      renderBank();
+    }
+
+    // Modal Form Add/Edit
+    function buildOptionsInputs(options = ['', '', '', ''], correctIndex = 0) {
+      const letters = ['A', 'B', 'C', 'D'];
+      const container = document.getElementById('form-options-container');
+      container.innerHTML = letters.map((letter, idx) => `
+        <div class="flex items-center gap-2">
+          <input type="radio" name="form-correct" value="${idx}" ${idx === correctIndex ? 'checked' : ''} class="cursor-pointer" />
+          <span class="text-xs font-bold w-5">${letter}.</span>
+          <input
+            type="text"
+            id="form-opt-${idx}"
+            value="${escapeHtml(options[idx] || '')}"
+            placeholder="Pilihan jawaban ${letter}..."
+            class="flex-1 px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]"
+          />
+        </div>
+      `).join('');
+    }
+
+    function toggleFormType() {
+      const type = document.getElementById('form-type').value;
+      const pgSec = document.getElementById('form-pg-section');
+      if (type === 'ESAI') pgSec.classList.add('hidden');
+      else pgSec.classList.remove('hidden');
+    }
+
+    function openModal(editId = null) {
+      document.getElementById('question-modal').classList.remove('hidden');
+      if (!editId) {
+        document.getElementById('modal-title').textContent = 'Tambah Butir Soal SD Kelas 6';
+        document.getElementById('form-id').value = '';
+        document.getElementById('form-subject').value = 'Matematika';
+        document.getElementById('form-semester').value = '1';
+        document.getElementById('form-type').value = 'PG';
+        document.getElementById('form-topic').value = '';
+        document.getElementById('form-difficulty').value = 'Sedang';
+        document.getElementById('form-bloom').value = 'C3';
+        document.getElementById('form-question').value = '';
+        document.getElementById('form-explanation').value = '';
+        buildOptionsInputs(['', '', '', ''], 0);
+        toggleFormType();
+      }
+    }
+
+    function editQuestion(id) {
+      const q = questions.find((item) => item.id === id);
+      if (!q) return;
+      openModal(id);
+      document.getElementById('modal-title').textContent = `Edit Soal (${q.id})`;
+      document.getElementById('form-id').value = q.id;
+      document.getElementById('form-subject').value = q.subject;
+      document.getElementById('form-semester').value = String(q.semester || 1);
+      document.getElementById('form-type').value = q.type;
+      document.getElementById('form-topic').value = q.topic;
+      document.getElementById('form-difficulty').value = q.difficulty;
+      document.getElementById('form-bloom').value = q.bloom;
+      document.getElementById('form-question').value = q.question;
+      document.getElementById('form-explanation').value = q.explanation;
+      buildOptionsInputs(q.options && q.options.length ? q.options : ['', '', '', ''], q.correctIndex || 0);
+      toggleFormType();
+    }
+
+    function closeModal() {
+      document.getElementById('question-modal').classList.add('hidden');
+    }
+
+    function saveQuestion() {
+      const id = document.getElementById('form-id').value;
+      const subject = document.getElementById('form-subject').value;
+      const semester = Number(document.getElementById('form-semester').value) || 1;
+      const type = document.getElementById('form-type').value;
+      const topic = document.getElementById('form-topic').value.trim() || 'Materi Kelas 6';
+      const difficulty = document.getElementById('form-difficulty').value;
+      const bloom = document.getElementById('form-bloom').value;
+      const points = difficulty === 'Sulit' ? 15 : 10;
+      const questionText = document.getElementById('form-question').value.trim();
+      const explanation = document.getElementById('form-explanation').value.trim() || 'Pembahasan belum diisi.';
+
+      if (!questionText) {
+        alert('Mohon isi pertanyaan soal terlebih dahulu.');
+        return;
+      }
+
+      let options = [];
+      let correctIndex = 0;
+      if (type === 'PG') {
+        for (let i = 0; i < 4; i++) {
+          const val = document.getElementById('form-opt-' + i).value.trim();
+          options.push(val || `Pilihan ${String.fromCharCode(65 + i)}`);
+        }
+        const checked = document.querySelector('input[name="form-correct"]:checked');
+        correctIndex = checked ? Number(checked.value) : 0;
+      }
+
+      if (id) {
+        const idx = questions.findIndex((q) => q.id === id);
+        if (idx !== -1) {
+          questions[idx] = { ...questions[idx], subject, semester, type, topic, difficulty, bloom, points, question: questionText, options, correctIndex, explanation };
+        }
+      } else {
+        const newId = `SD6-${subject.slice(0, 3).toUpperCase()}-${Math.floor(10 + Math.random() * 89)}`;
+        questions.unshift({
+          id: newId,
+          subject,
+          semester,
+          type,
+          topic,
+          difficulty,
+          bloom,
+          points,
+          timeMinutes: 2,
+          question: questionText,
+          options,
+          correctIndex,
+          explanation
+        });
+      }
+
+      saveData();
+      closeModal();
+      refreshAll();
+    }
+
+    function duplicateQuestion(id) {
+      const q = questions.find((item) => item.id === id);
+      if (!q) return;
+      const copy = JSON.parse(JSON.stringify(q));
+      copy.id = `${q.id}-COPY`;
+      questions.unshift(copy);
+      saveData();
+      refreshAll();
+    }
+
+    function deleteQuestion(id) {
+      questions = questions.filter((q) => q.id !== id);
+      saveData();
+      refreshAll();
+    }
+
+    // =========================================================================
+    // TAB 4: GENERATOR NASKAH UJIAN SEKOLAH
+    // =========================================================================
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function generateExamPackage() {
+      const title = document.getElementById('pkg-title').value.trim() || 'Naskah Ujian Kelas 6 SD';
+      const subj = document.getElementById('pkg-subject').value;
+      const sem = document.getElementById('pkg-semester').value;
+      const count = Math.max(1, Number(document.getElementById('pkg-count').value) || 10);
+      const duration = Number(document.getElementById('pkg-time').value) || 45;
+      const shuffleQ = document.getElementById('pkg-shuffle-q').checked;
+      const shuffleOpt = document.getElementById('pkg-shuffle-opt').checked;
+      const includeKey = document.getElementById('pkg-include-key').checked;
+
+      const pEasy = Number(document.getElementById('pkg-easy').value) || 30;
+      const pMed = Number(document.getElementById('pkg-medium').value) || 50;
+      const pHard = Number(document.getElementById('pkg-hard').value) || 20;
+      const sumP = pEasy + pMed + pHard || 100;
+
+      let pool = [...questions];
+      if (subj !== 'ALL') pool = pool.filter((q) => q.subject === subj);
+      if (sem !== 'ALL') pool = pool.filter((q) => String(q.semester) === String(sem));
+      if (pool.length === 0) pool = [...questions];
+
+      const nEasy = Math.round((pEasy / sumP) * count);
+      const nMed = Math.round((pMed / sumP) * count);
+      const nHard = Math.max(0, count - nEasy - nMed);
+
+      const easyPool = shuffleArray(pool.filter((q) => q.difficulty === 'Mudah'));
+      const medPool = shuffleArray(pool.filter((q) => q.difficulty === 'Sedang'));
+      const hardPool = shuffleArray(pool.filter((q) => q.difficulty === 'Sulit'));
+
+      let selected = [
+        ...easyPool.slice(0, nEasy),
+        ...medPool.slice(0, nMed),
+        ...hardPool.slice(0, nHard)
+      ];
+
+      if (selected.length < count) {
+        const usedIds = new Set(selected.map((q) => q.id));
+        const remaining = shuffleArray(pool.filter((q) => !usedIds.has(q.id)));
+        selected.push(...remaining.slice(0, count - selected.length));
+      }
+
+      if (shuffleQ) selected = shuffleArray(selected);
+
+      currentPackage = selected.map((q) => {
+        const item = JSON.parse(JSON.stringify(q));
+        if (item.type === 'PG' && shuffleOpt && item.options.length > 0) {
+          const correctText = item.options[item.correctIndex];
+          item.options = shuffleArray(item.options);
+          item.correctIndex = item.options.indexOf(correctText);
+        }
+        return item;
+      });
+
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      const totalPts = currentPackage.reduce((acc, q) => acc + Number(q.points), 0);
+
+      document.getElementById('exam-paper-preview').innerHTML = `
+        <div class="border-b-2 border-[var(--border)] pb-4 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Pemerintah Daerah • Dinas Pendidikan Sekolah Dasar</div>
+            <h2 class="text-lg font-bold mt-0.5">${escapeHtml(title)}</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Mata Pelajaran: ${subj === 'ALL' ? 'Tematik / Campuran Kelas VI' : subj} •
+              Semester: ${sem === 'ALL' ? '1 & 2' : sem} •
+              Waktu: ${duration} Menit • Total Skor: ${totalPts} Poin
+            </p>
+          </div>
+          <div class="text-xs bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 font-mono">
+            Nama Siswa: ___________________<br/>
+            Kelas: VI (Enam) _____
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          ${currentPackage.map((q, i) => `
+            <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-2.5">
+              <div class="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+                <span class="font-bold text-[var(--foreground)]">No. ${i + 1}</span>
+                <span>[${q.subject} • ${q.topic} • ${q.difficulty} • ${q.points} Poin]</span>
+              </div>
+              <div class="text-sm font-medium leading-relaxed whitespace-pre-line">${escapeHtml(q.question)}</div>
+              ${
+                q.type === 'PG'
+                  ? `<div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1 text-xs">
+                      ${q.options.map((opt, oIdx) => `
+                        <div class="px-2.5 py-1.5 rounded border border-[var(--border)] bg-[var(--card)]">
+                          <span class="font-bold mr-1.5">${letters[oIdx]}.</span> ${escapeHtml(opt)}
+                        </div>
+                      `).join('')}
+                    </div>`
+                  : `<div class="h-16 rounded border border-dashed border-[var(--border)] p-2 text-xs text-[var(--muted-foreground)]">Tempat Jawaban Uraian Siswa...</div>`
+              }
+            </div>
+          `).join('')}
+        </div>
+
+        ${
+          includeKey
+            ? `<div class="pt-5 border-t-2 border-[var(--border)] space-y-3">
+                <h3 class="text-sm font-bold text-indigo-400">🔑 Lampiran Kunci Jawaban & Pembahasan Guru</h3>
+                <div class="space-y-2 text-xs">
+                  ${currentPackage.map((q, i) => `
+                    <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                      <div class="font-bold">No. ${i + 1} — ${q.type === 'PG' ? `Kunci: ${letters[q.correctIndex]}` : 'Uraian/Esai'} (${q.points} Poin)</div>
+                      <div class="text-[var(--muted-foreground)] mt-0.5">${escapeHtml(q.explanation)}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>`
+            : ''
+        }
+      `;
+    }
+
+    function startQuizFromPackage() {
+      if (currentPackage.length === 0) generateExamPackage();
+      const pgOnly = currentPackage.filter((q) => q.type === 'PG');
+      initCBT(pgOnly, document.getElementById('pkg-title').value);
+      switchTab('quiz');
+    }
+
+    // =========================================================================
+    // TAB 5: ANALITIK & RAPOR SISWA
+    // =========================================================================
+    function renderAnalytics() {
+      const total = questions.length || 1;
+      const bloomLevels = [
+        { code: 'C1', name: 'C1 - Mengingat (LOTS)', color: 'bg-sky-500' },
+        { code: 'C2', name: 'C2 - Memahami (LOTS)', color: 'bg-cyan-500' },
+        { code: 'C3', name: 'C3 - Menerapkan (MOTS)', color: 'bg-indigo-500' },
+        { code: 'C4', name: 'C4 - Menganalisis (HOTS)', color: 'bg-purple-500' },
+        { code: 'C5', name: 'C5 - Mengevaluasi (HOTS)', color: 'bg-fuchsia-500' },
+        { code: 'C6', name: 'C6 - Mencipta (HOTS)', color: 'bg-rose-500' }
+      ];
+
+      document.getElementById('bloom-chart').innerHTML = bloomLevels.map((b) => {
+        const cnt = questions.filter((q) => q.bloom === b.code).length;
+        const pct = Math.round((cnt / total) * 100);
+        return `
+          <div class="space-y-1 text-xs">
+            <div class="flex justify-between">
+              <span class="font-medium">${b.name}</span>
+              <span class="text-[var(--muted-foreground)]">${cnt} soal (${pct}%)</span>
+            </div>
+            <div class="h-2.5 rounded-full bg-[var(--background)] overflow-hidden">
+              <div class="${b.color} h-full transition-all" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const subjects = ['Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris'];
+      document.getElementById('subject-chart').innerHTML = subjects.map((s) => {
+        const subQs = questions.filter((q) => q.subject === s);
+        const cnt = subQs.length;
+        const pct = Math.round((cnt / total) * 100);
+        const sem1 = subQs.filter((q) => Number(q.semester) === 1).length;
+        const sem2 = subQs.filter((q) => Number(q.semester) === 2).length;
+        return `
+          <div class="space-y-1 text-xs">
+            <div class="flex justify-between">
+              <span class="font-medium">${s}</span>
+              <span class="text-[var(--muted-foreground)]">${cnt} soal (Sem 1: ${sem1} • Sem 2: ${sem2})</span>
+            </div>
+            <div class="h-2.5 rounded-full bg-[var(--background)] overflow-hidden">
+              <div class="bg-indigo-500 h-full transition-all" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const histEl = document.getElementById('quiz-history-list');
+      if (!studentStats.history.length) {
+        histEl.innerHTML = `<div class="p-4 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">Belum ada riwayat kuis yang diselesaikan. Yuk mulai latihan di tab Mode Kuis Anak!</div>`;
+      } else {
+        histEl.innerHTML = studentStats.history.map((h, i) => `
+          <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="font-bold text-[var(--foreground)]">#${i + 1} • ${escapeHtml(h.topic)}</span>
+              <span class="text-[var(--muted-foreground)] ml-2">(${h.date})</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span>Benar: <strong>${h.correct}/${h.total}</strong></span>
+              <span class="px-2.5 py-0.5 rounded-full font-bold ${h.score >= 75 ? 'bg-emerald-500/15 text-emerald-400' : 'bg-amber-500/15 text-amber-400'}">
+                Skor: ${h.score}
+              </span>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function clearHistory() {
+      studentStats.history = [];
+      saveData();
+      renderAnalytics();
+      updateGamificationHeader();
+    }
+
+    // Export JSON & CSV
+    function exportJSON() {
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(questions, null, 2));
+      const a = document.createElement('a');
+      a.setAttribute('href', dataStr);
+      a.setAttribute('download', `bank_soal_sd_kelas6_${new Date().toISOString().slice(0, 10)}.json`);
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    function exportCSV() {
+      const headers = ['ID', 'Mata Pelajaran', 'Semester', 'Bab/Topik', 'Tipe', 'Kesulitan', 'Bloom', 'Pertanyaan', 'Opsi A', 'Opsi B', 'Opsi C', 'Opsi D', 'Kunci', 'Pembahasan'];
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      const rows = questions.map((q) => [
+        q.id,
+        q.subject,
+        q.semester || 1,
+        q.topic,
+        q.type,
+        q.difficulty,
+        q.bloom,
+        q.question,
+        (q.options && q.options[0]) || '',
+        (q.options && q.options[1]) || '',
+        (q.options && q.options[2]) || '',
+        (q.options && q.options[3]) || '',
+        q.type === 'PG' ? letters[q.correctIndex || 0] : 'Uraian',
+        q.explanation
+      ]);
+      const csvContent = [headers, ...rows]
+        .map((row) => row.map((cell) => `"${String(cell || '').replace(/"/g, '""')}"`).join(','))
+        .join('\n');
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.setAttribute('href', url);
+      a.setAttribute('download', `bank_soal_sd_kelas6_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported) && imported.length > 0) {
+            questions = imported;
+            saveData();
+            refreshAll();
+          } else {
+            alert('Format JSON tidak valid.');
+          }
+        } catch (err) {
+          alert('Gagal membaca file JSON.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Universal File Importer (Mendukung HTML Kuis & JSON)
+    function handleFileImport(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const fileName = file.name.toLowerCase();
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const content = e.target.result;
+        if (fileName.endsWith('.html') || fileName.endsWith('.htm')) {
+          parseAndImportHTML(content, file.name);
+        } else {
+          try {
+            const imported = JSON.parse(content);
+            if (Array.isArray(imported) && imported.length > 0) {
+              questions = imported;
+              saveData();
+              refreshAll();
+              alert(`Berhasil mengimpor ${imported.length} soal dari file JSON!`);
+            } else {
+              alert('Format JSON tidak valid.');
+            }
+          } catch (err) {
+            alert('Gagal membaca file JSON: ' + err.message);
+          }
+        }
+        event.target.value = ''; // Reset input agar bisa pilih file yang sama
+      };
+
+      reader.readAsText(file);
+    }
+
+    // Parser Cerdas untuk File HTML Soal
+    function parseAndImportHTML(htmlContent, fileName) {
+      try {
+        let extractedQuestions = [];
+
+        // 1. Ekstraksi pola variabel JavaScript pgData / questions / quizData
+        const jsMatch = htmlContent.match(/(?:const|let|var)\s+(?:pgData|questions|quizData|soalData)\s*=\s*(\[[\s\S]*?\]);/);
+        if (jsMatch && jsMatch[1]) {
+          try {
+            const rawArray = JSON.parse(jsMatch[1]);
+            extractedQuestions = rawArray.map((item, idx) => {
+              // Bersihkan teks penjelasan dari sitasi otomatis seperti [cite: 11]
+              const cleanExp = (item.exp || item.explanation || 'Pembahasan kunci terverifikasi.')
+                .replace(/\[cite:\s*\d+\]/g, '')
+                .trim();
+
+              const cleanQuestion = (item.q || item.question || '').replace(/\[cite:\s*\d+\]/g, '').trim();
+
+              return {
+                id: `SD6-IMP-${Date.now().toString().slice(-4)}-${idx + 1}`,
+                subject: 'IPAS',
+                semester: 2,
+                topic: item.sub || 'Bab 9: Tata Surya',
+                type: 'PG',
+                difficulty: 'Sedang',
+                bloom: 'C3',
+                points: 10,
+                timeMinutes: 2,
+                question: cleanQuestion,
+                options: item.opt || item.options || [],
+                correctIndex: typeof item.ans === 'number' ? item.ans : (item.correctIndex || 0),
+                explanation: cleanExp
+              };
+            });
+          } catch (e) {
+            console.warn('Gagal parse JSON regex langsung, beralih ke DOM parser...', e);
+          }
+        }
+
+        // 2. Jika tidak melalui regex JS, gunakan DOM Parser untuk membaca elemen HTML (.card, .question, dll)
+        if (extractedQuestions.length === 0) {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlContent, 'text/html');
+          const cards = doc.querySelectorAll('.card, .question-card, .soal-item');
+
+          if (cards.length > 0) {
+            cards.forEach((card, idx) => {
+              const qEl = card.querySelector('.question-text, .pertanyaan, h3, h4');
+              const optEls = card.querySelectorAll('.btn-option, .option, li');
+              const expEl = card.querySelector('.feedback, .pembahasan');
+              const subEl = card.querySelector('.badge, .topik, .sub');
+
+              if (qEl && optEls.length > 0) {
+                const options = Array.from(optEls).map(el => el.textContent.replace(/^[A-E]\.\s*/i, '').trim());
+                extractedQuestions.push({
+                  id: `SD6-IMP-${Date.now().toString().slice(-4)}-${idx + 1}`,
+                  subject: 'IPAS',
+                  semester: 2,
+                  topic: subEl ? subEl.textContent.trim() : 'Bab Tata Surya',
+                  type: 'PG',
+                  difficulty: 'Sedang',
+                  bloom: 'C3',
+                  points: 10,
+                  timeMinutes: 2,
+                  question: qEl.textContent.replace(/^\d+[\.\)]\s*/, '').trim(),
+                  options: options,
+                  correctIndex: 0,
+                  explanation: expEl ? expEl.textContent.replace(/^💡\s*Penjelasan:\s*/i, '').trim() : 'Pembahasan materi.'
+                });
+              }
+            });
+          }
+        }
+
+        if (extractedQuestions.length === 0) {
+          alert('Tidak dapat mendeteksi format soal di dalam file HTML ini.');
+          return;
+        }
+
+        // Tambahkan ke bank soal (hindari duplikat berdasarkan teks pertanyaan)
+        let addedCount = 0;
+        const existingTexts = new Set(questions.map(q => q.question.toLowerCase().trim()));
+
+        extractedQuestions.forEach(newQ => {
+          if (!existingTexts.has(newQ.question.toLowerCase().trim())) {
+            questions.push(newQ);
+            existingTexts.add(newQ.question.toLowerCase().trim());
+            addedCount++;
+          }
+        });
+
+        saveData();
+        refreshAll();
+
+        alert(`🎉 Sukses Mengimpor File HTML!\n\n• Berhasil mengekstrak: ${extractedQuestions.length} butir soal\n• Soal baru yang ditambahkan: ${addedCount} soal\n• Total bank soal sekarang: ${questions.length} butir soal.\n\nSoal langsung tersedia di Bank Soal, Mode Kuis Anak, dan Generator Ujian!`);
+
+        // Beralih otomatis ke tab Bank Soal dan tampilkan soal yang baru diimpor
+        document.getElementById('filter-search').value = 'Tata Surya';
+        switchTab('bank');
+      } catch (err) {
+        alert('Terjadi kesalahan saat memproses file HTML: ' + err.message);
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function refreshAll() {
+      updateKPIs();
+      renderCurriculum();
+      renderBank();
+      renderAnalytics();
+    }
+
+    // Init
+    loadData();
+    refreshAll();
+  </script>
+</body>
+</html>

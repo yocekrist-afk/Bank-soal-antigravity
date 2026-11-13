@@ -1,0 +1,3902 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PintarSD6 — Portal Kurikulum Merdeka, Modul Belajar & Bank Soal SD Kelas 6</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+    <style>
+    :root {
+      --background: #0b0f19;
+      --card: #111827;
+      --foreground: #f8fafc;
+      --muted-foreground: #94a3b8;
+      --border: #1e293b;
+      --primary: #4f46e5;
+      --primary-foreground: #ffffff;
+      --secondary: #1e293b;
+      --secondary-foreground: #e2e8f0;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; }
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen flex flex-col">
+  <!-- Overlay Backdrop untuk Mobile Sidebar -->
+  <div id="sidebar-backdrop" onclick="toggleSidebar(false)" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 hidden transition-opacity duration-300"></div>
+
+  <div class="flex-1 flex overflow-hidden min-h-screen">
+    <!-- ========================================================================= -->
+    <!-- COLLAPSIBLE / TOGGLEABLE SIDEBAR                                          -->
+    <!-- ========================================================================= -->
+    <aside id="app-sidebar" class="bg-[var(--card)] border-r border-[var(--border)] fixed inset-y-0 left-0 z-50 flex flex-col transition-all duration-300 ease-in-out -translate-x-full lg:translate-x-0 w-64 no-print shadow-xl lg:shadow-none select-none">
+      <!-- Sidebar Header -->
+      <div class="p-4 border-b border-[var(--border)] flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3 overflow-hidden">
+          <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-extrabold text-sm shrink-0 shadow-sm">
+            SD6
+          </div>
+          <div class="sidebar-text truncate">
+            <h2 class="font-bold text-sm tracking-tight text-[var(--foreground)] truncate">PintarSD6 Pro</h2>
+            <p class="text-[11px] text-[var(--muted-foreground)] truncate">Fase C Kurikulum Merdeka</p>
+          </div>
+        </div>
+        <!-- Close button mobile -->
+        <button onclick="toggleSidebar(false)" class="lg:hidden p-1.5 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]" title="Tutup Menu">
+          ✕
+        </button>
+      </div>
+
+      <!-- User Gamification Badge (Mini) -->
+      <div class="p-3.5 mx-3 my-2.5 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center gap-3 sidebar-text">
+        <div class="text-xl">⭐</div>
+        <div class="truncate">
+          <div class="flex items-center gap-1.5">
+            <strong id="sidebar-xp" class="text-xs font-bold text-amber-400">0 XP</strong>
+            <span class="text-[10px] text-[var(--muted-foreground)]">• Kelas 6</span>
+          </div>
+          <div id="sidebar-level" class="text-[11px] text-[var(--foreground)] font-medium truncate">Level 1: Penjelajah</div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu Items -->
+      <nav class="flex-1 px-3 py-2 space-y-1 overflow-y-auto">
+        <div class="px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] sidebar-text">
+          Fitur Utama
+        </div>
+
+        <button onclick="switchTab('curriculum'); autoCloseSidebarOnMobile();" id="side-tab-curriculum" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left bg-[var(--primary)] text-[var(--primary-foreground)]">
+          <span class="text-base shrink-0">📖</span>
+          <span class="sidebar-text truncate">1. Modul & Rangkuman</span>
+        </button>
+
+        <button onclick="switchTab('quiz'); autoCloseSidebarOnMobile();" id="side-tab-quiz" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+          <span class="text-base shrink-0">🎮</span>
+          <span class="sidebar-text truncate">2. Mode Kuis Anak</span>
+        </button>
+
+        <button onclick="switchTab('bank'); autoCloseSidebarOnMobile();" id="side-tab-bank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+          <span class="text-base shrink-0">📚</span>
+          <span class="sidebar-text truncate">3. Bank Soal Lengkap</span>
+        </button>
+
+        <button onclick="switchTab('builder'); autoCloseSidebarOnMobile();" id="side-tab-builder" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+          <span class="text-base shrink-0">⚡</span>
+          <span class="sidebar-text truncate">4. Generator Ujian (PDF)</span>
+        </button>
+
+        <button onclick="switchTab('analytics'); autoCloseSidebarOnMobile();" id="side-tab-analytics" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+          <span class="text-base shrink-0">📊</span>
+          <span class="sidebar-text truncate">5. Rapor & Analisis</span>
+        </button>
+
+        <!-- Quick Subject Shortcut Filters -->
+        <div class="pt-4 pb-1.5 px-2.5 text-[11px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] sidebar-text">
+          Pintasan Mata Pelajaran
+        </div>
+        <div class="space-y-0.5 sidebar-text">
+          <button onclick="quickFilterSubject('Matematika')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>📐 Matematika</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">6 Bab</span>
+          </button>
+          <button onclick="quickFilterSubject('IPAS')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>🌍 IPAS (IPA-IPS)</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">6 Bab</span>
+          </button>
+          <button onclick="quickFilterSubject('Bahasa Indonesia')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>📖 B. Indonesia</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">3 Bab</span>
+          </button>
+          <button onclick="quickFilterSubject('Pendidikan Pancasila')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>🦅 Pancasila</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">2 Bab</span>
+          </button>
+          <button onclick="quickFilterSubject('Bahasa Inggris')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+            <span>🇬🇧 B. Inggris</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">2 Bab</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer (Quick Actions) -->
+      <div class="p-3 border-t border-[var(--border)] space-y-1.5 bg-[var(--card)]">
+        <button onclick="openModal(); autoCloseSidebarOnMobile();" class="w-full py-2 px-3 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center gap-2 shadow-sm transition">
+          <span>+</span>
+          <span class="sidebar-text truncate">Tambah Soal Baru</span>
+        </button>
+
+        <button onclick="toggleSidebarCollapse()" id="btn-collapse-sidebar" class="hidden lg:flex w-full py-1.5 px-3 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] items-center justify-center gap-2 transition" title="Kecilkan/Perluas Sidebar">
+          <span id="collapse-icon">◀</span>
+          <span class="sidebar-text truncate">Kecilkan Sidebar</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ========================================================================= -->
+    <!-- MAIN CONTENT AREA (DENGAN MARGIN SESUAI STATUS SIDEBAR)                   -->
+    <!-- ========================================================================= -->
+    <div id="main-content-wrapper" class="flex-1 flex flex-col min-w-0 transition-all duration-300 ease-in-out lg:ml-64">
+      <!-- Top App Bar -->
+      <header class="border-b border-[var(--border)] bg-[var(--card)] sticky top-0 z-30 no-print">
+        <div class="px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
+          <!-- Toggle Sidebar Button & Title -->
+          <div class="flex items-center gap-3">
+            <button onclick="toggleSidebar()" class="p-2 rounded-xl border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] hover:bg-[var(--secondary)] transition flex items-center gap-1.5" title="Buka/Tutup Menu Sidebar (Ctrl+B)">
+              <span class="text-base">☰</span>
+              <span class="text-xs font-medium hidden sm:inline">Menu</span>
+            </button>
+
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="font-bold text-sm sm:text-base tracking-tight text-[var(--foreground)]" id="current-menu-title">1. Modul & Rangkuman Materi</h1>
+                <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-semibold border border-emerald-500/30 hidden md:inline">Kurikulum Merdeka SD 6</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Top Tools -->
+          <div class="flex items-center gap-2">
+            <button onclick="toggleSound()" id="btn-sound" class="px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)]">
+              🔊 Suara
+            </button>
+
+            <button onclick="exportCSV()" class="hidden sm:inline-flex px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+              📊 CSV
+            </button>
+
+            <button onclick="exportJSON()" class="hidden sm:inline-flex px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+              ⬇ JSON
+            </button>
+
+            <!-- Universal Import Button (HTML & JSON) -->
+            <label class="px-2.5 py-1.5 rounded-lg text-xs font-semibold border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 transition cursor-pointer flex items-center gap-1.5" title="Impor file soal HTML (Kuis) atau JSON">
+              <span>⬆</span>
+              <span>Impor File (HTML/JSON)</span>
+              <input type="file" id="import-any-file" accept=".html,.htm,.json" class="hidden" onchange="handleFileImport(event)" />
+            </label>
+
+            <button onclick="openModal()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-sm">
+              + Soal
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Top Tabs Bar (Tetap Sinkron dengan Sidebar) -->
+        <div class="px-4 sm:px-6 pb-2 pt-1 flex items-center gap-1.5 overflow-x-auto no-scrollbar border-t border-[var(--border)]/50">
+          <button onclick="switchTab('curriculum')" id="tab-curriculum" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 bg-[var(--primary)] text-[var(--primary-foreground)]">
+            📖 Modul Materi
+          </button>
+          <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+            🎮 Mode Kuis Anak
+          </button>
+          <button onclick="switchTab('bank')" id="tab-bank" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+            📚 Bank Soal
+          </button>
+          <button onclick="switchTab('builder')" id="tab-builder" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+            ⚡ Naskah Ujian (PDF)
+          </button>
+          <button onclick="switchTab('analytics')" id="tab-analytics" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+            📊 Rapor & Analisis
+          </button>
+        </div>
+      </header>
+
+      <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-5 space-y-6 flex-1">
+    <!-- Ringkasan KPI Atas -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 no-print">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">Cakupan Kurikulum Kelas 6</span>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-400 font-semibold" id="kpi-modules-count">18 Bab</span>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-bold tracking-tight" id="kpi-total-questions">32</span>
+          <span class="text-xs text-[var(--muted-foreground)]">soal siap pakai (5 Mapel)</span>
+        </div>
+      </div>
+
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">Keseimbangan Tingkat Kesulitan</span>
+          <span class="text-xs text-emerald-400 font-medium">Proporsional</span>
+        </div>
+        <div class="mt-2.5 flex items-center gap-1.5 h-2.5 rounded-full overflow-hidden bg-[var(--background)]">
+          <div id="bar-easy" class="bg-emerald-500 h-full transition-all" style="width: 30%"></div>
+          <div id="bar-medium" class="bg-amber-500 h-full transition-all" style="width: 50%"></div>
+          <div id="bar-hard" class="bg-rose-500 h-full transition-all" style="width: 20%"></div>
+        </div>
+        <div class="mt-2 flex justify-between text-xs text-[var(--muted-foreground)]">
+          <span id="lbl-easy">Mudah: 0</span>
+          <span id="lbl-medium">Sedang: 0</span>
+          <span id="lbl-hard">Sulit: 0</span>
+        </div>
+      </div>
+
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">Penalaran HOTS (C4–C6)</span>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-400 font-semibold">Standar ANBK/US</span>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-bold tracking-tight" id="kpi-hots">0%</span>
+          <span class="text-xs text-[var(--muted-foreground)]" id="kpi-hots-detail">0 dari 0 soal</span>
+        </div>
+      </div>
+
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-medium text-[var(--muted-foreground)]">Rekor Belajar Siswa</span>
+          <span class="text-xs text-amber-400 font-semibold" id="kpi-streak">🔥 Streak: 0</span>
+        </div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span class="text-2xl font-bold tracking-tight" id="kpi-avg-score">0</span>
+          <span class="text-xs text-[var(--muted-foreground)]" id="kpi-quiz-count">rata-rata dari 0 kuis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 1: MODUL BELAJAR & RANGKUMAN MATERI SD KELAS 6 (SEMESTER 1 & 2)       -->
+    <!-- ========================================================================= -->
+    <section id="view-curriculum" class="space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-semibold text-[var(--muted-foreground)] mr-1">Filter Mata Pelajaran:</span>
+          <button onclick="setCurrSubject('ALL')" id="csubj-ALL" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white">Semua Mapel (5)</button>
+          <button onclick="setCurrSubject('Matematika')" id="csubj-Matematika" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">📐 Matematika</button>
+          <button onclick="setCurrSubject('IPAS')" id="csubj-IPAS" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🌍 IPAS (Sains & Sosial)</button>
+          <button onclick="setCurrSubject('Bahasa Indonesia')" id="csubj-Bahasa Indonesia" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">📖 Bahasa Indonesia</button>
+          <button onclick="setCurrSubject('Pendidikan Pancasila')" id="csubj-Pendidikan Pancasila" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🦅 Pendidikan Pancasila</button>
+          <button onclick="setCurrSubject('Bahasa Inggris')" id="csubj-Bahasa Inggris" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🇬🇧 Bahasa Inggris</button>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <label class="text-xs text-[var(--muted-foreground)]">Semester:</label>
+          <select id="curr-semester" onchange="renderCurriculum()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="ALL">Semester 1 & 2 (Lengkap)</option>
+            <option value="1">Semester 1 (Ganjil)</option>
+            <option value="2">Semester 2 (Genap)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Daftar Modul Bab -->
+      <div id="curriculum-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 2: MODE KUIS & LATIHAN ANAK SD (INTERAKTIF + GAMIFIKASI)              -->
+    <!-- ========================================================================= -->
+    <section id="view-quiz" class="hidden space-y-4">
+      <!-- Pengaturan Cepat Kuis -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
+        <div class="flex flex-wrap items-center gap-3">
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Pilih Mata Pelajaran Kuis</label>
+            <select id="quiz-subject-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+              <option value="ALL">🌟 Semua Mata Pelajaran (Campuran)</option>
+              <option value="Matematika">📐 Matematika Kelas 6</option>
+              <option value="IPAS">🌍 IPAS (Sains & Sosial) Kelas 6</option>
+              <option value="Bahasa Indonesia">📖 Bahasa Indonesia Kelas 6</option>
+              <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila Kelas 6</option>
+              <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris Kelas 6</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Semester</label>
+            <select id="quiz-semester-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+              <option value="ALL">Semester 1 & 2</option>
+              <option value="1">Semester 1 (Ganjil)</option>
+              <option value="2">Semester 2 (Genap)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Mode Belajar</label>
+            <select id="quiz-mode-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+              <option value="INSTANT">💡 Mode Belajar Anak (Langsung Bahas Tiap Soal)</option>
+              <option value="EXAM">⏱️ Mode Simulasi Ujian CBT (Nilai di Akhir)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold" id="quiz-streak-badge">
+            🔥 Streak Benar: 0
+          </div>
+          <div class="px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-mono text-xs font-bold" id="quiz-timer">
+            ⏱ 20:00
+          </div>
+          <button onclick="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500">
+            🔄 Acak Ulang Kuis
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-5">
+        <!-- Area Pertanyaan Kuis -->
+        <div class="lg:col-span-3 bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm flex flex-col justify-between min-h-[430px]">
+          <div id="cbt-active-container" class="space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[var(--border)]">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-3 py-1 rounded-lg bg-indigo-600 text-white text-xs font-bold" id="cbt-q-number">Soal #1</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--background)] border border-[var(--border)] font-medium" id="cbt-q-subject">Matematika</span>
+                <span class="text-xs px-2.5 py-1 rounded-md bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]" id="cbt-q-bloom">C3</span>
+              </div>
+              <span class="text-xs font-semibold text-emerald-400" id="cbt-q-points">+10 XP</span>
+            </div>
+
+            <div class="text-sm sm:text-base leading-relaxed font-medium py-2 whitespace-pre-line" id="cbt-q-text"></div>
+
+            <!-- Pilihan Jawaban A-D -->
+            <div class="space-y-2.5" id="cbt-options-list"></div>
+
+            <!-- Kotak Pembahasan Langsung (Muncul pada Mode Belajar Anak) -->
+            <div id="cbt-instant-feedback" class="hidden p-4 rounded-xl border text-xs space-y-1.5"></div>
+          </div>
+
+          <!-- Area Hasil Akhir Kuis -->
+          <div id="cbt-result-container" class="hidden space-y-5 py-2"></div>
+
+          <!-- Navigasi Bawah Kuis -->
+          <div id="cbt-footer-nav" class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[var(--border)] mt-6">
+            <button onclick="cbtPrev()" class="px-4 py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)]">
+              ← Soal Sebelumnya
+            </button>
+
+            <label class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-medium bg-amber-500/15 text-amber-400 border border-amber-500/30 cursor-pointer">
+              <input type="checkbox" id="cbt-flag-checkbox" onchange="cbtToggleFlag()" />
+              <span>🚩 Tandai Ragu-ragu</span>
+            </label>
+
+            <div class="flex items-center gap-2">
+              <button onclick="cbtNext()" class="px-4 py-2 rounded-lg text-xs font-medium bg-indigo-600 text-white hover:bg-indigo-500">
+                Soal Selanjutnya →
+              </button>
+              <button onclick="finishCBT()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-500">
+                🏆 Selesai & Lihat Nilai
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Peta Nomor Soal -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-4 h-fit">
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--muted-foreground)]">Peta Nomor Soal</h3>
+            <p class="text-xs text-[var(--muted-foreground)] mt-0.5" id="cbt-topic-subtitle">Semua Bab</p>
+          </div>
+          <div id="cbt-number-grid" class="grid grid-cols-5 gap-2"></div>
+          <div class="pt-3 border-t border-[var(--border)] space-y-1.5 text-xs text-[var(--muted-foreground)]">
+            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-emerald-600 inline-block"></span> Sudah Dijawab</div>
+            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-amber-500 inline-block"></span> Ragu-ragu</div>
+            <div class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-[var(--background)] border border-[var(--border)] inline-block"></span> Belum Dijawab</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 3: BANK SOAL LENGKAP SD KELAS 6 (CRUD & MULTI-FILTER)                 -->
+    <!-- ========================================================================= -->
+    <section id="view-bank" class="hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+          <div class="sm:col-span-2">
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Cari Kata Kunci Soal / Bab / Pembahasan</label>
+            <input
+              type="text"
+              id="filter-search"
+              oninput="renderBank()"
+              placeholder="Contoh: pecahan, tata surya, proklamasi, pidato..."
+              class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] focus:outline-none focus:border-indigo-500"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Mata Pelajaran</label>
+            <select id="filter-subject" onchange="renderBank()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+              <option value="ALL">Semua Mapel</option>
+              <option value="Matematika">Matematika</option>
+              <option value="IPAS">IPAS</option>
+              <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+              <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
+              <option value="Bahasa Inggris">Bahasa Inggris</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Semester</label>
+            <select id="filter-semester" onchange="renderBank()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+              <option value="ALL">Semester 1 & 2</option>
+              <option value="1">Semester 1 (Ganjil)</option>
+              <option value="2">Semester 2 (Genap)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Tingkat Kesulitan</label>
+            <select id="filter-difficulty" onchange="renderBank()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+              <option value="ALL">Semua Kesulitan</option>
+              <option value="Mudah">Mudah</option>
+              <option value="Sedang">Sedang</option>
+              <option value="Sulit">Sulit</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Level Kognitif</label>
+            <select id="filter-bloom" onchange="renderBank()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+              <option value="ALL">Semua (C1–C6)</option>
+              <option value="C1">C1 - Mengingat</option>
+              <option value="C2">C2 - Memahami</option>
+              <option value="C3">C3 - Menerapkan</option>
+              <option value="C4">C4 - Menganalisis (HOTS)</option>
+              <option value="C5">C5 - Mengevaluasi (HOTS)</option>
+              <option value="C6">C6 - Mencipta (HOTS)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border)] text-xs">
+          <div class="flex items-center gap-3">
+            <span class="text-[var(--muted-foreground)]" id="filter-result-count">Menampilkan 0 soal</span>
+            <label class="inline-flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" id="toggle-show-answers" onchange="renderBank()" checked />
+              <span>Tampilkan Kunci & Pembahasan Langkah demi Langkah</span>
+            </label>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="resetFilters()" class="text-xs text-indigo-400 hover:underline">Reset Filter</button>
+            <span>•</span>
+            <button onclick="resetDefaultData()" class="text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)]">Kembalikan Bank Soal Bawaan SD Kelas 6</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="question-list" class="space-y-3"></div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 4: GENERATOR PAKET UJIAN SEKOLAH / SUMATIF (CETAK PDF)                -->
+    <!-- ========================================================================= -->
+    <section id="view-builder" class="hidden space-y-5">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm space-y-4 no-print h-fit">
+          <div>
+            <h2 class="text-base font-bold">Generator Naskah Ujian SD Kelas 6</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">Susun lembar Sumatif Tengah Semester (STS), Sumatif Akhir Semester (SAS), atau Ujian Sekolah secara otomatis.</p>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-medium mb-1">Judul Lembar Ujian</label>
+              <input type="text" id="pkg-title" value="Sumatif Akhir Semester (SAS) — Kelas VI SD" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-xs font-medium mb-1">Mata Pelajaran</label>
+                <select id="pkg-subject" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+                  <option value="ALL">Campuran Semua Mapel</option>
+                  <option value="Matematika">Matematika</option>
+                  <option value="IPAS">IPAS</option>
+                  <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                  <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
+                  <option value="Bahasa Inggris">Bahasa Inggris</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-medium mb-1">Cakupan Semester</label>
+                <select id="pkg-semester" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+                  <option value="ALL">Semester 1 & 2</option>
+                  <option value="1">Semester 1 (Ganjil)</option>
+                  <option value="2">Semester 2 (Genap)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-xs font-medium mb-1">Jumlah Butir Soal</label>
+                <input type="number" id="pkg-count" value="10" min="1" max="50" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium mb-1">Alokasi Waktu (Menit)</label>
+                <input type="number" id="pkg-time" value="45" min="10" max="180" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] space-y-2">
+              <div class="text-xs font-semibold">Komposisi Tingkat Kesulitan (%)</div>
+              <div class="grid grid-cols-3 gap-2 text-xs">
+                <div>
+                  <span class="text-emerald-400 block mb-1">Mudah %</span>
+                  <input type="number" id="pkg-easy" value="30" min="0" max="100" class="w-full px-2 py-1.5 rounded bg-[var(--card)] border border-[var(--border)]" />
+                </div>
+                <div>
+                  <span class="text-amber-400 block mb-1">Sedang %</span>
+                  <input type="number" id="pkg-medium" value="50" min="0" max="100" class="w-full px-2 py-1.5 rounded bg-[var(--card)] border border-[var(--border)]" />
+                </div>
+                <div>
+                  <span class="text-rose-400 block mb-1">Sulit %</span>
+                  <input type="number" id="pkg-hard" value="20" min="0" max="100" class="w-full px-2 py-1.5 rounded bg-[var(--card)] border border-[var(--border)]" />
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-2 pt-1 text-xs">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="pkg-shuffle-q" checked />
+                <span>Acak urutan nomor soal</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="pkg-shuffle-opt" checked />
+                <span>Acak urutan pilihan jawaban (A–D)</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="pkg-include-key" checked />
+                <span>Lampirkan Kunci Jawaban & Pembahasan Guru</span>
+              </label>
+            </div>
+
+            <div class="pt-2 flex flex-col gap-2">
+              <button onclick="generateExamPackage()" class="w-full py-2.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-sm">
+                ⚡ Buat Naskah Ujian Sekarang
+              </button>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="startQuizFromPackage()" class="py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+                  🎮 Kerjakan di Mode Kuis
+                </button>
+                <button onclick="window.print()" class="py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+                  🖨️ Cetak Naskah / PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pratinjau Lembar Naskah -->
+        <div class="lg:col-span-2 bg-[var(--card)] border border-[var(--border)] rounded-xl p-6 shadow-sm space-y-5" id="exam-paper-preview"></div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 5: RAPOR BELAJAR & ANALITIK KURIKULUM                                 -->
+    <!-- ========================================================================= -->
+    <section id="view-analytics" class="hidden space-y-5">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm space-y-4">
+          <div>
+            <h3 class="text-sm font-bold">Distribusi Level Kognitif (Taksonomi Bloom C1–C6)</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">Keseimbangan soal pemahaman dasar (LOTS), penerapan (MOTS), dan penalaran tingkat tinggi (HOTS).</p>
+          </div>
+          <div id="bloom-chart" class="space-y-3 pt-2"></div>
+        </div>
+
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm space-y-4">
+          <div>
+            <h3 class="text-sm font-bold">Sebaran Soal per Mata Pelajaran Kelas 6</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">Jumlah soal Semester 1 & Semester 2 serta rincian tingkat kesulitannya.</p>
+          </div>
+          <div id="subject-chart" class="space-y-3 pt-2"></div>
+        </div>
+      </div>
+
+      <!-- Riwayat Kuis Siswa -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm space-y-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-bold">🏅 Riwayat Nilai Latihan & Simulasi Ujian Siswa</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">Catatan otomatis setiap kali siswa menyelesaikan sesi kuis atau simulasi ujian.</p>
+          </div>
+          <button onclick="clearHistory()" class="text-xs text-rose-400 hover:underline">Reset Riwayat Nilai</button>
+        </div>
+        <div id="quiz-history-list" class="space-y-2 text-xs"></div>
+      </div>
+    </section>
+  </main>
+  </div> <!-- Penutup #main-content-wrapper -->
+  </div> <!-- Penutup .flex-1 .flex -->
+
+  <!-- MODAL TAMBAH / EDIT SOAL SD KELAS 6 -->
+  <div id="question-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-xl space-y-4">
+      <div class="flex items-center justify-between border-b border-[var(--border)] pb-3">
+        <h2 class="text-base font-bold" id="modal-title">Tambah Butir Soal SD Kelas 6</h2>
+        <button onclick="closeModal()" class="text-xs px-2.5 py-1 rounded-lg border border-[var(--border)] hover:bg-[var(--background)]">✕ Tutup</button>
+      </div>
+
+      <input type="hidden" id="form-id" />
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div>
+          <label class="block text-xs font-medium mb-1">Mata Pelajaran</label>
+          <select id="form-subject" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="Matematika">Matematika</option>
+            <option value="IPAS">IPAS</option>
+            <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+            <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
+            <option value="Bahasa Inggris">Bahasa Inggris</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium mb-1">Semester</label>
+          <select id="form-semester" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="1">Semester 1 (Ganjil)</option>
+            <option value="2">Semester 2 (Genap)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium mb-1">Tipe Soal</label>
+          <select id="form-type" onchange="toggleFormType()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="PG">Pilihan Ganda (A–D)</option>
+            <option value="ESAI">Uraian / Esai</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+        <div class="sm:col-span-2">
+          <label class="block text-xs font-medium mb-1">Bab / Topik Materi</label>
+          <input type="text" id="form-topic" placeholder="Contoh: Bab 1: Pecahan dan Desimal" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium mb-1">Kesulitan</label>
+          <select id="form-difficulty" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="Mudah">Mudah</option>
+            <option value="Sedang" selected>Sedang</option>
+            <option value="Sulit">Sulit</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium mb-1">Level Bloom</label>
+          <select id="form-bloom" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="C1">C1 - Mengingat</option>
+            <option value="C2">C2 - Memahami</option>
+            <option value="C3" selected>C3 - Menerapkan</option>
+            <option value="C4">C4 - Menganalisis</option>
+            <option value="C5">C5 - Mengevaluasi</option>
+            <option value="C6">C6 - Mencipta</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">Pertanyaan Soal</label>
+        <textarea id="form-question" rows="3" placeholder="Tuliskan soal dengan bahasa yang jelas untuk siswa kelas 6 SD..." class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]"></textarea>
+      </div>
+
+      <div id="form-pg-section" class="space-y-2">
+        <label class="text-xs font-semibold block">Pilihan Jawaban A–D (Pilih bulatan pada jawaban yang benar)</label>
+        <div class="space-y-2" id="form-options-container"></div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">Pembahasan Langkah demi Langkah</label>
+        <textarea id="form-explanation" rows="3" placeholder="Tuliskan cara pengerjaan atau penjelasan jawaban yang benar..." class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]"></textarea>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-3 border-t border-[var(--border)]">
+        <button onclick="closeModal()" class="px-4 py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)]">Batal</button>
+        <button onclick="saveQuestion()" class="px-5 py-2 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white">💾 Simpan Soal</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.KURIKULUM_SD6 = [
+  // ================= MATEMATIKA =================
+  {
+    id: 'MTK-B1',
+    subject: 'Matematika',
+    semester: 1,
+    bab: 'Bab 1: Pecahan dan Desimal',
+    summary: 'Mempelajari perkalian dan pembagian pecahan biasa/campuran, mengubah pecahan menjadi desimal, serta operasi hitung bilangan desimal dalam kehidupan sehari-hari.',
+    keyPoints: [
+      'Perkalian pecahan: kalikan pembilang dengan pembilang, dan penyebut dengan penyebut: (a/b) × (c/d) = (a×c)/(b×d).',
+      'Pembagian pecahan: ubah tanda bagi menjadi kali dengan membalik pecahan kedua (kebalikannya): (a/b) ÷ (c/d) = (a/b) × (d/c).',
+      'Konversi cepat: 1/2 = 0,5 • 1/4 = 0,25 • 3/4 = 0,75 • 1/5 = 0,2 • 1/8 = 0,125.'
+    ],
+    example: 'Ibu memiliki 3/4 kg tepung. Sebanyak 2/3 bagian digunakan membuat kue. Tepung yang dipakai = 3/4 × 2/3 = 6/12 = 1/2 kg (0,5 kg).'
+  },
+  {
+    id: 'MTK-B2',
+    subject: 'Matematika',
+    semester: 1,
+    bab: 'Bab 2: Rasio (Perbandingan) & Skala',
+    summary: 'Memahami perbandingan dua besaran, menyederhanakan rasio, perbandingan senilai, dan menghitung skala pada peta atau denah.',
+    keyPoints: [
+      'Rasio a : b disederhanakan dengan membagi kedua bilangan menggunakan FPB-nya.',
+      'Skala = Jarak pada Peta (JP) : Jarak Sebenarnya (JS) dalam satuan yang sama (cm).',
+      'Jarak Sebenarnya (JS) = Jarak pada Peta ÷ Skala.'
+    ],
+    example: 'Skala peta 1 : 200.000. Jika jarak dua kota di peta 4 cm, maka jarak sebenarnya = 4 × 200.000 cm = 800.000 cm = 8 km.'
+  },
+  {
+    id: 'MTK-B3',
+    subject: 'Matematika',
+    semester: 1,
+    bab: 'Bab 3: Bangun Ruang (Kubus & Balok)',
+    summary: 'Mengenal unsur bangun ruang (sisi, rusuk, titik sudut), jaring-jaring kubus dan balok, serta menghitung luas permukaan dan volume.',
+    keyPoints: [
+      'Kubus (rusuk s): Volume = s × s × s (s³) • Luas Permukaan = 6 × s².',
+      'Balok (p, l, t): Volume = p × l × t • Luas Permukaan = 2 × (p×l + p×t + l×t).',
+      'Kubus dan balok masing-masing memiliki 6 sisi, 12 rusuk, dan 8 titik sudut.'
+    ],
+    example: 'Akuarium berbentuk balok berukuran panjang 50 cm, lebar 30 cm, dan tinggi 40 cm memiliki volume = 50 × 30 × 40 = 60.000 cm³ = 60 liter.'
+  },
+  {
+    id: 'MTK-B4',
+    subject: 'Matematika',
+    semester: 2,
+    bab: 'Bab 4: Pengolahan Data (Mean, Median, Modus)',
+    summary: 'Membaca dan menyajikan data dalam tabel, diagram batang/lingkaran, serta menentukan ukuran pemusatan data tunggal.',
+    keyPoints: [
+      'Mean (Rata-rata) = Jumlah seluruh nilai data ÷ Banyaknya data.',
+      'Median (Nilai tengah) = Nilai yang berada tepat di tengah setelah data diurutkan dari terkecil ke terbesar.',
+      'Modus = Nilai data yang paling sering muncul (frekuensi tertinggi).'
+    ],
+    example: 'Data nilai: 7, 8, 8, 9, 10. Modus = 8, Median = 8, dan Mean = (7+8+8+9+10) ÷ 5 = 42 ÷ 5 = 8,4.'
+  },
+  {
+    id: 'MTK-B5',
+    subject: 'Matematika',
+    semester: 2,
+    bab: 'Bab 5: Bilangan Bulat & Koordinat Kartesius',
+    summary: 'Operasi hitung bilangan bulat positif dan negatif serta menentukan posisi titik (x, y) pada bidang koordinat Kartesius.',
+    keyPoints: [
+      'Penjumlahan/pengurangan bilangan negatif: a - (-b) = a + b.',
+      'Perkalian/pembagian: Tanda sama hasilnya positif (+), tanda beda hasilnya negatif (-).',
+      'Titik koordinat ditulis (x, y) di mana x adalah absis (mendatar) dan y adalah ordinat (tegak).'
+    ],
+    example: 'Suhu di puncak gunung -4°C, siang hari naik 10°C. Suhu siang hari = -4 + 10 = 6°C.'
+  },
+  {
+    id: 'MTK-B6',
+    subject: 'Matematika',
+    semester: 2,
+    bab: 'Bab 6: Peluang Kejadian Sederhana',
+    summary: 'Memahami skala kemungkinan suatu kejadian (pasti, mungkin, tidak mungkin) dan menghitung peluang sederhana.',
+    keyPoints: [
+      'Peluang (P) = Banyak kejadian yang dimaksud (n(A)) ÷ Total seluruh kemungkinan (n(S)).',
+      'Nilai peluang berkisar dari 0 (mustahil terjadi) hingga 1 (pasti terjadi).'
+    ],
+    example: 'Pada pelemparan sebuah dadu bersisi 6, peluang muncul mata dadu genap {2, 4, 6} adalah 3/6 = 1/2.'
+  },
+
+  // ================= IPAS =================
+  {
+    id: 'IPAS-B1',
+    subject: 'IPAS',
+    semester: 1,
+    bab: 'Bab 1: Bagaimana Tubuh Kita Bergerak?',
+    summary: 'Mengenal sistem gerak manusia yang terdiri atas rangka (alat gerak pasif), otot (alat gerak aktif), sendi, dan sistem saraf.',
+    keyPoints: [
+      'Jenis Sendi: Sendi Engsel (siku, lutut - 1 arah), Sendi Peluru (bahu, panggul - segala arah), Sendi Putar (leher), Sendi Pelana (ibu jari).',
+      'Tiga Jenis Otot: Otot Lurik (rangka, sadar), Otot Polos (organ dalam, tak sadar), Otot Jantung (jantung, tak sadar).',
+      'Gangguan tulang belakang: Skoliosis (melengkung ke samping S), Kifosis (membungkuk), Lordosis (dada terlalu maju), Osteoporosis (pengeroposan).'
+    ],
+    example: 'Saat kita menekuk siku untuk mengangkat buku, sendi engsel pada siku bekerja bersama otot bisep yang berkontraksi.'
+  },
+  {
+    id: 'IPAS-B2',
+    subject: 'IPAS',
+    semester: 1,
+    bab: 'Bab 2: Cerita tentang Indonesia Kita',
+    summary: 'Mempelajari latar belakang kedatangan bangsa Eropa (3G), perjuangan pahlawan daerah, Pergerakan Nasional, hingga Proklamasi Kemerdekaan 17 Agustus 1945.',
+    keyPoints: [
+      'Semboyan 3G penjelajahan samudra: Gold (kekayaan/rempah), Glory (kejayaan), Gospel (penyebaran agama).',
+      'Perubahan strategi perjuangan: Sebelum 1908 bersifat kedaerahan, setelah Budi Utomo (20 Mei 1908) & Sumpah Pemuda (28 Oktober 1928) bersifat nasional.',
+      'Naskah Proklamasi dirumuskan oleh Ir. Soekarno, Drs. Moh. Hatta, dan Mr. Achmad Soebardjo di rumah Laksamana Maeda, lalu diketik oleh Sayuti Melik.'
+    ],
+    example: 'Peristiwa Rengasdengklok terjadi pada 16 Agustus 1945 agar Soekarno-Hatta segera memproklamasikan kemerdekaan tanpa pengaruh Jepang.'
+  },
+  {
+    id: 'IPAS-B3',
+    subject: 'IPAS',
+    semester: 1,
+    bab: 'Bab 3: Pelesir Keliling Dunia (6 Benua)',
+    summary: 'Mengenal karakteristik geografis 6 benua berpenghuni (Asia, Afrika, Amerika, Eropa, Australia, Antartika) dan ikon bentang alam dunia.',
+    keyPoints: [
+      'Asia adalah benua terluas di dunia (tempat Indonesia berada), sedangkan Australia adalah benua terkecil.',
+      'Sungai terpanjang di dunia: Sungai Nil (Afrika) & Sungai Amazon (Amerika Selatan). Gurun terluas: Gurun Sahara (Afrika).',
+      'Negara memanfaatkan kondisi geografisnya, seperti Belanda dengan kincir angin & bendungan (polder), atau Jepang dengan teknologi tahan gempa.'
+    ],
+    example: 'Terusan Suez di Mesir menghubungkan Laut Merah dan Laut Tengah sehingga memperpendek jalur pelayaran antara Asia dan Eropa.'
+  },
+  {
+    id: 'IPAS-B4',
+    subject: 'IPAS',
+    semester: 1,
+    bab: 'Bab 4: Indonesia dan Masyarakat Dunia',
+    summary: 'Memahami dampak globalisasi, peran Indonesia dalam kerja sama internasional (ASEAN, PBB), serta warisan budaya Indonesia yang diakui UNESCO.',
+    keyPoints: [
+      'ASEAN didirikan pada 8 Agustus 1967 di Bangkok oleh 5 negara pendiri: Indonesia (Adam Malik), Malaysia, Singapura, Thailand, dan Filipina.',
+      'Kerja sama dibagi menjadi: Bilateral (2 negara), Regional (kawasan, misal ASEAN), dan Multilateral (banyak negara, misal PBB).',
+      'Warisan budaya Indonesia yang diakui UNESCO: Batik, Wayang, Angklung, Gamelan, Pencak Silat, Candi Borobudur, dan Subak Bali.'
+    ],
+    example: 'Pertukaran pelajar dan pengiriman beras antarnegara ASEAN merupakan wujud kerja sama regional di bidang pendidikan dan ekonomi.'
+  },
+  {
+    id: 'IPAS-B5',
+    subject: 'IPAS',
+    semester: 2,
+    bab: 'Bab 5: Menjelajahi Bumi dan Antariksa',
+    summary: 'Mempelajari sistem Tata Surya, klasifikasi planet dalam dan luar, dampak rotasi & revolusi Bumi/Bulan, serta proses terjadinya gerhana.',
+    keyPoints: [
+      'Urutan Planet dari Matahari: Merkurius, Venus, Bumi, Mars (Planet Dalam/Terestrial) — Jupiter, Saturnus, Uranus, Neptunus (Planet Luar/Raksasa Gas).',
+      'Rotasi Bumi (24 jam): terjadinya siang-malam, gerak semu harian matahari, perbedaan zona waktu (WIB, WITA, WIT).',
+      'Revolusi Bumi (365¼ hari): pergantian musim, gerak semu tahunan matahari, dan dasar kalender Masehi.'
+    ],
+    example: 'Gerhana Matahari terjadi ketika Bulan berada tepat di antara Matahari dan Bumi pada satu garis lurus (fase bulan baru).'
+  },
+  {
+    id: 'IPAS-B6',
+    subject: 'IPAS',
+    semester: 2,
+    bab: 'Bab 6 & 7: Energi Terbarukan & Pelestarian Bumi',
+    summary: 'Memahami krisis energi fosil, sumber energi alternatif terbarukan, pemanasan global (efek rumah kaca), dan gerakan 3R.',
+    keyPoints: [
+      'Energi Terbarukan: Panel Surya (cahaya matahari), PLTA (air), PLTB (angin/bayu), Panas Bumi (geotermal), dan Biomassa.',
+      'Efek Rumah Kaca disebabkan meningkatnya gas CO₂ dan metana di atmosfer yang memerangkap panas matahari sehingga memicu pemanasan global.',
+      'Prinsip 3R: Reduce (mengurangi sampah), Reuse (menggunakan kembali), Recycle (mendaur ulang).'
+    ],
+    example: 'Sel surya (fotovoltaik) mengubah energi cahaya matahari secara langsung menjadi energi listrik tanpa menghasilkan polusi asap.'
+  },
+
+  // ================= BAHASA INDONESIA =================
+  {
+    id: 'BIN-B1',
+    subject: 'Bahasa Indonesia',
+    semester: 1,
+    bab: 'Bab 1: Bangga Menjadi Anak Indonesia (Surat & Unsur Cerita)',
+    summary: 'Menganalisis unsur intrinsik cerita serta membedakan ciri dan bagian surat resmi dengan surat pribadi.',
+    keyPoints: [
+      'Surat Resmi memiliki kop surat (kepala surat), nomor surat, lampiran, perihal, dan menggunakan bahasa baku.',
+      'Surat Pribadi ditujukan kepada teman/keluarga, tidak memakai kop/nomor surat, dan bahasanya lebih akrab namun tetap santun.',
+      'Unsur Intrinsik Cerita: Tema, Tokoh & Penokohan (watak), Latar (tempat, waktu, suasana), Alur (maju/mundur), dan Amanat (pesan moral).'
+    ],
+    example: 'Surat undangan rapat orang tua murid dari kepala sekolah merupakan contoh surat resmi karena memiliki kop sekolah dan nomor surat.'
+  },
+  {
+    id: 'BIN-B2',
+    subject: 'Bahasa Indonesia',
+    semester: 1,
+    bab: 'Bab 2 & 3: Teks Eksplanasi, Fakta vs Opini & Kalimat Efektif',
+    summary: 'Memahami struktur teks eksplanasi ilmiah, membedakan kalimat fakta dan opini, serta mengubah kalimat langsung menjadi tidak langsung.',
+    keyPoints: [
+      'Struktur Teks Eksplanasi: 1) Pernyataan Umum, 2) Deretan Penjelas (sebab-akibat), 3) Interpretasi/Kesimpulan.',
+      'Fakta: kebenarannya teruji dan memiliki data objektif (angka, tanggal, tempat). Opini: pendapat/perasaan pribadi (kata: menurut saya, sebaiknya, sangat indah).',
+      'Syarat Kalimat Efektif: Memiliki subjek dan predikat jelas, menggunakan kata baku, dan hemat kata (tidak boros/pleonasme).'
+    ],
+    example: 'Tidak efektif: "Para hadirin sekalian dimohon berdiri." → Efektif: "Hadirin dimohon berdiri."'
+  },
+  {
+    id: 'BIN-B3',
+    subject: 'Bahasa Indonesia',
+    semester: 2,
+    bab: 'Bab 4, 5 & 6: Pidato, Ungkapan, Peribahasa & Teks Persuasif',
+    summary: 'Menyusun naskah pidato, memahami makna ungkapan dan peribahasa, serta menulis teks persuasif bertema lingkungan.',
+    keyPoints: [
+      'Struktur Pidato: 1) Pembuka (salam, sapaan, puji syukur), 2) Isi pidato, 3) Penutup (kesimpulan, harapan, permohonan maaf, salam penutup).',
+      'Ungkapan (Idiom): gabungan kata yang membentuk makna baru (misal: rendah hati = tidak sombong, buah tangan = oleh-oleh, banting tulang = kerja keras).',
+      'Peribahasa: kalimat kiasan berisi nasihat (misal: "Besar pasak daripada tiang" artinya lebih besar pengeluaran daripada pendapatan).'
+    ],
+    example: 'Kalimat persuasif menggunakan kata ajakan seperti "Mari", "Ayo", atau "Hendaknya" untuk mengajak pembaca melakukan sesuatu yang positif.'
+  },
+
+  // ================= PENDIDIKAN PANCASILA =================
+  {
+    id: 'PKN-B1',
+    subject: 'Pendidikan Pancasila',
+    semester: 1,
+    bab: 'Bab 1 & 2: Pengamalan Pancasila, Norma, Hak & Kewajiban',
+    summary: 'Memahami keterkaitan utuh kelima sila Pancasila serta penerapan 4 macam norma dan keseimbangan hak-kewajiban anak.',
+    keyPoints: [
+      'Lambang Sila: 1) Bintang, 2) Rantai, 3) Pohon Beringin, 4) Kepala Banteng, 5) Padi dan Kapas.',
+      'Empat Macam Norma: Norma Agama (wahyu Tuhan), Norma Kesusilaan (hati nurani), Norma Kesopanan (pergaulan masyarakat), Norma Hukum (aturan negara, sanksi tegas).',
+      'Kewajiban harus didahulukan sebelum menuntut hak agar tercipta ketertiban dan keadilan bersama.'
+    ],
+    example: 'Mengikuti musyawarah pemilihan ketua kelas dengan tertib adalah pengamalan Sila ke-4, sedangkan membantu teman yang terkena musibah adalah Sila ke-2.'
+  },
+  {
+    id: 'PKN-B2',
+    subject: 'Pendidikan Pancasila',
+    semester: 2,
+    bab: 'Bab 3 & 4: Musyawarah, Toleransi Budaya & Menjaga NKRI',
+    summary: 'Mempraktikkan pengambilan keputusan melalui musyawarah mufakat, menghargai keberagaman suku/agama, dan bela negara.',
+    keyPoints: [
+      'Tujuan musyawarah adalah mencapai mufakat (kesepakatan bersama). Jika mufakat belum tercapai, dapat dilakukan pemungutan suara terbanyak (voting).',
+      'Semua warga wajib melaksanakan hasil keputusan musyawarah dengan penuh tanggung jawab dan lapang dada.',
+      'Semboyan Bhinneka Tunggal Ika (dari Kitab Sutasoma karya Mpu Tantular) berarti "Berbeda-beda tetapi tetap satu jua".'
+    ],
+    example: 'Menghormati teman yang sedang menjalankan ibadah dan mempelajari tarian daerah lain merupakan wujud nyata menjaga persatuan NKRI.'
+  },
+
+  // ================= BAHASA INGGRIS =================
+  {
+    id: 'ENG-B1',
+    subject: 'Bahasa Inggris',
+    semester: 1,
+    bab: 'Semester 1: Past Activities (Simple Past Tense & Was/Were)',
+    summary: 'Menceritakan kegiatan yang sudah dilakukan di masa lampau menggunakan kata kerja bentuk kedua (Verb 2) dan to be lampau (was/were).',
+    keyPoints: [
+      'Rumus kalimat positif lampau: Subject + Verb 2 (misal: visited, played, studied, went, bought, ate).',
+      'Kalimat negatif & tanya menggunakan "did": Subject + did not (didn\'t) + Verb 1 • Did + Subject + Verb 1?',
+      'To be lampau: "was" untuk I, He, She, It • "were" untuk You, They, We. Keterangan waktu: yesterday, last night, two days ago, last week.'
+    ],
+    example: 'Rina went to the library yesterday, and she borrowed two storybooks.'
+  },
+  {
+    id: 'ENG-B2',
+    subject: 'Bahasa Inggris',
+    semester: 2,
+    bab: 'Semester 2: Future Plans & Dreams (Will & Professions)',
+    summary: 'Menyatakan rencana kegiatan yang akan datang menggunakan "will" serta menceritakan cita-cita profesi di masa depan.',
+    keyPoints: [
+      'Rumus rencana masa depan: Subject + will + Verb 1 (misal: I will study, She will visit).',
+      'Keterangan waktu masa depan: tomorrow (besok), next week (minggu depan), tonight (malam ini), in the future (di masa depan).',
+      'Kosakata Profesi: Doctor (merawat pasien), Architect (merancang gedung), Pilot (menerbangkan pesawat), Chef (memasak), Scientist (peneliti).'
+    ],
+    example: '"What will you do tomorrow?" — "I will visit my grandparents in Bandung tomorrow."'
+  }
+];
+
+window.DEFAULT_QUESTIONS_SD6 = [
+  {
+    "id": "SD6-IPA-TS-01",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Susunan benda-benda langit yang terdiri atas matahari dan planet-planet disebut...",
+    "options": [
+      "Galaksi",
+      "Tata surya",
+      "Bima Sakti",
+      "Alam semesta"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tata surya adalah susunan benda-benda langit yang terdiri atas matahari dan planet-planet."
+  },
+  {
+    "id": "SD6-IPA-TS-02",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Ada berapakah jumlah planet dalam sistem tata surya kita menurut materi yang dipelajari?",
+    "options": [
+      "Tujuh buah",
+      "Delapan buah",
+      "Sembilan buah",
+      "Sepuluh buah"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ada delapan buah planet dalam tata surya, yaitu Merkurius, Venus, Bumi, Mars, Yupiter, Saturnus, Uranus, dan Neptunus."
+  },
+  {
+    "id": "SD6-IPA-TS-03",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet yang mempunyai lintasan terdekat ke matahari adalah...",
+    "options": [
+      "Bumi",
+      "Venus",
+      "Mars",
+      "Merkurius"
+    ],
+    "correctIndex": 3,
+    "explanation": "Merkurius merupakan planet yang mempunyai lintasan terdekat ke matahari."
+  },
+  {
+    "id": "SD6-IPA-TS-04",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet manakah yang merupakan planet terbesar dalam keluarga tata surya kita?",
+    "options": [
+      "Saturnus",
+      "Yupiter",
+      "Neptunus",
+      "Uranus"
+    ],
+    "correctIndex": 1,
+    "explanation": "Yupiter merupakan planet terbesar dalam keluarga tata surya."
+  },
+  {
+    "id": "SD6-IPA-TS-05",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet tampak berkilau seperti bintang meskipun tidak memancarkan cahaya sendiri. Hal ini disebabkan karena planet...",
+    "options": [
+      "Memiliki atmosfer yang terbakar",
+      "Memantulkan cahaya matahari yang menyinari permukaannya",
+      "Memancarkan energi listrik",
+      "Menyerap cahaya bulan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Planet tidak memancarkan cahaya sendiri, planet tampak berkilau karena memantulkan cahaya matahari yang menyinari permukaannya."
+  },
+  {
+    "id": "SD6-IPA-TS-06",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perputaran bumi pada sumbunya/porosnya disebut...",
+    "options": [
+      "Revolusi bumi",
+      "Rotasi bumi",
+      "Evolusi bumi",
+      "Gravitasi bumi"
+    ],
+    "correctIndex": 1,
+    "explanation": "Perputaran bumi pada sumbunya disebut rotasi bumi."
+  },
+  {
+    "id": "SD6-IPA-TS-07",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Berikut ini yang merupakan salah satu akibat dari rotasi bumi adalah terjadinya...",
+    "options": [
+      "Pergantian musim",
+      "Fase-fase bulan",
+      "Pergantian siang dan malam",
+      "Tahun kabisat"
+    ],
+    "correctIndex": 2,
+    "explanation": "Rotasi bumi mengakibatkan gerak semu harian matahari, pergantian siang dan malam, serta perbedaan waktu."
+  },
+  {
+    "id": "SD6-IPA-TS-08",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perbedaan waktu dari tempat-tempat yang berbeda derajat bujurnya merupakan akibat dari...",
+    "options": [
+      "Rotasi bumi",
+      "Revolusi bumi",
+      "Rotasi bulan",
+      "Revolusi bulan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rotasi bumi mengakibatkan perbedaan waktu dari tempat-tempat yang berbeda derajat bujurnya."
+  },
+  {
+    "id": "SD6-IPA-TS-09",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Matahari seolah-olah bergerak terbit dari timur dan tenggelam di barat setiap hari. Peristiwa ini disebut gerak semu harian matahari yang diakibatkan oleh...",
+    "options": [
+      "Revolusi bumi",
+      "Rotasi bumi",
+      "Revolusi bulan",
+      "Rotasi matahari"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rotasi bumi mengakibatkan gerak semu harian matahari."
+  },
+  {
+    "id": "SD6-IPA-TS-10",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Gerakan bumi mengitari/mengelilingi matahari disebut...",
+    "options": [
+      "Rotasi bumi",
+      "Revolusi bumi",
+      "Rotasi bulan",
+      "Evolusi matahari"
+    ],
+    "correctIndex": 1,
+    "explanation": "Bumi berevolusi (mengelilingi) mengitari matahari."
+  },
+  {
+    "id": "SD6-IPA-TS-11",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Peredaran bumi mengelilingi matahari (revolusi bumi) dijadikan dasar untuk perhitungan...",
+    "options": [
+      "Tahun Komariyah",
+      "Tahun Hijriah",
+      "Tahun Masehi",
+      "Tahun Kabisat"
+    ],
+    "correctIndex": 2,
+    "explanation": "Peredaran bumi mengelilingi matahari (revolusi bumi) dijadikan dasar untuk perhitungan tahun Masehi."
+  },
+  {
+    "id": "SD6-IPA-TS-12",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Berapa lama waktu yang diperlukan bumi untuk satu kali mengelilingi matahari (satu tahun Masehi)?",
+    "options": [
+      "354 hari",
+      "360 hari",
+      "365 hari",
+      "366 hari"
+    ],
+    "correctIndex": 2,
+    "explanation": "Satu kali bumi mengelilingi matahari memerlukan waktu 365 hari."
+  },
+  {
+    "id": "SD6-IPA-TS-13",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dalam peredarannya, bulan melakukan tiga gerakan sekaligus. Berikut ini yang BUKAN merupakan gerakan bulan adalah...",
+    "options": [
+      "Berputar pada porosnya (Rotasi bulan)",
+      "Mengitari bumi (Revolusi bulan)",
+      "Bersama-sama bumi mengitari matahari",
+      "Mengitari planet Mars"
+    ],
+    "correctIndex": 3,
+    "explanation": "Bulan melakukan tiga gerakan: berputar pada porosnya, berevolusi mengitari bumi, dan bersama-sama bumi mengitari matahari."
+  },
+  {
+    "id": "SD6-IPA-TS-14",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perbedaan bentuk permukaan bulan yang terang dari hari ke hari disebut fase-fase bulan. Fase-fase bulan ini diakibatkan oleh peristiwa...",
+    "options": [
+      "Rotasi bumi",
+      "Revolusi bumi",
+      "Rotasi bulan",
+      "Revolusi bulan"
+    ],
+    "correctIndex": 3,
+    "explanation": "Revolusi bulan mengakibatkan terjadinya fase-fase bulan."
+  },
+  {
+    "id": "SD6-IPA-TS-15",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Peristiwa yang terjadi apabila matahari, bumi, dan bulan berada pada satu garis lurus, dengan bumi berada di tengah adalah...",
+    "options": [
+      "Gerhana matahari",
+      "Gerhana bulan",
+      "Fase bulan sabit",
+      "Bulan purnama"
+    ],
+    "correctIndex": 1,
+    "explanation": "Gerhana bulan terjadi apabila matahari, bumi, dan bulan berada pada satu garis lurus, dengan bumi berada di antara matahari dan bulan."
+  },
+  {
+    "id": "SD6-IPA-TS-16",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Peristiwa yang terjadi apabila matahari, bulan, dan bumi berada pada satu garis lurus, dengan bulan berada di tengah adalah...",
+    "options": [
+      "Gerhana bulan",
+      "Fase bulan purnama",
+      "Gerhana matahari",
+      "Revolusi bulan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Gerhana matahari terjadi apabila matahari, bulan, dan bumi berada pada satu garis lurus dengan bulan berada di antara matahari dan bumi."
+  },
+  {
+    "id": "SD6-IPA-TS-17",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Peredaran bulan mengelilingi bumi (revolusi bulan) dijadikan dasar untuk perhitungan tahun...",
+    "options": [
+      "Masehi",
+      "Syamsiah",
+      "Hijriah atau Komariyah",
+      "Kabisat"
+    ],
+    "correctIndex": 2,
+    "explanation": "Peredaran bulan mengelilingi bumi dijadikan dasar perhitungan tahun Hijriah atau tahun Komariyah."
+  },
+  {
+    "id": "SD6-IPA-TS-18",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Berapa lama periode revolusi bulan mengelilingi bumi yang dijadikan dasar perhitungan satu bulan Komariyah?",
+    "options": [
+      "28 hari",
+      "29 hari",
+      "30 hari",
+      "31 hari"
+    ],
+    "correctIndex": 1,
+    "explanation": "Periode revolusi bulan mengelilingi bumi selama 29 hari."
+  },
+  {
+    "id": "SD6-IPA-TS-19",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Benda langit yang tidak mengeluarkan cahaya sendiri dan bergerak mengelilingi matahari disebut...",
+    "options": [
+      "Bintang",
+      "Komet",
+      "Planet",
+      "Meteor"
+    ],
+    "correctIndex": 2,
+    "explanation": "Planet adalah benda langit yang tidak mengeluarkan cahaya dan bergerak mengelilingi matahari."
+  },
+  {
+    "id": "SD6-IPA-TS-20",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Benda langit yang bergerak mengelilingi planet disebut...",
+    "options": [
+      "Bintang",
+      "Satelit",
+      "Komet",
+      "Asteroid"
+    ],
+    "correctIndex": 1,
+    "explanation": "Satelit adalah benda yang bergerak mengelilingi planet. Contohnya adalah Bulan yang mengelilingi Bumi."
+  },
+  {
+    "id": "SD6-IPA-TS-21",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tahun Kabisat adalah tahun yang jumlah harinya sebanyak...",
+    "options": [
+      "354 hari",
+      "364 hari",
+      "365 hari",
+      "366 hari"
+    ],
+    "correctIndex": 3,
+    "explanation": "Tahun Kabisat adalah tahun yang jumlah harinya 366 hari (jumlah hari di bulan Februari adalah 29)."
+  },
+  {
+    "id": "SD6-IPA-TS-22",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Benda langit yang bergerak mengelilingi matahari dengan lintasan elips yang gepeng, tampak berekor cahaya ketika dekat dengan matahari disebut...",
+    "options": [
+      "Satelit",
+      "Planet",
+      "Komet",
+      "Meteor"
+    ],
+    "correctIndex": 2,
+    "explanation": "Komet adalah benda langit yang bergerak mengelilingi matahari dengan lintasan elips yang gepeng, tampak berekor cahaya ketika dekat dengan matahari."
+  },
+  {
+    "id": "SD6-IPA-TS-23",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Benda langit yang bergerak dengan cepat di angkasa dan bila memasuki atmosfer bumi bagian luarnya terbakar sehingga seperti bintang jatuh disebut...",
+    "options": [
+      "Komet",
+      "Meteor",
+      "Planet",
+      "Satelit"
+    ],
+    "correctIndex": 1,
+    "explanation": "Meteor adalah benda langit yang bergerak dengan cepat di angkasa, bila memasuki atmosfer bumi akan terbakar seperti bintang jatuh."
+  },
+  {
+    "id": "SD6-IPA-TS-24",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bagian meteor yang tidak habis terbakar di atmosfer dan jatuh sampai ke permukaan bumi disebut...",
+    "options": [
+      "Komet",
+      "Meteorit",
+      "Asteroid",
+      "Debu kosmik"
+    ],
+    "correctIndex": 1,
+    "explanation": "Meteorit adalah bagian meteor yang tidak habis terbakar dan jatuh ke bumi."
+  },
+  {
+    "id": "SD6-IPA-TS-25",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bidang edar planet yang berupa bidang datar berbentuk bundar lonjong disebut...",
+    "options": [
+      "Orbit",
+      "Eliptika",
+      "Galaksi",
+      "Tata surya"
+    ],
+    "correctIndex": 1,
+    "explanation": "Eliptika adalah bidang edar planet yang berupa bidang datar berbentuk bundar lonjong."
+  },
+  {
+    "id": "SD6-IPA-TS-26",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet yang letaknya paling jauh dari Matahari dalam sistem tata surya kita adalah...",
+    "options": [
+      "Mars",
+      "Saturnus",
+      "Uranus",
+      "Neptunus"
+    ],
+    "correctIndex": 3,
+    "explanation": "Berdasarkan urutan planet (Merkurius, Venus, Bumi, Mars, Yupiter, Saturnus, Uranus, Neptunus), Neptunus adalah planet terjauh."
+  },
+  {
+    "id": "SD6-IPA-TS-27",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Saat belahan bumi bagian timur menghadap matahari, belahan bumi tersebut akan mengalami waktu...",
+    "options": [
+      "Malam",
+      "Siang",
+      "Sore",
+      "Fajar"
+    ],
+    "correctIndex": 1,
+    "explanation": "Akibat rotasi bumi, bagian bumi yang menghadap matahari mengalami siang, dan yang membelakangi mengalami malam."
+  },
+  {
+    "id": "SD6-IPA-TS-28",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pada Tahun Kabisat, bulan manakah yang mengalami penambahan jumlah hari menjadi 29 hari?",
+    "options": [
+      "Januari",
+      "Februari",
+      "Maret",
+      "Desember"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pada tahun Kabisat, jumlah hari di bulan Februari adalah 29."
+  },
+  {
+    "id": "SD6-IPA-TS-29",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bumi berada di urutan ke berapa terdekat dari Matahari?",
+    "options": [
+      "Pertama",
+      "Kedua",
+      "Ketiga",
+      "Keempat"
+    ],
+    "correctIndex": 2,
+    "explanation": "Urutannya: 1. Merkurius, 2. Venus, 3. Bumi."
+  },
+  {
+    "id": "SD6-IPA-TS-30",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Mengapa pada saat gerhana matahari, sebagian daerah di bumi menjadi gelap meskipun pada siang hari?",
+    "options": [
+      "Karena matahari kehilangan cahayanya",
+      "Karena cahaya matahari terhalang oleh bumi",
+      "Karena cahaya matahari terhalang oleh bulan",
+      "Karena bulan memancarkan cahaya hitam"
+    ],
+    "correctIndex": 2,
+    "explanation": "Gerhana matahari terjadi saat bulan berada di antara matahari dan bumi, sehingga cahaya matahari terhalang oleh bulan dan menyebabkan bayangan gelap di bumi."
+  },
+  {
+    "id": "SD6-IPA-TS-31",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bintang jatuh yang sering kita lihat pada malam hari sebenarnya adalah peristiwa terbakarnya...",
+    "options": [
+      "Komet",
+      "Planet",
+      "Satelit",
+      "Meteor"
+    ],
+    "correctIndex": 3,
+    "explanation": "Meteor yang memasuki atmosfer bumi akan terbakar dan terlihat seperti bintang jatuh."
+  },
+  {
+    "id": "SD6-IPA-TS-32",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dua planet yang letaknya berada di antara Bumi dan Matahari adalah...",
+    "options": [
+      "Merkurius dan Mars",
+      "Venus dan Mars",
+      "Merkurius dan Venus",
+      "Mars dan Yupiter"
+    ],
+    "correctIndex": 2,
+    "explanation": "Urutan planet: Merkurius, Venus, Bumi. Jadi sebelum Bumi ada Merkurius dan Venus."
+  },
+  {
+    "id": "SD6-IPA-TS-33",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Satu siklus penuh fase bulan (misalnya dari purnama ke purnama berikutnya) memakan waktu kira-kira...",
+    "options": [
+      "7 hari",
+      "14 hari",
+      "29 hari",
+      "365 hari"
+    ],
+    "correctIndex": 2,
+    "explanation": "Periode revolusi bulan (yang menyebabkan fase bulan) adalah selama 29 hari."
+  },
+  {
+    "id": "SD6-IPA-TS-34",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tahun komariyah atau tahun hijriah sangat bergantung pada penampakan/pergerakan...",
+    "options": [
+      "Matahari",
+      "Bintang",
+      "Komet",
+      "Bulan"
+    ],
+    "correctIndex": 3,
+    "explanation": "Tahun Komariyah dihitung berdasarkan peredaran bulan mengelilingi bumi."
+  },
+  {
+    "id": "SD6-IPA-TS-35",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Gerhana bulan biasanya terjadi pada saat fase bulan...",
+    "options": [
+      "Bulan baru",
+      "Bulan sabit",
+      "Bulan separuh",
+      "Bulan purnama"
+    ],
+    "correctIndex": 3,
+    "explanation": "Meskipun tidak secara eksplisit di teks ringkas, secara logika sains saat matahari-bumi-bulan segaris, dari bumi, sisi bulan yang menghadap bumi sepenuhnya diterangi matahari sebelum masuk bayangan bumi (fase purnama). Hal ini menguatkan konsep posisi segaris."
+  },
+  {
+    "id": "SD6-IPA-TS-36",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Jika kita mengamati planet di langit malam, cahayanya tampak tenang dan tidak berkelap-kelip seperti bintang. Hal ini karena...",
+    "options": [
+      "Planet sangat panas",
+      "Planet memantulkan cahaya matahari",
+      "Planet sangat kecil",
+      "Planet bergerak sangat cepat"
+    ],
+    "correctIndex": 1,
+    "explanation": "Planet tampak berkilau karena memantulkan cahaya matahari, bukan memancarkan cahaya sendiri seperti bintang yang cahayanya berkedip."
+  },
+  {
+    "id": "SD6-IPA-TS-37",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Setelah planet Mars, planet berikutnya yang paling besar di tata surya adalah...",
+    "options": [
+      "Saturnus",
+      "Yupiter",
+      "Uranus",
+      "Bumi"
+    ],
+    "correctIndex": 1,
+    "explanation": "Urutannya: Mars, Yupiter. Yupiter merupakan planet terbesar."
+  },
+  {
+    "id": "SD6-IPA-TS-38",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Adanya wilayah Indonesia yang memiliki Waktu Indonesia Barat (WIB), Tengah (WITA), dan Timur (WIT) merupakan bukti nyata dari akibat...",
+    "options": [
+      "Rotasi bumi",
+      "Revolusi bumi",
+      "Revolusi bulan",
+      "Gerhana"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rotasi bumi mengakibatkan perbedaan waktu dari tempat-tempat yang berbeda derajat bujurnya."
+  },
+  {
+    "id": "SD6-IPA-TS-39",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Susunan benda langit yang terdiri atas matahari dan planet-planet disebut tata surya. Apa pusat dari sistem tata surya kita?",
+    "options": [
+      "Bumi",
+      "Bulan",
+      "Yupiter",
+      "Matahari"
+    ],
+    "correctIndex": 3,
+    "explanation": "Tata surya terdiri atas matahari dan planet-planet, di mana matahari adalah pusat dan planet berevolusi mengitarinya."
+  },
+  {
+    "id": "SD6-IPA-TS-40",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perputaran planet mengelilingi matahari disebut...",
+    "options": [
+      "Rotasi",
+      "Revolusi",
+      "Evolusi",
+      "Eliptika"
+    ],
+    "correctIndex": 1,
+    "explanation": "Revolusi adalah perputaran planet mengelilingi matahari."
+  },
+  {
+    "id": "SD6-IPA-TS-41",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Ciri khas komet saat bergerak mendekati matahari adalah...",
+    "options": [
+      "Ukurannya mengecil",
+      "Tampak berekor cahaya",
+      "Cahayanya meredup",
+      "Berubah menjadi meteor"
+    ],
+    "correctIndex": 1,
+    "explanation": "Komet tampak berekor cahaya ketika dekat dengan matahari."
+  },
+  {
+    "id": "SD6-IPA-TS-42",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet-planet tetap berada pada lintasan eliptikanya saat mengelilingi matahari. Lintasan ini juga disebut...",
+    "options": [
+      "Sumbu",
+      "Poros",
+      "Satelit",
+      "Bidang edar"
+    ],
+    "correctIndex": 3,
+    "explanation": "Eliptika adalah bidang edar planet."
+  },
+  {
+    "id": "SD6-IPA-TS-43",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Gerakan yang menyebabkan terjadinya gerak semu harian matahari dari timur ke barat adalah gerakan bumi berputar dari arah...",
+    "options": [
+      "Timur ke barat",
+      "Barat ke timur",
+      "Utara ke selatan",
+      "Selatan ke utara"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rotasi bumi mengakibatkan gerak semu harian matahari. Bumi berotasi dari barat ke timur sehingga matahari tampak terbit di timur."
+  },
+  {
+    "id": "SD6-IPA-TS-44",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Satu tahun Komariyah (12 bulan putaran bulan) jumlah harinya lebih sedikit dibandingkan satu tahun Masehi. Berapakah jumlah hari dalam satu bulan putaran bulan?",
+    "options": [
+      "28 hari",
+      "29 hari",
+      "30 hari",
+      "31 hari"
+    ],
+    "correctIndex": 1,
+    "explanation": "Periode revolusi bulan mengelilingi bumi adalah selama 29 hari."
+  },
+  {
+    "id": "SD6-IPA-TS-45",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Benda langit apakah yang merupakan satelit alami bagi bumi?",
+    "options": [
+      "Matahari",
+      "Komet Halley",
+      "Bintang",
+      "Bulan"
+    ],
+    "correctIndex": 3,
+    "explanation": "Satelit adalah benda yang bergerak mengelilingi planet, dan bulan mengitari bumi."
+  },
+  {
+    "id": "SD6-IPA-TS-46",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Fase bulan dari bulan baru, sabit, separuh, purnama, dan kembali lagi menjadi bulan baru terjadi karena...",
+    "options": [
+      "Rotasi bulan",
+      "Bulan memantulkan cahaya bumi",
+      "Revolusi bulan mengelilingi bumi",
+      "Gerhana bulan sebagian"
+    ],
+    "correctIndex": 2,
+    "explanation": "Revolusi bulan mengakibatkan terjadinya fase-fase bulan."
+  },
+  {
+    "id": "SD6-IPA-TS-47",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bumi terletak di antara matahari dan bulan. Bayangan bumi menutupi bulan. Peristiwa ini disebut...",
+    "options": [
+      "Gerhana matahari total",
+      "Gerhana bulan",
+      "Bulan purnama",
+      "Fase bulan sabit"
+    ],
+    "correctIndex": 1,
+    "explanation": "Gerhana bulan terjadi apabila matahari, bumi, dan bulan berada pada satu garis lurus, dengan bumi berada di antara matahari dan bulan."
+  },
+  {
+    "id": "SD6-IPA-TS-48",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Selain Bumi, planet manakah yang letaknya lebih jauh dari Matahari dibandingkan dengan Mars?",
+    "options": [
+      "Merkurius",
+      "Venus",
+      "Yupiter",
+      "Tidak ada"
+    ],
+    "correctIndex": 2,
+    "explanation": "Yupiter letaknya lebih jauh dari matahari dibandingkan Mars dalam urutan tata surya."
+  },
+  {
+    "id": "SD6-IPA-TS-49",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tahun kabisat terjadi setiap empat tahun sekali untuk menyesuaikan perhitungan revolusi bumi yang sebenarnya. Pada tahun kabisat, bumi mengelilingi matahari dihitung selama...",
+    "options": [
+      "365 hari",
+      "365,25 hari",
+      "366 hari",
+      "364 hari"
+    ],
+    "correctIndex": 2,
+    "explanation": "Tahun Kabisat adalah tahun yang jumlah harinya 366 hari."
+  },
+  {
+    "id": "SD6-IPA-TS-50",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Tata Surya & Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Meteorit sering dipelajari oleh para ilmuwan karena...",
+    "options": [
+      "Menghasilkan cahaya",
+      "Merupakan bagian dari matahari",
+      "Tidak habis terbakar dan jatuh sampai ke bumi",
+      "Bisa digunakan untuk penanggalan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Meteorit adalah bagian meteor yang tidak habis terbakar dan jatuh ke bumi, sehingga wujud fisiknya bisa dipelajari."
+  }
+].concat([
+  // --- MATEMATIKA (9 Soal) ---
+  {
+    id: 'SD6-MTK-01',
+    subject: 'Matematika',
+    semester: 1,
+    moduleId: 'MTK-B1',
+    topic: 'Bab 1: Pecahan dan Desimal',
+    type: 'PG',
+    difficulty: 'Mudah',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Ibu membeli 3/4 kg gula pasir, kemudian membeli lagi 0,5 kg gula pasir. Jika sebanyak 2/5 kg gula tersebut digunakan untuk membuat sirop, berapakah sisa gula pasir Ibu sekarang dalam bentuk desimal?',
+    options: ['0,75 kg', '0,80 kg', '0,85 kg', '0,90 kg'],
+    correctIndex: 2,
+    explanation: 'Ubah semua pecahan ke bentuk desimal: 3/4 kg = 0,75 kg dan 2/5 kg = 0,40 kg. Total gula = 0,75 + 0,50 = 1,25 kg. Sisa gula = 1,25 - 0,40 = 0,85 kg.'
+  },
+  {
+    id: 'SD6-MTK-02',
+    subject: 'Matematika',
+    semester: 1,
+    moduleId: 'MTK-B1',
+    topic: 'Bab 1: Pecahan dan Desimal',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Seorang pedagang memiliki persediaan 4 1/2 liter minyak goreng. Minyak tersebut akan dituangkan ke dalam botol-botol kecil yang masing-masing berkapasitas 3/4 liter. Berapa banyak botol kecil yang dibutuhkan pedagang tersebut?',
+    options: ['4 botol', '5 botol', '6 botol', '8 botol'],
+    correctIndex: 2,
+    explanation: 'Ubah pecahan campuran menjadi pecahan biasa: 4 1/2 = 9/2 liter. Banyak botol = 9/2 ÷ 3/4 = 9/2 × 4/3 = 36/6 = 6 botol.'
+  },
+  {
+    id: 'SD6-MTK-03',
+    subject: 'Matematika',
+    semester: 1,
+    moduleId: 'MTK-B2',
+    topic: 'Bab 2: Rasio (Perbandingan) & Skala',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Perbandingan banyak kelereng Dika dan Roni adalah 3 : 5. Jika selisih kelereng mereka berdua adalah 18 butir, berapakah jumlah keseluruhan kelereng Dika dan Roni?',
+    options: ['45 butir', '54 butir', '64 butir', '72 butir'],
+    correctIndex: 3,
+    explanation: 'Selisih rasio = 5 - 3 = 2 bagian (senilai 18 butir), sehingga 1 bagian = 18 ÷ 2 = 9 butir. Jumlah rasio = 3 + 5 = 8 bagian. Total kelereng = 8 × 9 = 72 butir.'
+  },
+  {
+    id: 'SD6-MTK-04',
+    subject: 'Matematika',
+    semester: 1,
+    moduleId: 'MTK-B2',
+    topic: 'Bab 2: Rasio (Perbandingan) & Skala',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Jarak antara Kota A dan Kota B pada peta yang memiliki skala 1 : 1.500.000 adalah 6 cm. Berapakah jarak sebenarnya antara Kota A dan Kota B?',
+    options: ['9 km', '45 km', '90 km', '150 km'],
+    correctIndex: 2,
+    explanation: 'Jarak sebenarnya = 6 cm × 1.500.000 = 9.000.000 cm. Karena 1 km = 100.000 cm, maka 9.000.000 ÷ 100.000 = 90 km.'
+  },
+  {
+    id: 'SD6-MTK-05',
+    subject: 'Matematika',
+    semester: 1,
+    moduleId: 'MTK-B3',
+    topic: 'Bab 3: Bangun Ruang (Kubus & Balok)',
+    type: 'PG',
+    difficulty: 'Sulit',
+    bloom: 'C4',
+    points: 15,
+    timeMinutes: 3,
+    question: 'Sebuah bak penampungan air berbentuk balok memiliki panjang 80 cm, lebar 50 cm, dan tinggi 60 cm. Bak tersebut telah terisi air sebanyak 3/4 bagian. Berapa liter air lagi yang diperlukan agar bak tersebut terisi penuh?',
+    options: ['60 liter', '120 liter', '180 liter', '240 liter'],
+    correctIndex: 0,
+    explanation: 'Volume total bak = 80 × 50 × 60 = 240.000 cm³ = 240 liter. Karena sudah terisi 3/4 bagian, bagian yang masih kosong adalah 1 - 3/4 = 1/4 bagian. Air yang diperlukan = 1/4 × 240 liter = 60 liter.'
+  },
+  {
+    id: 'SD6-MTK-06',
+    subject: 'Matematika',
+    semester: 2,
+    moduleId: 'MTK-B4',
+    topic: 'Bab 4: Pengolahan Data (Mean, Median, Modus)',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Hasil ulangan Matematika 7 orang siswa kelas 6 adalah sebagai berikut: 80, 75, 90, 85, 80, 95, dan 90. Jika ditambahkan nilai seorang siswa susulan sehingga rata-rata (mean) nilai 8 siswa tersebut menjadi 85, berapakah nilai siswa susulan tersebut?',
+    options: ['80', '85', '90', '95'],
+    correctIndex: 1,
+    explanation: 'Jumlah nilai 7 siswa = 80 + 75 + 90 + 85 + 80 + 95 + 90 = 595. Agar rata-rata 8 siswa menjadi 85, total nilai harus = 8 × 85 = 680. Maka nilai siswa ke-8 adalah 680 - 595 = 85.'
+  },
+  {
+    id: 'SD6-MTK-07',
+    subject: 'Matematika',
+    semester: 2,
+    moduleId: 'MTK-B5',
+    topic: 'Bab 5: Bilangan Bulat & Koordinat Kartesius',
+    type: 'PG',
+    difficulty: 'Mudah',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Suhu daging beku saat dikeluarkan dari lemari pendingin adalah -8°C. Setelah didiamkan di dapur selama 30 menit, suhunya naik 12°C. Saat dimasak, suhunya naik lagi 65°C. Berapakah suhu daging tersebut sekarang?',
+    options: ['61°C', '69°C', '73°C', '85°C'],
+    correctIndex: 1,
+    explanation: 'Suhu akhir = -8 + 12 + 65 = 4 + 65 = 69°C.'
+  },
+  {
+    id: 'SD6-MTK-08',
+    subject: 'Matematika',
+    semester: 2,
+    moduleId: 'MTK-B6',
+    topic: 'Bab 6: Peluang Kejadian Sederhana',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C4',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Di dalam sebuah kotak terdapat 5 bola merah, 3 bola kuning, dan 4 bola biru. Jika diambil 1 bola secara acak tanpa melihat, berapakah peluang terambilnya bola berwarna merah?',
+    options: ['3/12', '4/12', '5/12', '5/7'],
+    correctIndex: 2,
+    explanation: 'Total seluruh bola di dalam kotak n(S) = 5 + 3 + 4 = 12 bola. Banyak bola merah n(A) = 5 bola. Jadi peluang terambilnya bola merah adalah 5/12.'
+  },
+  {
+    id: 'SD6-MTK-09',
+    subject: 'Matematika',
+    semester: 1,
+    moduleId: 'MTK-B3',
+    topic: 'Bab 3: Bangun Ruang (Kubus & Balok)',
+    type: 'ESAI',
+    difficulty: 'Sulit',
+    bloom: 'C4',
+    points: 20,
+    timeMinutes: 4,
+    question: 'Rafi ingin membungkus kado berbentuk kubus yang memiliki panjang rusuk 20 cm dengan kertas kado. Berapa cm² luas minimal kertas kado yang dibutuhkan Rafi untuk menutupi seluruh permukaan kotak kado tersebut?',
+    options: [],
+    correctIndex: 0,
+    explanation: 'Luas permukaan kubus = 6 × s × s = 6 × 20 cm × 20 cm = 6 × 400 cm² = 2.400 cm².'
+  },
+
+  // --- IPAS (8 Soal) ---
+  {
+    id: 'SD6-IPAS-01',
+    subject: 'IPAS',
+    semester: 1,
+    moduleId: 'IPAS-B1',
+    topic: 'Bab 1: Bagaimana Tubuh Kita Bergerak?',
+    type: 'PG',
+    difficulty: 'Mudah',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 1.5,
+    question: 'Sendi yang menghubungkan tulang lengan atas dengan tulang gelang bahu sehingga memungkinkan tangan kita bergerak bebas ke segala arah disebut sendi ....',
+    options: ['Sendi engsel', 'Sendi peluru', 'Sendi putar', 'Sendi pelana'],
+    correctIndex: 1,
+    explanation: 'Sendi peluru memiliki ujung tulang berbentuk bonggol yang masuk ke lekukan tulang lain (seperti pada gelang bahu dan gelang panggul) sehingga memungkinkan gerakan ke segala arah.'
+  },
+  {
+    id: 'SD6-IPAS-02',
+    subject: 'IPAS',
+    semester: 1,
+    moduleId: 'IPAS-B1',
+    topic: 'Bab 1: Bagaimana Tubuh Kita Bergerak?',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Kebiasaan duduk miring ke kiri atau ke kanan dalam waktu lama saat menulis dapat menyebabkan kelainan tulang belakang melengkung ke samping menyerupai huruf S yang disebut ....',
+    options: ['Kifosis', 'Lordosis', 'Skoliosis', 'Osteoporosis'],
+    correctIndex: 2,
+    explanation: 'Skoliosis adalah kelainan tulang belakang yang melengkung ke samping (huruf S). Kifosis adalah tulang belakang membungkuk ke belakang, sedangkan Lordosis melengkung terlalu maju ke depan.'
+  },
+  {
+    id: 'SD6-IPAS-03',
+    subject: 'IPAS',
+    semester: 1,
+    moduleId: 'IPAS-B2',
+    topic: 'Bab 2: Cerita tentang Indonesia Kita',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 1.5,
+    question: 'Tokoh nasional yang berperan mengetik naskah Proklamasi Kemerdekaan Indonesia setelah konsepnya ditulis tangan oleh Ir. Soekarno adalah ....',
+    options: ['Drs. Moh. Hatta', 'Mr. Achmad Soebardjo', 'Sayuti Melik', 'Sukarni'],
+    correctIndex: 2,
+    explanation: 'Naskah proklamasi dirumuskan oleh Ir. Soekarno, Drs. Moh. Hatta, dan Mr. Achmad Soebardjo, kemudian diketik oleh Sayuti Melik dengan beberapa perubahan redaksi.'
+  },
+  {
+    id: 'SD6-IPAS-04',
+    subject: 'IPAS',
+    semester: 1,
+    moduleId: 'IPAS-B3',
+    topic: 'Bab 3: Pelesir Keliling Dunia (6 Benua)',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Sebagian besar daratan Negara Belanda berada lebih rendah dari permukaan air laut. Bagaimana cara masyarakat dan pemerintah Belanda mengoptimalkan kondisi geografis tersebut?',
+    options: [
+          'Membangun rumah panggung di atas pegunungan es',
+          'Membangun sistem tanggul raksasa, kanal, dan kincir angin untuk memompa air keluar dari lahan pertanian (polder)',
+          'Mengandalkan tambang minyak bumi di tengah gurun pasir',
+          'Menebang hutan hujan tropis untuk dijadikan perkebunan kelapa sawit'
+    ],
+    correctIndex: 1,
+    explanation: 'Belanda terkenal dengan sistem pengelolaan air polder, yaitu membendung laut dengan tanggul (dike) dan memompa air menggunakan kincir angin/pompa modern agar tanahnya bisa ditinggali dan ditanami.'
+  },
+  {
+    id: 'SD6-IPAS-05',
+    subject: 'IPAS',
+    semester: 1,
+    moduleId: 'IPAS-B4',
+    topic: 'Bab 4: Indonesia dan Masyarakat Dunia',
+    type: 'PG',
+    difficulty: 'Mudah',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 1.5,
+    question: 'Sistem irigasi sawah tradisional dari Bali yang menerapkan filosofi Tri Hita Karana dan telah diakui oleh UNESCO sebagai Warisan Budaya Dunia adalah ....',
+    options: ['Subak', 'Terasering', 'Sasi', 'Mapalus'],
+    correctIndex: 0,
+    explanation: 'Subak adalah organisasi kemasyarakatan yang khusus mengatur sistem pengairan sawah secara adil dan harmonis di Bali, yang diakui UNESCO sebagai Warisan Budaya Dunia pada tahun 2012.'
+  },
+  {
+    id: 'SD6-IPAS-06',
+    subject: 'IPAS',
+    semester: 2,
+    moduleId: 'IPAS-B5',
+    topic: 'Bab 5: Menjelajahi Bumi dan Antariksa',
+    type: 'PG',
+    difficulty: 'Sulit',
+    bloom: 'C4',
+    points: 15,
+    timeMinutes: 2,
+    question: 'Ketika Andi yang tinggal di Jakarta (WIB) menelepon sepupunya di Jayapura (WIT) pada pukul 19.00 WIB, sepupunya mengatakan bahwa di Jayapura sudah pukul 21.00 WIT. Peristiwa perbedaan waktu ini merupakan akibat dari ....',
+    options: [
+      'Revolusi Bumi mengelilingi Matahari',
+      'Rotasi Bumi pada porosnya dari barat ke timur',
+      'Revolusi Bulan mengelilingi Bumi',
+      'Kemiringan sumbu Bumi sebesar 23,5 derajat'
+    ],
+    correctIndex: 1,
+    explanation: 'Perbedaan waktu di berbagai wilayah Bumi (seperti WIB, WITA, dan WIT di Indonesia) disebabkan oleh perputaran Bumi pada porosnya (Rotasi Bumi) dari arah barat ke timur.'
+  },
+  {
+    id: 'SD6-IPAS-07',
+    subject: 'IPAS',
+    semester: 2,
+    moduleId: 'IPAS-B6',
+    topic: 'Bab 6 & 7: Energi Terbarukan & Pelestarian Bumi',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C4',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Membawa botol minum sendiri (tumbler) dan tas belanja kain dari rumah agar tidak menggunakan kantong plastik sekali pakai merupakan contoh penerapan prinsip 3R, yaitu ....',
+    options: [
+      'Recycle (Mendaur ulang)',
+      'Reduce (Mengurangi timbulan sampah)',
+      'Replace (Mengganti bahan tambang)',
+      'Replant (Menanam kembali hutan)'
+    ],
+    correctIndex: 1,
+    explanation: 'Reduce berarti mengurangi penggunaan barang sekali pakai yang berpotensi menjadi sampah sejak awal. Membawa tumbler dan tas kain mencegah bertambahnya sampah botol dan kantong plastik.'
+  },
+  {
+    id: 'SD6-IPAS-08',
+    subject: 'IPAS',
+    semester: 2,
+    moduleId: 'IPAS-B5',
+    topic: 'Bab 5: Menjelajahi Bumi dan Antariksa',
+    type: 'ESAI',
+    difficulty: 'Sulit',
+    bloom: 'C5',
+    points: 20,
+    timeMinutes: 4,
+    question: 'Mengapa suhu permukaan Planet Venus jauh lebih panas daripada Planet Merkurius, padahal jarak Merkurius lebih dekat ke Matahari? Jelaskan kaitannya dengan efek rumah kaca!',
+    options: [],
+    correctIndex: 0,
+    explanation: 'Atmosfer Planet Venus sangat tebal dan hampir seluruhnya terdiri atas gas karbon dioksida (CO₂). Gas ini memerangkap panas matahari yang masuk sehingga tidak bisa lepas kembali ke angkasa (efek rumah kaca ekstrem), membuat suhu Venus mencapai lebih dari 460°C.'
+  },
+
+  // --- BAHASA INDONESIA (6 Soal) ---
+  {
+    id: 'SD6-BIN-01',
+    subject: 'Bahasa Indonesia',
+    semester: 1,
+    moduleId: 'BIN-B1',
+    topic: 'Bab 1: Bangga Menjadi Anak Indonesia (Surat & Unsur Cerita)',
+    type: 'PG',
+    difficulty: 'Mudah',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 1.5,
+    question: 'Bagian yang WAJIB terdapat pada surat resmi dari instansi/sekolah, tetapi TIDAK terdapat pada surat pribadi untuk sahabat adalah ....',
+    options: [
+      'Salam pembuka dan tanggal surat',
+      'Kop surat (kepala surat) dan nomor surat',
+      'Isi surat dan nama pengirim',
+      'Salam penutup dan tanda tangan'
+    ],
+    correctIndex: 1,
+    explanation: 'Surat resmi memiliki ciri khas berupa kop surat (identitas instansi/lembaga), nomor surat, lampiran, dan perihal yang tidak digunakan dalam surat pribadi.'
+  },
+  {
+    id: 'SD6-BIN-02',
+    subject: 'Bahasa Indonesia',
+    semester: 1,
+    moduleId: 'BIN-B2',
+    topic: 'Bab 2 & 3: Teks Eksplanasi, Fakta vs Opini & Kalimat Efektif',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C4',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Perhatikan kalimat-kalimat berikut!\n(1) Taman Nasional Komodo terletak di Provinsi Nusa Tenggara Timur.\n(2) UNESCO menetapkan Taman Nasional Komodo sebagai Situs Warisan Dunia pada tahun 1991.\n(3) Menurut saya, pemandangan matahari terbenam di Pulau Padar adalah yang paling indah di dunia.\n(4) Komodo merupakan kadal terbesar di dunia yang masih hidup.\nKalimat yang merupakan OPINI ditunjukkan oleh nomor ....',
+    options: ['(1)', '(2)', '(3)', '(4)'],
+    correctIndex: 2,
+    explanation: 'Kalimat (3) menggunakan kata "Menurut saya" dan penilaian subjektif "paling indah" yang merupakan pendapat pribadi (opini), sedangkan kalimat (1), (2), dan (4) adalah fakta yang dapat dibuktikan.'
+  },
+  {
+    id: 'SD6-BIN-03',
+    subject: 'Bahasa Indonesia',
+    semester: 1,
+    moduleId: 'BIN-B2',
+    topic: 'Bab 2 & 3: Teks Eksplanasi, Fakta vs Opini & Kalimat Efektif',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Kalimat tidak efektif: "Para siswa-siswi kelas enam sedang berlatih pidato di aula sekolah."\nPerbaikan kalimat tersebut agar menjadi kalimat efektif yang tepat adalah ....',
+    options: [
+      'Para siswa-siswi sekalian kelas enam sedang berlatih pidato di aula sekolah.',
+      'Siswa-siswi kelas enam sedang berlatih pidato di aula sekolah.',
+      'Semua para siswa kelas enam sedang berlatih pidato di aula sekolah.',
+      'Di dalam aula sekolah para siswa-siswi kelas enam sedang berlatih pidato.'
+    ],
+    correctIndex: 1,
+    explanation: 'Kata "para" sudah menyatakan jamak, dan kata ulang "siswa-siswi" juga menyatakan jamak. Agar tidak boros kata (pleonasme), gunakan salah satu saja: "Siswa-siswi kelas enam..." atau "Para siswa kelas enam...".'
+  },
+  {
+    id: 'SD6-BIN-04',
+    subject: 'Bahasa Indonesia',
+    semester: 2,
+    moduleId: 'BIN-B3',
+    topic: 'Bab 4, 5 & 6: Pidato, Ungkapan, Peribahasa & Teks Persuasif',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Meskipun menjadi juara pertama olimpiade sains tingkat nasional, Nadia tetap bersikap "rendah hati" kepada semua temannya. Makna ungkapan "rendah hati" pada kalimat tersebut adalah ....',
+    options: ['Mudah menyerah', 'Tidak sombong', 'Suka memberi hadiah', 'Kurang percaya diri'],
+    correctIndex: 1,
+    explanation: 'Ungkapan "rendah hati" berarti baik hati dan tidak sombong (lawan kata dari tinggi hati/besar kepala).'
+  },
+  {
+    id: 'SD6-BIN-05',
+    subject: 'Bahasa Indonesia',
+    semester: 2,
+    moduleId: 'BIN-B3',
+    topic: 'Bab 4, 5 & 6: Pidato, Ungkapan, Peribahasa & Teks Persuasif',
+    type: 'PG',
+    difficulty: 'Sulit',
+    bloom: 'C4',
+    points: 15,
+    timeMinutes: 2,
+    question: '"Demikianlah yang dapat saya sampaikan pada kesempatan pagi ini. Semoga kita semua dapat menjaga kebersihan lingkungan sekolah mulai dari hal terkecil. Mohon maaf apabila ada tutur kata yang kurang berkenan."\nKutipan di atas merupakan bagian teks pidato yaitu ....',
+    options: ['Salam pembuka', 'Pendahuluan pidato', 'Inti pembahasan pidato', 'Penutup pidato'],
+    correctIndex: 3,
+    explanation: 'Kutipan tersebut memuat simpulan singkat, harapan/ajakan akhir, serta permohonan maaf yang merupakan ciri khas bagian Penutup Pidato.'
+  },
+  {
+    id: 'SD6-BIN-06',
+    subject: 'Bahasa Indonesia',
+    semester: 2,
+    moduleId: 'BIN-B3',
+    topic: 'Bab 4, 5 & 6: Pidato, Ungkapan, Peribahasa & Teks Persuasif',
+    type: 'ESAI',
+    difficulty: 'Sulit',
+    bloom: 'C6',
+    points: 20,
+    timeMinutes: 4,
+    question: 'Tuliskan 1 paragraf singkat teks persuasif (3–4 kalimat) untuk mengajak teman-teman di sekolah menghemat penggunaan listrik dan air!',
+    options: [],
+    correctIndex: 0,
+    explanation: 'Contoh jawaban: Listrik dan air bersih adalah sumber daya berharga yang sangat kita butuhkan setiap hari di sekolah. Jika kita membiarkan keran air mengalir atau lampu kelas menyala saat siang hari, kita telah melakukan pemborosan energi. Oleh karena itu, mari kita biasakan mematikan lampu, kipas angin, dan keran air segera setelah selesai digunakan demi menjaga masa depan bumi kita!'
+  },
+
+  // --- PENDIDIKAN PANCASILA (5 Soal) ---
+  {
+    id: 'SD6-PKN-01',
+    subject: 'Pendidikan Pancasila',
+    semester: 1,
+    moduleId: 'PKN-B1',
+    topic: 'Bab 1 & 2: Pengamalan Pancasila, Norma, Hak & Kewajiban',
+    type: 'PG',
+    difficulty: 'Mudah',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 1.5,
+    question: 'Siswa kelas 6 mengumpulkan sumbangan buku dan pakaian layak pakai untuk membantu korban bencana banjir tanpa membeda-bedakan suku maupun agama. Sikap tersebut merupakan pengamalan Pancasila terutama sila yang berlambang ....',
+    options: ['Bintang', 'Rantai emas', 'Pohon beringin', 'Kepala banteng'],
+    correctIndex: 1,
+    explanation: 'Gemar melakukan kegiatan kemanusiaan dan menolong sesama tanpa membedakan latar belakang adalah pengamalan Sila ke-2 ("Kemanusiaan yang adil dan beradab") yang dilambangkan dengan Rantai Emas.'
+  },
+  {
+    id: 'SD6-PKN-02',
+    subject: 'Pendidikan Pancasila',
+    semester: 1,
+    moduleId: 'PKN-B1',
+    topic: 'Bab 1 & 2: Pengamalan Pancasila, Norma, Hak & Kewajiban',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Bima merasa sangat menyesal dan gelisah di dalam hatinya karena telah berbohong kepada ibunya tentang nilai ulangan. Rasa penyesalan yang muncul dari hati nurani tersebut berkaitan erat dengan pelanggaran ....',
+    options: ['Norma kesusilaan', 'Norma kesopanan', 'Norma hukum', 'Adat istiadat daerah'],
+    correctIndex: 0,
+    explanation: 'Norma kesusilaan bersumber dari hati nurani manusia tentang baik dan buruk. Sanksi pelanggarannya berupa rasa bersalah, gelisah, dan penyesalan di dalam diri.'
+  },
+  {
+    id: 'SD6-PKN-03',
+    subject: 'Pendidikan Pancasila',
+    semester: 1,
+    moduleId: 'PKN-B1',
+    topic: 'Bab 1 & 2: Pengamalan Pancasila, Norma, Hak & Kewajiban',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Manakah di bawah ini yang merupakan contoh pelaksanaan KEWAJIBAN seorang siswa di lingkungan sekolah sebelum menuntut haknya?',
+    options: [
+      'Mendapatkan penjelasan materi pelajaran dari guru dengan jelas',
+      'Meminjam buku cerita di perpustakaan sekolah saat jam istirahat',
+      'Menjaga kebersihan kelas dan mematuhi tata tertib sekolah',
+      'Menggunakan fasilitas lapangan olahraga saat pelajaran PJOK'
+    ],
+    correctIndex: 2,
+    explanation: 'Menjaga kebersihan kelas dan mematuhi tata tertib adalah kewajiban siswa (sesuatu yang harus dilakukan), sedangkan opsi lainnya adalah hak siswa di sekolah.'
+  },
+  {
+    id: 'SD6-PKN-04',
+    subject: 'Pendidikan Pancasila',
+    semester: 2,
+    moduleId: 'PKN-B2',
+    topic: 'Bab 3 & 4: Musyawarah, Toleransi Budaya & Menjaga NKRI',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C4',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Dalam rapat kelas menentukan tujuan karya wisata, usulan Dimas untuk pergi ke pantai tidak terpilih karena sebagian besar teman sepakat memilih museum sains. Sikap demokratis yang sebaiknya ditunjukkan Dimas adalah ....',
+    options: [
+      'Menolak ikut karya wisata karena usulannya tidak diterima',
+      'Menerima keputusan bersama dengan lapang dada dan ikut menyukseskan kegiatan',
+      'Memaksa ketua kelas untuk mengulang rapat sampai usulannya menang',
+      'Membuat kelompok sendiri untuk pergi ke pantai secara terpisah'
+    ],
+    correctIndex: 1,
+    explanation: 'Dalam musyawarah, setiap peserta berhak menyampaikan pendapat, namun setelah keputusan bersama ditetapkan, semua pihak wajib menerima dengan lapang dada dan melaksanakannya secara bertanggung jawab.'
+  },
+  {
+    id: 'SD6-PKN-05',
+    subject: 'Pendidikan Pancasila',
+    semester: 2,
+    moduleId: 'PKN-B2',
+    topic: 'Bab 3 & 4: Musyawarah, Toleransi Budaya & Menjaga NKRI',
+    type: 'PG',
+    difficulty: 'Mudah',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 1.5,
+    question: 'Teman sebangkumu berasal dari daerah yang berbeda suku dan sedang merayakan hari raya keagamaannya. Sikap toleransi yang tepat untuk menjaga persatuan adalah ....',
+    options: [
+      'Mengucapkan selamat dan menghormatinya beribadah dengan tenang',
+      'Memintanya mengikuti kebiasaan adat daerah kita saja',
+      'Menjauhinya karena memiliki tradisi yang berbeda',
+      'Mengganggu ketenangan saat ia sedang beribadah'
+    ],
+    correctIndex: 0,
+    explanation: 'Menghormati teman yang sedang beribadah dan menghargai perbedaan suku/agama merupakan pengamalan Bhinneka Tunggal Ika yang memperkokoh persatuan bangsa.'
+  },
+
+  // --- BAHASA INGGRIS (4 Soal) ---
+  {
+    id: 'SD6-ENG-01',
+    subject: 'Bahasa Inggris',
+    semester: 1,
+    moduleId: 'ENG-B1',
+    topic: 'Semester 1: Past Activities (Simple Past Tense & Was/Were)',
+    type: 'PG',
+    difficulty: 'Mudah',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 1.5,
+    question: 'My family and I _____ to Borobudur Temple last holiday. It was a wonderful trip!',
+    options: ['go', 'goes', 'went', 'going'],
+    correctIndex: 2,
+    explanation: 'Keterangan waktu "last holiday" menunjukkan kejadian di masa lampau (Simple Past Tense), sehingga menggunakan Verb 2 dari "go" yaitu "went".'
+  },
+  {
+    id: 'SD6-ENG-02',
+    subject: 'Bahasa Inggris',
+    semester: 1,
+    moduleId: 'ENG-B1',
+    topic: 'Semester 1: Past Activities (Simple Past Tense & Was/Were)',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Kevin: "Where _____ you yesterday afternoon, Edo?"\nEdo: "I _____ at the school library reading a science book."',
+    options: ['was — were', 'were — was', 'are — am', 'did — was'],
+    correctIndex: 1,
+    explanation: 'Untuk kalimat nominal lampau (yesterday afternoon), subjek "you" berpasangan dengan "were", sedangkan subjek "I" berpasangan dengan "was".'
+  },
+  {
+    id: 'SD6-ENG-03',
+    subject: 'Bahasa Inggris',
+    semester: 2,
+    moduleId: 'ENG-B2',
+    topic: 'Semester 2: Future Plans & Dreams (Will & Professions)',
+    type: 'PG',
+    difficulty: 'Mudah',
+    bloom: 'C2',
+    points: 10,
+    timeMinutes: 1.5,
+    question: 'Siti loves cooking healthy food in the kitchen. When she grows up, she wants to be a famous _____ in a restaurant.',
+    options: ['pilot', 'architect', 'chef', 'dentist'],
+    correctIndex: 2,
+    explanation: 'Profesi yang bertugas memasak makanan di restoran adalah juru masak atau koki (chef).'
+  },
+  {
+    id: 'SD6-ENG-04',
+    subject: 'Bahasa Inggris',
+    semester: 2,
+    moduleId: 'ENG-B2',
+    topic: 'Semester 2: Future Plans & Dreams (Will & Professions)',
+    type: 'PG',
+    difficulty: 'Sedang',
+    bloom: 'C3',
+    points: 10,
+    timeMinutes: 2,
+    question: 'Tomorrow is Sunday. Bagas and his father _____ wash their bicycles together in the morning.',
+    options: ['will', 'went', 'were', 'did'],
+    correctIndex: 0,
+    explanation: '"Tomorrow" menunjukkan rencana di masa depan (Future Tense), sehingga diikuti modal "will + Verb 1 (wash)".'
+  }]);
+
+    const STORAGE_KEY_Q = 'pintarsd6_questions_v2';
+    const STORAGE_KEY_STATS = 'pintarsd6_stats_v2';
+
+    let questions = [];
+    let currentPackage = [];
+    let currSelectedSubject = 'ALL';
+
+    // Student Gamification & Quiz State
+    let studentStats = {
+      xp: 120,
+      bestStreak: 0,
+      history: []
+    };
+
+    let cbtQuestions = [];
+    let cbtIndex = 0;
+    let cbtAnswers = {};
+    let cbtFlags = {};
+    let cbtLocked = {};
+    let cbtStreak = 0;
+    let cbtTimerInterval = null;
+    let cbtRemainingSeconds = 1200;
+
+    // Web Audio Sound Effects for Kids
+    let audioCtx = null;
+    let soundOn = true;
+
+    function playTone(type) {
+      if (!soundOn) return;
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx && AudioContext) audioCtx = new AudioContext();
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const now = audioCtx.currentTime;
+        const notes = type === 'correct' ? [523.25, 659.25, 783.99] : type === 'finish' ? [523.25, 659.25, 783.99, 1046.5] : [240, 190];
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = type === 'wrong' ? 'sawtooth' : 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.09);
+          gain.gain.setValueAtTime(0.05, now + idx * 0.09);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.09 + 0.25);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + idx * 0.09);
+          osc.stop(now + idx * 0.09 + 0.26);
+        });
+      } catch (e) {}
+    }
+
+    function toggleSound() {
+      soundOn = !soundOn;
+      document.getElementById('btn-sound').textContent = soundOn ? '🔊 Suara Aktif' : '🔇 Bisu';
+    }
+
+    function loadData() {
+      try {
+        const rawQ = localStorage.getItem(STORAGE_KEY_Q);
+        questions = rawQ ? JSON.parse(rawQ) : JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      } catch (e) {
+        questions = JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      }
+
+      try {
+        const rawS = localStorage.getItem(STORAGE_KEY_STATS);
+        if (rawS) studentStats = JSON.parse(rawS);
+      } catch (e) {}
+    }
+
+    function saveData() {
+      try {
+        localStorage.setItem(STORAGE_KEY_Q, JSON.stringify(questions));
+        localStorage.setItem(STORAGE_KEY_STATS, JSON.stringify(studentStats));
+      } catch (e) {}
+    }
+
+    function resetDefaultData() {
+      questions = JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      saveData();
+      refreshAll();
+    }
+
+    let isSidebarOpenMobile = false;
+    let isSidebarCollapsed = false;
+
+    function toggleSidebar(forceState = null) {
+      const sidebar = document.getElementById('app-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      const wrapper = document.getElementById('main-content-wrapper');
+
+      if (window.innerWidth < 1024) {
+        // Mobile / Small Screen
+        isSidebarOpenMobile = forceState !== null ? forceState : !isSidebarOpenMobile;
+        if (isSidebarOpenMobile) {
+          sidebar.classList.remove('-translate-x-full');
+          backdrop.classList.remove('hidden');
+        } else {
+          sidebar.classList.add('-translate-x-full');
+          backdrop.classList.add('hidden');
+        }
+      } else {
+        // Desktop: toggle between normal (w-64) and completely hidden (0px) or collapsed
+        const isHiddenDesktop = sidebar.classList.contains('lg:-translate-x-full');
+        if (isHiddenDesktop) {
+          sidebar.classList.remove('lg:-translate-x-full');
+          wrapper.classList.remove('lg:ml-0');
+          wrapper.classList.add(isSidebarCollapsed ? 'lg:ml-16' : 'lg:ml-64');
+        } else {
+          sidebar.classList.add('lg:-translate-x-full');
+          wrapper.classList.remove('lg:ml-64', 'lg:ml-16');
+          wrapper.classList.add('lg:ml-0');
+        }
+      }
+    }
+
+    function toggleSidebarCollapse() {
+      const sidebar = document.getElementById('app-sidebar');
+      const wrapper = document.getElementById('main-content-wrapper');
+      const icon = document.getElementById('collapse-icon');
+      const texts = document.querySelectorAll('.sidebar-text');
+
+      isSidebarCollapsed = !isSidebarCollapsed;
+      if (isSidebarCollapsed) {
+        sidebar.classList.remove('w-64');
+        sidebar.classList.add('w-16');
+        wrapper.classList.remove('lg:ml-64');
+        wrapper.classList.add('lg:ml-16');
+        icon.textContent = '▶';
+        texts.forEach((el) => el.classList.add('hidden'));
+      } else {
+        sidebar.classList.remove('w-16');
+        sidebar.classList.add('w-64');
+        wrapper.classList.remove('lg:ml-16');
+        wrapper.classList.add('lg:ml-64');
+        icon.textContent = '◀';
+        texts.forEach((el) => el.classList.remove('hidden'));
+      }
+    }
+
+    function autoCloseSidebarOnMobile() {
+      if (window.innerWidth < 1024) {
+        toggleSidebar(false);
+      }
+    }
+
+    function quickFilterSubject(subj) {
+      setCurrSubject(subj);
+      switchTab('curriculum');
+      autoCloseSidebarOnMobile();
+    }
+
+    // Keyboard shortcut: Ctrl + B to toggle sidebar
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+        e.preventDefault();
+        toggleSidebar();
+      }
+    });
+
+    function updateGamificationHeader() {
+      const xpEl = document.getElementById('sidebar-xp');
+      if (xpEl) xpEl.textContent = `${studentStats.xp} XP`;
+      const level = Math.floor(studentStats.xp / 100) + 1;
+      const titles = ['Penjelajah Muda', 'Detektif Sains', 'Ksatria Angka', 'Bintang Kelas 6', 'Juara Olimpiade', 'Master Nusantara'];
+      const title = titles[Math.min(level - 1, titles.length - 1)];
+      const sideLevelEl = document.getElementById('sidebar-level');
+      if (sideLevelEl) sideLevelEl.textContent = `Level ${level}: ${title}`;
+
+      document.getElementById('kpi-streak').textContent = `🔥 Rekor Streak: ${studentStats.bestStreak}`;
+      const hCount = studentStats.history.length;
+      const avg = hCount
+        ? Math.round(studentStats.history.reduce((a, b) => a + b.score, 0) / hCount)
+        : 0;
+      document.getElementById('kpi-avg-score').textContent = hCount ? `${avg}/100` : 'Siap Mulai';
+      document.getElementById('kpi-quiz-count').textContent = `${hCount} sesi latihan selesai`;
+    }
+
+    function switchTab(tab) {
+      const tabs = ['curriculum', 'quiz', 'bank', 'builder', 'analytics'];
+      const titles = {
+        curriculum: '1. Modul & Rangkuman Materi',
+        quiz: '2. Mode Kuis & Latihan Anak',
+        bank: '3. Bank Soal Lengkap SD Kelas 6',
+        builder: '4. Generator Naskah Ujian Sekolah',
+        analytics: '5. Rapor Belajar & Analisis Kurikulum'
+      };
+
+      const titleEl = document.getElementById('current-menu-title');
+      if (titleEl && titles[tab]) titleEl.textContent = titles[tab];
+
+      tabs.forEach((t) => {
+        const view = document.getElementById('view-' + t);
+        const topBtn = document.getElementById('tab-' + t);
+        const sideBtn = document.getElementById('side-tab-' + t);
+
+        if (t === tab) {
+          view.classList.remove('hidden');
+          if (topBtn) topBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 bg-[var(--primary)] text-[var(--primary-foreground)]';
+          if (sideBtn) sideBtn.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left bg-[var(--primary)] text-[var(--primary-foreground)] shadow-xs';
+        } else {
+          view.classList.add('hidden');
+          if (topBtn) topBtn.className = 'px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]';
+          if (sideBtn) sideBtn.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]';
+        }
+      });
+
+      if (tab === 'quiz' && cbtQuestions.length === 0) {
+        startNewQuiz();
+      } else if (tab === 'builder' && currentPackage.length === 0) {
+        generateExamPackage();
+      } else if (tab === 'analytics') {
+        renderAnalytics();
+      }
+    }
+
+    // Update KPI Cards
+    function updateKPIs() {
+      const total = questions.length;
+      document.getElementById('kpi-total-questions').textContent = total;
+      document.getElementById('kpi-modules-count').textContent = `${window.KURIKULUM_SD6.length} Bab Materi`;
+
+      const easy = questions.filter((q) => q.difficulty === 'Mudah').length;
+      const medium = questions.filter((q) => q.difficulty === 'Sedang').length;
+      const hard = questions.filter((q) => q.difficulty === 'Sulit').length;
+
+      const pEasy = total ? Math.round((easy / total) * 100) : 0;
+      const pMed = total ? Math.round((medium / total) * 100) : 0;
+      const pHard = total ? Math.max(0, 100 - pEasy - pMed) : 0;
+
+      document.getElementById('bar-easy').style.width = `${pEasy}%`;
+      document.getElementById('bar-medium').style.width = `${pMed}%`;
+      document.getElementById('bar-hard').style.width = `${pHard}%`;
+
+      document.getElementById('lbl-easy').textContent = `Mudah: ${easy}`;
+      document.getElementById('lbl-medium').textContent = `Sedang: ${medium}`;
+      document.getElementById('lbl-hard').textContent = `Sulit: ${hard}`;
+
+      const hotsCount = questions.filter((q) => ['C4', 'C5', 'C6'].includes(q.bloom)).length;
+      const hotsPct = total ? Math.round((hotsCount / total) * 100) : 0;
+      document.getElementById('kpi-hots').textContent = `${hotsPct}%`;
+      document.getElementById('kpi-hots-detail').textContent = `${hotsCount} dari ${total} soal`;
+
+      updateGamificationHeader();
+    }
+
+    // =========================================================================
+    // TAB 1: MODUL KURIKULUM MERDEKA SD KELAS 6
+    // =========================================================================
+    function setCurrSubject(subj) {
+      currSelectedSubject = subj;
+      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris'];
+      allBtns.forEach((s) => {
+        const el = document.getElementById('csubj-' + s);
+        if (!el) return;
+        if (s === subj) {
+          el.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white';
+        } else {
+          el.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)] hover:border-indigo-500/40';
+        }
+      });
+      renderCurriculum();
+    }
+
+    function renderCurriculum() {
+      const sem = document.getElementById('curr-semester').value;
+      const filtered = window.KURIKULUM_SD6.filter((m) => {
+        if (currSelectedSubject !== 'ALL' && m.subject !== currSelectedSubject) return false;
+        if (sem !== 'ALL' && String(m.semester) !== String(sem)) return false;
+        return true;
+      });
+
+      const grid = document.getElementById('curriculum-grid');
+      grid.innerHTML = filtered.map((m) => {
+        const relatedQs = questions.filter((q) => q.moduleId === m.id || q.topic === m.bab);
+        return `
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm flex flex-col justify-between space-y-4 hover:border-indigo-500/40 transition">
+            <div class="space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-indigo-500/15 text-indigo-400">${escapeHtml(m.subject)}</span>
+                  <span class="px-2 py-0.5 rounded text-xs bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">Semester ${m.semester}</span>
+                </div>
+                <span class="text-xs font-medium text-emerald-400">${relatedQs.length} Soal Latihan</span>
+              </div>
+
+              <div>
+                <h3 class="text-sm sm:text-base font-bold text-[var(--foreground)]">${escapeHtml(m.bab)}</h3>
+                <p class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed">${escapeHtml(m.summary)}</p>
+              </div>
+
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] space-y-1.5">
+                <div class="text-xs font-bold text-indigo-400">📌 Rangkuman Konsep & Rumus Penting:</div>
+                <ul class="list-disc list-inside text-xs space-y-1 text-[var(--foreground)] leading-relaxed">
+                  ${m.keyPoints.map((kp) => `<li>${escapeHtml(kp)}</li>`).join('')}
+                </ul>
+              </div>
+
+              <div class="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/25 text-xs">
+                <span class="font-bold text-emerald-400">💡 Contoh Penerapan:</span>
+                <span class="text-[var(--foreground)] ml-1">${escapeHtml(m.example)}</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 pt-3 border-t border-[var(--border)]">
+              <button onclick="practiceModule('${m.id}', '${escapeHtml(m.bab)}')" class="flex-1 py-2 px-3 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition">
+                🎯 Latihan Kuis Bab Ini (${relatedQs.length})
+              </button>
+              <button onclick="filterBankByTopic('${escapeHtml(m.bab)}')" class="py-2 px-3 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+                📚 Lihat Bank Soal
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function practiceModule(moduleId, babTitle) {
+      const subset = questions.filter((q) => (q.moduleId === moduleId || q.topic === babTitle) && q.type === 'PG');
+      if (subset.length === 0) {
+        alert('Belum ada soal Pilihan Ganda pada bab ini.');
+        return;
+      }
+      initCBT(subset, babTitle);
+      switchTab('quiz');
+    }
+
+    function filterBankByTopic(babTitle) {
+      document.getElementById('filter-search').value = babTitle;
+      document.getElementById('filter-subject').value = 'ALL';
+      document.getElementById('filter-semester').value = 'ALL';
+      renderBank();
+      switchTab('bank');
+    }
+
+    // =========================================================================
+    // TAB 2: KUIS PETUALANGAN ANAK SD & SIMULATOR CBT
+    // =========================================================================
+    function startNewQuiz() {
+      const subj = document.getElementById('quiz-subject-select').value;
+      const sem = document.getElementById('quiz-semester-select').value;
+
+      let pool = questions.filter((q) => q.type === 'PG');
+      if (subj !== 'ALL') pool = pool.filter((q) => q.subject === subj);
+      if (sem !== 'ALL') pool = pool.filter((q) => String(q.semester) === String(sem));
+
+      if (pool.length === 0) pool = questions.filter((q) => q.type === 'PG');
+      const shuffled = shuffleArray(pool);
+      const label = subj === 'ALL' ? 'Campuran Semua Mata Pelajaran' : `${subj} (Semester ${sem === 'ALL' ? '1 & 2' : sem})`;
+      initCBT(shuffled, label);
+    }
+
+    function initCBT(customList, labelTitle = 'Latihan SD Kelas 6') {
+      cbtQuestions = customList && customList.length ? customList : shuffleArray(questions.filter((q) => q.type === 'PG'));
+      cbtIndex = 0;
+      cbtAnswers = {};
+      cbtFlags = {};
+      cbtLocked = {};
+      cbtStreak = 0;
+      cbtRemainingSeconds = cbtQuestions.length * 120;
+
+      document.getElementById('cbt-topic-subtitle').textContent = labelTitle;
+      document.getElementById('quiz-streak-badge').textContent = `🔥 Streak Benar: 0`;
+      document.getElementById('cbt-active-container').classList.remove('hidden');
+      document.getElementById('cbt-footer-nav').classList.remove('hidden');
+      document.getElementById('cbt-result-container').classList.add('hidden');
+
+      if (cbtTimerInterval) clearInterval(cbtTimerInterval);
+      cbtTimerInterval = setInterval(() => {
+        if (cbtRemainingSeconds > 0) {
+          cbtRemainingSeconds--;
+          const m = String(Math.floor(cbtRemainingSeconds / 60)).padStart(2, '0');
+          const s = String(cbtRemainingSeconds % 60).padStart(2, '0');
+          document.getElementById('quiz-timer').textContent = `⏱ ${m}:${s}`;
+        } else {
+          finishCBT();
+        }
+      }, 1000);
+
+      renderCBTQuestion();
+    }
+
+    function renderCBTQuestion() {
+      const q = cbtQuestions[cbtIndex];
+      if (!q) return;
+
+      const quizMode = document.getElementById('quiz-mode-select').value; // INSTANT or EXAM
+      document.getElementById('cbt-q-number').textContent = `Soal #${cbtIndex + 1} / ${cbtQuestions.length}`;
+      document.getElementById('cbt-q-subject').textContent = `${q.subject} • ${q.topic}`;
+      document.getElementById('cbt-q-bloom').textContent = `${q.bloom} (${q.difficulty})`;
+      document.getElementById('cbt-q-points').textContent = `+${q.points} XP`;
+      document.getElementById('cbt-q-text').textContent = q.question;
+      document.getElementById('cbt-flag-checkbox').checked = !!cbtFlags[cbtIndex];
+
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      const userAns = cbtAnswers[cbtIndex];
+      const isRevealed = quizMode === 'INSTANT' && userAns !== undefined;
+
+      const optContainer = document.getElementById('cbt-options-list');
+      optContainer.innerHTML = (q.options || []).map((opt, idx) => {
+        const selected = userAns === idx;
+        let btnStyle = 'bg-[var(--background)] border-[var(--border)] text-[var(--foreground)] hover:border-indigo-500/40';
+        let badgeStyle = 'bg-[var(--card)] border border-[var(--border)]';
+
+        if (isRevealed) {
+          if (idx === q.correctIndex) {
+            btnStyle = 'bg-emerald-500/20 border-emerald-500 text-emerald-300 font-semibold';
+            badgeStyle = 'bg-emerald-600 text-white';
+          } else if (selected && idx !== q.correctIndex) {
+            btnStyle = 'bg-rose-500/20 border-rose-500 text-rose-300';
+            badgeStyle = 'bg-rose-600 text-white';
+          }
+        } else if (selected) {
+          btnStyle = 'bg-indigo-600/20 border-indigo-500 text-[var(--foreground)] font-semibold';
+          badgeStyle = 'bg-indigo-600 text-white';
+        }
+
+        return `
+          <button
+            onclick="selectCBTOption(${idx})"
+            class="w-full text-left px-4 py-3 rounded-xl border text-xs sm:text-sm flex items-center gap-3 transition ${btnStyle}"
+          >
+            <span class="w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs ${badgeStyle}">${letters[idx]}</span>
+            <span class="flex-1">${escapeHtml(opt)}</span>
+            ${isRevealed && idx === q.correctIndex ? '<span class="text-emerald-400 font-bold">✓ Benar</span>' : ''}
+            ${isRevealed && selected && idx !== q.correctIndex ? '<span class="text-rose-400 font-bold">✕ Pilihanmu</span>' : ''}
+          </button>
+        `;
+      }).join('');
+
+      const fbBox = document.getElementById('cbt-instant-feedback');
+      if (isRevealed) {
+        const isCorrect = userAns === q.correctIndex;
+        fbBox.classList.remove('hidden');
+        fbBox.className = `p-4 rounded-xl border text-xs space-y-1.5 ${
+          isCorrect ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-amber-500/10 border-amber-500/30'
+        }`;
+        fbBox.innerHTML = `
+          <div class="font-bold text-sm ${isCorrect ? 'text-emerald-400' : 'text-amber-400'}">
+            ${isCorrect ? '🎉 Hebat Sekali! Jawabanmu Benar!' : `💡 Belum Tepat — Jawaban yang benar adalah ${letters[q.correctIndex]}`}
+          </div>
+          <div class="text-[var(--foreground)] leading-relaxed">
+            <strong>Penjelasan:</strong> ${escapeHtml(q.explanation)}
+          </div>
+        `;
+      } else {
+        fbBox.classList.add('hidden');
+      }
+
+      // Render Number Grid
+      const grid = document.getElementById('cbt-number-grid');
+      grid.innerHTML = cbtQuestions.map((item, i) => {
+        const isCurrent = i === cbtIndex;
+        const isFlagged = !!cbtFlags[i];
+        const ans = cbtAnswers[i];
+
+        let cls = 'bg-[var(--background)] border-[var(--border)] text-[var(--foreground)]';
+        if (isFlagged) {
+          cls = 'bg-amber-500 text-black font-bold border-amber-400';
+        } else if (ans !== undefined) {
+          if (quizMode === 'INSTANT') {
+            cls = ans === item.correctIndex
+              ? 'bg-emerald-600 text-white font-bold border-emerald-500'
+              : 'bg-rose-600 text-white font-bold border-rose-500';
+          } else {
+            cls = 'bg-indigo-600 text-white font-bold border-indigo-500';
+          }
+        }
+
+        return `
+          <button
+            onclick="jumpCBT(${i})"
+            class="h-9 rounded-lg border text-xs transition ${cls} ${isCurrent ? 'ring-2 ring-indigo-400' : ''}"
+          >
+            ${i + 1}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectCBTOption(idx) {
+      const quizMode = document.getElementById('quiz-mode-select').value;
+      const q = cbtQuestions[cbtIndex];
+
+      if (quizMode === 'INSTANT' && cbtLocked[cbtIndex]) {
+        return; // Prevent changing answer after instant reveal
+      }
+
+      cbtAnswers[cbtIndex] = idx;
+
+      if (quizMode === 'INSTANT') {
+        cbtLocked[cbtIndex] = true;
+        if (idx === q.correctIndex) {
+          cbtStreak++;
+          studentStats.xp += Number(q.points) || 10;
+          if (cbtStreak > studentStats.bestStreak) studentStats.bestStreak = cbtStreak;
+          playTone('correct');
+        } else {
+          cbtStreak = 0;
+          playTone('wrong');
+        }
+        document.getElementById('quiz-streak-badge').textContent = `🔥 Streak Benar: ${cbtStreak}`;
+        saveData();
+        updateGamificationHeader();
+      }
+
+      renderCBTQuestion();
+    }
+
+    function cbtToggleFlag() {
+      cbtFlags[cbtIndex] = document.getElementById('cbt-flag-checkbox').checked;
+      renderCBTQuestion();
+    }
+
+    function cbtPrev() {
+      if (cbtIndex > 0) {
+        cbtIndex--;
+        renderCBTQuestion();
+      }
+    }
+
+    function cbtNext() {
+      if (cbtIndex < cbtQuestions.length - 1) {
+        cbtIndex++;
+        renderCBTQuestion();
+      }
+    }
+
+    function jumpCBT(i) {
+      cbtIndex = i;
+      renderCBTQuestion();
+    }
+
+    function finishCBT() {
+      if (cbtTimerInterval) clearInterval(cbtTimerInterval);
+      playTone('finish');
+
+      let earnedPoints = 0;
+      let maxPoints = 0;
+      let correctCount = 0;
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+
+      const reviewHtml = cbtQuestions.map((q, idx) => {
+        const pts = Number(q.points) || 10;
+        maxPoints += pts;
+        const userAns = cbtAnswers[idx];
+        const isCorrect = userAns === q.correctIndex;
+        if (isCorrect) {
+          earnedPoints += pts;
+          correctCount++;
+        }
+
+        return `
+          <div class="p-3.5 rounded-xl bg-[var(--background)] border ${isCorrect ? 'border-emerald-500/40' : 'border-rose-500/40'} space-y-1.5 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="font-bold">Soal #${idx + 1} • ${q.subject} (${q.topic})</span>
+              <span class="font-semibold ${isCorrect ? 'text-emerald-400' : 'text-rose-400'}">
+                ${isCorrect ? `✓ Benar (+${pts})` : '✕ Belum Tepat (0)'}
+              </span>
+            </div>
+            <div class="text-[var(--foreground)] font-medium">${escapeHtml(q.question)}</div>
+            <div class="text-[var(--muted-foreground)]">
+              Jawabanmu: <strong>${userAns !== undefined ? `${letters[userAns]}. ${escapeHtml(q.options[userAns])}` : 'Tidak dijawab'}</strong> •
+              Kunci Jawaban: <strong class="text-emerald-400">${letters[q.correctIndex]}. ${escapeHtml(q.options[q.correctIndex])}</strong>
+            </div>
+            <div class="text-[var(--muted-foreground)] pt-1 border-t border-[var(--border)]">
+              <strong>Pembahasan:</strong> ${escapeHtml(q.explanation)}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const finalScore = maxPoints ? Math.round((earnedPoints / maxPoints) * 100) : 0;
+
+      // Record History
+      studentStats.history.unshift({
+        date: new Date().toLocaleString('id-ID'),
+        topic: document.getElementById('cbt-topic-subtitle').textContent,
+        score: finalScore,
+        correct: correctCount,
+        total: cbtQuestions.length
+      });
+      studentStats.xp += Math.round(finalScore / 5);
+      saveData();
+      updateGamificationHeader();
+
+      let predicate = 'Perlu Latihan Lagi 💪';
+      if (finalScore >= 90) predicate = 'Sangat Istimewa (Bintang 5 ⭐⭐⭐⭐⭐)';
+      else if (finalScore >= 75) predicate = 'Bagus Sekali (Bintang 4 ⭐⭐⭐⭐)';
+      else if (finalScore >= 60) predicate = 'Cukup Baik (Bintang 3 ⭐⭐⭐)';
+
+      document.getElementById('cbt-active-container').classList.add('hidden');
+      document.getElementById('cbt-footer-nav').classList.add('hidden');
+      const resEl = document.getElementById('cbt-result-container');
+      resEl.classList.remove('hidden');
+      resEl.innerHTML = `
+        <div class="p-5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div class="text-xs font-semibold uppercase text-indigo-400">${predicate}</div>
+            <h3 class="text-2xl font-bold mt-1">Nilai Akhir: ${finalScore} / 100</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">Menjawab benar ${correctCount} dari ${cbtQuestions.length} soal (${earnedPoints} dari ${maxPoints} poin)</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="startNewQuiz()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500">
+              🔄 Mainkan Kuis Baru
+            </button>
+            <button onclick="switchTab('curriculum')" class="px-4 py-2 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)]">
+              📖 Baca Rangkuman Materi
+            </button>
+          </div>
+        </div>
+        <div class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1">
+          ${reviewHtml}
+        </div>
+      `;
+    }
+
+    // =========================================================================
+    // TAB 3: BANK SOAL LENGKAP (CRUD)
+    // =========================================================================
+    function getDifficultyBadge(diff) {
+      if (diff === 'Mudah') return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30';
+      if (diff === 'Sedang') return 'bg-amber-500/15 text-amber-400 border-amber-500/30';
+      return 'bg-rose-500/15 text-rose-400 border-rose-500/30';
+    }
+
+    function renderBank() {
+      const search = document.getElementById('filter-search').value.trim().toLowerCase();
+      const subj = document.getElementById('filter-subject').value;
+      const sem = document.getElementById('filter-semester').value;
+      const diff = document.getElementById('filter-difficulty').value;
+      const bloom = document.getElementById('filter-bloom').value;
+      const showAnswers = document.getElementById('toggle-show-answers').checked;
+
+      const filtered = questions.filter((q) => {
+        if (subj !== 'ALL' && q.subject !== subj) return false;
+        if (sem !== 'ALL' && String(q.semester) !== String(sem)) return false;
+        if (diff !== 'ALL' && q.difficulty !== diff) return false;
+        if (bloom !== 'ALL' && q.bloom !== bloom) return false;
+        if (search) {
+          const hay = `${q.id} ${q.subject} ${q.topic} ${q.question} ${q.explanation}`.toLowerCase();
+          if (!hay.includes(search)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('filter-result-count').textContent = `Menampilkan ${filtered.length} dari ${questions.length} butir soal SD Kelas 6`;
+
+      const container = document.getElementById('question-list');
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-8 text-center space-y-2">
+            <div class="text-sm font-semibold">Tidak ditemukan soal yang sesuai filter</div>
+            <p class="text-xs text-[var(--muted-foreground)]">Klik tombol Reset Filter untuk menampilkan seluruh soal.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      container.innerHTML = filtered.map((q) => {
+        const isHots = ['C4', 'C5', 'C6'].includes(q.bloom);
+        const optionsHtml = q.type === 'PG'
+          ? `<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+              ${(q.options || []).map((opt, idx) => {
+                const isCorrect = showAnswers && idx === q.correctIndex;
+                return `
+                  <div class="px-3 py-2 rounded-lg text-xs border flex items-start gap-2 ${
+                    isCorrect
+                      ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-300 font-medium'
+                      : 'bg-[var(--background)] border-[var(--border)] text-[var(--foreground)]'
+                  }">
+                    <span class="font-bold">${letters[idx]}.</span>
+                    <span class="flex-1">${escapeHtml(opt)}</span>
+                    ${isCorrect ? '<span class="text-emerald-400 font-bold">✓</span>' : ''}
+                  </div>
+                `;
+              }).join('')}
+            </div>`
+          : `<div class="text-xs italic text-[var(--muted-foreground)] pt-1">Soal Uraian / Esai Terbuka</div>`;
+
+        const explanationHtml = showAnswers
+          ? `<div class="mt-3 p-3 rounded-lg bg-indigo-500/10 border border-indigo-500/25 text-xs space-y-1">
+              <div class="font-semibold text-indigo-400">
+                🔑 Kunci & Pembahasan ${q.type === 'PG' ? `(Jawaban: ${letters[q.correctIndex]})` : '(Pedoman Penskoran Uraian)'}:
+              </div>
+              <p class="text-[var(--foreground)] leading-relaxed">${escapeHtml(q.explanation)}</p>
+            </div>`
+          : '';
+
+        return `
+          <article class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 shadow-sm space-y-3 hover:border-indigo-500/40 transition">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">${escapeHtml(q.id)}</span>
+                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-md bg-indigo-500/15 text-indigo-400">${escapeHtml(q.subject)}</span>
+                <span class="text-xs px-2 py-0.5 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">Sem ${q.semester || 1}</span>
+                <span class="text-xs text-[var(--muted-foreground)]">• ${escapeHtml(q.topic)}</span>
+              </div>
+
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="text-xs px-2 py-0.5 rounded border font-medium ${getDifficultyBadge(q.difficulty)}">${q.difficulty}</span>
+                <span class="text-xs px-2 py-0.5 rounded border border-[var(--border)] bg-[var(--background)] font-medium">
+                  ${q.bloom} ${isHots ? '🔥 HOTS' : ''}
+                </span>
+                <span class="text-xs px-2 py-0.5 rounded border border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)]">
+                  ${q.points} Poin
+                </span>
+              </div>
+            </div>
+
+            <div class="text-sm font-medium leading-relaxed text-[var(--foreground)] whitespace-pre-line">${escapeHtml(q.question)}</div>
+
+            ${optionsHtml}
+            ${explanationHtml}
+
+            <div class="flex items-center justify-end gap-2 pt-2 border-t border-[var(--border)] text-xs">
+              <button onclick="duplicateQuestion('${q.id}')" class="px-2.5 py-1 rounded border border-[var(--border)] hover:bg-[var(--background)] text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+                📋 Duplikat
+              </button>
+              <button onclick="editQuestion('${q.id}')" class="px-2.5 py-1 rounded border border-[var(--border)] hover:bg-[var(--background)] text-indigo-400">
+                ✏️ Edit
+              </button>
+              <button onclick="deleteQuestion('${q.id}')" class="px-2.5 py-1 rounded border border-[var(--border)] hover:bg-rose-500/15 text-rose-400">
+                🗑️ Hapus
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function resetFilters() {
+      document.getElementById('filter-search').value = '';
+      document.getElementById('filter-subject').value = 'ALL';
+      document.getElementById('filter-semester').value = 'ALL';
+      document.getElementById('filter-difficulty').value = 'ALL';
+      document.getElementById('filter-bloom').value = 'ALL';
+      renderBank();
+    }
+
+    // Modal Form Add/Edit
+    function buildOptionsInputs(options = ['', '', '', ''], correctIndex = 0) {
+      const letters = ['A', 'B', 'C', 'D'];
+      const container = document.getElementById('form-options-container');
+      container.innerHTML = letters.map((letter, idx) => `
+        <div class="flex items-center gap-2">
+          <input type="radio" name="form-correct" value="${idx}" ${idx === correctIndex ? 'checked' : ''} class="cursor-pointer" />
+          <span class="text-xs font-bold w-5">${letter}.</span>
+          <input
+            type="text"
+            id="form-opt-${idx}"
+            value="${escapeHtml(options[idx] || '')}"
+            placeholder="Pilihan jawaban ${letter}..."
+            class="flex-1 px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]"
+          />
+        </div>
+      `).join('');
+    }
+
+    function toggleFormType() {
+      const type = document.getElementById('form-type').value;
+      const pgSec = document.getElementById('form-pg-section');
+      if (type === 'ESAI') pgSec.classList.add('hidden');
+      else pgSec.classList.remove('hidden');
+    }
+
+    function openModal(editId = null) {
+      document.getElementById('question-modal').classList.remove('hidden');
+      if (!editId) {
+        document.getElementById('modal-title').textContent = 'Tambah Butir Soal SD Kelas 6';
+        document.getElementById('form-id').value = '';
+        document.getElementById('form-subject').value = 'Matematika';
+        document.getElementById('form-semester').value = '1';
+        document.getElementById('form-type').value = 'PG';
+        document.getElementById('form-topic').value = '';
+        document.getElementById('form-difficulty').value = 'Sedang';
+        document.getElementById('form-bloom').value = 'C3';
+        document.getElementById('form-question').value = '';
+        document.getElementById('form-explanation').value = '';
+        buildOptionsInputs(['', '', '', ''], 0);
+        toggleFormType();
+      }
+    }
+
+    function editQuestion(id) {
+      const q = questions.find((item) => item.id === id);
+      if (!q) return;
+      openModal(id);
+      document.getElementById('modal-title').textContent = `Edit Soal (${q.id})`;
+      document.getElementById('form-id').value = q.id;
+      document.getElementById('form-subject').value = q.subject;
+      document.getElementById('form-semester').value = String(q.semester || 1);
+      document.getElementById('form-type').value = q.type;
+      document.getElementById('form-topic').value = q.topic;
+      document.getElementById('form-difficulty').value = q.difficulty;
+      document.getElementById('form-bloom').value = q.bloom;
+      document.getElementById('form-question').value = q.question;
+      document.getElementById('form-explanation').value = q.explanation;
+      buildOptionsInputs(q.options && q.options.length ? q.options : ['', '', '', ''], q.correctIndex || 0);
+      toggleFormType();
+    }
+
+    function closeModal() {
+      document.getElementById('question-modal').classList.add('hidden');
+    }
+
+    function saveQuestion() {
+      const id = document.getElementById('form-id').value;
+      const subject = document.getElementById('form-subject').value;
+      const semester = Number(document.getElementById('form-semester').value) || 1;
+      const type = document.getElementById('form-type').value;
+      const topic = document.getElementById('form-topic').value.trim() || 'Materi Kelas 6';
+      const difficulty = document.getElementById('form-difficulty').value;
+      const bloom = document.getElementById('form-bloom').value;
+      const points = difficulty === 'Sulit' ? 15 : 10;
+      const questionText = document.getElementById('form-question').value.trim();
+      const explanation = document.getElementById('form-explanation').value.trim() || 'Pembahasan belum diisi.';
+
+      if (!questionText) {
+        alert('Mohon isi pertanyaan soal terlebih dahulu.');
+        return;
+      }
+
+      let options = [];
+      let correctIndex = 0;
+      if (type === 'PG') {
+        for (let i = 0; i < 4; i++) {
+          const val = document.getElementById('form-opt-' + i).value.trim();
+          options.push(val || `Pilihan ${String.fromCharCode(65 + i)}`);
+        }
+        const checked = document.querySelector('input[name="form-correct"]:checked');
+        correctIndex = checked ? Number(checked.value) : 0;
+      }
+
+      if (id) {
+        const idx = questions.findIndex((q) => q.id === id);
+        if (idx !== -1) {
+          questions[idx] = { ...questions[idx], subject, semester, type, topic, difficulty, bloom, points, question: questionText, options, correctIndex, explanation };
+        }
+      } else {
+        const newId = `SD6-${subject.slice(0, 3).toUpperCase()}-${Math.floor(10 + Math.random() * 89)}`;
+        questions.unshift({
+          id: newId,
+          subject,
+          semester,
+          type,
+          topic,
+          difficulty,
+          bloom,
+          points,
+          timeMinutes: 2,
+          question: questionText,
+          options,
+          correctIndex,
+          explanation
+        });
+      }
+
+      saveData();
+      closeModal();
+      refreshAll();
+    }
+
+    function duplicateQuestion(id) {
+      const q = questions.find((item) => item.id === id);
+      if (!q) return;
+      const copy = JSON.parse(JSON.stringify(q));
+      copy.id = `${q.id}-COPY`;
+      questions.unshift(copy);
+      saveData();
+      refreshAll();
+    }
+
+    function deleteQuestion(id) {
+      questions = questions.filter((q) => q.id !== id);
+      saveData();
+      refreshAll();
+    }
+
+    // =========================================================================
+    // TAB 4: GENERATOR NASKAH UJIAN SEKOLAH
+    // =========================================================================
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function generateExamPackage() {
+      const title = document.getElementById('pkg-title').value.trim() || 'Naskah Ujian Kelas 6 SD';
+      const subj = document.getElementById('pkg-subject').value;
+      const sem = document.getElementById('pkg-semester').value;
+      const count = Math.max(1, Number(document.getElementById('pkg-count').value) || 10);
+      const duration = Number(document.getElementById('pkg-time').value) || 45;
+      const shuffleQ = document.getElementById('pkg-shuffle-q').checked;
+      const shuffleOpt = document.getElementById('pkg-shuffle-opt').checked;
+      const includeKey = document.getElementById('pkg-include-key').checked;
+
+      const pEasy = Number(document.getElementById('pkg-easy').value) || 30;
+      const pMed = Number(document.getElementById('pkg-medium').value) || 50;
+      const pHard = Number(document.getElementById('pkg-hard').value) || 20;
+      const sumP = pEasy + pMed + pHard || 100;
+
+      let pool = [...questions];
+      if (subj !== 'ALL') pool = pool.filter((q) => q.subject === subj);
+      if (sem !== 'ALL') pool = pool.filter((q) => String(q.semester) === String(sem));
+      if (pool.length === 0) pool = [...questions];
+
+      const nEasy = Math.round((pEasy / sumP) * count);
+      const nMed = Math.round((pMed / sumP) * count);
+      const nHard = Math.max(0, count - nEasy - nMed);
+
+      const easyPool = shuffleArray(pool.filter((q) => q.difficulty === 'Mudah'));
+      const medPool = shuffleArray(pool.filter((q) => q.difficulty === 'Sedang'));
+      const hardPool = shuffleArray(pool.filter((q) => q.difficulty === 'Sulit'));
+
+      let selected = [
+        ...easyPool.slice(0, nEasy),
+        ...medPool.slice(0, nMed),
+        ...hardPool.slice(0, nHard)
+      ];
+
+      if (selected.length < count) {
+        const usedIds = new Set(selected.map((q) => q.id));
+        const remaining = shuffleArray(pool.filter((q) => !usedIds.has(q.id)));
+        selected.push(...remaining.slice(0, count - selected.length));
+      }
+
+      if (shuffleQ) selected = shuffleArray(selected);
+
+      currentPackage = selected.map((q) => {
+        const item = JSON.parse(JSON.stringify(q));
+        if (item.type === 'PG' && shuffleOpt && item.options.length > 0) {
+          const correctText = item.options[item.correctIndex];
+          item.options = shuffleArray(item.options);
+          item.correctIndex = item.options.indexOf(correctText);
+        }
+        return item;
+      });
+
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      const totalPts = currentPackage.reduce((acc, q) => acc + Number(q.points), 0);
+
+      document.getElementById('exam-paper-preview').innerHTML = `
+        <div class="border-b-2 border-[var(--border)] pb-4 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Pemerintah Daerah • Dinas Pendidikan Sekolah Dasar</div>
+            <h2 class="text-lg font-bold mt-0.5">${escapeHtml(title)}</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Mata Pelajaran: ${subj === 'ALL' ? 'Tematik / Campuran Kelas VI' : subj} •
+              Semester: ${sem === 'ALL' ? '1 & 2' : sem} •
+              Waktu: ${duration} Menit • Total Skor: ${totalPts} Poin
+            </p>
+          </div>
+          <div class="text-xs bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 font-mono">
+            Nama Siswa: ___________________<br/>
+            Kelas: VI (Enam) _____
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          ${currentPackage.map((q, i) => `
+            <div class="p-4 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-2.5">
+              <div class="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+                <span class="font-bold text-[var(--foreground)]">No. ${i + 1}</span>
+                <span>[${q.subject} • ${q.topic} • ${q.difficulty} • ${q.points} Poin]</span>
+              </div>
+              <div class="text-sm font-medium leading-relaxed whitespace-pre-line">${escapeHtml(q.question)}</div>
+              ${
+                q.type === 'PG'
+                  ? `<div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1 text-xs">
+                      ${q.options.map((opt, oIdx) => `
+                        <div class="px-2.5 py-1.5 rounded border border-[var(--border)] bg-[var(--card)]">
+                          <span class="font-bold mr-1.5">${letters[oIdx]}.</span> ${escapeHtml(opt)}
+                        </div>
+                      `).join('')}
+                    </div>`
+                  : `<div class="h-16 rounded border border-dashed border-[var(--border)] p-2 text-xs text-[var(--muted-foreground)]">Tempat Jawaban Uraian Siswa...</div>`
+              }
+            </div>
+          `).join('')}
+        </div>
+
+        ${
+          includeKey
+            ? `<div class="pt-5 border-t-2 border-[var(--border)] space-y-3">
+                <h3 class="text-sm font-bold text-indigo-400">🔑 Lampiran Kunci Jawaban & Pembahasan Guru</h3>
+                <div class="space-y-2 text-xs">
+                  ${currentPackage.map((q, i) => `
+                    <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                      <div class="font-bold">No. ${i + 1} — ${q.type === 'PG' ? `Kunci: ${letters[q.correctIndex]}` : 'Uraian/Esai'} (${q.points} Poin)</div>
+                      <div class="text-[var(--muted-foreground)] mt-0.5">${escapeHtml(q.explanation)}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>`
+            : ''
+        }
+      `;
+    }
+
+    function startQuizFromPackage() {
+      if (currentPackage.length === 0) generateExamPackage();
+      const pgOnly = currentPackage.filter((q) => q.type === 'PG');
+      initCBT(pgOnly, document.getElementById('pkg-title').value);
+      switchTab('quiz');
+    }
+
+    // =========================================================================
+    // TAB 5: ANALITIK & RAPOR SISWA
+    // =========================================================================
+    function renderAnalytics() {
+      const total = questions.length || 1;
+      const bloomLevels = [
+        { code: 'C1', name: 'C1 - Mengingat (LOTS)', color: 'bg-sky-500' },
+        { code: 'C2', name: 'C2 - Memahami (LOTS)', color: 'bg-cyan-500' },
+        { code: 'C3', name: 'C3 - Menerapkan (MOTS)', color: 'bg-indigo-500' },
+        { code: 'C4', name: 'C4 - Menganalisis (HOTS)', color: 'bg-purple-500' },
+        { code: 'C5', name: 'C5 - Mengevaluasi (HOTS)', color: 'bg-fuchsia-500' },
+        { code: 'C6', name: 'C6 - Mencipta (HOTS)', color: 'bg-rose-500' }
+      ];
+
+      document.getElementById('bloom-chart').innerHTML = bloomLevels.map((b) => {
+        const cnt = questions.filter((q) => q.bloom === b.code).length;
+        const pct = Math.round((cnt / total) * 100);
+        return `
+          <div class="space-y-1 text-xs">
+            <div class="flex justify-between">
+              <span class="font-medium">${b.name}</span>
+              <span class="text-[var(--muted-foreground)]">${cnt} soal (${pct}%)</span>
+            </div>
+            <div class="h-2.5 rounded-full bg-[var(--background)] overflow-hidden">
+              <div class="${b.color} h-full transition-all" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const subjects = ['Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris'];
+      document.getElementById('subject-chart').innerHTML = subjects.map((s) => {
+        const subQs = questions.filter((q) => q.subject === s);
+        const cnt = subQs.length;
+        const pct = Math.round((cnt / total) * 100);
+        const sem1 = subQs.filter((q) => Number(q.semester) === 1).length;
+        const sem2 = subQs.filter((q) => Number(q.semester) === 2).length;
+        return `
+          <div class="space-y-1 text-xs">
+            <div class="flex justify-between">
+              <span class="font-medium">${s}</span>
+              <span class="text-[var(--muted-foreground)]">${cnt} soal (Sem 1: ${sem1} • Sem 2: ${sem2})</span>
+            </div>
+            <div class="h-2.5 rounded-full bg-[var(--background)] overflow-hidden">
+              <div class="bg-indigo-500 h-full transition-all" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const histEl = document.getElementById('quiz-history-list');
+      if (!studentStats.history.length) {
+        histEl.innerHTML = `<div class="p-4 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]">Belum ada riwayat kuis yang diselesaikan. Yuk mulai latihan di tab Mode Kuis Anak!</div>`;
+      } else {
+        histEl.innerHTML = studentStats.history.map((h, i) => `
+          <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="font-bold text-[var(--foreground)]">#${i + 1} • ${escapeHtml(h.topic)}</span>
+              <span class="text-[var(--muted-foreground)] ml-2">(${h.date})</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span>Benar: <strong>${h.correct}/${h.total}</strong></span>
+              <span class="px-2.5 py-0.5 rounded-full font-bold ${h.score >= 75 ? 'bg-emerald-500/15 text-emerald-400' : 'bg-amber-500/15 text-amber-400'}">
+                Skor: ${h.score}
+              </span>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function clearHistory() {
+      studentStats.history = [];
+      saveData();
+      renderAnalytics();
+      updateGamificationHeader();
+    }
+
+    // Export JSON & CSV
+    function exportJSON() {
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(questions, null, 2));
+      const a = document.createElement('a');
+      a.setAttribute('href', dataStr);
+      a.setAttribute('download', `bank_soal_sd_kelas6_${new Date().toISOString().slice(0, 10)}.json`);
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    function exportCSV() {
+      const headers = ['ID', 'Mata Pelajaran', 'Semester', 'Bab/Topik', 'Tipe', 'Kesulitan', 'Bloom', 'Pertanyaan', 'Opsi A', 'Opsi B', 'Opsi C', 'Opsi D', 'Kunci', 'Pembahasan'];
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      const rows = questions.map((q) => [
+        q.id,
+        q.subject,
+        q.semester || 1,
+        q.topic,
+        q.type,
+        q.difficulty,
+        q.bloom,
+        q.question,
+        (q.options && q.options[0]) || '',
+        (q.options && q.options[1]) || '',
+        (q.options && q.options[2]) || '',
+        (q.options && q.options[3]) || '',
+        q.type === 'PG' ? letters[q.correctIndex || 0] : 'Uraian',
+        q.explanation
+      ]);
+      const csvContent = [headers, ...rows]
+        .map((row) => row.map((cell) => `"${String(cell || '').replace(/"/g, '""')}"`).join(','))
+        .join('\n');
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.setAttribute('href', url);
+      a.setAttribute('download', `bank_soal_sd_kelas6_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (Array.isArray(imported) && imported.length > 0) {
+            questions = imported;
+            saveData();
+            refreshAll();
+          } else {
+            alert('Format JSON tidak valid.');
+          }
+        } catch (err) {
+          alert('Gagal membaca file JSON.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Universal File Importer (Mendukung HTML Kuis & JSON)
+    function handleFileImport(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const fileName = file.name.toLowerCase();
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const content = e.target.result;
+        if (fileName.endsWith('.html') || fileName.endsWith('.htm')) {
+          parseAndImportHTML(content, file.name);
+        } else {
+          try {
+            const imported = JSON.parse(content);
+            if (Array.isArray(imported) && imported.length > 0) {
+              questions = imported;
+              saveData();
+              refreshAll();
+              alert(`Berhasil mengimpor ${imported.length} soal dari file JSON!`);
+            } else {
+              alert('Format JSON tidak valid.');
+            }
+          } catch (err) {
+            alert('Gagal membaca file JSON: ' + err.message);
+          }
+        }
+        event.target.value = ''; // Reset input agar bisa pilih file yang sama
+      };
+
+      reader.readAsText(file);
+    }
+
+    // Parser Cerdas untuk File HTML Soal
+    function parseAndImportHTML(htmlContent, fileName) {
+      try {
+        let extractedQuestions = [];
+
+        // 1. Ekstraksi pola variabel JavaScript pgData / questions / quizData
+        const jsMatch = htmlContent.match(/(?:const|let|var)\s+(?:pgData|questions|quizData|soalData)\s*=\s*(\[[\s\S]*?\]);/);
+        if (jsMatch && jsMatch[1]) {
+          try {
+            const rawArray = JSON.parse(jsMatch[1]);
+            extractedQuestions = rawArray.map((item, idx) => {
+              // Bersihkan teks penjelasan dari sitasi otomatis seperti [cite: 11]
+              const cleanExp = (item.exp || item.explanation || 'Pembahasan kunci terverifikasi.')
+                .replace(/\[cite:\s*\d+\]/g, '')
+                .trim();
+
+              const cleanQuestion = (item.q || item.question || '').replace(/\[cite:\s*\d+\]/g, '').trim();
+
+              return {
+                id: `SD6-IMP-${Date.now().toString().slice(-4)}-${idx + 1}`,
+                subject: 'IPAS',
+                semester: 2,
+                topic: item.sub || 'Bab 9: Tata Surya',
+                type: 'PG',
+                difficulty: 'Sedang',
+                bloom: 'C3',
+                points: 10,
+                timeMinutes: 2,
+                question: cleanQuestion,
+                options: item.opt || item.options || [],
+                correctIndex: typeof item.ans === 'number' ? item.ans : (item.correctIndex || 0),
+                explanation: cleanExp
+              };
+            });
+          } catch (e) {
+            console.warn('Gagal parse JSON regex langsung, beralih ke DOM parser...', e);
+          }
+        }
+
+        // 2. Jika tidak melalui regex JS, gunakan DOM Parser untuk membaca elemen HTML (.card, .question, dll)
+        if (extractedQuestions.length === 0) {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlContent, 'text/html');
+          const cards = doc.querySelectorAll('.card, .question-card, .soal-item');
+
+          if (cards.length > 0) {
+            cards.forEach((card, idx) => {
+              const qEl = card.querySelector('.question-text, .pertanyaan, h3, h4');
+              const optEls = card.querySelectorAll('.btn-option, .option, li');
+              const expEl = card.querySelector('.feedback, .pembahasan');
+              const subEl = card.querySelector('.badge, .topik, .sub');
+
+              if (qEl && optEls.length > 0) {
+                const options = Array.from(optEls).map(el => el.textContent.replace(/^[A-E]\.\s*/i, '').trim());
+                extractedQuestions.push({
+                  id: `SD6-IMP-${Date.now().toString().slice(-4)}-${idx + 1}`,
+                  subject: 'IPAS',
+                  semester: 2,
+                  topic: subEl ? subEl.textContent.trim() : 'Bab Tata Surya',
+                  type: 'PG',
+                  difficulty: 'Sedang',
+                  bloom: 'C3',
+                  points: 10,
+                  timeMinutes: 2,
+                  question: qEl.textContent.replace(/^\d+[\.\)]\s*/, '').trim(),
+                  options: options,
+                  correctIndex: 0,
+                  explanation: expEl ? expEl.textContent.replace(/^💡\s*Penjelasan:\s*/i, '').trim() : 'Pembahasan materi.'
+                });
+              }
+            });
+          }
+        }
+
+        if (extractedQuestions.length === 0) {
+          alert('Tidak dapat mendeteksi format soal di dalam file HTML ini.');
+          return;
+        }
+
+        // Tambahkan ke bank soal (hindari duplikat berdasarkan teks pertanyaan)
+        let addedCount = 0;
+        const existingTexts = new Set(questions.map(q => q.question.toLowerCase().trim()));
+
+        extractedQuestions.forEach(newQ => {
+          if (!existingTexts.has(newQ.question.toLowerCase().trim())) {
+            questions.push(newQ);
+            existingTexts.add(newQ.question.toLowerCase().trim());
+            addedCount++;
+          }
+        });
+
+        saveData();
+        refreshAll();
+
+        alert(`🎉 Sukses Mengimpor File HTML!\n\n• Berhasil mengekstrak: ${extractedQuestions.length} butir soal\n• Soal baru yang ditambahkan: ${addedCount} soal\n• Total bank soal sekarang: ${questions.length} butir soal.\n\nSoal langsung tersedia di Bank Soal, Mode Kuis Anak, dan Generator Ujian!`);
+
+        // Beralih otomatis ke tab Bank Soal dan tampilkan soal yang baru diimpor
+        document.getElementById('filter-search').value = 'Tata Surya';
+        switchTab('bank');
+      } catch (err) {
+        alert('Terjadi kesalahan saat memproses file HTML: ' + err.message);
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function refreshAll() {
+      updateKPIs();
+      renderCurriculum();
+      renderBank();
+      renderAnalytics();
+    }
+
+    // Init
+    loadData();
+    refreshAll();
+  </script>
+</body>
+</html>
