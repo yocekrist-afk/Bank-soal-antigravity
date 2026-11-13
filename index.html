@@ -1262,6 +1262,10 @@
         }
       } else if (tabId === 'bank') {
         renderBankTable();
+      } else if (tabId === 'quiz') {
+        if (!cbtQuestions || cbtQuestions.length === 0) {
+          renderQuizLobby();
+        }
       } else if (tabId === 'analytics') {
         renderAnalytics();
       }
@@ -1769,8 +1773,351 @@
     }
 
     // =========================================================================
-    // CBT QUIZ ENGINE
+    // CBT QUIZ ENGINE & QUIZ LOBBY
     // =========================================================================
+    function renderQuizLobby() {
+      const container = document.getElementById('quiz-container');
+      if (!container) return;
+
+      const userXP = studentStats.xp || 0;
+      const userLevel = Math.floor(userXP / 100) + 1;
+      const bestStreak = studentStats.bestStreak || 0;
+      const totalPG = questions.filter(q => q.type === 'PG').length;
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <!-- Hero Header Card -->
+          <div class="p-6 rounded-2xl bg-gradient-to-r from-teal-700 via-teal-800 to-teal-900 text-white shadow-md relative overflow-hidden">
+            <div class="absolute -right-8 -bottom-8 opacity-10 text-9xl select-none pointer-events-none">🎮</div>
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+              <div class="space-y-1.5">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wider bg-teal-300 text-teal-950">Mode Kuis & CBT Aktif</span>
+                  <span class="text-xs text-teal-200">Kurikulum Merdeka SD Kelas 6 Fase C</span>
+                </div>
+                <h2 class="text-2xl font-black tracking-tight">Pusat Latihan Kuis & Tryout</h2>
+                <p class="text-xs text-teal-100 max-w-xl leading-relaxed">
+                  Pilih paket kuis cepat 1-klik di bawah, atau atur kuis mandiri sesuai mata pelajaran dan subtes bab yang ingin kamu pelajari. Dilengkapi timer ujian, navigasi soal lengkap, dan poin XP!
+                </p>
+              </div>
+
+              <!-- Status Pills -->
+              <div class="flex flex-wrap md:flex-col items-start md:items-end gap-2 shrink-0">
+                <div class="flex items-center gap-2">
+                  <div class="px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 text-xs font-bold flex items-center gap-1.5">
+                    <span class="text-amber-300">⭐</span>
+                    <span>` + userXP + ` XP</span>
+                  </div>
+                  <div class="px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 text-xs font-bold flex items-center gap-1.5">
+                    <span class="text-emerald-300">🏆</span>
+                    <span>Level ` + userLevel + `</span>
+                  </div>
+                  <div class="px-3 py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/15 text-xs font-bold flex items-center gap-1.5">
+                    <span class="text-orange-400">🔥</span>
+                    <span>Streak ` + bestStreak + `</span>
+                  </div>
+                </div>
+                <button onclick="toggleSoundFromLobby()" class="px-3 py-1 rounded-lg text-xs font-semibold bg-white/10 hover:bg-white/20 border border-white/20 transition flex items-center gap-1.5 cursor-pointer">
+                  <span>` + (soundOn ? '🔊 Suara: Nyala' : '🔇 Suara: Hening') + `</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 1: Paket Kuis Cepat (1-Klik Langsung Mulai) -->
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-extrabold text-sm text-[var(--text-main)] flex items-center gap-2">
+                  <span>⚡</span> Paket Kuis Cepat (1-Klik Langsung Mulai)
+                </h3>
+                <p class="text-xs text-[var(--text-muted)]">Pilihan kuis favorit siap dikerjakan secara langsung.</p>
+              </div>
+              <span class="text-xs font-bold text-[var(--theme-primary)]">` + totalPG + ` Soal Siap Pakai</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <!-- Quick Quiz 1: Tata Surya -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-700 border border-amber-200">🪐 Favorit Siswa</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">52 Butir Soal</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Mega Kuis Tata Surya</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Sistem 8 planet, atmosfer Venus & Mars, rotasi & revolusi bumi, gerhana matahari/bulan, dan kalender Masehi vs Hijriah.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('tata-surya')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis Tata Surya
+                </button>
+              </div>
+
+              <!-- Quick Quiz 2: Matematika -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-700 border border-blue-200">📐 Matematika</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">15 Soal Acak</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Kuis Kilat Matematika SD 6</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Operasi pecahan & desimal, rasio skala peta, volume kubus balok, mean & median data, serta peluang kejadian.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('matematika')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis Matematika
+                </button>
+              </div>
+
+              <!-- Quick Quiz 3: IPAS -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-700 border border-emerald-200">🌿 Sains & Sosial</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">15 Soal Acak</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Kuis Eksplorasi IPAS Fase C</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Sistem gerak rangka & sendi, tokoh Proklamasi 1945, benua-benua di dunia, dan kerja sama anggota ASEAN.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('ipas')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis IPAS
+                </button>
+              </div>
+
+              <!-- Quick Quiz 4: Bahasa Indonesia -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-700 border border-purple-200">📖 Literasi</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">15 Soal Acak</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Kuis Literasi Bahasa Indonesia</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Teks eksplanasi sebab-akibat, surat resmi dinas, pidato persuasif, membedakan fakta vs opini, dan peribahasa.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('bahasa')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis Bahasa
+                </button>
+              </div>
+
+              <!-- Quick Quiz 5: Pancasila -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-rose-500/10 text-rose-700 border border-rose-200">🦅 Nilai Luhur</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">15 Soal Acak</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Kuis Pendidikan Pancasila</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Butir pengamalan 5 sila, 4 macam norma masyarakat, keseimbangan hak & kewajiban, serta musyawarah mufakat.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('pancasila')" class="w-full py-2 px-3 text-xs font-bold btn-primary-teal flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🚀</span> Mulai Kuis Pancasila
+                </button>
+              </div>
+
+              <!-- Quick Quiz 6: Tryout Akbar Semua Mapel -->
+              <div class="app-card p-5 space-y-3.5 hover:border-[var(--theme-primary)] hover:shadow-md transition flex flex-col justify-between bg-gradient-to-br from-amber-500/5 to-teal-500/5 border-amber-300">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-amber-500 text-white shadow-xs">🎯 Simulasi Ujian</span>
+                    <span class="text-[11px] font-semibold text-[var(--text-muted)]">25 Soal Campuran</span>
+                  </div>
+                  <h4 class="font-bold text-sm text-[var(--text-main)]">Tryout Akbar Fase C (Semua Mapel)</h4>
+                  <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Kombinasi komprehensif soal Matematika, IPAS, Bahasa Indonesia, Pancasila, dan Bahasa Inggris untuk menguji kesiapan ujian.
+                  </p>
+                </div>
+                <button onclick="startQuickQuiz('akbar')" class="w-full py-2 px-3 text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white rounded-xl shadow-xs transition flex items-center justify-center gap-2 cursor-pointer">
+                  <span>🏆</span> Mulai Tryout Akbar (25 Soal)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Kuis Mandiri / Kustom (Bisa Pilih Bab & Tingkat Kesulitan) -->
+          <div class="app-card p-6 space-y-4 border border-[var(--card-border)]">
+            <div class="flex items-center justify-between pb-2 border-b border-[var(--card-border)]">
+              <div>
+                <h3 class="font-extrabold text-sm text-[var(--text-main)] flex items-center gap-2">
+                  <span>⚙️</span> Buat Kuis Mandiri (Kustom)
+                </h3>
+                <p class="text-xs text-[var(--text-muted)]">Pilih mata pelajaran, subtes bab khusus, dan atur tingkat kesulitannya.</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <!-- Select Mapel -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-[var(--text-muted)]">Mata Pelajaran</label>
+                <select id="lobby-custom-subject" onchange="updateLobbyBabOptions()" class="w-full px-3 py-2 rounded-xl border border-[var(--card-border)] text-xs bg-white text-[var(--text-main)] font-medium focus:outline-none focus:border-[var(--theme-primary)]">
+                  <option value="all">Semua Mata Pelajaran</option>
+                  <option value="Matematika">Matematika</option>
+                  <option value="IPAS">IPAS (Sains & Sosial)</option>
+                  <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+                  <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
+                  <option value="Bahasa Inggris">Bahasa Inggris</option>
+                </select>
+              </div>
+
+              <!-- Select Bab / Subtes -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-[var(--text-muted)]">Subtes Bab Spesifik</label>
+                <select id="lobby-custom-bab" class="w-full px-3 py-2 rounded-xl border border-[var(--card-border)] text-xs bg-white text-[var(--text-main)] font-medium focus:outline-none focus:border-[var(--theme-primary)]">
+                  <option value="all">Semua Bab</option>
+                </select>
+              </div>
+
+              <!-- Select Kesulitan -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-[var(--text-muted)]">Tingkat Kesulitan</label>
+                <select id="lobby-custom-diff" class="w-full px-3 py-2 rounded-xl border border-[var(--card-border)] text-xs bg-white text-[var(--text-main)] font-medium focus:outline-none focus:border-[var(--theme-primary)]">
+                  <option value="all">Semua Kesulitan</option>
+                  <option value="Mudah">Mudah</option>
+                  <option value="Sedang">Sedang</option>
+                  <option value="Sulit">Sulit</option>
+                  <option value="HOTS">HOTS</option>
+                </select>
+              </div>
+
+              <!-- Select Jumlah Soal -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-[var(--text-muted)]">Jumlah Soal</label>
+                <select id="lobby-custom-count" class="w-full px-3 py-2 rounded-xl border border-[var(--card-border)] text-xs bg-white text-[var(--text-main)] font-medium focus:outline-none focus:border-[var(--theme-primary)]">
+                  <option value="5">5 Butir Soal (Latihan Cepat)</option>
+                  <option value="10" selected>10 Butir Soal (Standar)</option>
+                  <option value="15">15 Butir Soal</option>
+                  <option value="20">20 Butir Soal</option>
+                  <option value="25">25 Butir Soal (Format Tryout)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pt-2 flex items-center justify-end">
+              <button onclick="startCustomLobbyQuiz()" class="px-6 py-2.5 text-xs font-bold btn-primary-teal flex items-center gap-2 shadow-xs cursor-pointer">
+                <span>🚀</span> Mulai Kuis Pilihan Saya
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      updateLobbyBabOptions();
+    }
+
+    function updateLobbyBabOptions() {
+      const subjEl = document.getElementById('lobby-custom-subject');
+      const babEl = document.getElementById('lobby-custom-bab');
+      if (!subjEl || !babEl) return;
+
+      const selSubj = subjEl.value;
+      let modules = window.KURIKULUM_SD6 || [];
+      if (selSubj !== 'all') {
+        modules = modules.filter(m => m.subject === selSubj);
+      }
+
+      babEl.innerHTML = '<option value="all">Semua Bab (' + modules.length + ' bab)</option>' +
+        modules.map(m => '<option value="' + escapeHtml(m.id) + '">' + escapeHtml(m.bab) + '</option>').join('');
+    }
+
+    function startCustomLobbyQuiz() {
+      const subj = document.getElementById('lobby-custom-subject').value;
+      const babId = document.getElementById('lobby-custom-bab').value;
+      const diff = document.getElementById('lobby-custom-diff').value;
+      const count = parseInt(document.getElementById('lobby-custom-count').value, 10) || 10;
+
+      let pool = questions.filter(q => q.type === 'PG');
+      if (subj !== 'all') {
+        pool = pool.filter(q => q.subject === subj);
+      }
+      if (babId !== 'all') {
+        pool = pool.filter(q => q.moduleId === babId);
+      }
+      if (diff !== 'all') {
+        pool = pool.filter(q => q.difficulty === diff);
+      }
+
+      if (pool.length === 0) {
+        alert('Tidak ada soal pilihan ganda yang cocok dengan kombinasi filter yang dipilih. Silakan coba filter lainnya.');
+        return;
+      }
+
+      const shuffled = [...pool].sort(() => 0.5 - Math.random()).slice(0, count);
+      let quizTitle = 'Kuis Mandiri';
+      if (babId !== 'all') {
+        const m = (window.KURIKULUM_SD6 || []).find(x => x.id === babId);
+        if (m) quizTitle = m.bab;
+      } else if (subj !== 'all') {
+        quizTitle = 'Kuis ' + subj;
+      }
+      quizTitle += ' (' + shuffled.length + ' Soal)';
+
+      initCBT(shuffled, quizTitle);
+    }
+
+    function startQuickQuiz(quizKey) {
+      let pool = [];
+      let title = '';
+      let targetCount = 15;
+
+      if (quizKey === 'tata-surya') {
+        pool = questions.filter(q => (q.topic.includes('Tata Surya') || q.moduleId === 'IPAS-05') && q.type === 'PG');
+        title = 'Mega Kuis Tata Surya Fase C';
+        targetCount = 52;
+      } else if (quizKey === 'matematika') {
+        pool = questions.filter(q => q.subject === 'Matematika' && q.type === 'PG');
+        title = 'Kuis Kilat Matematika SD 6';
+        targetCount = 15;
+      } else if (quizKey === 'ipas') {
+        pool = questions.filter(q => q.subject === 'IPAS' && q.type === 'PG');
+        title = 'Kuis Eksplorasi Sains & Sosial IPAS';
+        targetCount = 15;
+      } else if (quizKey === 'bahasa') {
+        pool = questions.filter(q => q.subject === 'Bahasa Indonesia' && q.type === 'PG');
+        title = 'Kuis Literasi Bahasa Indonesia';
+        targetCount = 15;
+      } else if (quizKey === 'pancasila') {
+        pool = questions.filter(q => q.subject === 'Pendidikan Pancasila' && q.type === 'PG');
+        title = 'Kuis Nilai Luhur Pancasila';
+        targetCount = 15;
+      } else if (quizKey === 'akbar') {
+        pool = questions.filter(q => q.type === 'PG');
+        title = 'Tryout Akbar Fase C (Semua Mata Pelajaran)';
+        targetCount = 25;
+      }
+
+      if (pool.length === 0) {
+        alert('Tidak ada soal yang tersedia untuk paket ini.');
+        return;
+      }
+
+      const shuffled = [...pool].sort(() => 0.5 - Math.random()).slice(0, targetCount);
+      initCBT(shuffled, title);
+    }
+
+    function exitCBT() {
+      if (cbtQuestions && cbtQuestions.length > 0) {
+        if (!confirm('Apakah Anda yakin ingin keluar dari sesi kuis ini? Jawaban pada sesi kuis ini belum tersimpan sepenuhnya.')) {
+          return;
+        }
+      }
+      if (cbtTimerInterval) clearInterval(cbtTimerInterval);
+      cbtQuestions = [];
+      renderQuizLobby();
+    }
+
+    function toggleSoundFromLobby() {
+      soundOn = !soundOn;
+      if (soundOn) playTone('correct');
+      renderQuizLobby();
+    }
+
     function initCBT(qSubset, title) {
       cbtQuestions = qSubset;
       cbtIndex = 0;
@@ -1804,13 +2151,18 @@
         <div class="space-y-4">
           <!-- CBT Header Bar -->
           <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[var(--card-border)]">
-            <div>
-              <span class="text-[10px] font-bold text-[var(--theme-primary)] bg-[var(--theme-primary-light)] px-2 py-0.5 rounded">MODE CBT AKTIF</span>
-              <h3 class="font-extrabold text-sm text-[var(--text-main)] mt-1">` + title + `</h3>
+            <div class="flex items-center gap-3">
+              <button onclick="exitCBT()" class="text-xs px-3 py-1 btn-outline-white flex items-center gap-1.5 font-semibold text-[var(--text-muted)] hover:text-rose-600 transition cursor-pointer">
+                <span>←</span> Menu Kuis
+              </button>
+              <div>
+                <span class="text-[10px] font-bold text-[var(--theme-primary)] bg-[var(--theme-primary-light)] px-2 py-0.5 rounded">MODE CBT AKTIF</span>
+                <h3 class="font-extrabold text-sm text-[var(--text-main)] mt-1">` + title + `</h3>
+              </div>
             </div>
             <div class="flex items-center gap-3">
               <span id="cbt-timer-text" class="font-mono text-xs font-bold px-3 py-1 rounded-lg bg-[var(--app-bg)] border border-[var(--card-border)]">⏱️ 20:00</span>
-              <button onclick="finishCBT()" class="px-3.5 py-1 text-xs btn-primary-teal font-bold">Selesai Ujian</button>
+              <button onclick="finishCBT()" class="px-3.5 py-1 text-xs btn-primary-teal font-bold cursor-pointer">Selesai Ujian</button>
             </div>
           </div>
 
@@ -1968,9 +2320,10 @@
             <div class="text-xs text-[var(--text-muted)]">Benar ` + correctCount + ` dari ` + total + ` soal • + ` + earnedXP + ` XP</div>
           </div>
 
-          <div class="flex items-center justify-center gap-2 pt-2">
-            <button onclick="switchTab('curriculum')" class="px-4 py-2 text-xs btn-outline-white">Kembali ke Modul</button>
-            <button onclick="switchTab('analytics')" class="px-5 py-2 text-xs btn-primary-teal">Lihat Rapor</button>
+          <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+            <button onclick="renderQuizLobby()" class="px-4 py-2 text-xs btn-primary-teal font-bold cursor-pointer">🎮 Menu Kuis Lainnya</button>
+            <button onclick="switchTab('curriculum')" class="px-4 py-2 text-xs btn-outline-white cursor-pointer">Kembali ke Modul</button>
+            <button onclick="switchTab('analytics')" class="px-5 py-2 text-xs btn-outline-white cursor-pointer">Lihat Rapor</button>
           </div>
         </div>
       `;
