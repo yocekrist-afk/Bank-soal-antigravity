@@ -10334,7 +10334,7 @@ function startQuizForBab(subject, moduleId, babTitle) {
             ${isCorrect ? '🎉 Hebat Sekali! Jawabanmu Benar!' : `💡 Belum Tepat — Jawaban yang benar adalah ${letters[q.correctIndex]}`}
           </div>
           <div class="text-[var(--foreground)] leading-relaxed">
-            <strong>Penjelasan:</strong> ${escapeHtml(q.explanation)}
+            <strong>Penjelasan:</strong> ${formatFractions(escapeHtml(q.explanation))}
           </div>
         `;
       } else {
@@ -10452,13 +10452,13 @@ function startQuizForBab(subject, moduleId, babTitle) {
                 ${isCorrect ? `✓ Benar (+${pts})` : '✕ Belum Tepat (0)'}
               </span>
             </div>
-            <div class="text-[var(--foreground)] font-medium">${escapeHtml(q.question)}</div>
+            <div class="text-[var(--foreground)] font-medium">${formatFractions(escapeHtml(q.question))}</div>
             <div class="text-[var(--muted-foreground)]">
               Jawabanmu: <strong>${userAns !== undefined ? `${letters[userAns]}. ${escapeHtml(q.options[userAns])}` : 'Tidak dijawab'}</strong> •
               Kunci Jawaban: <strong class="text-emerald-400">${letters[q.correctIndex]}. ${escapeHtml(q.options[q.correctIndex])}</strong>
             </div>
             <div class="text-[var(--muted-foreground)] pt-1 border-t border-[var(--border)]">
-              <strong>Pembahasan:</strong> ${escapeHtml(q.explanation)}
+              <strong>Pembahasan:</strong> ${formatFractions(escapeHtml(q.explanation))}
             </div>
           </div>
         `;
@@ -10578,7 +10578,7 @@ function startQuizForBab(subject, moduleId, babTitle) {
               <div class="font-semibold text-indigo-400">
                 🔑 Kunci & Pembahasan ${q.type === 'PG' ? `(Jawaban: ${letters[q.correctIndex]})` : '(Pedoman Penskoran Uraian)'}:
               </div>
-              <p class="text-[var(--foreground)] leading-relaxed">${escapeHtml(q.explanation)}</p>
+              <p class="text-[var(--foreground)] leading-relaxed">${formatFractions(escapeHtml(q.explanation))}</p>
             </div>`
           : '';
 
@@ -10603,7 +10603,7 @@ function startQuizForBab(subject, moduleId, babTitle) {
               </div>
             </div>
 
-            <div class="text-sm font-medium leading-relaxed text-slate-900 whitespace-pre-line">${escapeHtml(q.question)}</div>
+            <div class="text-sm font-medium leading-relaxed text-slate-900 whitespace-pre-line">${formatFractions(escapeHtml(q.question))}</div>
             ${q.imageUrl ? `<div class="pt-2"><img src="${escapeHtml(q.imageUrl)}" alt="Gambar Soal" class="max-h-48 rounded-xl border border-slate-200 object-contain shadow-xs bg-slate-50 p-1" /></div>` : ''}
 
             ${optionsHtml}
@@ -10876,13 +10876,13 @@ function startQuizForBab(subject, moduleId, babTitle) {
                 <span class="font-bold text-[var(--foreground)]">No. ${i + 1}</span>
                 <span>[${q.subject} • ${q.topic} • ${q.difficulty} • ${q.points} Poin]</span>
               </div>
-              <div class="text-sm font-medium leading-relaxed whitespace-pre-line">${escapeHtml(q.question)}</div>
+              <div class="text-sm font-medium leading-relaxed whitespace-pre-line">${formatFractions(escapeHtml(q.question))}</div>
               ${
                 q.type === 'PG'
                   ? `<div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-1 text-xs">
                       ${q.options.map((opt, oIdx) => `
                         <div class="px-2.5 py-1.5 rounded border border-[var(--border)] bg-[var(--card)]">
-                          <span class="font-bold mr-1.5">${letters[oIdx]}.</span> ${escapeHtml(opt)}
+                          <span class="font-bold mr-1.5">${letters[oIdx]}.</span> ${formatFractions(escapeHtml(opt))}
                         </div>
                       `).join('')}
                     </div>`
@@ -10900,7 +10900,7 @@ function startQuizForBab(subject, moduleId, babTitle) {
                   ${currentPackage.map((q, i) => `
                     <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)]">
                       <div class="font-bold">No. ${i + 1} — ${q.type === 'PG' ? `Kunci: ${letters[q.correctIndex]}` : 'Uraian/Esai'} (${q.points} Poin)</div>
-                      <div class="text-[var(--muted-foreground)] mt-0.5">${escapeHtml(q.explanation)}</div>
+                      <div class="text-[var(--muted-foreground)] mt-0.5">${formatFractions(escapeHtml(q.explanation))}</div>
                     </div>
                   `).join('')}
                 </div>
@@ -11260,38 +11260,57 @@ function startQuizForBab(subject, moduleId, babTitle) {
     }
 
     
-    // Helper Format Pecahan Menjadi Tumpuk Vertikal Otomatis (Universal)
-    function formatFractions(text) {
-      if (!text || typeof text !== 'string') return text;
+    // Helper Format Pecahan Menjadi Tumpuk Vertikal Otomatis (100% Aman Tag HTML & Tailwind Opacity)
+    function formatFractions(html) {
+      if (!html || typeof html !== 'string') return html;
 
-      // Lindungi tanggal (misal 17/08/1945) dari konversi pecahan
-      const dates = [];
-      let res = text.replace(/\b\d{1,2}\/\d{1,2}\/\d{2,4}\b/g, (d) => {
-        dates.push(d);
-        return `___DATE_TOKEN_${dates.length - 1}___`;
-      });
+      // Pisahkan teks berdasarkan tag HTML: indeks genap (0, 2, 4...) adalah TEKS MURNI.
+      // Indeks ganjil (1, 3, 5...) adalah TAG HTML <div class="..."> yang TIDAK BOLEH disentuh!
+      const parts = html.split(/(<[^>]+>)/g);
+      for (let i = 0; i < parts.length; i += 2) {
+        let text = parts[i];
+        if (!text) continue;
 
-      // 1. Pecahan Campuran: misal '7 1/2', '1 1/4', '3 3/4', '2 2/3'
-      res = res.replace(/\b(\d+)\s+(\d+)\/(\d+)\b/g, (match, whole, top, bottom) => {
-        return `<span class="inline-fraction"><span class="fraction-whole">${whole}</span><span class="fraction-part"><span class="fraction-top">${top}</span><span class="fraction-bottom">${bottom}</span></span></span>`;
-      });
+        // 1. Lindungi URL (http:// atau https://)
+        const urls = [];
+        text = text.replace(/https?:\/\/[^\s<"']+/gi, (u) => {
+          urls.push(u);
+          return `___URL_TOKEN_${urls.length - 1}___`;
+        });
 
-      // 2. Pecahan Biasa (Positif & Negatif): misal '3/4', '15/2', '4/3', '1/10', '-1/2'
-      res = res.replace(/(^|[^\/\w])(-?\d+)\/(\d+)(?=[^\/\w]|$)/g, (match, prefix, top, bottom) => {
-        return `${prefix}<span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">${top}</span><span class="fraction-bottom">${bottom}</span></span></span>`;
-      });
+        // 2. Lindungi format tanggal (misal 17/08/1945 atau 12/05/2026)
+        const dates = [];
+        text = text.replace(/\b\d{1,2}\/\d{1,2}\/\d{2,4}\b/g, (d) => {
+          dates.push(d);
+          return `___DATE_TOKEN_${dates.length - 1}___`;
+        });
 
-      // 3. Pecahan Variabel Huruf: misal a/b, c/d, d/c, n/d
-      res = res.replace(/(^|[^\/\w])([a-z])\/([a-z])(?=[^\/\w]|$)/gi, (match, prefix, top, bottom) => {
-        return `${prefix}<span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">${top}</span><span class="fraction-bottom">${bottom}</span></span></span>`;
-      });
+        // 3. Pecahan Campuran: misal '7 1/2', '1 1/4', '3 3/4', '2 2/3'
+        text = text.replace(/\b(\d+)\s+(\d+)\/(\d+)\b/g, (match, whole, top, bottom) => {
+          return `<span class="inline-fraction"><span class="fraction-whole">${whole}</span><span class="fraction-part"><span class="fraction-top">${top}</span><span class="fraction-bottom">${bottom}</span></span></span>`;
+        });
 
-      // Kembalikan token tanggal
-      dates.forEach((d, idx) => {
-        res = res.replace(`___DATE_TOKEN_${idx}___`, d);
-      });
+        // 4. Pecahan Biasa (Positif & Negatif): misal '3/4', '15/2', '4/3', '1/10', '-1/2'
+        text = text.replace(/(^|[^\/\w])(-?\d+)\/(\d+)(?=[^\/\w]|$)/g, (match, prefix, top, bottom) => {
+          return `${prefix}<span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">${top}</span><span class="fraction-bottom">${bottom}</span></span></span>`;
+        });
 
-      return res;
+        // 5. Pecahan Variabel Huruf: misal a/b, c/d, d/c, n/d
+        text = text.replace(/(^|[^\/\w])([a-z])\/([a-z])(?=[^\/\w]|$)/gi, (match, prefix, top, bottom) => {
+          return `${prefix}<span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">${top}</span><span class="fraction-bottom">${bottom}</span></span></span>`;
+        });
+
+        // Kembalikan token tanggal & URL
+        dates.forEach((d, idx) => {
+          text = text.replace(`___DATE_TOKEN_${idx}___`, d);
+        });
+        urls.forEach((u, idx) => {
+          text = text.replace(`___URL_TOKEN_${idx}___`, u);
+        });
+
+        parts[i] = text;
+      }
+      return parts.join('');
     }
 
     function escapeHtml(str) {
