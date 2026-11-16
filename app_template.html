@@ -80,61 +80,86 @@
       </div>
 
       <!-- Navigation Menu Items -->
-      <nav class="flex-1 px-3 py-2 space-y-1 overflow-y-auto custom-scroll">
-        <div class="px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 sidebar-text">
-          Fitur Utama
+      <nav class="flex-1 px-3 py-2 space-y-3 overflow-y-auto custom-scroll">
+        <!-- MODUL 1: SISWA & BELAJAR -->
+        <div>
+          <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5 sidebar-text">
+            <span>🎒</span> 1. Pembelajaran Siswa
+          </div>
+          <div class="space-y-0.5 mt-1">
+            <button onclick="switchTab('curriculum'); autoCloseSidebarOnMobile();" id="side-tab-curriculum" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
+              <span class="text-base shrink-0">📖</span>
+              <span class="sidebar-text truncate">Rangkuman Materi & Bab</span>
+            </button>
+            <button onclick="switchTab('quiz'); autoCloseSidebarOnMobile();" id="side-tab-quiz" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
+              <span class="text-base shrink-0">🎮</span>
+              <span class="sidebar-text truncate">Kuis Interaktif Anak</span>
+            </button>
+          </div>
         </div>
 
-        <button onclick="switchTab('curriculum'); autoCloseSidebarOnMobile();" id="side-tab-curriculum" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left bg-indigo-600 text-white shadow-sm">
-          <span class="text-base shrink-0">📖</span>
-          <span class="sidebar-text truncate">1. Modul & Rangkuman</span>
-        </button>
-
-        <button onclick="switchTab('quiz'); autoCloseSidebarOnMobile();" id="side-tab-quiz" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
-          <span class="text-base shrink-0">🎮</span>
-          <span class="sidebar-text truncate">2. Mode Kuis Anak</span>
-        </button>
-
-        <button onclick="switchTab('bank'); autoCloseSidebarOnMobile();" id="side-tab-bank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
-          <span class="text-base shrink-0">📚</span>
-          <span class="sidebar-text truncate">3. Bank Soal Lengkap</span>
-        </button>
-
-        <button onclick="switchTab('builder'); autoCloseSidebarOnMobile();" id="side-tab-builder" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
-          <span class="text-base shrink-0">⚡</span>
-          <span class="sidebar-text truncate">4. Generator Ujian (PDF)</span>
-        </button>
-
-        <button onclick="switchTab('analytics'); autoCloseSidebarOnMobile();" id="side-tab-analytics" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
-          <span class="text-base shrink-0">📊</span>
-          <span class="sidebar-text truncate">5. Rapor & Analisis</span>
-        </button>
-
-        <!-- Quick Subject Shortcut Filters -->
-        <div class="pt-4 pb-1.5 px-2.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 sidebar-text">
-          Pintasan Mata Pelajaran
+        <!-- MODUL 2: BANK SOAL & KURIKULUM -->
+        <div class="pt-2 border-t border-slate-800/80">
+          <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5 sidebar-text">
+            <span>🗄️</span> 2. Bank Soal & Kurikulum
+          </div>
+          <div class="space-y-0.5 mt-1">
+            <button onclick="switchTab('bank'); autoCloseSidebarOnMobile();" id="side-tab-bank" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
+              <span class="text-base shrink-0">📚</span>
+              <span class="sidebar-text truncate">Katalog Bank Soal</span>
+            </button>
+            <button onclick="openModal(); autoCloseSidebarOnMobile();" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium transition text-left text-slate-400 hover:text-emerald-300 hover:bg-slate-800/50">
+              <span class="text-base shrink-0">➕</span>
+              <span class="sidebar-text truncate">Tambah Butir Soal Baru</span>
+            </button>
+          </div>
         </div>
-        <div class="space-y-1 sidebar-text">
-          <button onclick="quickFilterSubject('Matematika')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
-            <span>📐 Matematika</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 font-semibold">6 Bab</span>
-          </button>
-          <button onclick="quickFilterSubject('IPAS')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
-            <span>🌍 IPAS (IPA-IPS)</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">6 Bab</span>
-          </button>
-          <button onclick="quickFilterSubject('Bahasa Indonesia')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
-            <span>📖 B. Indonesia</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold">3 Bab</span>
-          </button>
-          <button onclick="quickFilterSubject('Pendidikan Pancasila')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
-            <span>🦅 Pancasila</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 font-semibold">2 Bab</span>
-          </button>
-          <button onclick="quickFilterSubject('Bahasa Inggris')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
-            <span>🇬🇧 B. Inggris</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-semibold">2 Bab</span>
-          </button>
+
+        <!-- MODUL 3: UJIAN & ASESMEN -->
+        <div class="pt-2 border-t border-slate-800/80">
+          <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5 sidebar-text">
+            <span>⚡</span> 3. Ujian & Evaluasi
+          </div>
+          <div class="space-y-0.5 mt-1">
+            <button onclick="switchTab('builder'); autoCloseSidebarOnMobile();" id="side-tab-builder" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
+              <span class="text-base shrink-0">📄</span>
+              <span class="sidebar-text truncate">Generator Naskah Ujian (PDF)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MODUL 4: RAPOR & ANALISIS -->
+        <div class="pt-2 border-t border-slate-800/80">
+          <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-purple-400 flex items-center gap-1.5 sidebar-text">
+            <span>📊</span> 4. Rapor & Analisis
+          </div>
+          <div class="space-y-0.5 mt-1">
+            <button onclick="switchTab('analytics'); autoCloseSidebarOnMobile();" id="side-tab-analytics" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
+              <span class="text-base shrink-0">📈</span>
+              <span class="sidebar-text truncate">Rapor Daya Serap & Nilai</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PINTASAN MAPEL -->
+        <div class="pt-2 border-t border-slate-800/80 sidebar-text">
+          <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            Pintasan Mata Pelajaran
+          </div>
+          <div class="grid grid-cols-2 gap-1 mt-1">
+            <button onclick="quickFilterSubject('Matematika')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
+              <span>📐</span> MTK
+            </button>
+            <button onclick="quickFilterSubject('IPAS')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
+              <span>🌍</span> IPAS
+            </button>
+            <button onclick="quickFilterSubject('Bahasa Indonesia')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
+              <span>📖</span> B.Indo
+            </button>
+            <button onclick="quickFilterSubject('Pendidikan Pancasila')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
+              <span>🦅</span> PPKn
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -203,28 +228,37 @@
         </div>
 
         <!-- Tab Strip Navigation (Clean White Bar with Accent Line) -->
-        <div class="bg-white border-b border-slate-200 px-4 sm:px-6 py-1.5 flex items-center justify-between gap-2 overflow-x-auto custom-scroll">
-          <div class="flex items-center gap-1 shrink-0">
-            <button onclick="switchTab('curriculum')" id="tab-curriculum" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-indigo-600 text-white shadow-xs">
-              📖 1. Modul Materi
+        <div class="bg-white border-b border-slate-200 px-4 sm:px-6 py-1.5 flex items-center justify-between gap-3 overflow-x-auto custom-scroll">
+          <div class="flex items-center gap-1.5 shrink-0">
+            <!-- Modul 1 -->
+            <button onclick="switchTab('curriculum')" id="tab-curriculum" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-indigo-600 text-white shadow-xs flex items-center gap-1.5">
+              <span>🎒</span> 1. Rangkuman Materi
             </button>
-            <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100">
-              🎮 2. Mode Kuis Anak
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
+              <span>🎮</span> 2. Kuis Interaktif
             </button>
-            <button onclick="switchTab('bank')" id="tab-bank" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100">
-              📚 3. Bank Soal Lengkap
+
+            <span class="h-4 w-px bg-slate-300 mx-1"></span>
+
+            <!-- Modul 2 & 3 -->
+            <button onclick="switchTab('bank')" id="tab-bank" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
+              <span>🗄️</span> 3. Bank Soal Guru
             </button>
-            <button onclick="switchTab('builder')" id="tab-builder" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100">
-              ⚡ 4. Generator Ujian (PDF)
+            <button onclick="switchTab('builder')" id="tab-builder" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
+              <span>⚡</span> 4. Generator Naskah Ujian
             </button>
-            <button onclick="switchTab('analytics')" id="tab-analytics" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100">
-              📊 5. Rapor & Analisis
+
+            <span class="h-4 w-px bg-slate-300 mx-1"></span>
+
+            <!-- Modul 4 -->
+            <button onclick="switchTab('analytics')" id="tab-analytics" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
+              <span>📊</span> 5. Rapor & Analisis
             </button>
           </div>
 
-          <div class="text-xs text-slate-500 font-medium hidden lg:flex items-center gap-2">
+          <div class="text-xs text-slate-500 font-medium hidden xl:flex items-center gap-2">
             <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span id="current-menu-title" class="font-semibold text-slate-700">1. Modul & Rangkuman Materi</span>
+            <span id="current-menu-title" class="font-semibold text-slate-700">1. Pembelajaran Siswa • Rangkuman Materi</span>
           </div>
         </div>
       </header>
@@ -1051,11 +1085,11 @@
     function switchTab(tab) {
       const tabs = ['curriculum', 'quiz', 'bank', 'builder', 'analytics'];
       const titles = {
-        curriculum: '1. Modul & Rangkuman Materi',
-        quiz: '2. Mode Kuis & Latihan Anak',
-        bank: '3. Bank Soal Lengkap SD Kelas 6',
-        builder: '4. Generator Naskah Ujian Sekolah',
-        analytics: '5. Rapor Belajar & Analisis Kurikulum'
+        curriculum: '1. Pembelajaran Siswa • Rangkuman Materi',
+        quiz: '1. Pembelajaran Siswa • Kuis Interaktif Anak',
+        bank: '2. Bank Soal & Kurikulum • Katalog Butir Soal',
+        builder: '3. Ujian & Evaluasi • Generator Naskah Ujian',
+        analytics: '4. Rapor & Analisis • Buku Nilai & Daya Serap'
       };
 
       const titleEl = document.getElementById('current-menu-title');
