@@ -1281,26 +1281,36 @@
   
   
   <!-- MODAL PEMBACA MATERI MENDALAM (DEEP LEARNING MODULE READER) -->
-  <div id="module-reader-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-6">
-    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+  <div id="module-reader-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-6 transition-all duration-200">
+    <div id="module-reader-card" class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200 transition-all">
       <!-- Header Reader Modal -->
-      <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-700 text-white p-5 flex items-center justify-between shrink-0 shadow-sm">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-2xl shadow-xs">
+      <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-700 text-white p-4 sm:p-5 flex items-center justify-between shrink-0 shadow-sm">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-2xl shadow-xs shrink-0">
             📖
           </div>
-          <div>
-            <div class="flex items-center gap-2">
+          <div class="min-w-0">
+            <div class="flex flex-wrap items-center gap-2">
               <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-white/25 text-white">Modul Pembelajaran Interaktif Mendalam</span>
               <span class="text-[10px] text-emerald-200">• HOTS & Mnemonic</span>
               <span id="reader-modal-track" class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-300 text-amber-950 tracking-wide"></span>
             </div>
-            <h2 class="text-base sm:text-lg font-bold text-white tracking-tight mt-0.5" id="reader-modal-title">Bab 4: Indonesia dan Masyarakat Dunia</h2>
+            <h2 class="text-base sm:text-lg font-bold text-white tracking-tight mt-0.5 truncate" id="reader-modal-title">Bab 4: Indonesia dan Masyarakat Dunia</h2>
           </div>
         </div>
-        <button onclick="closeModuleReaderModal()" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center text-lg font-bold transition">
-          ✕
-        </button>
+        <div class="flex items-center gap-2 shrink-0 ml-2">
+          <button id="reader-modal-fullscreen-btn" onclick="toggleReaderFullscreen()" title="Layar Penuh (F)" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center transition shadow-xs">
+            <svg id="fullscreen-icon-expand" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+            </svg>
+            <svg id="fullscreen-icon-compress" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 14h6m0 0v6m0-6L3 21m17-7h-6m0 0v6m0-6l7 7M10 4v6m0 0H4m6 0L3 3m10 7h6m0 0V4m0 6l7-7"/>
+            </svg>
+          </button>
+          <button onclick="closeModuleReaderModal()" title="Tutup (Esc)" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center text-lg font-bold transition shadow-xs">
+            ✕
+          </button>
+        </div>
       </div>
 
       <!-- Content Area with Rich Article Styling -->
@@ -9618,10 +9628,88 @@ function startQuizForBab(subject, moduleId, babTitle) {
       triggerKaTeXRender(bodyEl);
     }
 
+    let isReaderFullscreen = false;
+
+    function toggleReaderFullscreen() {
+      const modal = document.getElementById('module-reader-modal');
+      const card = document.getElementById('module-reader-card');
+      const expandIcon = document.getElementById('fullscreen-icon-expand');
+      const compressIcon = document.getElementById('fullscreen-icon-compress');
+      const btn = document.getElementById('reader-modal-fullscreen-btn');
+      const bodyEl = document.getElementById('reader-modal-body');
+
+      isReaderFullscreen = !isReaderFullscreen;
+
+      if (isReaderFullscreen) {
+        modal.classList.remove('p-3', 'sm:p-6');
+        modal.classList.add('p-0');
+        card.classList.remove('rounded-3xl', 'max-w-4xl', 'max-h-[92vh]');
+        card.classList.add('rounded-none', 'max-w-none', 'w-screen', 'h-screen', 'max-h-screen', 'border-none');
+        if (bodyEl) {
+          bodyEl.classList.add('max-w-5xl', 'mx-auto', 'w-full');
+        }
+        if (expandIcon) expandIcon.classList.add('hidden');
+        if (compressIcon) compressIcon.classList.remove('hidden');
+        if (btn) btn.title = "Kecilkan Tampilan (F)";
+
+        try {
+          if (document.documentElement.requestFullscreen && !document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          }
+        } catch (e) {}
+      } else {
+        modal.classList.remove('p-0');
+        modal.classList.add('p-3', 'sm:p-6');
+        card.classList.remove('rounded-none', 'max-w-none', 'w-screen', 'h-screen', 'max-h-screen', 'border-none');
+        card.classList.add('rounded-3xl', 'max-w-4xl', 'max-h-[92vh]');
+        if (bodyEl) {
+          bodyEl.classList.remove('max-w-5xl', 'mx-auto', 'w-full');
+        }
+        if (expandIcon) expandIcon.classList.remove('hidden');
+        if (compressIcon) compressIcon.classList.add('hidden');
+        if (btn) btn.title = "Layar Penuh (F)";
+
+        try {
+          if (document.fullscreenElement && document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          }
+        } catch (e) {}
+      }
+    }
+
     function closeModuleReaderModal() {
       const modal = document.getElementById('module-reader-modal');
       if (modal) modal.classList.add('hidden');
+      if (isReaderFullscreen) {
+        toggleReaderFullscreen();
+      }
     }
+
+    // Shortcut keyboard F dan Escape untuk Layar Penuh reader
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('module-reader-modal');
+      if (modal && !modal.classList.contains('hidden')) {
+        if (e.key === 'f' || e.key === 'F') {
+          if (!['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+            e.preventDefault();
+            toggleReaderFullscreen();
+          }
+        } else if (e.key === 'Escape') {
+          if (isReaderFullscreen) {
+            e.preventDefault();
+            toggleReaderFullscreen();
+          } else {
+            closeModuleReaderModal();
+          }
+        }
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement && isReaderFullscreen) {
+        toggleReaderFullscreen();
+      }
+    });
 
     // Fungsi otomatis mengimpor file materi artikel HTML dari Gemini
     function importRichLearningModule(htmlContent, fileName) {
