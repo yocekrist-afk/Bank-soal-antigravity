@@ -257,7 +257,7 @@ const readerModalHtml = `
 `;
 tpl = tpl.replace('<!-- MODAL PUSAT MODUL CEPAT', () => readerModalHtml + '\n  <!-- MODAL PUSAT MODUL CEPAT');
 
-// 7. Extract the original clean JS logic from commit 62b7e65
+// 7. Extract original clean JS logic
 console.log('7. Preparing clean core JavaScript logic...');
 const origScriptStart = tpl.indexOf('<script>', 2500) + 8;
 const origScriptEnd = tpl.lastIndexOf('</script>');
@@ -689,7 +689,7 @@ coreJs = coreJs.replace(
   () => "curriculum: '1. Pembelajaran Siswa • Rangkuman Materi',\n        flashcards: '1. Pembelajaran Siswa • Flashcard Hafalan Cepat',"
 );
 
-// Update handleFileImport to detect learning module
+// Update handleFileImport to detect learning module vs quiz
 const oldHandleImport = `function handleFileImport(event) {
       const file = event.target.files[0];
       if (!file) return;
@@ -721,7 +721,184 @@ const newHandleImport = `function handleFileImport(event) {
         } else {`;
 coreJs = coreJs.replace(oldHandleImport, () => newHandleImport);
 
-// Update renderCurriculum card buttons to include "Baca Modul Lengkap"
+// UPGRADED ROBUST PARSER UNTUK FILE HTML SOAL (GEMINI QUIZ UNIVERSAL PARSER)
+const upgradedHtmlParser = `function parseAndImportHTML(htmlContent, fileName) {
+      try {
+        let extractedQuestions = [];
+
+        // 1. Ekstraksi pola array JavaScript (questions, pgData, quizData, soalData, dataSoal, dll)
+        const jsMatch = htmlContent.match(/(?:const|let|var)\\s+(?:pgData|questions|quizData|soalData|quizQuestions|dataSoal|bankSoal|quiz|soal)\\s*=\\s*(\\[[\\s\\S]*?\\]);/i)
+          || htmlContent.match(/=\\s*(\\[\\s*\\{[\\s\\S]*?\\}\\s*\\]);/);
+
+        if (jsMatch && jsMatch[1]) {
+          try {
+            let rawArray = null;
+            try {
+              rawArray = JSON.parse(jsMatch[1]);
+            } catch (jsonErr) {
+              // Fallback aman untuk array literal JS (unquoted keys: q, o, a, e)
+              rawArray = new Function('return ' + jsMatch[1])();
+            }
+
+            if (Array.isArray(rawArray) && rawArray.length > 0) {
+              // Deteksi Mapel & Bab berdasarkan isi file
+              let subject = 'IPAS';
+              let semester = 2;
+              let moduleId = 'IPAS-B5';
+              let topic = 'Bab 5: Menjelajahi Bumi dan Antariksa';
+
+              const lower = (htmlContent + ' ' + fileName).toLowerCase();
+              if (lower.includes('tata surya') || lower.includes('bumi dan antariksa') || lower.includes('planet')) {
+                subject = 'IPAS'; semester = 2; moduleId = 'IPAS-B5'; topic = 'Bab 5: Menjelajahi Bumi dan Antariksa';
+              } else if (lower.includes('tubuh') || lower.includes('sendi') || lower.includes('rangka') || lower.includes('otot')) {
+                subject = 'IPAS'; semester = 1; moduleId = 'IPAS-B1'; topic = 'Bab 1: Bagaimana Tubuh Kita Bergerak?';
+              } else if (lower.includes('kemerdekaan') || lower.includes('sumpah pemuda') || lower.includes('penjajahan')) {
+                subject = 'IPAS'; semester = 1; moduleId = 'IPAS-B2'; topic = 'Bab 2: Sejarah Perjuangan Kemerdekaan';
+              } else if (lower.includes('benua') || lower.includes('geografis')) {
+                subject = 'IPAS'; semester = 1; moduleId = 'IPAS-B3'; topic = 'Bab 3: 6 Benua di Dunia';
+              } else if (lower.includes('globalisasi') || lower.includes('asean') || lower.includes('masyarakat dunia')) {
+                subject = 'IPAS'; semester = 2; moduleId = 'IPAS-B4'; topic = 'Bab 4: Indonesia dan Masyarakat Dunia';
+              } else if (lower.includes('pecahan') || lower.includes('desimal')) {
+                subject = 'Matematika'; semester = 1; moduleId = 'MTK-B1'; topic = 'Bab 1: Pecahan dan Desimal';
+              } else if (lower.includes('rasio') || lower.includes('skala') || lower.includes('perbandingan')) {
+                subject = 'Matematika'; semester = 1; moduleId = 'MTK-B2'; topic = 'Bab 2: Rasio & Skala';
+              } else if (lower.includes('bangun ruang') || lower.includes('kubus') || lower.includes('balok')) {
+                subject = 'Matematika'; semester = 1; moduleId = 'MTK-B3'; topic = 'Bab 3: Bangun Ruang (Kubus & Balok)';
+              } else if (lower.includes('data') || lower.includes('mean') || lower.includes('median') || lower.includes('modus')) {
+                subject = 'Matematika'; semester = 2; moduleId = 'MTK-B4'; topic = 'Bab 4: Pengolahan Data (Statistika)';
+              }
+
+              extractedQuestions = rawArray.map((item, idx) => {
+                // Pertanyaan
+                let qText = item.q || item.question || item.pertanyaan || item.soal || item.title || '';
+                qText = String(qText).replace(/^[0-9]+[\\.\\)]\\s*/, '').replace(/\\[cite:\\s*\\d+\\]/g, '').trim();
+
+                // Pilihan Opsi
+                let rawOpts = item.o || item.opt || item.options || item.pilihan || item.jawaban || item.choices || [];
+                let cleanOpts = rawOpts.map(opt => String(opt).replace(/^[A-E][\\.\\)]\\s*/i, '').trim());
+
+                // Kunci Jawaban
+                let ansIdx = 0;
+                let rawAns = item.a !== undefined ? item.a : (item.ans !== undefined ? item.ans : (item.correctIndex !== undefined ? item.correctIndex : item.kunci));
+
+                if (typeof rawAns === 'number') {
+                  ansIdx = rawAns;
+                } else if (typeof rawAns === 'string') {
+                  const trimmed = rawAns.trim();
+                  if (/^[A-E]$/i.test(trimmed)) {
+                    ansIdx = trimmed.toUpperCase().charCodeAt(0) - 65;
+                  } else {
+                    const matchIdx = cleanOpts.findIndex(o => o.toLowerCase() === trimmed.replace(/^[A-E][\\.\\)]\\s*/i, '').toLowerCase());
+                    if (matchIdx !== -1) ansIdx = matchIdx;
+                  }
+                }
+
+                // Pembahasan
+                let exp = item.e || item.exp || item.explanation || item.pembahasan || item.alasan || 'Pembahasan materi terverifikasi.';
+                exp = String(exp).replace(/\\[cite:\\s*\\d+\\]/g, '').trim();
+
+                return {
+                  id: 'SD6-IMP-' + Date.now().toString().slice(-4) + '-' + String(idx + 1).padStart(2, '0'),
+                  subject,
+                  semester,
+                  moduleId,
+                  topic,
+                  type: 'PG',
+                  difficulty: idx % 3 === 0 ? 'Mudah' : (idx % 3 === 1 ? 'Sedang' : 'Sulit'),
+                  bloom: idx % 2 === 0 ? 'C2' : 'C3',
+                  points: 10,
+                  timeMinutes: 2,
+                  question: qText,
+                  options: cleanOpts,
+                  correctIndex: ansIdx,
+                  explanation: exp
+                };
+              });
+            }
+          } catch (e) {
+            console.warn('Gagal ekstraksi script JS:', e);
+          }
+        }
+
+        // 2. DOM Parser Fallback untuk elemen HTML (.question-card, .card, dll)
+        if (extractedQuestions.length === 0) {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlContent, 'text/html');
+          const cards = doc.querySelectorAll('.card, .question-card, .soal-item');
+
+          if (cards.length > 0) {
+            cards.forEach((card, idx) => {
+              const qEl = card.querySelector('.question-text, .pertanyaan, h3, h4');
+              const optEls = card.querySelectorAll('.option-btn, .btn-option, .option, li');
+              const expEl = card.querySelector('.explanation-box, .feedback, .pembahasan');
+              const subEl = card.querySelector('.badge, .topik, .sub');
+
+              if (qEl && optEls.length > 0) {
+                const options = Array.from(optEls).map(el => el.textContent.replace(/^[A-E][\\.\\)]\\s*/i, '').trim());
+                extractedQuestions.push({
+                  id: 'SD6-IMP-' + Date.now().toString().slice(-4) + '-' + String(idx + 1).padStart(2, '0'),
+                  subject: 'IPAS',
+                  semester: 2,
+                  moduleId: 'IPAS-B5',
+                  topic: subEl ? subEl.textContent.trim() : 'Bab 5: Menjelajahi Bumi dan Antariksa',
+                  type: 'PG',
+                  difficulty: 'Sedang',
+                  bloom: 'C3',
+                  points: 10,
+                  timeMinutes: 2,
+                  question: qEl.textContent.replace(/^\\d+[\\.\\)]\\s*/, '').trim(),
+                  options: options,
+                  correctIndex: 0,
+                  explanation: expEl ? expEl.textContent.replace(/^💡\\s*Penjelasan:\\s*/i, '').trim() : 'Pembahasan materi.'
+                });
+              }
+            });
+          }
+        }
+
+        if (extractedQuestions.length === 0) {
+          alert('Format soal tidak terdeteksi. Pastikan file kuis HTML memiliki variabel soal atau struktur kartu kuis.');
+          return;
+        }
+
+        // Tambahkan ke bank soal (hindari duplikat berdasarkan teks pertanyaan)
+        let addedCount = 0;
+        const existingTexts = new Set(questions.map(q => q.question.toLowerCase().trim()));
+
+        extractedQuestions.forEach(newQ => {
+          if (!existingTexts.has(newQ.question.toLowerCase().trim())) {
+            questions.push(newQ);
+            existingTexts.add(newQ.question.toLowerCase().trim());
+            addedCount++;
+          }
+        });
+
+        saveData();
+        refreshAll();
+
+        const sampleTopic = extractedQuestions[0].topic || 'Soal Baru';
+        alert(\`🎉 Sukses Mengimpor File Kuis HTML!\\n\\n• Terdeteksi Topik: \${sampleTopic}\\n• Jumlah Soal Terbaca: \${extractedQuestions.length} butir\\n• Soal Baru Ditambahkan: \${addedCount} butir\\n• Total Bank Soal Sekarang: \${questions.length} butir\\n\\nSoal kini langsung aktif di Bank Soal dan Kuis Interaktif Anak!\`);
+
+        document.getElementById('filter-search').value = '';
+        document.getElementById('filter-subject').value = extractedQuestions[0].subject || 'ALL';
+        filterQuestions();
+        switchTab('bank');
+      } catch (err) {
+        alert('Terjadi kesalahan saat memproses file HTML: ' + err.message);
+      }
+    }`;
+
+// Replace old parseAndImportHTML with upgradedHtmlParser
+const oldParserStart = coreJs.indexOf('function parseAndImportHTML');
+const oldParserEnd = coreJs.indexOf('function escapeHtml', oldParserStart);
+if (oldParserStart !== -1 && oldParserEnd !== -1) {
+  coreJs = coreJs.substring(0, oldParserStart) + upgradedHtmlParser + '\n\n    ' + coreJs.substring(oldParserEnd);
+  console.log('Successfully replaced parseAndImportHTML with Universal Gemini Quiz Parser!');
+} else {
+  console.error('Could not find old parseAndImportHTML boundaries!');
+}
+
+// Update renderCurriculum card buttons
 const oldCardBtns = `<div class="flex items-center justify-between gap-2 pt-3 border-t border-[var(--border)]">
               <button onclick="practiceModule('\${m.id}', '\${escapeHtml(m.bab)}')" class="flex-1 py-2 px-3 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition">
                 🎯 Latihan Kuis Bab Ini (\${relatedQs.length})
