@@ -56,8 +56,8 @@ const newTopGroup1 = `<button onclick="switchTab('quiz')" id="tab-quiz" class="p
             </button>`;
 tpl = tpl.replace(oldTopGroup1, () => newTopGroup1);
 
-// 4. Section View Flashcards
-console.log('4. Adding Flashcards section view...');
+// 4. Section View Flashcards dengan Filter Bab
+console.log('4. Adding Flashcards section view with Bab filter...');
 const flashcardSectionHtml = `
     <!-- ========================================================================= -->
     <!-- TAB FLASHCARD HAFALAN INTERAKTIF ANAK SD (KARTU BOLAK-BALIK 3D)          -->
@@ -68,13 +68,20 @@ const flashcardSectionHtml = `
         <div class="flex flex-wrap items-center gap-3">
           <div>
             <label class="block text-xs font-semibold text-slate-500 mb-1">Mata Pelajaran:</label>
-            <select id="fc-subject" onchange="renderFlashcards()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800">
+            <select id="fc-subject" onchange="onFlashcardSubjectChange()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800">
               <option value="ALL">🌟 Semua Mata Pelajaran</option>
               <option value="Matematika">📐 Matematika</option>
               <option value="IPAS">🌍 IPAS (Sains & Sosial)</option>
               <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
               <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila</option>
               <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-500 mb-1">Pilih Bab:</label>
+            <select id="fc-bab-select" onchange="renderFlashcards()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800 max-w-xs">
+              <option value="ALL">📚 Semua Bab</option>
             </select>
           </div>
 
@@ -154,8 +161,89 @@ const flashcardSectionHtml = `
 `;
 tpl = tpl.replace('<section id="view-quiz"', () => flashcardSectionHtml + '\n    <section id="view-quiz"');
 
-// 5. Modal Tambah / Edit Soal dengan Rumus KaTeX & Lampiran Gambar
-console.log('5. Updating question modal with math formula & image upload...');
+// 5. Upgrade Filter Bar di View-Curriculum agar ada Pilih Bab
+console.log('5. Adding Bab dropdown filter to view-curriculum...');
+const oldCurSemesterDiv = `<div class="flex items-center gap-2">
+          <label class="text-xs text-[var(--muted-foreground)]">Semester:</label>
+          <select id="curr-semester" onchange="renderCurriculum()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">
+            <option value="ALL">Semester 1 & 2 (Lengkap)</option>
+            <option value="1">Semester 1 (Ganjil)</option>
+            <option value="2">Semester 2 (Genap)</option>
+          </select>
+        </div>`;
+
+const newCurSemesterDiv = `<div class="flex flex-wrap items-center gap-2">
+          <div>
+            <label class="text-xs font-semibold text-slate-500 mr-1">Semester:</label>
+            <select id="curr-semester" onchange="onCurriculumSemesterChange()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800 shadow-xs">
+              <option value="ALL">🌟 Semua Semester</option>
+              <option value="1">Semester 1 (Ganjil)</option>
+              <option value="2">Semester 2 (Genap)</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-indigo-700 mr-1">📖 Pilih Bab Materi:</label>
+            <select id="curr-bab-select" onchange="renderCurriculum()" class="px-3 py-1.5 rounded-xl text-xs bg-indigo-50/70 border border-indigo-200 font-bold text-indigo-900 shadow-xs max-w-xs">
+              <option value="ALL">📚 Tampilkan Semua Bab</option>
+            </select>
+          </div>
+        </div>`;
+tpl = tpl.replace(oldCurSemesterDiv, () => newCurSemesterDiv);
+
+// 6. Upgrade Filter Bar di View-Quiz agar ada Dropdown Pilih Bab Kuis
+console.log('6. Adding Bab dropdown filter to view-quiz...');
+const oldQuizFilterGroup = `<div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Pilih Mata Pelajaran Kuis</label>
+            <select id="quiz-subject-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+              <option value="ALL">🌟 Semua Mata Pelajaran (Campuran)</option>
+              <option value="Matematika">📐 Matematika Kelas 6</option>
+              <option value="IPAS">🌍 IPAS (Sains & Sosial) Kelas 6</option>
+              <option value="Bahasa Indonesia">📖 Bahasa Indonesia Kelas 6</option>
+              <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila Kelas 6</option>
+              <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris Kelas 6</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Semester</label>
+            <select id="quiz-semester-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+              <option value="ALL">Semester 1 & 2</option>
+              <option value="1">Semester 1 (Ganjil)</option>
+              <option value="2">Semester 2 (Genap)</option>
+            </select>
+          </div>`;
+
+const newQuizFilterGroup = `<div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Mata Pelajaran</label>
+            <select id="quiz-subject-select" onchange="onQuizSubjectChange()" class="px-3 py-1.5 rounded-xl text-xs bg-white border border-slate-200 font-semibold text-slate-800 shadow-xs">
+              <option value="ALL">🌟 Semua Mapel (Campuran)</option>
+              <option value="Matematika">📐 Matematika</option>
+              <option value="IPAS">🌍 IPAS (Sains & Sosial)</option>
+              <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
+              <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila</option>
+              <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Semester</label>
+            <select id="quiz-semester-select" onchange="onQuizSemesterChange()" class="px-3 py-1.5 rounded-xl text-xs bg-white border border-slate-200 font-semibold text-slate-800 shadow-xs">
+              <option value="ALL">Semua Semester</option>
+              <option value="1">Semester 1 (Ganjil)</option>
+              <option value="2">Semester 2 (Genap)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-indigo-700 mb-1">🎯 Pilih Bab / Topik Kuis</label>
+            <select id="quiz-topic-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-xl text-xs bg-indigo-50 border border-indigo-200 font-bold text-indigo-900 shadow-xs max-w-xs">
+              <option value="ALL">🌟 Semua Bab (Campuran)</option>
+            </select>
+          </div>`;
+tpl = tpl.replace(oldQuizFilterGroup, () => newQuizFilterGroup);
+
+// 7. Modal Tambah / Edit Soal dengan Rumus KaTeX & Lampiran Gambar
+console.log('7. Updating question modal with math formula & image upload...');
 const oldQuestionField = `<div>
         <label class="block text-xs font-medium mb-1">Pertanyaan Soal</label>
         <textarea id="form-question" rows="3" placeholder="Tuliskan soal dengan bahasa yang jelas untuk siswa kelas 6 SD..." class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]"></textarea>
@@ -187,7 +275,7 @@ const newQuestionField = `<!-- Editor Pertanyaan dengan Dukungan Rumus KaTeX & G
           </label>
           <button type="button" onclick="clearFormImage()" id="btn-clear-img" class="text-[10px] text-rose-500 hover:underline hidden">Hapus Gambar</button>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <div grid grid-cols-1 sm:grid-cols-2 gap-2">
           <input type="text" id="form-image-url" oninput="previewImageFromUrl()" placeholder="Tempel URL gambar (https://...)" class="w-full px-3 py-1.5 rounded-lg text-xs bg-white border border-slate-200" />
           <label class="px-3 py-1.5 rounded-lg text-xs bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition cursor-pointer text-center font-medium">
             📁 Pilih Gambar dari Komputer...
@@ -208,8 +296,8 @@ const newQuestionField = `<!-- Editor Pertanyaan dengan Dukungan Rumus KaTeX & G
       </div>`;
 tpl = tpl.replace(oldQuestionField, () => newQuestionField);
 
-// 6. Modal Reader Modul Lengkap
-console.log('6. Adding Reader modal HTML...');
+// 8. Modal Reader Modul Lengkap
+console.log('8. Adding Reader modal HTML...');
 const readerModalHtml = `
   <!-- MODAL PEMBACA MATERI MENDALAM (DEEP LEARNING MODULE READER) -->
   <div id="module-reader-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-6">
@@ -257,8 +345,8 @@ const readerModalHtml = `
 `;
 tpl = tpl.replace('<!-- MODAL PUSAT MODUL CEPAT', () => readerModalHtml + '\n  <!-- MODAL PUSAT MODUL CEPAT');
 
-// 7. Extract original clean JS logic
-console.log('7. Preparing clean core JavaScript logic...');
+// 9. Extract original clean JS logic
+console.log('9. Preparing clean core JavaScript logic...');
 const origScriptStart = tpl.indexOf('<script>', 2500) + 8;
 const origScriptEnd = tpl.lastIndexOf('</script>');
 let coreJs = tpl.substring(origScriptStart, origScriptEnd);
@@ -356,21 +444,43 @@ const flashcardCode = `
     let isFcCardFlipped = false;
     let fcViewMode = 'FOCUS'; // 'FOCUS' or 'GRID'
 
+    function onFlashcardSubjectChange() {
+      updateFlashcardBabDropdown();
+      renderFlashcards();
+    }
+
+    function updateFlashcardBabDropdown() {
+      const subj = document.getElementById('fc-subject') ? document.getElementById('fc-subject').value : 'ALL';
+      const babSelect = document.getElementById('fc-bab-select');
+      if (!babSelect) return;
+
+      let babs = [];
+      const cards = subj === 'ALL' ? DEFAULT_FLASHCARDS : DEFAULT_FLASHCARDS.filter(c => c.subject === subj);
+      cards.forEach(c => {
+        if (c.frontTag && !babs.includes(c.frontTag)) babs.push(c.frontTag);
+      });
+
+      babSelect.innerHTML = '<option value="ALL">📚 Semua Bab (' + cards.length + ' kartu)</option>' +
+        babs.map(b => '<option value="' + escapeHtml(b) + '">' + escapeHtml(b) + '</option>').join('');
+    }
+
     function renderFlashcards() {
       const subj = document.getElementById('fc-subject') ? document.getElementById('fc-subject').value : 'ALL';
-      if (subj === 'ALL') {
-        activeFlashcards = [...DEFAULT_FLASHCARDS];
-      } else {
-        activeFlashcards = DEFAULT_FLASHCARDS.filter(c => c.subject === subj);
-      }
+      const bab = document.getElementById('fc-bab-select') ? document.getElementById('fc-bab-select').value : 'ALL';
+
+      let pool = [...DEFAULT_FLASHCARDS];
+      if (subj !== 'ALL') pool = pool.filter(c => c.subject === subj);
+      if (bab !== 'ALL') pool = pool.filter(c => c.frontTag === bab);
+
+      activeFlashcards = pool;
       currentFcIndex = 0;
       isFcCardFlipped = false;
 
       if (activeFlashcards.length === 0) {
         activeFlashcards = [{
-          subject: subj,
-          frontTag: 'Info',
-          front: 'Belum ada flashcard untuk mata pelajaran ini.',
+          subject: subj === 'ALL' ? 'Umum' : subj,
+          frontTag: bab === 'ALL' ? 'Info' : bab,
+          front: 'Belum ada flashcard untuk topik ini.',
           backTitle: 'Siap Ditambahkan',
           backDesc: 'Flashcard materi ini akan segera diperbarui.'
         }];
@@ -574,6 +684,25 @@ const flashcardCode = `
       }
     }
 
+    // Helper Universal: Cek apakah butir soal cocok dengan Modul Kurikulum (Bab)
+    function isQuestionInModule(q, m) {
+      if (!m || !q) return false;
+      if (q.moduleId && q.moduleId === m.id) return true;
+      if (q.subject && m.subject && q.subject !== m.subject) return false;
+      if (q.topic && m.bab && q.topic === m.bab) return true;
+      
+      const mBabNum = (m.bab.match(/Bab\\s*(\\d+)/i) || [])[1];
+      const qBabNum = ((q.topic || '').match(/Bab\\s*(\\d+)/i) || [])[1];
+      if (mBabNum && qBabNum && mBabNum === qBabNum) return true;
+
+      if (q.topic && m.bab) {
+        const qLower = q.topic.toLowerCase();
+        const mLower = m.bab.toLowerCase();
+        if (qLower.includes(mLower) || mLower.includes(qLower)) return true;
+      }
+      return false;
+    }
+
     // =========================================================================
     // MODUL PEMBACA MATERI MENDALAM (DEEP LEARNING MODULE READER)
     // =========================================================================
@@ -689,7 +818,7 @@ coreJs = coreJs.replace(
   () => "curriculum: '1. Pembelajaran Siswa • Rangkuman Materi',\n        flashcards: '1. Pembelajaran Siswa • Flashcard Hafalan Cepat',"
 );
 
-// Update handleFileImport to detect learning module vs quiz
+// Update handleFileImport
 const oldHandleImport = `function handleFileImport(event) {
       const file = event.target.files[0];
       if (!file) return;
@@ -721,12 +850,12 @@ const newHandleImport = `function handleFileImport(event) {
         } else {`;
 coreJs = coreJs.replace(oldHandleImport, () => newHandleImport);
 
-// UPGRADED ROBUST PARSER UNTUK FILE HTML SOAL (GEMINI QUIZ UNIVERSAL PARSER)
+// UPGRADED ROBUST PARSER UNTUK FILE HTML SOAL
 const upgradedHtmlParser = `function parseAndImportHTML(htmlContent, fileName) {
       try {
         let extractedQuestions = [];
 
-        // 1. Ekstraksi pola array JavaScript (questions, pgData, quizData, soalData, dataSoal, dll)
+        // 1. Ekstraksi pola array JavaScript (questions, pgData, quizData, soalData, dll)
         const jsMatch = htmlContent.match(/(?:const|let|var)\\s+(?:pgData|questions|quizData|soalData|quizQuestions|dataSoal|bankSoal|quiz|soal)\\s*=\\s*(\\[[\\s\\S]*?\\]);/i)
           || htmlContent.match(/=\\s*(\\[\\s*\\{[\\s\\S]*?\\}\\s*\\]);/);
 
@@ -736,12 +865,10 @@ const upgradedHtmlParser = `function parseAndImportHTML(htmlContent, fileName) {
             try {
               rawArray = JSON.parse(jsMatch[1]);
             } catch (jsonErr) {
-              // Fallback aman untuk array literal JS (unquoted keys: q, o, a, e)
               rawArray = new Function('return ' + jsMatch[1])();
             }
 
             if (Array.isArray(rawArray) && rawArray.length > 0) {
-              // Deteksi Mapel & Bab berdasarkan isi file
               let subject = 'IPAS';
               let semester = 2;
               let moduleId = 'IPAS-B5';
@@ -769,15 +896,12 @@ const upgradedHtmlParser = `function parseAndImportHTML(htmlContent, fileName) {
               }
 
               extractedQuestions = rawArray.map((item, idx) => {
-                // Pertanyaan
                 let qText = item.q || item.question || item.pertanyaan || item.soal || item.title || '';
                 qText = String(qText).replace(/^[0-9]+[\\.\\)]\\s*/, '').replace(/\\[cite:\\s*\\d+\\]/g, '').trim();
 
-                // Pilihan Opsi
                 let rawOpts = item.o || item.opt || item.options || item.pilihan || item.jawaban || item.choices || [];
                 let cleanOpts = rawOpts.map(opt => String(opt).replace(/^[A-E][\\.\\)]\\s*/i, '').trim());
 
-                // Kunci Jawaban
                 let ansIdx = 0;
                 let rawAns = item.a !== undefined ? item.a : (item.ans !== undefined ? item.ans : (item.correctIndex !== undefined ? item.correctIndex : item.kunci));
 
@@ -793,7 +917,6 @@ const upgradedHtmlParser = `function parseAndImportHTML(htmlContent, fileName) {
                   }
                 }
 
-                // Pembahasan
                 let exp = item.e || item.exp || item.explanation || item.pembahasan || item.alasan || 'Pembahasan materi terverifikasi.';
                 exp = String(exp).replace(/\\[cite:\\s*\\d+\\]/g, '').trim();
 
@@ -820,7 +943,7 @@ const upgradedHtmlParser = `function parseAndImportHTML(htmlContent, fileName) {
           }
         }
 
-        // 2. DOM Parser Fallback untuk elemen HTML (.question-card, .card, dll)
+        // 2. DOM Parser Fallback
         if (extractedQuestions.length === 0) {
           const parser = new DOMParser();
           const doc = parser.parseFromString(htmlContent, 'text/html');
@@ -861,7 +984,6 @@ const upgradedHtmlParser = `function parseAndImportHTML(htmlContent, fileName) {
           return;
         }
 
-        // Tambahkan ke bank soal (hindari duplikat berdasarkan teks pertanyaan)
         let addedCount = 0;
         const existingTexts = new Set(questions.map(q => q.question.toLowerCase().trim()));
 
@@ -888,17 +1010,158 @@ const upgradedHtmlParser = `function parseAndImportHTML(htmlContent, fileName) {
       }
     }`;
 
-// Replace old parseAndImportHTML with upgradedHtmlParser
 const oldParserStart = coreJs.indexOf('function parseAndImportHTML');
 const oldParserEnd = coreJs.indexOf('function escapeHtml', oldParserStart);
 if (oldParserStart !== -1 && oldParserEnd !== -1) {
   coreJs = coreJs.substring(0, oldParserStart) + upgradedHtmlParser + '\n\n    ' + coreJs.substring(oldParserEnd);
-  console.log('Successfully replaced parseAndImportHTML with Universal Gemini Quiz Parser!');
-} else {
-  console.error('Could not find old parseAndImportHTML boundaries!');
 }
 
-// Update renderCurriculum card buttons
+// 10. Update Logika Pilih Bab di Kurikulum & Kuis
+console.log('10. Updating Bab Selection logic in Kurikulum & CBT Quiz...');
+
+// Logika sinkronisasi dropdown Bab Kurikulum & Kuis
+const babSelectionLogic = `
+    // =========================================================================
+    // FITUR PILIH BAB DINAMIS (KURIKULUM, KUIS CBT, & FLASHCARD)
+    // =========================================================================
+    function onCurriculumSemesterChange() {
+      updateCurriculumBabDropdown();
+      renderCurriculum();
+    }
+
+    function updateCurriculumBabDropdown() {
+      const babSelect = document.getElementById('curr-bab-select');
+      const semSelect = document.getElementById('curr-semester');
+      if (!babSelect) return;
+
+      const sem = semSelect ? semSelect.value : 'ALL';
+      let modules = window.KURIKULUM_SD6 || [];
+      if (currSelectedSubject !== 'ALL') {
+        modules = modules.filter(m => m.subject === currSelectedSubject);
+      }
+      if (sem !== 'ALL') {
+        modules = modules.filter(m => String(m.semester) === String(sem));
+      }
+
+      const currentVal = babSelect.value;
+      let optionsHtml = '<option value="ALL">📚 Tampilkan Semua Bab (' + modules.length + ' Bab)</option>';
+      modules.forEach(m => {
+        optionsHtml += '<option value="' + m.id + '">' + escapeHtml(m.bab) + '</option>';
+      });
+
+      babSelect.innerHTML = optionsHtml;
+      if (modules.some(m => m.id === currentVal)) {
+        babSelect.value = currentVal;
+      } else {
+        babSelect.value = 'ALL';
+      }
+    }
+
+    function onQuizSubjectChange() {
+      updateQuizTopicDropdown();
+      startNewQuiz();
+    }
+
+    function onQuizSemesterChange() {
+      updateQuizTopicDropdown();
+      startNewQuiz();
+    }
+
+    function updateQuizTopicDropdown() {
+      const topicSelect = document.getElementById('quiz-topic-select');
+      const subjSelect = document.getElementById('quiz-subject-select');
+      const semSelect = document.getElementById('quiz-semester-select');
+      if (!topicSelect) return;
+
+      const subj = subjSelect ? subjSelect.value : 'ALL';
+      const sem = semSelect ? semSelect.value : 'ALL';
+
+      let modules = window.KURIKULUM_SD6 || [];
+      if (subj !== 'ALL') modules = modules.filter(m => m.subject === subj);
+      if (sem !== 'ALL') modules = modules.filter(m => String(m.semester) === String(sem));
+
+      const currentVal = topicSelect.value;
+      let optionsHtml = '<option value="ALL">🌟 Semua Bab (Campuran Satu Paket)</option>';
+
+      modules.forEach(m => {
+        const qCount = questions.filter(q => q.type === 'PG' && isQuestionInModule(q, m)).length;
+        optionsHtml += '<option value="' + m.id + '">' + escapeHtml(m.bab) + ' (' + qCount + ' soal)</option>';
+      });
+
+      topicSelect.innerHTML = optionsHtml;
+      if (modules.some(m => m.id === currentVal)) {
+        topicSelect.value = currentVal;
+      } else {
+        topicSelect.value = 'ALL';
+      }
+    }
+`;
+
+// Insert babSelectionLogic right after /*__DATA_PLACEHOLDER__*/
+coreJs = coreJs.replace('/*__DATA_PLACEHOLDER__*/', () => '/*__DATA_PLACEHOLDER__*/\n' + babSelectionLogic);
+
+// Update setCurrSubject agar memperbarui dropdown Bab di Kurikulum
+const oldSetCurrSubject = `function setCurrSubject(subj) {
+      currSelectedSubject = subj;
+      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris'];
+      allBtns.forEach((s) => {
+        const el = document.getElementById('csubj-' + s);
+        if (!el) return;
+        if (s === subj) {
+          el.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white';
+        } else {
+          el.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)] hover:border-indigo-500/40';
+        }
+      });
+      renderCurriculum();
+    }`;
+
+const newSetCurrSubject = `function setCurrSubject(subj) {
+      currSelectedSubject = subj;
+      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris'];
+      allBtns.forEach((s) => {
+        const el = document.getElementById('csubj-' + s);
+        if (!el) return;
+        if (s === subj) {
+          el.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-xs';
+        } else {
+          el.className = 'px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition';
+        }
+      });
+      updateCurriculumBabDropdown();
+      renderCurriculum();
+    }`;
+coreJs = coreJs.replace(oldSetCurrSubject, () => newSetCurrSubject);
+
+// Update renderCurriculum agar menyaring berdasarkan #curr-bab-select
+const oldRenderCurriculum = `function renderCurriculum() {
+      const sem = document.getElementById('curr-semester').value;
+      const filtered = window.KURIKULUM_SD6.filter((m) => {
+        if (currSelectedSubject !== 'ALL' && m.subject !== currSelectedSubject) return false;
+        if (sem !== 'ALL' && String(m.semester) !== String(sem)) return false;
+        return true;
+      });`;
+
+const newRenderCurriculum = `function renderCurriculum() {
+      const semEl = document.getElementById('curr-semester');
+      const babEl = document.getElementById('curr-bab-select');
+      const sem = semEl ? semEl.value : 'ALL';
+      const selectedBabId = babEl ? babEl.value : 'ALL';
+
+      const filtered = (window.KURIKULUM_SD6 || []).filter((m) => {
+        if (currSelectedSubject !== 'ALL' && m.subject !== currSelectedSubject) return false;
+        if (sem !== 'ALL' && String(m.semester) !== String(sem)) return false;
+        if (selectedBabId !== 'ALL' && m.id !== selectedBabId) return false;
+        return true;
+      });`;
+coreJs = coreJs.replace(oldRenderCurriculum, () => newRenderCurriculum);
+
+// Update renderCurriculum card buttons with isQuestionInModule count
+coreJs = coreJs.replace(
+  'const relatedQs = questions.filter((q) => q.moduleId === m.id || q.topic === m.bab);',
+  () => 'const relatedQs = questions.filter((q) => q.type === "PG" && isQuestionInModule(q, m));'
+);
+
 const oldCardBtns = `<div class="flex items-center justify-between gap-2 pt-3 border-t border-[var(--border)]">
               <button onclick="practiceModule('\${m.id}', '\${escapeHtml(m.bab)}')" class="flex-1 py-2 px-3 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition">
                 🎯 Latihan Kuis Bab Ini (\${relatedQs.length})
@@ -914,7 +1177,7 @@ const newCardBtns = `<div class="space-y-2 pt-3 border-t border-slate-100">
               </button>
               <div class="flex items-center justify-between gap-2">
                 <button onclick="practiceModule('\${m.id}', '\${escapeHtml(m.bab)}')" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition">
-                  🎯 Latihan Kuis (\${relatedQs.length})
+                  🎯 Latihan Kuis (\${relatedQs.length} Soal)
                 </button>
                 <button onclick="filterBankByTopic('\${escapeHtml(m.bab)}')" class="py-1.5 px-3 rounded-lg text-xs font-medium border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition">
                   📚 Bank Soal
@@ -922,6 +1185,93 @@ const newCardBtns = `<div class="space-y-2 pt-3 border-t border-slate-100">
               </div>
             </div>`;
 coreJs = coreJs.replace(oldCardBtns, () => newCardBtns);
+
+// Update startNewQuiz agar mendukung penyaringan per Bab (#quiz-topic-select)
+const oldStartNewQuiz = `function startNewQuiz() {
+      const subj = document.getElementById('quiz-subject-select').value;
+      const sem = document.getElementById('quiz-semester-select').value;
+
+      let pool = questions.filter((q) => q.type === 'PG');
+      if (subj !== 'ALL') pool = pool.filter((q) => q.subject === subj);
+      if (sem !== 'ALL') pool = pool.filter((q) => String(q.semester) === String(sem));
+
+      if (pool.length === 0) pool = questions.filter((q) => q.type === 'PG');
+      const shuffled = shuffleArray(pool);
+      const label = subj === 'ALL' ? 'Campuran Semua Mata Pelajaran' : \`\${subj} (Semester \${sem === 'ALL' ? '1 & 2' : sem})\`;
+      initCBT(shuffled, label);
+    }`;
+
+const newStartNewQuiz = `function startNewQuiz() {
+      const subjEl = document.getElementById('quiz-subject-select');
+      const semEl = document.getElementById('quiz-semester-select');
+      const topicEl = document.getElementById('quiz-topic-select');
+
+      const subj = subjEl ? subjEl.value : 'ALL';
+      const sem = semEl ? semEl.value : 'ALL';
+      const topicId = topicEl ? topicEl.value : 'ALL';
+
+      let pool = questions.filter((q) => q.type === 'PG');
+      if (subj !== 'ALL') pool = pool.filter((q) => q.subject === subj);
+      if (sem !== 'ALL') pool = pool.filter((q) => String(q.semester) === String(sem));
+
+      let targetMod = null;
+      if (topicId !== 'ALL') {
+        targetMod = (window.KURIKULUM_SD6 || []).find(m => m.id === topicId);
+        if (targetMod) {
+          pool = pool.filter((q) => isQuestionInModule(q, targetMod));
+        }
+      }
+
+      if (pool.length === 0) {
+        if (topicId !== 'ALL' && targetMod) {
+          alert('Belum ada soal kuis untuk: ' + targetMod.bab + '.\\n\\nSilakan gunakan menu Bank Soal atau Import File Kuis untuk menambahkan soal bab ini!');
+          return;
+        }
+        pool = questions.filter((q) => q.type === 'PG');
+      }
+
+      const shuffled = shuffleArray(pool);
+      let label = subj === 'ALL' ? 'Campuran Semua Mata Pelajaran' : \`\${subj} (Semester \${sem === 'ALL' ? '1 & 2' : sem})\`;
+      if (targetMod) {
+        label = \`🎯 \${targetMod.bab} (\${shuffled.length} Soal)\`;
+      }
+      initCBT(shuffled, label);
+    }`;
+coreJs = coreJs.replace(oldStartNewQuiz, () => newStartNewQuiz);
+
+// Update practiceModule agar menyinkronkan seluruh dropdown di tab kuis
+const oldPracticeModule = `function practiceModule(moduleId, babTitle) {
+      const subset = questions.filter((q) => (q.moduleId === moduleId || q.topic === babTitle) && q.type === 'PG');
+      if (subset.length === 0) {
+        alert('Belum ada soal Pilihan Ganda pada bab ini.');
+        return;
+      }
+      initCBT(subset, babTitle);
+      switchTab('quiz');
+    }`;
+
+const newPracticeModule = `function practiceModule(moduleId, babTitle) {
+      const mod = (window.KURIKULUM_SD6 || []).find(m => m.id === moduleId);
+      const subset = questions.filter((q) => q.type === 'PG' && isQuestionInModule(q, mod || { id: moduleId, bab: babTitle }));
+      if (subset.length === 0) {
+        alert('Belum ada soal Pilihan Ganda pada bab ini.\\n\\nSilakan impor atau tambahkan soal untuk: ' + babTitle);
+        return;
+      }
+
+      if (mod) {
+        const qSubj = document.getElementById('quiz-subject-select');
+        const qSem = document.getElementById('quiz-semester-select');
+        if (qSubj) qSubj.value = mod.subject;
+        if (qSem) qSem.value = String(mod.semester);
+        updateQuizTopicDropdown();
+        const qTopic = document.getElementById('quiz-topic-select');
+        if (qTopic) qTopic.value = mod.id;
+      }
+
+      initCBT(subset, '🎯 ' + babTitle + ' (' + subset.length + ' Soal)');
+      switchTab('quiz');
+    }`;
+coreJs = coreJs.replace(oldPracticeModule, () => newPracticeModule);
 
 // Wire imageUrl in question cards inside renderBank
 const oldBankCard = `<div class="text-sm font-medium leading-relaxed text-[var(--foreground)] whitespace-pre-line">\${escapeHtml(q.question)}</div>`;
@@ -962,10 +1312,15 @@ coreJs = coreJs.replace(
         if (pBox) pBox.classList.add('hidden');`
 );
 
-// Trigger KaTeX and Flashcards on refreshAll
+// Panggil updateCurriculumBabDropdown, updateQuizTopicDropdown & updateFlashcardBabDropdown saat refreshAll
 coreJs = coreJs.replace(
   'renderAnalytics();',
-  () => 'renderAnalytics();\n      renderFlashcards();\n      triggerKaTeXRender();'
+  () => `renderAnalytics();
+      updateCurriculumBabDropdown();
+      updateQuizTopicDropdown();
+      updateFlashcardBabDropdown();
+      renderFlashcards();
+      triggerKaTeXRender();`
 );
 
 // Replace the script section in tpl
@@ -973,8 +1328,8 @@ const finalTpl = tpl.substring(0, origScriptStart) + coreJs + tpl.substring(orig
 fs.writeFileSync(path.join(cwd, 'app_template.html'), finalTpl, 'utf8');
 console.log('Saved pristine app_template.html! Length:', finalTpl.length);
 
-// 8. Build index.html and bank_soal_dashboard.html
-console.log('8. Merging with data_sd6.js to build index.html and artifact...');
+// 11. Build index.html and bank_soal_dashboard.html
+console.log('11. Merging with data_sd6.js to build index.html and artifact...');
 const dataJs = fs.readFileSync(path.join(cwd, 'data_sd6.js'), 'utf8');
 
 const mergedArtifact = finalTpl.replace('/*__DATA_PLACEHOLDER__*/', () => dataJs);

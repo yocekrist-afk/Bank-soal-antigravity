@@ -1298,8 +1298,7 @@ window.DEFAULT_QUESTIONS_SD6 = [
     ],
     "correctIndex": 2,
     "explanation": "Meteorit adalah bagian meteor yang tidak habis terbakar dan jatuh ke bumi, sehingga wujud fisiknya bisa dipelajari."
-  }
-].concat([
+  },
   {
     "id": "SD6-IPA-TS-01",
     "subject": "IPAS",
@@ -2496,7 +2495,1135 @@ window.DEFAULT_QUESTIONS_SD6 = [
     ],
     "correctIndex": 2,
     "explanation": "Keterangan waktu \"last holiday\" menandakan waktu lampau (Simple Past Tense), sehingga menggunakan kata kerja bentuk kedua (Verb 2) yaitu \"went\"."
-  }]);
+  },
+  {
+    "id": "SD6-IPA-B5-Q01",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Benda langit yang menjadi pusat tata surya kita adalah...",
+    "options": [
+      "Bumi",
+      "Bulan",
+      "Matahari",
+      "Jupiter"
+    ],
+    "correctIndex": 2,
+    "explanation": "Matahari adalah pusat tata surya karena memiliki gaya gravitasi paling besar yang membuat planet-planet beredar mengelilinginya."
+  },
+  {
+    "id": "SD6-IPA-B5-Q02",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Garis edar tempat planet berputar mengelilingi Matahari disebut...",
+    "options": [
+      "Orbit",
+      "Poros",
+      "Sumbu",
+      "Revolusi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Orbit adalah lintasan melengkung tempat planet bergerak mengelilingi Matahari. Orbit planet di tata surya kita berbentuk elips (lonjong)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q03",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet terdekat dengan Matahari sekaligus planet terkecil di tata surya adalah...",
+    "options": [
+      "Venus",
+      "Merkurius",
+      "Mars",
+      "Pluto"
+    ],
+    "correctIndex": 1,
+    "explanation": "Merkurius adalah planet pertama dan terkecil. Jaraknya yang sangat dekat dengan Matahari membuatnya sangat panas di siang hari dan sangat dingin di malam hari."
+  },
+  {
+    "id": "SD6-IPA-B5-Q04",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet terbesar dalam sistem tata surya kita adalah...",
+    "options": [
+      "Saturnus",
+      "Neptunus",
+      "Jupiter",
+      "Uranus"
+    ],
+    "correctIndex": 2,
+    "explanation": "Jupiter adalah planet raksasa gas terbesar di tata surya. Ukurannya bisa menampung lebih dari 1.300 Bumi di dalamnya!"
+  },
+  {
+    "id": "SD6-IPA-B5-Q05",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet yang mendapat julukan 'Planet Merah' karena permukaannya yang mengandung karat besi adalah...",
+    "options": [
+      "Mars",
+      "Venus",
+      "Saturnus",
+      "Merkurius"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mars dijuluki Planet Merah karena kandungan besi oksida (seperti karat) di tanahnya yang membuatnya tampak kemerahan dari jauh."
+  },
+  {
+    "id": "SD6-IPA-B5-Q06",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet yang sering disebut Bintang Fajar atau Bintang Kejora dan merupakan planet terpanas adalah...",
+    "options": [
+      "Merkurius",
+      "Venus",
+      "Bumi",
+      "Jupiter"
+    ],
+    "correctIndex": 1,
+    "explanation": "Venus adalah planet terpanas karena memiliki atmosfer tebal yang memerangkap panas (efek rumah kaca). Ia tampak sangat terang sebelum matahari terbit atau sesudah terbenam."
+  },
+  {
+    "id": "SD6-IPA-B5-Q07",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet yang terkenal dengan cincin indahnya yang terbuat dari es dan batuan adalah...",
+    "options": [
+      "Jupiter",
+      "Uranus",
+      "Neptunus",
+      "Saturnus"
+    ],
+    "correctIndex": 3,
+    "explanation": "Saturnus memiliki sistem cincin paling besar dan paling terang di tata surya yang sebagian besar terbentuk dari bongkahan es dan batu meteor."
+  },
+  {
+    "id": "SD6-IPA-B5-Q08",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet yang memiliki suhu terdingin dan berotasi dengan cara 'menggelinding' ke samping adalah...",
+    "options": [
+      "Mars",
+      "Neptunus",
+      "Uranus",
+      "Saturnus"
+    ],
+    "correctIndex": 2,
+    "explanation": "Uranus memiliki sumbu rotasi yang sangat miring (hampir 90 derajat), sehingga ia tampak seperti menggelinding pada orbitnya."
+  },
+  {
+    "id": "SD6-IPA-B5-Q09",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kelompok planet Dalam (Terestrial) terdiri dari...",
+    "options": [
+      "Merkurius, Venus, Bumi, Mars",
+      "Jupiter, Saturnus, Uranus, Neptunus",
+      "Merkurius, Bumi, Jupiter, Saturnus",
+      "Venus, Mars, Uranus, Neptunus"
+    ],
+    "correctIndex": 0,
+    "explanation": "Planet Dalam atau planet Terestrial adalah 4 planet berbatu yang letaknya berdekatan dengan Matahari: Merkurius, Venus, Bumi, dan Mars."
+  },
+  {
+    "id": "SD6-IPA-B5-Q10",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pembatas antara kelompok planet Dalam dan planet Luar di tata surya adalah...",
+    "options": [
+      "Sabuk Kuiper",
+      "Komet",
+      "Sabuk Asteroid",
+      "Meteoroid"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sabuk Asteroid terletak di antara orbit Mars (planet dalam terakhir) dan Jupiter (planet luar pertama)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q11",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kelompok planet Luar (Raksasa Gas) yang tidak memiliki permukaan padat adalah...",
+    "options": [
+      "Merkurius, Venus, Bumi, Mars",
+      "Bumi, Mars, Jupiter, Saturnus",
+      "Mars, Jupiter, Saturnus, Uranus",
+      "Jupiter, Saturnus, Uranus, Neptunus"
+    ],
+    "correctIndex": 3,
+    "explanation": "Planet Luar (Jovian) sebagian besar tersusun atas gas hidrogen dan helium, sangat besar, dan posisinya sangat jauh dari Matahari."
+  },
+  {
+    "id": "SD6-IPA-B5-Q12",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perputaran Bumi pada porosnya disebut...",
+    "options": [
+      "Revolusi Bumi",
+      "Orbit Bumi",
+      "Rotasi Bumi",
+      "Gravitasi Bumi"
+    ],
+    "correctIndex": 2,
+    "explanation": "Rotasi adalah gerak berputar sebuah planet pada sumbunya (porosnya) sendiri, mirip seperti gasing."
+  },
+  {
+    "id": "SD6-IPA-B5-Q13",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Waktu yang dibutuhkan Bumi untuk melakukan satu kali rotasi adalah...",
+    "options": [
+      "12 jam",
+      "24 jam",
+      "30 hari",
+      "365 1/4 hari"
+    ],
+    "correctIndex": 1,
+    "explanation": "Bumi membutuhkan waktu 24 jam (1 hari) untuk satu putaran penuh pada porosnya."
+  },
+  {
+    "id": "SD6-IPA-B5-Q14",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Berikut ini yang BUKAN merupakan akibat dari rotasi Bumi adalah...",
+    "options": [
+      "Terjadinya siang dan malam",
+      "Gerak semu harian matahari",
+      "Perbedaan waktu di berbagai wilayah",
+      "Terjadinya pergantian musim"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pergantian musim adalah akibat dari REVOLUSI Bumi mengelilingi matahari, bukan karena rotasi."
+  },
+  {
+    "id": "SD6-IPA-B5-Q15",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bumi berotasi dari arah...",
+    "options": [
+      "Utara ke Selatan",
+      "Timur ke Barat",
+      "Barat ke Timur",
+      "Selatan ke Utara"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bumi berotasi dari arah Barat ke Timur. Inilah sebabnya matahari tampak terbit dari Timur dan tenggelam di Barat."
+  },
+  {
+    "id": "SD6-IPA-B5-Q16",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Matahari seolah-olah bergerak dari timur ke barat setiap hari. Peristiwa ini disebut...",
+    "options": [
+      "Gerak semu tahunan matahari",
+      "Gerak semu harian matahari",
+      "Gerak revolusi matahari",
+      "Gerak rotasi matahari"
+    ],
+    "correctIndex": 1,
+    "explanation": "Disebut 'semu' karena matahari sebenarnya tidak bergerak mengelilingi bumi. Bumi-lah yang berotasi sehingga matahari tampak bergerak."
+  },
+  {
+    "id": "SD6-IPA-B5-Q17",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Indonesia dibagi menjadi 3 zona waktu akibat rotasi bumi. Zona waktu tersebut adalah...",
+    "options": [
+      "WIA, WIB, WIC",
+      "WSU, WJA, WPA",
+      "WIB, WITA, WIT",
+      "WKB, WKT, WKT"
+    ],
+    "correctIndex": 2,
+    "explanation": "WIB (Waktu Indonesia Barat), WITA (Waktu Indonesia Tengah), dan WIT (Waktu Indonesia Timur). Setiap zona berselisih 1 jam."
+  },
+  {
+    "id": "SD6-IPA-B5-Q18",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Jika di Jakarta (WIB) pukul 07.00 pagi, maka di Papua (WIT) pukul...",
+    "options": [
+      "06.00 pagi",
+      "07.00 pagi",
+      "08.00 pagi",
+      "09.00 pagi"
+    ],
+    "correctIndex": 3,
+    "explanation": "Selisih WIB dan WIT adalah 2 jam. Karena matahari terbit dari timur, waktu di wilayah Timur lebih cepat (07.00 + 2 jam = 09.00)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q19",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Peredaran Bumi mengelilingi Matahari pada orbitnya disebut...",
+    "options": [
+      "Revolusi Bumi",
+      "Rotasi Bumi",
+      "Evolusi Bumi",
+      "Gravitasi Bumi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Revolusi adalah pergerakan Bumi berkeliling di lintasan (orbit) mengitari Matahari."
+  },
+  {
+    "id": "SD6-IPA-B5-Q20",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Waktu yang dibutuhkan Bumi untuk melakukan satu kali revolusi adalah...",
+    "options": [
+      "24 jam",
+      "30 hari",
+      "354 hari",
+      "365 1/4 hari"
+    ],
+    "correctIndex": 3,
+    "explanation": "Satu putaran penuh Bumi mengelilingi Matahari memakan waktu 365 hari lebih seperempat hari (1 tahun)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q21",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Adanya tahun kabisat yang berjumlah 366 hari setiap 4 tahun sekali adalah dampak dari...",
+    "options": [
+      "Rotasi Bumi",
+      "Revolusi Bumi",
+      "Rotasi Bulan",
+      "Revolusi Bulan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sisa revolusi bumi yaitu 1/4 hari, jika dikalikan 4 tahun akan menjadi 1 hari. Tambahan 1 hari ini dimasukkan ke bulan Februari (tanggal 29) setiap 4 tahun sekali."
+  },
+  {
+    "id": "SD6-IPA-B5-Q22",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Akibat revolusi Bumi, terjadi perbedaan musim di bumi bagian utara dan selatan. Jika bumi utara mengalami musim dingin, maka bumi selatan mengalami...",
+    "options": [
+      "Musim Semi",
+      "Musim Panas",
+      "Musim Gugur",
+      "Musim Dingin juga"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kemiringan sumbu bumi saat berevolusi menyebabkan kutub yang menjauhi matahari mengalami musim dingin, sedangkan kutub sebaliknya mengalami musim panas."
+  },
+  {
+    "id": "SD6-IPA-B5-Q23",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kalender yang disusun berdasarkan kala revolusi Bumi terhadap Matahari adalah...",
+    "options": [
+      "Kalender Hijriah",
+      "Kalender Komariah",
+      "Kalender Masehi",
+      "Kalender Jawa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kalender Masehi (Syamsiah) dihitung berdasarkan peredaran bumi mengelilingi matahari."
+  },
+  {
+    "id": "SD6-IPA-B5-Q24",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kalender yang disusun berdasarkan peredaran Bulan mengelilingi Bumi adalah...",
+    "options": [
+      "Kalender Masehi",
+      "Kalender Syamsiah",
+      "Kalender Matahari",
+      "Kalender Hijriah"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kalender Hijriah (Komariah/Islam) menggunakan hitungan siklus fase bulan mengelilingi bumi (29,5 hari per bulan)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q25",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Gerhana Matahari terjadi apabila posisi benda langit berada dalam satu garis lurus dengan urutan...",
+    "options": [
+      "Bumi - Bulan - Matahari",
+      "Matahari - Bulan - Bumi",
+      "Matahari - Bumi - Bulan",
+      "Bulan - Matahari - Bumi"
+    ],
+    "correctIndex": 1,
+    "explanation": "Gerhana matahari terjadi karena cahaya matahari ke bumi terhalang oleh Bulan (Matahari -> Bulan -> Bumi)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q26",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Gerhana Bulan terjadi apabila posisi benda langit berada dalam satu garis lurus dengan urutan...",
+    "options": [
+      "Bumi - Bulan - Matahari",
+      "Matahari - Bulan - Bumi",
+      "Matahari - Bumi - Bulan",
+      "Bulan - Matahari - Bumi"
+    ],
+    "correctIndex": 2,
+    "explanation": "Gerhana bulan terjadi karena cahaya matahari yang seharusnya mengenai bulan terhalang oleh Bumi (Matahari -> Bumi -> Bulan)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q27",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Gerhana matahari hanya terjadi pada saat fase bulan...",
+    "options": [
+      "Bulan Purnama",
+      "Bulan Separuh",
+      "Bulan Sabit",
+      "Bulan Baru (Mati)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Bulan baru adalah fase di mana bulan berada di antara matahari dan bumi, sisi bulan yang gelap menghadap bumi, sehingga cocok untuk gerhana matahari."
+  },
+  {
+    "id": "SD6-IPA-B5-Q28",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Gerhana bulan selalu terjadi pada malam hari saat fase...",
+    "options": [
+      "Bulan Purnama",
+      "Bulan Baru",
+      "Bulan Sabit",
+      "Bulan Separuh"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bulan purnama terjadi saat bumi berada di antara bulan dan matahari, yang merupakan syarat posisi terjadinya gerhana bulan."
+  },
+  {
+    "id": "SD6-IPA-B5-Q29",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Daerah bayangan inti yang sangat gelap saat terjadi gerhana disebut...",
+    "options": [
+      "Penumbra",
+      "Umbra",
+      "Corona",
+      "Orbit"
+    ],
+    "correctIndex": 1,
+    "explanation": "Umbra adalah bayangan inti terdalam dan tergelap. Jika daerah di bumi masuk ke umbra, akan terjadi gerhana total."
+  },
+  {
+    "id": "SD6-IPA-B5-Q30",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Daerah bayangan yang agak terang/kabur di sekitar umbra disebut...",
+    "options": [
+      "Penumbra",
+      "Umbra",
+      "Atmosfer",
+      "Sabuk"
+    ],
+    "correctIndex": 0,
+    "explanation": "Penumbra adalah bayangan luar yang lebih pudar. Jika bumi masuk penumbra, akan terjadi gerhana sebagian."
+  },
+  {
+    "id": "SD6-IPA-B5-Q31",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Mengapa wajah Bulan yang terlihat dari Bumi selalu sama/tidak pernah berubah?",
+    "options": [
+      "Karena bulan tidak berotasi",
+      "Karena bulan tidak bercahaya",
+      "Karena kala rotasi bulan sama dengan kala revolusinya",
+      "Karena bulan lebih kecil dari bumi"
+    ],
+    "correctIndex": 2,
+    "explanation": "Waktu Bulan berputar di porosnya sama persis dengan waktu ia mengelilingi Bumi (sekitar 29,5 hari). Akibatnya, satu sisi wajah bulan selalu terkunci menghadap bumi (Tidal Locking)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q32",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Benda langit yang mengelilingi planet dan tidak memancarkan cahaya sendiri disebut...",
+    "options": [
+      "Asteroid",
+      "Komet",
+      "Meteor",
+      "Satelit"
+    ],
+    "correctIndex": 3,
+    "explanation": "Satelit adalah pengiring planet. Contohnya Bulan adalah satelit alami Bumi."
+  },
+  {
+    "id": "SD6-IPA-B5-Q33",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet di tata surya yang tidak memiliki satelit alami sama sekali adalah...",
+    "options": [
+      "Bumi dan Mars",
+      "Merkurius dan Venus",
+      "Jupiter dan Saturnus",
+      "Uranus dan Neptunus"
+    ],
+    "correctIndex": 1,
+    "explanation": "Merkurius dan Venus jaraknya sangat dekat dengan matahari. Jika mereka punya satelit, gravitasi kuat matahari pasti akan menarik hancur satelit tersebut."
+  },
+  {
+    "id": "SD6-IPA-B5-Q34",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Satelit alami milik planet Mars adalah...",
+    "options": [
+      "Bulan",
+      "Titan dan Europa",
+      "Phobos dan Deimos",
+      "Ganymede"
+    ],
+    "correctIndex": 2,
+    "explanation": "Mars memiliki dua satelit kecil berbentuk tidak beraturan yang dinamakan Phobos dan Deimos."
+  },
+  {
+    "id": "SD6-IPA-B5-Q35",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Satelit alami terbesar di tata surya yang dimiliki oleh Jupiter adalah...",
+    "options": [
+      "Titan",
+      "Ganymede",
+      "Europa",
+      "Bulan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ganymede adalah satelit terbesar, bahkan ukurannya lebih besar daripada planet Merkurius!"
+  },
+  {
+    "id": "SD6-IPA-B5-Q36",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Benda langit berekor panjang yang orbitnya sangat lonjong mengelilingi matahari disebut...",
+    "options": [
+      "Asteroid",
+      "Meteor",
+      "Komet",
+      "Satelit"
+    ],
+    "correctIndex": 2,
+    "explanation": "Komet (bintang berekor) terbuat dari es dan debu. Ekornya terjadi karena es tersebut menguap saat mendekati panas matahari, ekor komet selalu menjauhi matahari."
+  },
+  {
+    "id": "SD6-IPA-B5-Q37",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Potongan batu/logam dari luar angkasa yang jatuh dan terbakar habis di atmosfer bumi disebut...",
+    "options": [
+      "Bintang jatuh (Meteor)",
+      "Meteorit",
+      "Asteroid",
+      "Komet"
+    ],
+    "correctIndex": 0,
+    "explanation": "Meteor adalah batu luar angkasa (meteoroid) yang sedang terbakar melintasi atmosfer (sering disebut bintang jatuh)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q38",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Jika meteor tidak habis terbakar di atmosfer dan berhasil menabrak permukaan Bumi, benda tersebut disebut...",
+    "options": [
+      "Meteoroid",
+      "Komet",
+      "Meteorit",
+      "Asteroid"
+    ],
+    "correctIndex": 2,
+    "explanation": "Batu yang berhasil mendarat/menabrak tanah Bumi disebut Meteorit (akhiran -it untuk benda padat yang jatuh)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q39",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Gaya yang menjaga seluruh planet, asteroid, dan komet tetap berada pada orbit mengelilingi matahari adalah...",
+    "options": [
+      "Gravitasi Bumi",
+      "Gravitasi Matahari",
+      "Rotasi Planet",
+      "Gesekan Atmosfer"
+    ],
+    "correctIndex": 1,
+    "explanation": "Matahari memiliki massa paling besar di tata surya (99,8%), sehingga gravitasinya sangat kuat untuk menahan benda langit lain agar tidak terlempar keluar orbit."
+  },
+  {
+    "id": "SD6-IPA-B5-Q40",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet Venus memiliki pergerakan rotasi yang sangat unik dibanding planet lain, yaitu...",
+    "options": [
+      "Dari barat ke timur dengan sangat cepat",
+      "Dari timur ke barat (retrograde)",
+      "Dari utara ke selatan",
+      "Sumbu rotasinya miring 90 derajat"
+    ],
+    "correctIndex": 1,
+    "explanation": "Venus berotasi terbalik (retrograde) dari arah timur ke barat. Sehingga jika kamu berada di Venus, kamu akan melihat matahari terbit dari Barat!"
+  },
+  {
+    "id": "SD6-IPA-B5-Q41",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "(HOTS) Jika kamu akan melakukan panggilan telepon ke temanmu di Bali (WITA) pada pukul 08.00 WIB pagi dari Bandung, pukul berapakah di jam temanmu saat itu?",
+    "options": [
+      "07.00",
+      "08.00",
+      "09.00",
+      "10.00"
+    ],
+    "correctIndex": 2,
+    "explanation": "WITA (Bali) lebih cepat 1 jam dibanding WIB (Bandung). Jadi saat di Bandung pukul 08.00, di Bali sudah pukul 09.00."
+  },
+  {
+    "id": "SD6-IPA-B5-Q42",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "(HOTS) Mengapa Gerhana Matahari Cincin bisa terjadi?",
+    "options": [
+      "Karena Bulan berada pada titik terdekat dengan Bumi",
+      "Karena Bulan berada pada titik terjauh dari Bumi (Apogee)",
+      "Karena Matahari bersinar terlalu terang",
+      "Karena Bumi berputar lebih cepat"
+    ],
+    "correctIndex": 1,
+    "explanation": "Gerhana cincin terjadi saat Bulan berada pada jarak terjauhnya dari Bumi (apogee), sehingga ukuran bulan tampak lebih kecil dan tidak bisa menutupi seluruh piringan matahari, menyisakan cincin api di sekelilingnya."
+  },
+  {
+    "id": "SD6-IPA-B5-Q43",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Apa yang menjadi penyebab utama perbedaan lamanya waktu siang dan malam di negara-negara 4 musim?",
+    "options": [
+      "Jarak bumi dan matahari yang berubah-ubah",
+      "Kecepatan rotasi bumi yang melambat",
+      "Kemiringan sumbu Bumi sebesar 23,5 derajat saat berevolusi",
+      "Ukuran matahari yang membesar di musim panas"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sumbu bumi tidak tegak lurus, melainkan miring 23,5 derajat. Kemiringan ini saat mengitari matahari membuat ada kalanya bumi utara mendapat durasi sinar lebih panjang (siang lebih lama) daripada bumi selatan."
+  },
+  {
+    "id": "SD6-IPA-B5-Q44",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Sebagian besar permukaan Bumi terdiri dari...",
+    "options": [
+      "Daratan batu",
+      "Gurun pasir",
+      "Air (Samudra/Lautan)",
+      "Pegunungan es"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sekitar 71% permukaan Bumi diselimuti oleh air laut, karenanya dari luar angkasa Bumi tampak seperti kelereng berwarna biru kebiruan (The Blue Planet)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q45",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Fenomena pasang surut air laut di Bumi utamanya dipengaruhi oleh...",
+    "options": [
+      "Gravitasi Matahari",
+      "Gravitasi Bulan",
+      "Rotasi Bumi",
+      "Angin badai"
+    ],
+    "correctIndex": 1,
+    "explanation": "Meskipun gravitasi matahari kuat, namun jarak Bulan jauh lebih dekat ke Bumi. Tarikan gravitasi Bulan pada Bumi-lah yang paling dominan menarik air laut menyebabkan fenomena pasang dan surut."
+  },
+  {
+    "id": "SD6-IPA-B5-Q46",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Planet yang jaraknya paling jauh dari Matahari di tata surya kita saat ini adalah...",
+    "options": [
+      "Pluto",
+      "Uranus",
+      "Neptunus",
+      "Saturnus"
+    ],
+    "correctIndex": 2,
+    "explanation": "Neptunus adalah planet terjauh. Pluto tidak lagi diklasifikasikan sebagai planet utama sejak 2006, melainkan sebagai planet kerdil (dwarf planet)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q47",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Peristiwa ketika Matahari seolah-olah berada di ufuk utara atau ufuk selatan pada bulan-bulan tertentu disebut...",
+    "options": [
+      "Gerak semu harian",
+      "Gerak semu tahunan",
+      "Gerhana matahari",
+      "Revolusi semu"
+    ],
+    "correctIndex": 1,
+    "explanation": "Gerak semu tahunan terjadi karena posisi Bumi yang miring saat berevolusi, membuat matahari kadang terasa bergeser terbit agak ke utara (Juni) dan agak ke selatan (Desember)."
+  },
+  {
+    "id": "SD6-IPA-B5-Q48",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Satelit buatan adalah benda langit buatan manusia yang diluncurkan untuk mengorbit bumi. Salah satu fungsi utamanya adalah...",
+    "options": [
+      "Menghasilkan cahaya matahari buatan",
+      "Mengatur cuaca bumi",
+      "Komunikasi telekomunikasi, GPS, dan pengamatan cuaca",
+      "Mencegah komet menabrak bumi"
+    ],
+    "correctIndex": 2,
+    "explanation": "Satelit buatan digunakan untuk mengirim sinyal TV, internet, navigasi pemetaan (GPS/Google Maps), dan mengambil foto satelit pemantau badai/cuaca."
+  },
+  {
+    "id": "SD6-IPA-B5-Q49",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "(HOTS) Pada malam yang cerah, Budi melihat bintang berkelap-kelip, tetapi ia juga melihat satu 'bintang' yang bercahaya terang dan cahayanya tidak berkedip. Kemungkinan benda langit tak berkedip itu adalah...",
+    "options": [
+      "Bintang terjauh",
+      "Planet (seperti Venus atau Mars)",
+      "Komet",
+      "Meteorit"
+    ],
+    "correctIndex": 1,
+    "explanation": "Bintang asli memancarkan cahayanya sendiri melalui ruang hampa bergas sehingga tampak berkedip dari bumi. Planet tidak memancarkan cahaya (hanya memantulkan) dan letaknya lebih dekat, sehingga cahayanya tampak stabil tidak berkedip."
+  },
+  {
+    "id": "SD6-IPA-B5-Q50",
+    "subject": "IPAS",
+    "semester": 2,
+    "moduleId": "IPAS-B5",
+    "topic": "Bab 5: Menjelajahi Bumi dan Antariksa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Atmosfer di Bumi sangat penting bagi kehidupan kita. Salah satu fungsi atmosfer adalah...",
+    "options": [
+      "Memantulkan seluruh panas matahari ke luar angkasa",
+      "Menyediakan gas Helium untuk bernapas",
+      "Melindungi bumi dari benturan benda angkasa dan radiasi ultraviolet",
+      "Menarik bulan agar tidak menjauh"
+    ],
+    "correctIndex": 2,
+    "explanation": "Atmosfer berfungsi sebagai perisai (lapisan ozon menahan UV) dan menyebabkan benda langit (meteor) bergesekan lalu terbakar habis sebelum menimpa makhluk hidup di bumi."
+  }
+];
+
+
+    // =========================================================================
+    // FITUR PILIH BAB DINAMIS (KURIKULUM, KUIS CBT, & FLASHCARD)
+    // =========================================================================
+    function onCurriculumSemesterChange() {
+      updateCurriculumBabDropdown();
+      renderCurriculum();
+    }
+
+    function updateCurriculumBabDropdown() {
+      const babSelect = document.getElementById('curr-bab-select');
+      const semSelect = document.getElementById('curr-semester');
+      if (!babSelect) return;
+
+      const sem = semSelect ? semSelect.value : 'ALL';
+      let modules = window.KURIKULUM_SD6 || [];
+      if (currSelectedSubject !== 'ALL') {
+        modules = modules.filter(m => m.subject === currSelectedSubject);
+      }
+      if (sem !== 'ALL') {
+        modules = modules.filter(m => String(m.semester) === String(sem));
+      }
+
+      const currentVal = babSelect.value;
+      let optionsHtml = '<option value="ALL">📚 Tampilkan Semua Bab (' + modules.length + ' Bab)</option>';
+      modules.forEach(m => {
+        optionsHtml += '<option value="' + m.id + '">' + escapeHtml(m.bab) + '</option>';
+      });
+
+      babSelect.innerHTML = optionsHtml;
+      if (modules.some(m => m.id === currentVal)) {
+        babSelect.value = currentVal;
+      } else {
+        babSelect.value = 'ALL';
+      }
+    }
+
+    function onQuizSubjectChange() {
+      updateQuizTopicDropdown();
+      startNewQuiz();
+    }
+
+    function onQuizSemesterChange() {
+      updateQuizTopicDropdown();
+      startNewQuiz();
+    }
+
+    function updateQuizTopicDropdown() {
+      const topicSelect = document.getElementById('quiz-topic-select');
+      const subjSelect = document.getElementById('quiz-subject-select');
+      const semSelect = document.getElementById('quiz-semester-select');
+      if (!topicSelect) return;
+
+      const subj = subjSelect ? subjSelect.value : 'ALL';
+      const sem = semSelect ? semSelect.value : 'ALL';
+
+      let modules = window.KURIKULUM_SD6 || [];
+      if (subj !== 'ALL') modules = modules.filter(m => m.subject === subj);
+      if (sem !== 'ALL') modules = modules.filter(m => String(m.semester) === String(sem));
+
+      const currentVal = topicSelect.value;
+      let optionsHtml = '<option value="ALL">🌟 Semua Bab (Campuran Satu Paket)</option>';
+
+      modules.forEach(m => {
+        const qCount = questions.filter(q => q.type === 'PG' && isQuestionInModule(q, m)).length;
+        optionsHtml += '<option value="' + m.id + '">' + escapeHtml(m.bab) + ' (' + qCount + ' soal)</option>';
+      });
+
+      topicSelect.innerHTML = optionsHtml;
+      if (modules.some(m => m.id === currentVal)) {
+        topicSelect.value = currentVal;
+      } else {
+        topicSelect.value = 'ALL';
+      }
+    }
+
 
     // =========================================================================
     // OPSI A: DATA & LOGIKA FLASHCARD HAFALAN INTERAKTIF (3D FLIP CARD)
@@ -2586,21 +3713,43 @@ window.DEFAULT_QUESTIONS_SD6 = [
     let isFcCardFlipped = false;
     let fcViewMode = 'FOCUS'; // 'FOCUS' or 'GRID'
 
+    function onFlashcardSubjectChange() {
+      updateFlashcardBabDropdown();
+      renderFlashcards();
+    }
+
+    function updateFlashcardBabDropdown() {
+      const subj = document.getElementById('fc-subject') ? document.getElementById('fc-subject').value : 'ALL';
+      const babSelect = document.getElementById('fc-bab-select');
+      if (!babSelect) return;
+
+      let babs = [];
+      const cards = subj === 'ALL' ? DEFAULT_FLASHCARDS : DEFAULT_FLASHCARDS.filter(c => c.subject === subj);
+      cards.forEach(c => {
+        if (c.frontTag && !babs.includes(c.frontTag)) babs.push(c.frontTag);
+      });
+
+      babSelect.innerHTML = '<option value="ALL">📚 Semua Bab (' + cards.length + ' kartu)</option>' +
+        babs.map(b => '<option value="' + escapeHtml(b) + '">' + escapeHtml(b) + '</option>').join('');
+    }
+
     function renderFlashcards() {
       const subj = document.getElementById('fc-subject') ? document.getElementById('fc-subject').value : 'ALL';
-      if (subj === 'ALL') {
-        activeFlashcards = [...DEFAULT_FLASHCARDS];
-      } else {
-        activeFlashcards = DEFAULT_FLASHCARDS.filter(c => c.subject === subj);
-      }
+      const bab = document.getElementById('fc-bab-select') ? document.getElementById('fc-bab-select').value : 'ALL';
+
+      let pool = [...DEFAULT_FLASHCARDS];
+      if (subj !== 'ALL') pool = pool.filter(c => c.subject === subj);
+      if (bab !== 'ALL') pool = pool.filter(c => c.frontTag === bab);
+
+      activeFlashcards = pool;
       currentFcIndex = 0;
       isFcCardFlipped = false;
 
       if (activeFlashcards.length === 0) {
         activeFlashcards = [{
-          subject: subj,
-          frontTag: 'Info',
-          front: 'Belum ada flashcard untuk mata pelajaran ini.',
+          subject: subj === 'ALL' ? 'Umum' : subj,
+          frontTag: bab === 'ALL' ? 'Info' : bab,
+          front: 'Belum ada flashcard untuk topik ini.',
           backTitle: 'Siap Ditambahkan',
           backDesc: 'Flashcard materi ini akan segera diperbarui.'
         }];
@@ -2802,6 +3951,25 @@ window.DEFAULT_QUESTIONS_SD6 = [
           throwOnError: false
         });
       }
+    }
+
+    // Helper Universal: Cek apakah butir soal cocok dengan Modul Kurikulum (Bab)
+    function isQuestionInModule(q, m) {
+      if (!m || !q) return false;
+      if (q.moduleId && q.moduleId === m.id) return true;
+      if (q.subject && m.subject && q.subject !== m.subject) return false;
+      if (q.topic && m.bab && q.topic === m.bab) return true;
+      
+      const mBabNum = (m.bab.match(/Bab\s*(\d+)/i) || [])[1];
+      const qBabNum = ((q.topic || '').match(/Bab\s*(\d+)/i) || [])[1];
+      if (mBabNum && qBabNum && mBabNum === qBabNum) return true;
+
+      if (q.topic && m.bab) {
+        const qLower = q.topic.toLowerCase();
+        const mLower = m.bab.toLowerCase();
+        if (qLower.includes(mLower) || mLower.includes(qLower)) return true;
+      }
+      return false;
     }
 
     // =========================================================================
@@ -3134,6 +4302,9 @@ window.DEFAULT_QUESTIONS_SD6 = [
         generateExamPackage();
       } else if (tab === 'analytics') {
         renderAnalytics();
+      updateCurriculumBabDropdown();
+      updateQuizTopicDropdown();
+      updateFlashcardBabDropdown();
       renderFlashcards();
       triggerKaTeXRender();
       }
@@ -3179,25 +4350,31 @@ window.DEFAULT_QUESTIONS_SD6 = [
         const el = document.getElementById('csubj-' + s);
         if (!el) return;
         if (s === subj) {
-          el.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white';
+          el.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-xs';
         } else {
-          el.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)] hover:border-indigo-500/40';
+          el.className = 'px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 transition';
         }
       });
+      updateCurriculumBabDropdown();
       renderCurriculum();
     }
 
     function renderCurriculum() {
-      const sem = document.getElementById('curr-semester').value;
-      const filtered = window.KURIKULUM_SD6.filter((m) => {
+      const semEl = document.getElementById('curr-semester');
+      const babEl = document.getElementById('curr-bab-select');
+      const sem = semEl ? semEl.value : 'ALL';
+      const selectedBabId = babEl ? babEl.value : 'ALL';
+
+      const filtered = (window.KURIKULUM_SD6 || []).filter((m) => {
         if (currSelectedSubject !== 'ALL' && m.subject !== currSelectedSubject) return false;
         if (sem !== 'ALL' && String(m.semester) !== String(sem)) return false;
+        if (selectedBabId !== 'ALL' && m.id !== selectedBabId) return false;
         return true;
       });
 
       const grid = document.getElementById('curriculum-grid');
       grid.innerHTML = filtered.map((m) => {
-        const relatedQs = questions.filter((q) => q.moduleId === m.id || q.topic === m.bab);
+        const relatedQs = questions.filter((q) => q.type === "PG" && isQuestionInModule(q, m));
         return `
           <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 shadow-sm flex flex-col justify-between space-y-4 hover:border-indigo-500/40 transition">
             <div class="space-y-3">
@@ -3233,7 +4410,7 @@ window.DEFAULT_QUESTIONS_SD6 = [
               </button>
               <div class="flex items-center justify-between gap-2">
                 <button onclick="practiceModule('${m.id}', '${escapeHtml(m.bab)}')" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition">
-                  🎯 Latihan Kuis (${relatedQs.length})
+                  🎯 Latihan Kuis (${relatedQs.length} Soal)
                 </button>
                 <button onclick="filterBankByTopic('${escapeHtml(m.bab)}')" class="py-1.5 px-3 rounded-lg text-xs font-medium border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition">
                   📚 Bank Soal
@@ -3246,12 +4423,24 @@ window.DEFAULT_QUESTIONS_SD6 = [
     }
 
     function practiceModule(moduleId, babTitle) {
-      const subset = questions.filter((q) => (q.moduleId === moduleId || q.topic === babTitle) && q.type === 'PG');
+      const mod = (window.KURIKULUM_SD6 || []).find(m => m.id === moduleId);
+      const subset = questions.filter((q) => q.type === 'PG' && isQuestionInModule(q, mod || { id: moduleId, bab: babTitle }));
       if (subset.length === 0) {
-        alert('Belum ada soal Pilihan Ganda pada bab ini.');
+        alert('Belum ada soal Pilihan Ganda pada bab ini.\n\nSilakan impor atau tambahkan soal untuk: ' + babTitle);
         return;
       }
-      initCBT(subset, babTitle);
+
+      if (mod) {
+        const qSubj = document.getElementById('quiz-subject-select');
+        const qSem = document.getElementById('quiz-semester-select');
+        if (qSubj) qSubj.value = mod.subject;
+        if (qSem) qSem.value = String(mod.semester);
+        updateQuizTopicDropdown();
+        const qTopic = document.getElementById('quiz-topic-select');
+        if (qTopic) qTopic.value = mod.id;
+      }
+
+      initCBT(subset, '🎯 ' + babTitle + ' (' + subset.length + ' Soal)');
       switchTab('quiz');
     }
 
@@ -3267,16 +4456,39 @@ window.DEFAULT_QUESTIONS_SD6 = [
     // TAB 2: KUIS PETUALANGAN ANAK SD & SIMULATOR CBT
     // =========================================================================
     function startNewQuiz() {
-      const subj = document.getElementById('quiz-subject-select').value;
-      const sem = document.getElementById('quiz-semester-select').value;
+      const subjEl = document.getElementById('quiz-subject-select');
+      const semEl = document.getElementById('quiz-semester-select');
+      const topicEl = document.getElementById('quiz-topic-select');
+
+      const subj = subjEl ? subjEl.value : 'ALL';
+      const sem = semEl ? semEl.value : 'ALL';
+      const topicId = topicEl ? topicEl.value : 'ALL';
 
       let pool = questions.filter((q) => q.type === 'PG');
       if (subj !== 'ALL') pool = pool.filter((q) => q.subject === subj);
       if (sem !== 'ALL') pool = pool.filter((q) => String(q.semester) === String(sem));
 
-      if (pool.length === 0) pool = questions.filter((q) => q.type === 'PG');
+      let targetMod = null;
+      if (topicId !== 'ALL') {
+        targetMod = (window.KURIKULUM_SD6 || []).find(m => m.id === topicId);
+        if (targetMod) {
+          pool = pool.filter((q) => isQuestionInModule(q, targetMod));
+        }
+      }
+
+      if (pool.length === 0) {
+        if (topicId !== 'ALL' && targetMod) {
+          alert('Belum ada soal kuis untuk: ' + targetMod.bab + '.\n\nSilakan gunakan menu Bank Soal atau Import File Kuis untuk menambahkan soal bab ini!');
+          return;
+        }
+        pool = questions.filter((q) => q.type === 'PG');
+      }
+
       const shuffled = shuffleArray(pool);
-      const label = subj === 'ALL' ? 'Campuran Semua Mata Pelajaran' : `${subj} (Semester ${sem === 'ALL' ? '1 & 2' : sem})`;
+      let label = subj === 'ALL' ? 'Campuran Semua Mata Pelajaran' : `${subj} (Semester ${sem === 'ALL' ? '1 & 2' : sem})`;
+      if (targetMod) {
+        label = `🎯 ${targetMod.bab} (${shuffled.length} Soal)`;
+      }
       initCBT(shuffled, label);
     }
 
@@ -4138,7 +5350,7 @@ window.DEFAULT_QUESTIONS_SD6 = [
       try {
         let extractedQuestions = [];
 
-        // 1. Ekstraksi pola array JavaScript (questions, pgData, quizData, soalData, dataSoal, dll)
+        // 1. Ekstraksi pola array JavaScript (questions, pgData, quizData, soalData, dll)
         const jsMatch = htmlContent.match(/(?:const|let|var)\s+(?:pgData|questions|quizData|soalData|quizQuestions|dataSoal|bankSoal|quiz|soal)\s*=\s*(\[[\s\S]*?\]);/i)
           || htmlContent.match(/=\s*(\[\s*\{[\s\S]*?\}\s*\]);/);
 
@@ -4148,12 +5360,10 @@ window.DEFAULT_QUESTIONS_SD6 = [
             try {
               rawArray = JSON.parse(jsMatch[1]);
             } catch (jsonErr) {
-              // Fallback aman untuk array literal JS (unquoted keys: q, o, a, e)
               rawArray = new Function('return ' + jsMatch[1])();
             }
 
             if (Array.isArray(rawArray) && rawArray.length > 0) {
-              // Deteksi Mapel & Bab berdasarkan isi file
               let subject = 'IPAS';
               let semester = 2;
               let moduleId = 'IPAS-B5';
@@ -4181,15 +5391,12 @@ window.DEFAULT_QUESTIONS_SD6 = [
               }
 
               extractedQuestions = rawArray.map((item, idx) => {
-                // Pertanyaan
                 let qText = item.q || item.question || item.pertanyaan || item.soal || item.title || '';
                 qText = String(qText).replace(/^[0-9]+[\.\)]\s*/, '').replace(/\[cite:\s*\d+\]/g, '').trim();
 
-                // Pilihan Opsi
                 let rawOpts = item.o || item.opt || item.options || item.pilihan || item.jawaban || item.choices || [];
                 let cleanOpts = rawOpts.map(opt => String(opt).replace(/^[A-E][\.\)]\s*/i, '').trim());
 
-                // Kunci Jawaban
                 let ansIdx = 0;
                 let rawAns = item.a !== undefined ? item.a : (item.ans !== undefined ? item.ans : (item.correctIndex !== undefined ? item.correctIndex : item.kunci));
 
@@ -4205,7 +5412,6 @@ window.DEFAULT_QUESTIONS_SD6 = [
                   }
                 }
 
-                // Pembahasan
                 let exp = item.e || item.exp || item.explanation || item.pembahasan || item.alasan || 'Pembahasan materi terverifikasi.';
                 exp = String(exp).replace(/\[cite:\s*\d+\]/g, '').trim();
 
@@ -4232,7 +5438,7 @@ window.DEFAULT_QUESTIONS_SD6 = [
           }
         }
 
-        // 2. DOM Parser Fallback untuk elemen HTML (.question-card, .card, dll)
+        // 2. DOM Parser Fallback
         if (extractedQuestions.length === 0) {
           const parser = new DOMParser();
           const doc = parser.parseFromString(htmlContent, 'text/html');
@@ -4273,7 +5479,6 @@ window.DEFAULT_QUESTIONS_SD6 = [
           return;
         }
 
-        // Tambahkan ke bank soal (hindari duplikat berdasarkan teks pertanyaan)
         let addedCount = 0;
         const existingTexts = new Set(questions.map(q => q.question.toLowerCase().trim()));
 
