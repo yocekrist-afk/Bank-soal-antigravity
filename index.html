@@ -4981,7 +4981,7 @@ function startQuizForBab(subject, moduleId, babTitle) {
         if (parsed['IPAS-B1'] && (parsed['IPAS-B1'].html.includes('Tata Surya') || parsed['IPAS-B1'].html.includes('Antariksa') || parsed['IPAS-B1'].html.includes('Planet'))) {
           delete parsed['IPAS-B1'];
         }
-        richModulesData = { ...DEFAULT_RICH_MODULES, ...parsed };
+        richModulesData = { ...parsed, ...DEFAULT_RICH_MODULES };
         localStorage.setItem(STORAGE_KEY_RICH_MODULES, JSON.stringify(richModulesData));
       }
     } catch(e) {}
@@ -5161,7 +5161,14 @@ function startQuizForBab(subject, moduleId, babTitle) {
     function loadData() {
       try {
         const rawQ = localStorage.getItem(STORAGE_KEY_Q);
-        questions = rawQ ? JSON.parse(rawQ) : JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+        if (rawQ) {
+          const loaded = JSON.parse(rawQ);
+          const existingIds = new Set(loaded.map(q => q.id));
+          const toAdd = (window.DEFAULT_QUESTIONS_SD6 || []).filter(q => !existingIds.has(q.id));
+          questions = [...loaded, ...toAdd];
+        } else {
+          questions = JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+        }
       } catch (e) {
         questions = JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
       }
