@@ -5,7 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PintarSD6 — Portal Kurikulum Merdeka, Modul Belajar & Bank Soal SD Kelas 6</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --background: #f4f6fb;
+      --card: #ffffff;
+      --foreground: #1e293b;
+      --muted-foreground: #64748b;
+      --border: #e2e8f0;
+      --primary: #4338ca;
+      --primary-foreground: #ffffff;
+      --secondary: #f1f5f9;
+      --secondary-foreground: #334155;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--background);
+      color: var(--foreground);
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
     @media print {
       .no-print { display: none !important; }
       body { background: white !important; color: black !important; }
@@ -20,103 +48,104 @@
     <!-- ========================================================================= -->
     <!-- COLLAPSIBLE / TOGGLEABLE SIDEBAR                                          -->
     <!-- ========================================================================= -->
-    <aside id="app-sidebar" class="bg-[var(--card)] border-r border-[var(--border)] fixed inset-y-0 left-0 z-50 flex flex-col transition-all duration-300 ease-in-out -translate-x-full lg:translate-x-0 w-64 no-print shadow-xl lg:shadow-none select-none">
-      <!-- Sidebar Header -->
-      <div class="p-4 border-b border-[var(--border)] flex items-center justify-between gap-3">
+    <aside id="app-sidebar" class="bg-slate-900 text-slate-200 border-r border-slate-800 fixed inset-y-0 left-0 z-50 flex flex-col transition-all duration-300 ease-in-out -translate-x-full lg:translate-x-0 w-64 no-print shadow-2xl lg:shadow-md select-none">
+      <!-- Sidebar Header with Logo -->
+      <div class="p-4 border-b border-slate-800/80 flex items-center justify-between gap-3 bg-slate-950/60">
         <div class="flex items-center gap-3 overflow-hidden">
-          <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-extrabold text-sm shrink-0 shadow-sm">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center font-extrabold text-sm shrink-0 shadow-md">
             SD6
           </div>
           <div class="sidebar-text truncate">
-            <h2 class="font-bold text-sm tracking-tight text-[var(--foreground)] truncate">PintarSD6 Pro</h2>
-            <p class="text-[11px] text-[var(--muted-foreground)] truncate">Fase C Kurikulum Merdeka</p>
+            <h2 class="font-bold text-sm tracking-tight text-white truncate">PintarSD6 Pro</h2>
+            <p class="text-[11px] text-slate-400 truncate">Sistem Asesmen Modern</p>
           </div>
         </div>
-        <!-- Close button mobile -->
-        <button onclick="toggleSidebar(false)" class="lg:hidden p-1.5 rounded-lg text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]" title="Tutup Menu">
+        <button onclick="toggleSidebar(false)" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" title="Tutup Menu">
           ✕
         </button>
       </div>
 
-      <!-- User Gamification Badge (Mini) -->
-      <div class="p-3.5 mx-3 my-2.5 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center gap-3 sidebar-text">
-        <div class="text-xl">⭐</div>
-        <div class="truncate">
-          <div class="flex items-center gap-1.5">
-            <strong id="sidebar-xp" class="text-xs font-bold text-amber-400">0 XP</strong>
-            <span class="text-[10px] text-[var(--muted-foreground)]">• Kelas 6</span>
+      <!-- Quick Icon Hub / Launchpad Modal Trigger (ala Accurate Modul Penjualan) -->
+      <div class="px-3 pt-3 pb-1">
+        <button onclick="openMenuHubModal()" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-gradient-to-r from-indigo-900/60 to-purple-900/60 border border-indigo-700/50 hover:border-indigo-500 text-indigo-200 hover:text-white transition group shadow-sm">
+          <div class="flex items-center gap-2.5">
+            <span class="text-lg group-hover:scale-110 transition-transform">🗂️</span>
+            <div class="text-left sidebar-text">
+              <div class="text-xs font-bold text-white leading-tight">Pusat Modul Cepat</div>
+              <div class="text-[10px] text-indigo-300">Buka Menu Kotak Ikon</div>
+            </div>
           </div>
-          <div id="sidebar-level" class="text-[11px] text-[var(--foreground)] font-medium truncate">Level 1: Penjelajah</div>
-        </div>
+          <span class="text-xs bg-indigo-500/20 px-1.5 py-0.5 rounded text-indigo-300 sidebar-text">Grid ⊞</span>
+        </button>
       </div>
 
       <!-- Navigation Menu Items -->
-      <nav class="flex-1 px-3 py-2 space-y-1 overflow-y-auto">
-        <div class="px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] sidebar-text">
+      <nav class="flex-1 px-3 py-2 space-y-1 overflow-y-auto custom-scroll">
+        <div class="px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 sidebar-text">
           Fitur Utama
         </div>
 
-        <button onclick="switchTab('curriculum'); autoCloseSidebarOnMobile();" id="side-tab-curriculum" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left bg-[var(--primary)] text-[var(--primary-foreground)]">
+        <button onclick="switchTab('curriculum'); autoCloseSidebarOnMobile();" id="side-tab-curriculum" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left bg-indigo-600 text-white shadow-sm">
           <span class="text-base shrink-0">📖</span>
           <span class="sidebar-text truncate">1. Modul & Rangkuman</span>
         </button>
 
-        <button onclick="switchTab('quiz'); autoCloseSidebarOnMobile();" id="side-tab-quiz" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+        <button onclick="switchTab('quiz'); autoCloseSidebarOnMobile();" id="side-tab-quiz" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
           <span class="text-base shrink-0">🎮</span>
           <span class="sidebar-text truncate">2. Mode Kuis Anak</span>
         </button>
 
-        <button onclick="switchTab('bank'); autoCloseSidebarOnMobile();" id="side-tab-bank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+        <button onclick="switchTab('bank'); autoCloseSidebarOnMobile();" id="side-tab-bank" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
           <span class="text-base shrink-0">📚</span>
           <span class="sidebar-text truncate">3. Bank Soal Lengkap</span>
         </button>
 
-        <button onclick="switchTab('builder'); autoCloseSidebarOnMobile();" id="side-tab-builder" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+        <button onclick="switchTab('builder'); autoCloseSidebarOnMobile();" id="side-tab-builder" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
           <span class="text-base shrink-0">⚡</span>
           <span class="sidebar-text truncate">4. Generator Ujian (PDF)</span>
         </button>
 
-        <button onclick="switchTab('analytics'); autoCloseSidebarOnMobile();" id="side-tab-analytics" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)]">
+        <button onclick="switchTab('analytics'); autoCloseSidebarOnMobile();" id="side-tab-analytics" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
           <span class="text-base shrink-0">📊</span>
           <span class="sidebar-text truncate">5. Rapor & Analisis</span>
         </button>
 
         <!-- Quick Subject Shortcut Filters -->
-        <div class="pt-4 pb-1.5 px-2.5 text-[11px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] sidebar-text">
+        <div class="pt-4 pb-1.5 px-2.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 sidebar-text">
           Pintasan Mata Pelajaran
         </div>
-        <div class="space-y-0.5 sidebar-text">
-          <button onclick="quickFilterSubject('Matematika')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+        <div class="space-y-1 sidebar-text">
+          <button onclick="quickFilterSubject('Matematika')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
             <span>📐 Matematika</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">6 Bab</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 font-semibold">6 Bab</span>
           </button>
-          <button onclick="quickFilterSubject('IPAS')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+          <button onclick="quickFilterSubject('IPAS')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
             <span>🌍 IPAS (IPA-IPS)</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">6 Bab</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">6 Bab</span>
           </button>
-          <button onclick="quickFilterSubject('Bahasa Indonesia')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+          <button onclick="quickFilterSubject('Bahasa Indonesia')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
             <span>📖 B. Indonesia</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">3 Bab</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold">3 Bab</span>
           </button>
-          <button onclick="quickFilterSubject('Pendidikan Pancasila')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+          <button onclick="quickFilterSubject('Pendidikan Pancasila')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
             <span>🦅 Pancasila</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">2 Bab</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-300 font-semibold">2 Bab</span>
           </button>
-          <button onclick="quickFilterSubject('Bahasa Inggris')" class="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] transition text-left">
+          <button onclick="quickFilterSubject('Bahasa Inggris')" class="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left">
             <span>🇬🇧 B. Inggris</span>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-[var(--background)] border border-[var(--border)]">2 Bab</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-semibold">2 Bab</span>
           </button>
         </div>
       </nav>
 
-      <!-- Sidebar Footer (Quick Actions) -->
-      <div class="p-3 border-t border-[var(--border)] space-y-1.5 bg-[var(--card)]">
-        <button onclick="openModal(); autoCloseSidebarOnMobile();" class="w-full py-2 px-3 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center gap-2 shadow-sm transition">
+      <!-- Sidebar Footer -->
+      <div class="p-3 border-t border-slate-800 space-y-1.5 bg-slate-950">
+        <button onclick="openModal(); autoCloseSidebarOnMobile();" class="w-full py-2 px-3 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white flex items-center justify-center gap-2 shadow-sm transition">
           <span>+</span>
           <span class="sidebar-text truncate">Tambah Soal Baru</span>
         </button>
 
-        <button onclick="toggleSidebarCollapse()" id="btn-collapse-sidebar" class="hidden lg:flex w-full py-1.5 px-3 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--background)] items-center justify-center gap-2 transition" title="Kecilkan/Perluas Sidebar">
+        <button onclick="toggleSidebarCollapse()" id="btn-collapse-sidebar" class="hidden lg:flex w-full py-1.5 px-3 rounded-lg text-xs text-slate-400 hover:text-white hover:bg-slate-800 items-center justify-center gap-2 transition" title="Kecilkan/Perluas Sidebar">
           <span id="collapse-icon">◀</span>
           <span class="sidebar-text truncate">Kecilkan Sidebar</span>
         </button>
@@ -128,120 +157,141 @@
     <!-- ========================================================================= -->
     <div id="main-content-wrapper" class="flex-1 flex flex-col min-w-0 transition-all duration-300 ease-in-out lg:ml-64">
       <!-- Top App Bar -->
-      <header class="border-b border-[var(--border)] bg-[var(--card)] sticky top-0 z-30 no-print">
-        <div class="px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3">
-          <!-- Toggle Sidebar Button & Title -->
+      <header class="sticky top-0 z-30 no-print shadow-sm">
+        <!-- Top Wave Gradient Banner (ala Accurate Online) -->
+        <div class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 text-white px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-inner">
           <div class="flex items-center gap-3">
-            <button onclick="toggleSidebar()" class="p-2 rounded-xl border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] hover:bg-[var(--secondary)] transition flex items-center gap-1.5" title="Buka/Tutup Menu Sidebar (Ctrl+B)">
-              <span class="text-base">☰</span>
-              <span class="text-xs font-medium hidden sm:inline">Menu</span>
+            <button onclick="toggleSidebar()" class="p-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-white transition flex items-center gap-1.5" title="Buka/Tutup Menu Sidebar (Ctrl+B)">
+              <span class="text-lg">☰</span>
+              <span class="text-xs font-semibold hidden sm:inline">Menu</span>
             </button>
-
-            <div>
-              <div class="flex items-center gap-2">
-                <h1 class="font-bold text-sm sm:text-base tracking-tight text-[var(--foreground)]" id="current-menu-title">1. Modul & Rangkuman Materi</h1>
-                <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-semibold border border-emerald-500/30 hidden md:inline">Kurikulum Merdeka SD 6</span>
-              </div>
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-white text-indigo-700 font-extrabold flex items-center justify-center text-xs shadow-xs">SD6</span>
+              <span class="font-bold text-sm sm:text-base tracking-tight text-white drop-shadow-xs">PintarSD6 Pro Enterprise</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 font-semibold hidden md:inline">Kurikulum Merdeka</span>
             </div>
           </div>
 
-          <!-- Quick Top Tools -->
+          <!-- User Profile & Action Pill -->
           <div class="flex items-center gap-2">
-            <button onclick="toggleSound()" id="btn-sound" class="px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)]">
+            <div class="hidden sm:flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3 py-1 rounded-full border border-white/20 text-xs text-white">
+              <span class="w-5 h-5 rounded-full bg-amber-400 text-slate-900 font-black flex items-center justify-center text-[10px]">⭐</span>
+              <span id="topbar-xp" class="font-bold text-amber-300">120 XP</span>
+              <span class="text-white/60">•</span>
+              <span class="font-medium text-white/90">Guru & Siswa Kelas 6</span>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <button onclick="toggleSound()" id="btn-sound" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/15 hover:bg-white/25 text-white border border-white/20 transition">
               🔊 Suara
             </button>
-
-            <button onclick="exportCSV()" class="hidden sm:inline-flex px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+            <button onclick="exportCSV()" class="hidden sm:inline-flex px-2.5 py-1 rounded-lg text-xs font-medium bg-white/15 hover:bg-white/25 text-white border border-white/20 transition">
               📊 CSV
             </button>
-
-            <button onclick="exportJSON()" class="hidden sm:inline-flex px-2.5 py-1.5 rounded-lg text-xs font-medium border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90">
+            <button onclick="exportJSON()" class="hidden sm:inline-flex px-2.5 py-1 rounded-lg text-xs font-medium bg-white/15 hover:bg-white/25 text-white border border-white/20 transition">
               ⬇ JSON
             </button>
-
-            <!-- Universal Import Button (HTML & JSON) -->
-            <label class="px-2.5 py-1.5 rounded-lg text-xs font-semibold border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 transition cursor-pointer flex items-center gap-1.5" title="Impor file soal HTML (Kuis) atau JSON">
+            <label class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-500 hover:bg-emerald-400 text-white shadow-xs transition cursor-pointer flex items-center gap-1.5" title="Impor file soal HTML atau JSON">
               <span>⬆</span>
-              <span>Impor File (HTML/JSON)</span>
+              <span class="hidden sm:inline">Impor File</span>
               <input type="file" id="import-any-file" accept=".html,.htm,.json" class="hidden" onchange="handleFileImport(event)" />
             </label>
-
-            <button onclick="openModal()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-sm">
-              + Soal
+            <button onclick="openModal()" class="px-3 py-1 rounded-lg text-xs font-bold bg-amber-400 hover:bg-amber-300 text-slate-900 shadow-xs transition">
+              + Tambah Soal
             </button>
           </div>
         </div>
 
-        <!-- Quick Top Tabs Bar (Tetap Sinkron dengan Sidebar) -->
-        <div class="px-4 sm:px-6 pb-2 pt-1 flex items-center gap-1.5 overflow-x-auto no-scrollbar border-t border-[var(--border)]/50">
-          <button onclick="switchTab('curriculum')" id="tab-curriculum" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 bg-[var(--primary)] text-[var(--primary-foreground)]">
-            📖 Modul Materi
-          </button>
-          <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
-            🎮 Mode Kuis Anak
-          </button>
-          <button onclick="switchTab('bank')" id="tab-bank" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
-            📚 Bank Soal
-          </button>
-          <button onclick="switchTab('builder')" id="tab-builder" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
-            ⚡ Naskah Ujian (PDF)
-          </button>
-          <button onclick="switchTab('analytics')" id="tab-analytics" class="px-3 py-1 rounded-lg text-xs font-semibold transition shrink-0 text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
-            📊 Rapor & Analisis
-          </button>
+        <!-- Tab Strip Navigation (Clean White Bar with Accent Line) -->
+        <div class="bg-white border-b border-slate-200 px-4 sm:px-6 py-1.5 flex items-center justify-between gap-2 overflow-x-auto custom-scroll">
+          <div class="flex items-center gap-1 shrink-0">
+            <button onclick="switchTab('curriculum')" id="tab-curriculum" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-indigo-600 text-white shadow-xs">
+              📖 1. Modul Materi
+            </button>
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+              🎮 2. Mode Kuis Anak
+            </button>
+            <button onclick="switchTab('bank')" id="tab-bank" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+              📚 3. Bank Soal Lengkap
+            </button>
+            <button onclick="switchTab('builder')" id="tab-builder" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+              ⚡ 4. Generator Ujian (PDF)
+            </button>
+            <button onclick="switchTab('analytics')" id="tab-analytics" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+              📊 5. Rapor & Analisis
+            </button>
+          </div>
+
+          <div class="text-xs text-slate-500 font-medium hidden lg:flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span id="current-menu-title" class="font-semibold text-slate-700">1. Modul & Rangkuman Materi</span>
+          </div>
         </div>
       </header>
 
       <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-5 space-y-6 flex-1">
-    <!-- Ringkasan KPI Atas -->
-    <section class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 no-print">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+    <!-- Ringkasan KPI Atas (Enterprise Bright Cards) -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 no-print">
+      <!-- Card 1 -->
+      <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-xs hover:shadow-md transition">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-[var(--muted-foreground)]">Cakupan Kurikulum Kelas 6</span>
-          <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-400 font-semibold" id="kpi-modules-count">18 Bab</span>
+          <span class="text-xs font-semibold text-slate-500">Cakupan Kurikulum</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 font-bold border border-blue-200" id="kpi-modules-count">19 Bab</span>
         </div>
-        <div class="mt-2 flex items-baseline gap-2">
-          <span class="text-2xl font-bold tracking-tight" id="kpi-total-questions">32</span>
-          <span class="text-xs text-[var(--muted-foreground)]">soal siap pakai (5 Mapel)</span>
+        <div class="mt-2.5 flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold tracking-tight text-slate-900" id="kpi-total-questions">82</span>
+          <span class="text-xs font-medium text-slate-500">butir soal aktif</span>
+        </div>
+        <div class="mt-2 text-[11px] text-emerald-600 font-medium flex items-center gap-1">
+          <span>✓</span> 5 Mapel Terverifikasi
         </div>
       </div>
 
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+      <!-- Card 2 -->
+      <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-xs hover:shadow-md transition">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-[var(--muted-foreground)]">Keseimbangan Tingkat Kesulitan</span>
-          <span class="text-xs text-emerald-400 font-medium">Proporsional</span>
+          <span class="text-xs font-semibold text-slate-500">Proporsi Kesulitan</span>
+          <span class="text-[11px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Seimbang</span>
         </div>
-        <div class="mt-2.5 flex items-center gap-1.5 h-2.5 rounded-full overflow-hidden bg-[var(--background)]">
-          <div id="bar-easy" class="bg-emerald-500 h-full transition-all" style="width: 30%"></div>
-          <div id="bar-medium" class="bg-amber-500 h-full transition-all" style="width: 50%"></div>
-          <div id="bar-hard" class="bg-rose-500 h-full transition-all" style="width: 20%"></div>
+        <div class="mt-3 flex items-center gap-1.5 h-2.5 rounded-full overflow-hidden bg-slate-100 p-0.5 border border-slate-200">
+          <div id="bar-easy" class="bg-emerald-500 h-full rounded-full transition-all" style="width: 30%"></div>
+          <div id="bar-medium" class="bg-amber-500 h-full rounded-full transition-all" style="width: 50%"></div>
+          <div id="bar-hard" class="bg-rose-500 h-full rounded-full transition-all" style="width: 20%"></div>
         </div>
-        <div class="mt-2 flex justify-between text-xs text-[var(--muted-foreground)]">
-          <span id="lbl-easy">Mudah: 0</span>
-          <span id="lbl-medium">Sedang: 0</span>
-          <span id="lbl-hard">Sulit: 0</span>
+        <div class="mt-2.5 flex justify-between text-[11px] text-slate-500 font-medium">
+          <span id="lbl-easy" class="text-emerald-700 font-semibold">Mudah: 0</span>
+          <span id="lbl-medium" class="text-amber-700 font-semibold">Sedang: 0</span>
+          <span id="lbl-hard" class="text-rose-700 font-semibold">Sulit: 0</span>
         </div>
       </div>
 
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+      <!-- Card 3 -->
+      <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-xs hover:shadow-md transition">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-[var(--muted-foreground)]">Penalaran HOTS (C4–C6)</span>
-          <span class="text-xs px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-400 font-semibold">Standar ANBK/US</span>
+          <span class="text-xs font-semibold text-slate-500">Indeks HOTS (C4–C6)</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 font-bold border border-purple-200">Standar ANBK</span>
         </div>
-        <div class="mt-2 flex items-baseline gap-2">
-          <span class="text-2xl font-bold tracking-tight" id="kpi-hots">0%</span>
-          <span class="text-xs text-[var(--muted-foreground)]" id="kpi-hots-detail">0 dari 0 soal</span>
+        <div class="mt-2.5 flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold tracking-tight text-purple-900" id="kpi-hots">0%</span>
+          <span class="text-xs text-slate-500 font-medium" id="kpi-hots-detail">0 dari 0 soal</span>
+        </div>
+        <div class="mt-2 text-[11px] text-slate-500 font-medium">
+          Menguji daya analisis & evaluasi
         </div>
       </div>
 
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm">
+      <!-- Card 4 -->
+      <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-xs hover:shadow-md transition">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-medium text-[var(--muted-foreground)]">Rekor Belajar Siswa</span>
-          <span class="text-xs text-amber-400 font-semibold" id="kpi-streak">🔥 Streak: 0</span>
+          <span class="text-xs font-semibold text-slate-500">Performa Latihan</span>
+          <span class="text-[11px] text-amber-700 font-bold bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200" id="kpi-streak">🔥 Streak: 0</span>
         </div>
-        <div class="mt-2 flex items-baseline gap-2">
-          <span class="text-2xl font-bold tracking-tight" id="kpi-avg-score">0</span>
-          <span class="text-xs text-[var(--muted-foreground)]" id="kpi-quiz-count">rata-rata dari 0 kuis</span>
+        <div class="mt-2.5 flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold tracking-tight text-slate-900" id="kpi-avg-score">0</span>
+          <span class="text-xs text-slate-500 font-medium" id="kpi-quiz-count">rata-rata latihan</span>
+        </div>
+        <div class="mt-2 text-[11px] text-indigo-600 font-medium flex items-center gap-1">
+          <span>🎯</span> Uji Pemahaman Siswa
         </div>
       </div>
     </section>
@@ -611,6 +661,109 @@
   </div> <!-- Penutup #main-content-wrapper -->
   </div> <!-- Penutup .flex-1 .flex -->
 
+  
+  <!-- MODAL PUSAT MODUL CEPAT (ALA ACCURATE ONLINE GRID TILES) -->
+  <div id="menu-hub-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-3xl w-full p-6 shadow-2xl border border-slate-200 space-y-5 animate-in fade-in zoom-in-95 duration-200">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center text-xl shadow-sm">
+            🚀
+          </div>
+          <div>
+            <h2 class="text-base font-bold text-slate-900">Pusat Modul & Alur Asesmen (Menu Cepat)</h2>
+            <p class="text-xs text-slate-500">Pilih modul pembelajaran, manajemen soal, kuis, atau cetak ujian</p>
+          </div>
+        </div>
+        <button onclick="closeMenuHubModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center text-sm font-bold transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Grid Menu Kotak Berwarna (Grid Tiles) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <!-- Tile 1 -->
+        <button onclick="switchTab('curriculum'); closeMenuHubModal();" class="p-4 rounded-xl bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200 flex flex-col items-center justify-center text-center gap-2 group transition shadow-xs hover:shadow-md">
+          <span class="text-3xl group-hover:scale-110 transition-transform">📖</span>
+          <div>
+            <div class="text-xs font-bold text-emerald-900">Modul Materi</div>
+            <div class="text-[10px] text-emerald-600">19 Bab Lengkap</div>
+          </div>
+        </button>
+
+        <!-- Tile 2 -->
+        <button onclick="switchTab('quiz'); closeMenuHubModal();" class="p-4 rounded-xl bg-purple-50 hover:bg-purple-100/80 border border-purple-200 flex flex-col items-center justify-center text-center gap-2 group transition shadow-xs hover:shadow-md">
+          <span class="text-3xl group-hover:scale-110 transition-transform">🎮</span>
+          <div>
+            <div class="text-xs font-bold text-purple-900">Mode Kuis Anak</div>
+            <div class="text-[10px] text-purple-600">Audio, XP & Streak</div>
+          </div>
+        </button>
+
+        <!-- Tile 3 -->
+        <button onclick="switchTab('bank'); closeMenuHubModal();" class="p-4 rounded-xl bg-blue-50 hover:bg-blue-100/80 border border-blue-200 flex flex-col items-center justify-center text-center gap-2 group transition shadow-xs hover:shadow-md">
+          <span class="text-3xl group-hover:scale-110 transition-transform">📚</span>
+          <div>
+            <div class="text-xs font-bold text-blue-900">Bank Soal Lengkap</div>
+            <div class="text-[10px] text-blue-600">82+ Soal Terverifikasi</div>
+          </div>
+        </button>
+
+        <!-- Tile 4 -->
+        <button onclick="switchTab('builder'); closeMenuHubModal();" class="p-4 rounded-xl bg-amber-50 hover:bg-amber-100/80 border border-amber-200 flex flex-col items-center justify-center text-center gap-2 group transition shadow-xs hover:shadow-md">
+          <span class="text-3xl group-hover:scale-110 transition-transform">⚡</span>
+          <div>
+            <div class="text-xs font-bold text-amber-900">Naskah Ujian PDF</div>
+            <div class="text-[10px] text-amber-600">Generator Sumatif</div>
+          </div>
+        </button>
+
+        <!-- Tile 5 -->
+        <button onclick="switchTab('analytics'); closeMenuHubModal();" class="p-4 rounded-xl bg-rose-50 hover:bg-rose-100/80 border border-rose-200 flex flex-col items-center justify-center text-center gap-2 group transition shadow-xs hover:shadow-md">
+          <span class="text-3xl group-hover:scale-110 transition-transform">📊</span>
+          <div>
+            <div class="text-xs font-bold text-rose-900">Rapor & Analisis</div>
+            <div class="text-[10px] text-rose-600">Distribusi Bloom & Nilai</div>
+          </div>
+        </button>
+
+        <!-- Tile 6 -->
+        <button onclick="openModal(); closeMenuHubModal();" class="p-4 rounded-xl bg-indigo-50 hover:bg-indigo-100/80 border border-indigo-200 flex flex-col items-center justify-center text-center gap-2 group transition shadow-xs hover:shadow-md">
+          <span class="text-3xl group-hover:scale-110 transition-transform">✏️</span>
+          <div>
+            <div class="text-xs font-bold text-indigo-900">Tambah Soal Baru</div>
+            <div class="text-[10px] text-indigo-600">Editor Butir Soal</div>
+          </div>
+        </button>
+
+        <!-- Tile 7 -->
+        <button onclick="document.getElementById('import-any-file').click(); closeMenuHubModal();" class="p-4 rounded-xl bg-teal-50 hover:bg-teal-100/80 border border-teal-200 flex flex-col items-center justify-center text-center gap-2 group transition shadow-xs hover:shadow-md">
+          <span class="text-3xl group-hover:scale-110 transition-transform">📥</span>
+          <div>
+            <div class="text-xs font-bold text-teal-900">Impor HTML / JSON</div>
+            <div class="text-[10px] text-teal-600">Ekstraksi Otomatis</div>
+          </div>
+        </button>
+
+        <!-- Tile 8 -->
+        <button onclick="exportCSV(); closeMenuHubModal();" class="p-4 rounded-xl bg-cyan-50 hover:bg-cyan-100/80 border border-cyan-200 flex flex-col items-center justify-center text-center gap-2 group transition shadow-xs hover:shadow-md">
+          <span class="text-3xl group-hover:scale-110 transition-transform">📋</span>
+          <div>
+            <div class="text-xs font-bold text-cyan-900">Ekspor Dokumen</div>
+            <div class="text-[10px] text-cyan-600">CSV Excel & JSON</div>
+          </div>
+        </button>
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+        <span>Tekan <kbd class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-300 font-mono text-[10px]">Esc</kbd> untuk menutup</span>
+        <button onclick="closeMenuHubModal()" class="px-4 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition">
+          Tutup Menu
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL TAMBAH / EDIT SOAL SD KELAS 6 -->
   <div id="question-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 shadow-xl space-y-4">
@@ -789,6 +942,19 @@
 
     let isSidebarOpenMobile = false;
     let isSidebarCollapsed = false;
+
+    
+    function openMenuHubModal() {
+      const m = document.getElementById('menu-hub-modal');
+      if (m) m.classList.remove('hidden');
+    }
+    function closeMenuHubModal() {
+      const m = document.getElementById('menu-hub-modal');
+      if (m) m.classList.add('hidden');
+    }
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenuHubModal();
+    });
 
     function toggleSidebar(forceState = null) {
       const sidebar = document.getElementById('app-sidebar');
