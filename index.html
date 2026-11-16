@@ -651,19 +651,30 @@
         <div class="flex flex-wrap items-center gap-3">
           <div>
             <label class="block text-xs text-[var(--muted-foreground)] mb-1">Pilih Mata Pelajaran Kuis</label>
-            <select id="quiz-subject-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+            <select id="quiz-subject-select" onchange="onQuizSubjectChange()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
               <option value="ALL">🌟 Semua Mata Pelajaran (Campuran)</option>
-              <option value="Matematika">📐 Matematika Kelas 6</option>
-              <option value="IPAS">🌍 IPAS (Sains & Sosial) Kelas 6</option>
-              <option value="Bahasa Indonesia">📖 Bahasa Indonesia Kelas 6</option>
-              <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila Kelas 6</option>
-              <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris Kelas 6</option>
+              <option value="Matematika">📐 Matematika</option>
+              <option value="IPAS">🌍 IPAS (Sains &amp; Sosial)</option>
+              <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
+              <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila</option>
+              <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris</option>
+              <option value="PLBJ">🏛️ PLBJ</option>
+              <option value="Seni Rupa">🎨 Seni Rupa</option>
+              <option value="PAI">🕌 PAI</option>
+              <option value="Bahasa Arab">🌙 Bahasa Arab</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs text-[var(--muted-foreground)] mb-1">Pilih Bab</label>
+            <select id="quiz-topic-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium" style="max-width:20rem">
+              <option value="ALL">🌟 Semua Bab (Campuran Satu Paket)</option>
             </select>
           </div>
 
           <div>
             <label class="block text-xs text-[var(--muted-foreground)] mb-1">Semester</label>
-            <select id="quiz-semester-select" onchange="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
+            <select id="quiz-semester-select" onchange="onQuizSemesterChange()" class="px-3 py-1.5 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] font-medium">
               <option value="ALL">Semester 1 & 2</option>
               <option value="1">Semester 1 (Ganjil)</option>
               <option value="2">Semester 2 (Genap)</option>
@@ -6353,8 +6364,9 @@ function startQuizForBab(subject, moduleId, babTitle) {
         }
       });
 
-      if (tab === 'quiz' && cbtQuestions.length === 0) {
-        startNewQuiz();
+      if (tab === 'quiz') {
+        updateQuizTopicDropdown();
+        if (cbtQuestions.length === 0) startNewQuiz();
       } else if (tab === 'builder' && currentPackage.length === 0) {
         generateExamPackage();
       } else if (tab === 'analytics') {
