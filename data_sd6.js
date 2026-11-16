@@ -4,246 +4,517 @@ window.KURIKULUM_SD6 = [
     "subject": "Matematika",
     "semester": 1,
     "bab": "Bab 1: Pecahan dan Desimal",
-    "summary": "Mempelajari perkalian dan pembagian pecahan biasa/campuran, mengubah pecahan menjadi desimal, serta operasi hitung bilangan desimal dalam kehidupan sehari-hari.",
+    "summary": "Mempelajari perkalian dan pembagian pecahan biasa/campuran, mengubah pecahan menjadi desimal, serta operasi hitung bilangan desimal dalam kehidupan nyata.",
     "keyPoints": [
-      "Perkalian pecahan: kalikan pembilang dengan pembilang, dan penyebut dengan penyebut: (a/b) × (c/d) = (a×c)/(b×d).",
-      "Pembagian pecahan: ubah tanda bagi menjadi kali dengan membalik pecahan kedua (kebalikannya): (a/b) ÷ (c/d) = (a/b) × (d/c).",
-      "Konversi cepat: 1/2 = 0,5 • 1/4 = 0,25 • 3/4 = 0,75 • 1/5 = 0,2 • 1/8 = 0,125."
+      "Perkalian pecahan: pembilang x pembilang, penyebut x penyebut (a/b x c/d = ac/bd).",
+      "Pembagian pecahan: ubah menjadi perkalian dengan kebalikan pecahan kedua (a/b : c/d = a/b x d/c).",
+      "Mengubah pecahan ke desimal: membagi pembilang dengan penyebut atau mengubah penyebut menjadi 10, 100, atau 1000."
     ],
-    "example": "Ibu memiliki 3/4 kg tepung. Sebanyak 2/3 bagian digunakan membuat kue. Tepung yang dipakai = 3/4 × 2/3 = 6/12 = 1/2 kg (0,5 kg)."
+    "example": "3/4 x 2/5 = (3x2)/(4x5) = 6/20 = 3/10 = 0,3."
   },
   {
     "id": "MTK-B2",
     "subject": "Matematika",
     "semester": 1,
     "bab": "Bab 2: Rasio (Perbandingan) & Skala",
-    "summary": "Memahami perbandingan dua besaran, menyederhanakan rasio, perbandingan senilai, dan menghitung skala pada peta atau denah.",
+    "summary": "Memahami konsep perbandingan senilai, perbandingan berbalik nilai, dan aplikasi skala peta/denah.",
     "keyPoints": [
-      "Rasio a : b disederhanakan dengan membagi kedua bilangan menggunakan FPB-nya.",
-      "Skala = Jarak pada Peta (JP) : Jarak Sebenarnya (JS) dalam satuan yang sama (cm).",
-      "Jarak Sebenarnya (JS) = Jarak pada Peta ÷ Skala."
+      "Rasio membandingkan dua besaran sejenis (a : b).",
+      "Rumus Skala = Jarak pada Peta (JP) : Jarak Sebenarnya (JS).",
+      "JS = JP : Skala, sedangkan JP = JS x Skala."
     ],
-    "example": "Skala peta 1 : 200.000. Jika jarak dua kota di peta 4 cm, maka jarak sebenarnya = 4 × 200.000 cm = 800.000 cm = 8 km."
+    "example": "Skala 1 : 500.000 artinya 1 cm pada peta mewakili 500.000 cm (5 km) jarak sebenarnya."
   },
   {
     "id": "MTK-B3",
     "subject": "Matematika",
     "semester": 1,
     "bab": "Bab 3: Bangun Ruang (Kubus & Balok)",
-    "summary": "Mengenal unsur bangun ruang (sisi, rusuk, titik sudut), jaring-jaring kubus dan balok, serta menghitung luas permukaan dan volume.",
+    "summary": "Menganalisis jaring-jaring, luas permukaan, dan volume bangun ruang prisma segi empat (kubus dan balok).",
     "keyPoints": [
-      "Kubus (rusuk s): Volume = s × s × s (s³) • Luas Permukaan = 6 × s².",
-      "Balok (p, l, t): Volume = p × l × t • Luas Permukaan = 2 × (p×l + p×t + l×t).",
-      "Kubus dan balok masing-masing memiliki 6 sisi, 12 rusuk, dan 8 titik sudut."
+      "Volume Kubus = s x s x s = s³; Luas Permukaan = 6 x s².",
+      "Volume Balok = p x l x t; Luas Permukaan = 2 x (pl + pt + lt).",
+      "Jaring-jaring terdiri dari 6 bujur sangkar (kubus) atau 3 pasang persegi panjang kongruen (balok)."
     ],
-    "example": "Akuarium berbentuk balok berukuran panjang 50 cm, lebar 30 cm, dan tinggi 40 cm memiliki volume = 50 × 30 × 40 = 60.000 cm³ = 60 liter."
+    "example": "Sebuah kubus dengan rusuk 10 cm memiliki volume 1.000 cm³ dan luas permukaan 600 cm²."
   },
   {
     "id": "MTK-B4",
     "subject": "Matematika",
     "semester": 2,
-    "bab": "Bab 4: Pengolahan Data (Mean, Median, Modus)",
-    "summary": "Membaca dan menyajikan data dalam tabel, diagram batang/lingkaran, serta menentukan ukuran pemusatan data tunggal.",
+    "bab": "Bab 4: Pengolahan Data (Statistika Dasar)",
+    "summary": "Menyajikan data dalam tabel/diagram batang/lingkaran serta menentukan ukuran pemusatan data (Modus, Median, dan Mean).",
     "keyPoints": [
-      "Mean (Rata-rata) = Jumlah seluruh nilai data ÷ Banyaknya data.",
-      "Median (Nilai tengah) = Nilai yang berada tepat di tengah setelah data diurutkan dari terkecil ke terbesar.",
-      "Modus = Nilai data yang paling sering muncul (frekuensi tertinggi)."
+      "Mean (rata-rata) = Jumlah seluruh data : Banyaknya data.",
+      "Modus = Nilai yang paling sering muncul (frekuensi tertinggi).",
+      "Median = Nilai tengah setelah data diurutkan dari terkecil ke terbesar."
     ],
-    "example": "Data nilai: 7, 8, 8, 9, 10. Modus = 8, Median = 8, dan Mean = (7+8+8+9+10) ÷ 5 = 42 ÷ 5 = 8,4."
+    "example": "Data: 6, 7, 8, 8, 9 -> Mean = 7,6; Modus = 8; Median = 8."
   },
   {
     "id": "MTK-B5",
     "subject": "Matematika",
     "semester": 2,
     "bab": "Bab 5: Bilangan Bulat & Koordinat Kartesius",
-    "summary": "Operasi hitung bilangan bulat positif dan negatif serta menentukan posisi titik (x, y) pada bidang koordinat Kartesius.",
+    "summary": "Operasi hitung penjumlahan, pengurangan, perkalian, pembagian bilangan bulat negatif/positif, dan membaca koordinat (x, y).",
     "keyPoints": [
-      "Penjumlahan/pengurangan bilangan negatif: a - (-b) = a + b.",
-      "Perkalian/pembagian: Tanda sama hasilnya positif (+), tanda beda hasilnya negatif (-).",
-      "Titik koordinat ditulis (x, y) di mana x adalah absis (mendatar) dan y adalah ordinat (tegak)."
+      "Garis bilangan: makin ke kanan makin besar nilainya, makin ke kiri makin kecil.",
+      "Aturan tanda perkalian: (+) x (+) = (+), (-) x (-) = (+), (+) x (-) = (-).",
+      "Titik koordinat (x, y) dimulai dari sumbu mendatar (absis x) lalu sumbu tegak (ordinat y)."
     ],
-    "example": "Suhu di puncak gunung -4°C, siang hari naik 10°C. Suhu siang hari = -4 + 10 = 6°C."
+    "example": "-15 + (-20) = -35; (-8) x (-4) = 32. Titik P(3, -2) berada di kuadran IV."
   },
   {
     "id": "MTK-B6",
     "subject": "Matematika",
     "semester": 2,
     "bab": "Bab 6: Peluang Kejadian Sederhana",
-    "summary": "Memahami skala kemungkinan suatu kejadian (pasti, mungkin, tidak mungkin) dan menghitung peluang sederhana.",
+    "summary": "Memahami kemungkinan (pasti, mungkin, mustahil) dan peluang teoritis sederhana pelemparan koin atau dadu.",
     "keyPoints": [
-      "Peluang (P) = Banyak kejadian yang dimaksud (n(A)) ÷ Total seluruh kemungkinan (n(S)).",
-      "Nilai peluang berkisar dari 0 (mustahil terjadi) hingga 1 (pasti terjadi)."
+      "Peluang = Banyak kejadian yang diharapkan : Total seluruh kemungkinan ruang sampel.",
+      "Peluang bernilai antara 0 (mustahil) sampai 1 (pasti terjadi)."
     ],
-    "example": "Pada pelemparan sebuah dadu bersisi 6, peluang muncul mata dadu genap {2, 4, 6} adalah 3/6 = 1/2."
+    "example": "Peluang muncul mata dadu bernomor 4 pada sebuah dadu bermata 6 adalah 1/6."
   },
   {
     "id": "IPAS-B1",
     "subject": "IPAS",
     "semester": 1,
     "bab": "Bab 1: Bagaimana Tubuh Kita Bergerak?",
-    "summary": "Mengenal sistem gerak manusia yang terdiri atas rangka (alat gerak pasif), otot (alat gerak aktif), sendi, dan sistem saraf.",
+    "summary": "Mempelajari sistem gerak manusia: rangka pasif, 5 macam sendi gerak (diartrosis), otot aktif, dan koordinasi sistem saraf pusat & busur refleks.",
     "keyPoints": [
-      "Jenis Sendi: Sendi Engsel (siku, lutut - 1 arah), Sendi Peluru (bahu, panggul - segala arah), Sendi Putar (leher), Sendi Pelana (ibu jari).",
-      "Tiga Jenis Otot: Otot Lurik (rangka, sadar), Otot Polos (organ dalam, tak sadar), Otot Jantung (jantung, tak sadar).",
-      "Gangguan tulang belakang: Skoliosis (melengkung ke samping S), Kifosis (membungkuk), Lordosis (dada terlalu maju), Osteoporosis (pengeroposan)."
+      "Rangka sebagai alat gerak pasif dan pelindung organ vital; Otot sebagai alat gerak aktif yang berkontraksi-relaksasi.",
+      "5 Macam Sendi Gerak: Peluru (segala arah), Engsel (1 arah), Putar (1 poros), Pelana (2 arah), Geser (mendatar).",
+      "Busur refleks lewat sumsum tulang belakang terjadi dalam 0,05 detik tanpa menunggu persetujuan otak."
     ],
-    "example": "Saat kita menekuk siku untuk mengangkat buku, sendi engsel pada siku bekerja bersama otot bisep yang berkontraksi."
+    "example": "Siku dan lutut merupakan sendi engsel, sedangkan gelang panggul dan paha merupakan sendi peluru."
   },
   {
     "id": "IPAS-B2",
     "subject": "IPAS",
     "semester": 1,
     "bab": "Bab 2: Cerita tentang Indonesia Kita",
-    "summary": "Mempelajari latar belakang kedatangan bangsa Eropa (3G), perjuangan pahlawan daerah, Pergerakan Nasional, hingga Proklamasi Kemerdekaan 17 Agustus 1945.",
+    "summary": "Mempelajari latar belakang kedatangan bangsa Eropa (3G), perlawanan pahlawan daerah, era Pergerakan Nasional, hingga Proklamasi Kemerdekaan 17 Agustus 1945.",
     "keyPoints": [
-      "Semboyan 3G penjelajahan samudra: Gold (kekayaan/rempah), Glory (kejayaan), Gospel (penyebaran agama).",
-      "Perubahan strategi perjuangan: Sebelum 1908 bersifat kedaerahan, setelah Budi Utomo (20 Mei 1908) & Sumpah Pemuda (28 Oktober 1928) bersifat nasional.",
-      "Naskah Proklamasi dirumuskan oleh Ir. Soekarno, Drs. Moh. Hatta, dan Mr. Achmad Soebardjo di rumah Laksamana Maeda, lalu diketik oleh Sayuti Melik."
+      "Semboyan 3G penjelajahan samudra: Gold (kekayaan rempah), Glory (kejayaan jajahan), Gospel (penyebaran agama).",
+      "Perubahan paradigma: Sebelum 1908 bersifat kedaerahan, setelah Budi Utomo (20 Mei 1908) & Sumpah Pemuda (28 Okt 1928) bersifat nasional.",
+      "Peristiwa Rengasdengklok mengamankan Soekarno-Hatta agar kemerdekaan murni lahir dari kehendak rakyat Indonesia."
     ],
-    "example": "Peristiwa Rengasdengklok terjadi pada 16 Agustus 1945 agar Soekarno-Hatta segera memproklamasikan kemerdekaan tanpa pengaruh Jepang."
+    "example": "Naskah Proklamasi dirumuskan di kediaman Laksamana Maeda dan diketik oleh Sayuti Melik."
   },
   {
     "id": "IPAS-B3",
     "subject": "IPAS",
     "semester": 1,
-    "bab": "Bab 3: Pelesir Keliling Dunia (6 Benua)",
-    "summary": "Mengenal karakteristik geografis 6 benua berpenghuni (Asia, Afrika, Amerika, Eropa, Australia, Antartika) dan ikon bentang alam dunia.",
+    "bab": "Bab 3: Pelesir Keliling Dunia (6 Benua & Samudra)",
+    "summary": "Mengenal letak geografis 6 benua di bumi, samudra luas, pembagian iklim matahari (tropis, subtropis, sedang, kutub), serta keanekaragaman flora fauna dunia.",
     "keyPoints": [
-      "Asia adalah benua terluas di dunia (tempat Indonesia berada), sedangkan Australia adalah benua terkecil.",
-      "Sungai terpanjang di dunia: Sungai Nil (Afrika) & Sungai Amazon (Amerika Selatan). Gurun terluas: Gurun Sahara (Afrika).",
-      "Negara memanfaatkan kondisi geografisnya, seperti Belanda dengan kincir angin & bendungan (polder), atau Jepang dengan teknologi tahan gempa."
+      "6 Benua dunia: Asia (terluas), Afrika, Amerika, Eropa, Australia (terkecil), dan Antartika.",
+      "Garis khatulistiwa (ekuator) membagi belahan bumi utara dan selatan; garis bujur (meridian) menentukan perbedaan zona waktu dunia.",
+      "Indonesia terletak di garis lintang tropis sehingga mengalami 2 musim: kemarau dan hujan."
     ],
-    "example": "Terusan Suez di Mesir menghubungkan Laut Merah dan Laut Tengah sehingga memperpendek jalur pelayaran antara Asia dan Eropa."
+    "example": "Gurun Sahara terletak di Benua Afrika, sedangkan Hutan Hujan Tropis Amazon terletak di Benua Amerika Selatan."
   },
   {
     "id": "IPAS-B4",
     "subject": "IPAS",
     "semester": 1,
-    "bab": "Bab 4: Indonesia dan Masyarakat Dunia",
-    "summary": "Memahami dampak globalisasi, peran Indonesia dalam kerja sama internasional (ASEAN, PBB), serta warisan budaya Indonesia yang diakui UNESCO.",
+    "bab": "Bab 4: Indonesia dan Masyarakat Dunia (Kerjasama Global)",
+    "summary": "Peran Indonesia dalam organisasi internasional ASEAN, PBB (Perserikatan Bangsa-Bangsa), Gerakan Non-Blok (GNB), dan kegiatan ekspor-impor global.",
     "keyPoints": [
-      "ASEAN didirikan pada 8 Agustus 1967 di Bangkok oleh 5 negara pendiri: Indonesia (Adam Malik), Malaysia, Singapura, Thailand, dan Filipina.",
-      "Kerja sama dibagi menjadi: Bilateral (2 negara), Regional (kawasan, misal ASEAN), dan Multilateral (banyak negara, misal PBB).",
-      "Warisan budaya Indonesia yang diakui UNESCO: Batik, Wayang, Angklung, Gamelan, Pencak Silat, Candi Borobudur, dan Subak Bali."
+      "Indonesia adalah salah satu pendiri ASEAN melalui Deklarasi Bangkok 8 Agustus 1967 diwakili Adam Malik.",
+      "Prinsip politik luar negeri Indonesia adalah 'Bebas Aktif'.",
+      "Komoditas ekspor utama Indonesia: kelapa sawit (CPO), batu bara, kopi, tekstil, dan nikel."
     ],
-    "example": "Pertukaran pelajar dan pengiriman beras antarnegara ASEAN merupakan wujud kerja sama regional di bidang pendidikan dan ekonomi."
+    "example": "Sekretariat utama ASEAN berkedudukan di Jakarta, Indonesia."
   },
   {
     "id": "IPAS-B5",
     "subject": "IPAS",
     "semester": 2,
     "bab": "Bab 5: Menjelajahi Bumi dan Antariksa",
-    "summary": "Mempelajari sistem Tata Surya, klasifikasi planet dalam dan luar, dampak rotasi & revolusi Bumi/Bulan, serta proses terjadinya gerhana.",
+    "summary": "Sistem tata surya, karakteristik 8 planet, gerakan rotasi & revolusi bumi/bulan, fase bulan, serta fenomena gerhana matahari dan gerhana bulan.",
     "keyPoints": [
-      "Urutan Planet dari Matahari: Merkurius, Venus, Bumi, Mars (Planet Dalam/Terestrial) — Jupiter, Saturnus, Uranus, Neptunus (Planet Luar/Raksasa Gas).",
-      "Rotasi Bumi (24 jam): terjadinya siang-malam, gerak semu harian matahari, perbedaan zona waktu (WIB, WITA, WIT).",
-      "Revolusi Bumi (365¼ hari): pergantian musim, gerak semu tahunan matahari, dan dasar kalender Masehi."
+      "8 Planet urut dari matahari: Merkurius, Venus, Bumi, Mars, Yupiter, Saturnus, Uranus, Neptunus.",
+      "Rotasi bumi (24 jam) menyebabkan siang-malam; Revolusi bumi (365,25 hari) menyebabkan pergantian musim dan dasar kalender Masehi.",
+      "Gerhana Matahari terjadi bila posisi Bulan berada di antara Matahari dan Bumi pada satu garis lurus."
     ],
-    "example": "Gerhana Matahari terjadi ketika Bulan berada tepat di antara Matahari dan Bumi pada satu garis lurus (fase bulan baru)."
+    "example": "Venus adalah planet terpanas karena efek rumah kaca tebal karbon dioksida."
   },
   {
     "id": "IPAS-B6",
     "subject": "IPAS",
     "semester": 2,
-    "bab": "Bab 6 & 7: Energi Terbarukan & Pelestarian Bumi",
-    "summary": "Memahami krisis energi fosil, sumber energi alternatif terbarukan, pemanasan global (efek rumah kaca), dan gerakan 3R.",
+    "bab": "Bab 6 & 7: Energi Terbarukan & Pelestarian Lingkungan",
+    "summary": "Membedakan energi fosil tak terbarukan dengan energi alternatif ramah lingkungan (surya, angin, air, biomassa) serta upaya adaptasi perubahan iklim global.",
     "keyPoints": [
-      "Energi Terbarukan: Panel Surya (cahaya matahari), PLTA (air), PLTB (angin/bayu), Panas Bumi (geotermal), dan Biomassa.",
-      "Efek Rumah Kaca disebabkan meningkatnya gas CO₂ dan metana di atmosfer yang memerangkap panas matahari sehingga memicu pemanasan global.",
-      "Prinsip 3R: Reduce (mengurangi sampah), Reuse (menggunakan kembali), Recycle (mendaur ulang)."
+      "Energi alternatif bersifat ramah lingkungan dan tidak akan habis: PLTS (surya), PLTB (angin), PLTA (air), PLTP (panas bumi).",
+      "Pemanasan global (global warming) dipicu oleh emisi gas rumah kaca berlebih (CO2 dan CFC).",
+      "Penerapan 3R (Reduce, Reuse, Recycle) untuk menanggulangi penumpukan sampah anorganik."
     ],
-    "example": "Sel surya (fotovoltaik) mengubah energi cahaya matahari secara langsung menjadi energi listrik tanpa menghasilkan polusi asap."
+    "example": "Pembangkit Listrik Tenaga Bayu (PLTB) terbesar di Indonesia berada di Sidrap, Sulawesi Selatan."
   },
   {
     "id": "BIN-B1",
     "subject": "Bahasa Indonesia",
     "semester": 1,
     "bab": "Bab 1: Bangga Menjadi Anak Indonesia (Surat & Unsur Cerita)",
-    "summary": "Menganalisis unsur intrinsik cerita serta membedakan ciri dan bagian surat resmi dengan surat pribadi.",
+    "summary": "Membaca teks cerita, menentukan tema, tokoh, watak, latar, alur, amanat, serta membedakan format surat resmi dan surat pribadi.",
     "keyPoints": [
-      "Surat Resmi memiliki kop surat (kepala surat), nomor surat, lampiran, perihal, dan menggunakan bahasa baku.",
-      "Surat Pribadi ditujukan kepada teman/keluarga, tidak memakai kop/nomor surat, dan bahasanya lebih akrab namun tetap santun.",
-      "Unsur Intrinsik Cerita: Tema, Tokoh & Penokohan (watak), Latar (tempat, waktu, suasana), Alur (maju/mundur), dan Amanat (pesan moral)."
+      "Unsur intrinsik cerita: Tema, Tokoh/Penokohan (Protagonis, Antagonis, Tritagonis), Latar (Waktu, Tempat, Suasana), dan Amanat.",
+      "Surat resmi memiliki kop/kepala surat, nomor, perihal, dan stempel dinas; surat pribadi menggunakan bahasa santai sopan."
     ],
-    "example": "Surat undangan rapat orang tua murid dari kepala sekolah merupakan contoh surat resmi karena memiliki kop sekolah dan nomor surat."
+    "example": "Amanat cerita adalah pesan moral yang ingin disampaikan penulis kepada pembaca."
   },
   {
     "id": "BIN-B2",
     "subject": "Bahasa Indonesia",
     "semester": 1,
     "bab": "Bab 2 & 3: Teks Eksplanasi, Fakta vs Opini & Kalimat Efektif",
-    "summary": "Memahami struktur teks eksplanasi ilmiah, membedakan kalimat fakta dan opini, serta mengubah kalimat langsung menjadi tidak langsung.",
+    "summary": "Menemukan informasi penting dari teks eksplanasi ilmiah (sebab-akibat), memilah fakta objektif vs opini subjektif, dan menyusun kalimat efektif EYD.",
     "keyPoints": [
-      "Struktur Teks Eksplanasi: 1) Pernyataan Umum, 2) Deretan Penjelas (sebab-akibat), 3) Interpretasi/Kesimpulan.",
-      "Fakta: kebenarannya teruji dan memiliki data objektif (angka, tanggal, tempat). Opini: pendapat/perasaan pribadi (kata: menurut saya, sebaiknya, sangat indah).",
-      "Syarat Kalimat Efektif: Memiliki subjek dan predikat jelas, menggunakan kata baku, dan hemat kata (tidak boros/pleonasme)."
+      "Struktur teks eksplanasi: Pernyataan umum, Deretan penjelas (kausalitas/sebab-akibat), dan Interpretasi/kesimpulan.",
+      "Fakta dapat dibuktikan kebenarannya dengan data/angka; opini merupakan pendapat atau perkiraan pribadi.",
+      "Ciri kalimat efektif: hemat kata, tidak bermakna ganda (ambigu), dan sesuai kaidah PUEBI/EYD."
     ],
-    "example": "Tidak efektif: \"Para hadirin sekalian dimohon berdiri.\" → Efektif: \"Hadirin dimohon berdiri.\""
+    "example": "'Matahari terbit dari sebelah timur' adalah fakta. 'Pemandangan pantai itu sangat indah' adalah opini."
   },
   {
     "id": "BIN-B3",
     "subject": "Bahasa Indonesia",
     "semester": 2,
     "bab": "Bab 4, 5 & 6: Pidato, Ungkapan, Peribahasa & Teks Persuasif",
-    "summary": "Menyusun naskah pidato, memahami makna ungkapan dan peribahasa, serta menulis teks persuasif bertema lingkungan.",
+    "summary": "Menyusun dan menyampaikan naskah pidato persuasif, memahami makna kiasan (ungkapan/idiom dan peribahasa), serta mengapresiasi puisi anak.",
     "keyPoints": [
-      "Struktur Pidato: 1) Pembuka (salam, sapaan, puji syukur), 2) Isi pidato, 3) Penutup (kesimpulan, harapan, permohonan maaf, salam penutup).",
-      "Ungkapan (Idiom): gabungan kata yang membentuk makna baru (misal: rendah hati = tidak sombong, buah tangan = oleh-oleh, banting tulang = kerja keras).",
-      "Peribahasa: kalimat kiasan berisi nasihat (misal: \"Besar pasak daripada tiang\" artinya lebih besar pengeluaran daripada pendapatan)."
+      "Struktur teks pidato: Pembuka (salam, puji syukur, kehormatan), Isi (gagasan utama/ajakan), dan Penutup (kesimpulan, permohonan maaf, salam).",
+      "Ungkapan: gabungan kata yang membentuk arti baru (contoh: buah bibir = bahan pembicaraan, besar kepala = sombong).",
+      "Peribahasa: kelompok kata berstruktur tetap berisi perumpamaan perbuatan (contoh: tong kosong nyaring bunyinya)."
     ],
-    "example": "Kalimat persuasif menggunakan kata ajakan seperti \"Mari\", \"Ayo\", atau \"Hendaknya\" untuk mengajak pembaca melakukan sesuatu yang positif."
+    "example": "Dalam pidato persuasif di depan kelas, intonasi suara yang tegas dan kontak mata dengan audiens sangat penting."
   },
   {
     "id": "PKN-B1",
     "subject": "Pendidikan Pancasila",
     "semester": 1,
-    "bab": "Bab 1 & 2: Pengamalan Pancasila, Norma, Hak & Kewajiban",
-    "summary": "Memahami keterkaitan utuh kelima sila Pancasila serta penerapan 4 macam norma dan keseimbangan hak-kewajiban anak.",
+    "bab": "Bab 1: Penerapan Nilai-Nilai Pancasila dalam Keseharian",
+    "summary": "Memahami dan mengamalkan butir-butir nilai luhur Ketuhanan, Kemanusiaan, Persatuan, Kerakyatan, dan Keadilan Sosial di keluarga, sekolah, dan masyarakat.",
     "keyPoints": [
-      "Lambang Sila: 1) Bintang, 2) Rantai, 3) Pohon Beringin, 4) Kepala Banteng, 5) Padi dan Kapas.",
-      "Empat Macam Norma: Norma Agama (wahyu Tuhan), Norma Kesusilaan (hati nurani), Norma Kesopanan (pergaulan masyarakat), Norma Hukum (aturan negara, sanksi tegas).",
-      "Kewajiban harus didahulukan sebelum menuntut hak agar tercipta ketertiban dan keadilan bersama."
+      "Sila 1: Menghormati teman beribadah dan tidak memaksakan agama.",
+      "Sila 2: Tenggang rasa, gemar menolong sesama tanpa membedakan derajat.",
+      "Sila 3: Rela berkorban, cinta produk tanah air, dan menjaga persatuan bangsa.",
+      "Sila 4: Mengutamakan musyawarah untuk mencapai mufakat dalam pengambilan keputusan.",
+      "Sila 5: Bersikap adil, menghargai hasil karya orang lain, dan tidak bergaya hidup boros."
     ],
-    "example": "Mengikuti musyawarah pemilihan ketua kelas dengan tertib adalah pengamalan Sila ke-4, sedangkan membantu teman yang terkena musibah adalah Sila ke-2."
+    "example": "Mengadakan ronda malam bersama di lingkungan RT merupakan wujud pengamalan Sila ke-3."
   },
   {
     "id": "PKN-B2",
     "subject": "Pendidikan Pancasila",
-    "semester": 2,
-    "bab": "Bab 3 & 4: Musyawarah, Toleransi Budaya & Menjaga NKRI",
-    "summary": "Mempraktikkan pengambilan keputusan melalui musyawarah mufakat, menghargai keberagaman suku/agama, dan bela negara.",
+    "semester": 1,
+    "bab": "Bab 2: Norma, Hak, dan Kewajiban Warga Negara",
+    "summary": "Mengenal 4 macam norma dalam masyarakat (Agama, Kesusilaan, Kesopanan, Hukum) serta mengutamakan pelaksanaan kewajiban sebelum menuntut hak.",
     "keyPoints": [
-      "Tujuan musyawarah adalah mencapai mufakat (kesepakatan bersama). Jika mufakat belum tercapai, dapat dilakukan pemungutan suara terbanyak (voting).",
-      "Semua warga wajib melaksanakan hasil keputusan musyawarah dengan penuh tanggung jawab dan lapang dada.",
-      "Semboyan Bhinneka Tunggal Ika (dari Kitab Sutasoma karya Mpu Tantular) berarti \"Berbeda-beda tetapi tetap satu jua\"."
+      "Norma Agama bersumber dari wahyu Tuhan; sanksinya dosa di akhirat.",
+      "Norma Kesusilaan bersumber dari hati nurani; sanksinya penyesalan dan rasa bersalah.",
+      "Norma Kesopanan bersumber dari adat istiadat/tata krama pergaulan; sanksinya celaan/pengucilan.",
+      "Norma Hukum dibuat oleh lembaga berwenang negara; bersifat tegas dan mengikat."
     ],
-    "example": "Menghormati teman yang sedang menjalankan ibadah dan mempelajari tarian daerah lain merupakan wujud nyata menjaga persatuan NKRI."
+    "example": "Mematuhi rambu-rambu lalu lintas adalah kewajiban warga negara yang diatur oleh norma hukum."
+  },
+  {
+    "id": "PKN-B3",
+    "subject": "Pendidikan Pancasila",
+    "semester": 2,
+    "bab": "Bab 3: Menghormati Keberagaman Budaya, Suku & Agama",
+    "summary": "Memaknai semboyan Bhinneka Tunggal Ika dalam melestarikan keragaman rumah adat, pakaian daerah, tarian tradisional, dan kearifan lokal Nusantara.",
+    "keyPoints": [
+      "Semboyan Bhinneka Tunggal Ika berasal dari Kitab Sutasoma karangan Mpu Tantular pada zaman Kerajaan Majapahit.",
+      "Menghindari sikap etnosentrisme (menganggap sukunya sendiri paling unggul) dan primordialisme sempit."
+    ],
+    "example": "Ikut mempelajari tarian daerah lain saat perayaan kemerdekaan adalah bentuk toleransi budaya."
+  },
+  {
+    "id": "PKN-B4",
+    "subject": "Pendidikan Pancasila",
+    "semester": 2,
+    "bab": "Bab 4: Musyawarah Mufakat & Menjaga Keutuhan NKRI",
+    "summary": "Mempraktikkan tata cara musyawarah pemilihan ketua kelas, menerima keputusan bersama dengan lapang dada, dan menjaga persatuan NKRI.",
+    "keyPoints": [
+      "Musyawarah bertujuan mencapai mufakat (kesepakatan bulat); bila buntu barulah dilakukan pemungutan suara (voting).",
+      "Sikap demokratis: menghargai perbedaan pendapat dan melaksanakan hasil musyawarah dengan ikhlas dan bertanggung jawab."
+    ],
+    "example": "Menerima hasil keputusan pemilihan ketua kelas meskipun calon yang kita dukung tidak terpilih."
   },
   {
     "id": "ENG-B1",
     "subject": "Bahasa Inggris",
     "semester": 1,
-    "bab": "Semester 1: Past Activities (Simple Past Tense & Was/Were)",
-    "summary": "Menceritakan kegiatan yang sudah dilakukan di masa lampau menggunakan kata kerja bentuk kedua (Verb 2) dan to be lampau (was/were).",
+    "bab": "Unit 1: Past Activities & Holiday Experiences (Simple Past Tense)",
+    "summary": "Using Simple Past Tense to describe past events, distinguishing regular verbs (-ed) and irregular verbs, and asking 'Where did you go on your holiday?'.",
     "keyPoints": [
-      "Rumus kalimat positif lampau: Subject + Verb 2 (misal: visited, played, studied, went, bought, ate).",
-      "Kalimat negatif & tanya menggunakan \"did\": Subject + did not (didn't) + Verb 1 • Did + Subject + Verb 1?",
-      "To be lampau: \"was\" untuk I, He, She, It • \"were\" untuk You, They, We. Keterangan waktu: yesterday, last night, two days ago, last week."
+      "Time signals: yesterday, last week, two days ago, in 2023.",
+      "Regular verbs: play -> played, visit -> visited, watch -> watched.",
+      "Irregular verbs: go -> went, see -> saw, buy -> bought, eat -> ate."
     ],
-    "example": "Rina went to the library yesterday, and she borrowed two storybooks."
+    "example": "'My family went to Bali last holiday and we visited Kuta Beach.'"
   },
   {
     "id": "ENG-B2",
     "subject": "Bahasa Inggris",
-    "semester": 2,
-    "bab": "Semester 2: Future Plans & Dreams (Will & Professions)",
-    "summary": "Menyatakan rencana kegiatan yang akan datang menggunakan \"will\" serta menceritakan cita-cita profesi di masa depan.",
+    "semester": 1,
+    "bab": "Unit 2: Feelings, Emotions & Was/Were Sentences",
+    "summary": "Expressing feelings and emotions using past to be (was/were) with adjectives (happy, excited, nervous, exhausted, proud).",
     "keyPoints": [
-      "Rumus rencana masa depan: Subject + will + Verb 1 (misal: I will study, She will visit).",
-      "Keterangan waktu masa depan: tomorrow (besok), next week (minggu depan), tonight (malam ini), in the future (di masa depan).",
-      "Kosakata Profesi: Doctor (merawat pasien), Architect (merancang gedung), Pilot (menerbangkan pesawat), Chef (memasak), Scientist (peneliti)."
+      "Subject 'I, He, She, It' uses 'was'; Subject 'You, We, They' uses 'were'.",
+      "Negative form: was not (wasn't) / were not (weren't).",
+      "Interrogative form: 'Was the movie interesting?' - 'Yes, it was.'"
     ],
-    "example": "\"What will you do tomorrow?\" — \"I will visit my grandparents in Bandung tomorrow.\""
+    "example": "'We were very proud when our school won the science competition.'"
+  },
+  {
+    "id": "ENG-B3",
+    "subject": "Bahasa Inggris",
+    "semester": 2,
+    "bab": "Unit 3: Future Ambitions & Dreaming Big (Will & Professions)",
+    "summary": "Talking about future dreams, career ambitions, and professions using 'I will be a/an...' and 'I am going to become...'.",
+    "keyPoints": [
+      "Professions vocabulary: architect, surgeon, pilot, software developer, diplomat.",
+      "Pattern: Subject + will + be + profession (e.g. 'I will be an astronomer').",
+      "Asking questions: 'What will you be in the future?'"
+    ],
+    "example": "'Nadia loves painting; she will be a famous graphic designer in the future.'"
+  },
+  {
+    "id": "ENG-B4",
+    "subject": "Bahasa Inggris",
+    "semester": 2,
+    "bab": "Unit 4: Earth Stewards & Giving Instructions (Imperatives)",
+    "summary": "Understanding environmental stewardship, using imperative sentences ('Turn off the faucet', 'Do not waste paper'), and comparative adjectives.",
+    "keyPoints": [
+      "Positive imperative: 'Plant more trees', 'Recycle plastic bottles'.",
+      "Negative imperative: 'Do not throw rubbish in the river', 'Do not cut down trees'.",
+      "Degrees of comparison: green -> greener, clean -> cleaner, sustainable -> more sustainable."
+    ],
+    "example": "'Turn off the electronic devices before leaving the classroom.'"
+  },
+  {
+    "id": "PLBJ-B1",
+    "subject": "PLBJ",
+    "semester": 1,
+    "bab": "Bab 1: Kesenian Musik Gambang Kromong & Tanjidor",
+    "summary": "Mengenal sejarah, instrumen musik pengiring, dan lagu khas Betawi (Kicir-Kicir, Jali-Jali, Sirih Kuning) dalam pertunjukan Gambang Kromong dan Tanjidor.",
+    "keyPoints": [
+      "Gambang Kromong merupakan perpaduan harmonis budaya Tionghoa dan Betawi; instrumen geseknya adalah Tehyan dan Kongahyan.",
+      "Tanjidor adalah orkes tiup peninggalan bangsa Eropa yang dimainkan oleh masyarakat Betawi tempo dulu.",
+      "Lagu daerah Jakarta: Kicir-Kicir menceritakan tentang penghibur hati yang duka, Jali-Jali, dan Surilang."
+    ],
+    "example": "Instrumen Gambang terbuat dari bilah kayu manis atau jati yang dipukul dengan tabuh berujung empuk."
+  },
+  {
+    "id": "PLBJ-B2",
+    "subject": "PLBJ",
+    "semester": 1,
+    "bab": "Bab 2: Upacara Tradisi Adat Palang Pintu & Roti Buaya",
+    "summary": "Mempelajari tata cara adat pernikahan Betawi: adu pantun jenaka, jurus silat Beksi palang pintu, serta simbol kesetiaan sepasang Roti Buaya.",
+    "keyPoints": [
+      "Palang Pintu menguji ketangguhan calon pengantin pria dalam ilmu beladiri silat dan kefasihan membaca Al-Qur'an (sike).",
+      "Roti Buaya melambangkan kesetiaan abadi dan kemakmuran, karena hewan buaya hanya kawin satu kali seumur hidupnya."
+    ],
+    "example": "Sebelum pengantin pria diperbolehkan masuk, jawara dari pihak pria harus mengalahkan jawara palang pintu pihak wanita."
+  },
+  {
+    "id": "PLBJ-B3",
+    "subject": "PLBJ",
+    "semester": 1,
+    "bab": "Bab 3: Kuliner Khas Betawi (Kerak Telor, Bir Pletok & Selendang Mayang)",
+    "summary": "Mengenal aneka ragam makanan dan minuman legendaris Jakarta, bahan rempah berkhasiat, dan teknik pembuatannya yang unik.",
+    "keyPoints": [
+      "Kerak Telor dimasak tanpa minyak di atas wajan kuali yang dibalik menghadap arang membara.",
+      "Bir Pletok adalah minuman rempah non-alkohol berkhasiat menghangatkan tubuh berbahan jahe, serai, dan kayu secang penambah warna merah.",
+      "Es Selendang Mayang terbuat dari tepung hunkwe warna-warni berlapis santan dan gula merah cair."
+    ],
+    "example": "Bunyi 'pletok' pada Bir Pletok berasal dari es batu dan bambu pengocok saat minuman diaduk keras."
+  },
+  {
+    "id": "PLBJ-B4",
+    "subject": "PLBJ",
+    "semester": 2,
+    "bab": "Bab 4: Transportasi Modern Terintegrasi Jakarta (JakLingko, MRT & LRT)",
+    "summary": "Mempelajari perkembangan sistem angkutan umum massal Jakarta, tata tertib penumpang ramah disabilitas, dan peran moda raya terpadu menekan polusi.",
+    "keyPoints": [
+      "JakLingko adalah sistem transportasi umum terintegrasi pertama di Jakarta yang menggabungkan Mikrotrans, Transjakarta, LRT, dan MRT.",
+      "Etika naik eskalator di stasiun: berdiri di sisi kiri dan memberi jalan bagi yang terburu-buru di sisi kanan.",
+      "Penggunaan kartu uang elektronik (nontunai) untuk mempermudah transaksi antar-moda."
+    ],
+    "example": "MRT Jakarta (Ratangga) memiliki jalur bawah tanah dari Senayan hingga Bundaran HI."
+  },
+  {
+    "id": "PLBJ-B5",
+    "subject": "PLBJ",
+    "semester": 2,
+    "bab": "Bab 5: Pelestarian Lingkungan Pesisir & Hutan Mangrove Jakarta",
+    "summary": "Menjaga ekosistem pesisir utara Jakarta dan Kepulauan Seribu dari ancaman abrasi pantai, intrusi air laut, serta konservasi hutan bakau.",
+    "keyPoints": [
+      "Kawasan Hutan Mangrove Suaka Margasatwa Muara Angke berfungsi menahan gelombang pasang air laut.",
+      "Intrusi air laut terjadi bila air tanah di daratan disedot secara berlebihan sehingga air asin merembes ke sumur warga.",
+      "Upaya pencegahan banjir: memelihara 13 aliran sungai Jakarta dan tidak membuang sampah ke kali."
+    ],
+    "example": "Menanam bibit pohon bakau (Rhizophora) dapat memperkokoh daratan pesisir Jakarta Utara dari gerusan ombak."
+  },
+  {
+    "id": "SNR-B1",
+    "subject": "Seni Rupa",
+    "semester": 1,
+    "bab": "Bab 1: Menggambar Konstruksi Perspektif 1 & 2 Titik Hilang",
+    "summary": "Mempelajari hukum visual garis horizon dan titik hilang untuk menggambar ilusi ruang kedalaman 3 dimensi pada gedung, jalan raya, dan interior ruangan.",
+    "keyPoints": [
+      "Garis Horizon adalah garis khayal setinggi mata memandang yang memisahkan daratan/lautan dengan langit.",
+      "Titik Hilang (Vanishing Point) adalah titik tempat garis-garis sejajar tampak menyatu di kejauhan.",
+      "Perspektif 1 titik hilang cocok untuk menggambar rel kereta atau lorong lurus; perspektif 2 titik hilang untuk sudut bangunan luar."
+    ],
+    "example": "Benda yang posisinya semakin dekat dengan mata digambar semakin besar, sedangkan yang jauh digambar semakin kecil."
+  },
+  {
+    "id": "SNR-B2",
+    "subject": "Seni Rupa",
+    "semester": 1,
+    "bab": "Bab 2: Ritme dan Pola Ragam Hias Nusantara",
+    "summary": "Merancang pola berulang (repetisi teratur, alternasi, gradasi ukuran) pada motif batik tradisional dan ukiran kayu Nusantara.",
+    "keyPoints": [
+      "Ritme dalam seni rupa timbul karena adanya pengulangan teratur elemen visual (garis, bidang, warna).",
+      "Motif ragam hias terbagi menjadi: Figuratif (manusia), Fauna (hewan), Flora (tumbuhan), dan Geometris (lingkaran, segitiga).",
+      "Contoh motif terkenal: Megamendung (awan Cirebon), Kawung (buah aren Yogyakarta), dan Parang Rusak."
+    ],
+    "example": "Pola repetisi teratur adalah mengulang bentuk dan warna yang sama dengan jarak jeda yang konsisten."
+  },
+  {
+    "id": "SNR-B3",
+    "subject": "Seni Rupa",
+    "semester": 2,
+    "bab": "Bab 3: Seni Anyaman Tradisional dan Kriya 3 Dimensi",
+    "summary": "Mempelajari teknik dasar anyaman tunggal dan ganda menggunakan bahan serat alam (bambu, pandan, rotan) maupun kertas daur ulang.",
+    "keyPoints": [
+      "Dua unsur pokok anyaman: Lungsi (jalur pita vertikal yang diam) dan Pakan (jalur pita horizontal yang disusupkan naik-turun).",
+      "Anyaman tunggal (motif 1-1) adalah teknik paling dasar menyusupkan satu pita di atas dan satu di bawah secara bergantian.",
+      "Karya kriya anyaman memiliki dua fungsi: fungsi praktis/pakai (tikar, wadah nasi) dan fungsi estetis (hiasan dinding)."
+    ],
+    "example": "Bahan anyaman alami yang lentur dan kuat setelah dikeringkan antara lain daun pandan duri dan rotan."
+  },
+  {
+    "id": "SNR-B4",
+    "subject": "Seni Rupa",
+    "semester": 2,
+    "bab": "Bab 4: Kriya Daur Ulang Plastik & Apresiasi Pameran Sekolah",
+    "summary": "Mengolah limbah botol plastik dan kardus bekas menjadi karya instalasi kreatif ramah lingkungan, serta menyelenggarakan display pameran seni di sekolah.",
+    "keyPoints": [
+      "Prinsip Upcycling: mengubah barang bekas tak berguna menjadi produk baru yang bernilai seni dan nilai jual lebih tinggi.",
+      "Tahapan pameran seni rupa sekolah: pembentukan panitia, seleksi/kurasi karya siswa, penataan display ruangan, dan pembuatan caption/deskripsi karya.",
+      "Apresiasi seni mencakup 3 tahapan: mengamati (persepsi), memahami makna pesan karya, dan memberi ulasan kritik yang membangun."
+    ],
+    "example": "Label deskripsi (caption) karya di pameran memuat judul karya, nama pencipta, media/bahan yang digunakan, dan tahun pembuatan."
+  },
+  {
+    "id": "PAI-B1",
+    "subject": "PAI",
+    "semester": 1,
+    "bab": "Bab 1: Belajar Al-Qur'an dengan Menyenangkan (QS. Al-Hujurat: 13)",
+    "summary": "Mempelajari pesan pokok Surah Al-Hujurat ayat 13 tentang keragaman manusia yang diciptakan berbangsa-bangsa agar saling mengenal (ta'aruf) dan saling menghormati.",
+    "keyPoints": [
+      "Membaca dan menulis QS. Al-Hujurat ayat 13 dengan hukum tajwid mad thabi'i, ghunnah, dan qalqalah.",
+      "Allah menciptakan manusia beraneka ragam suku dan bangsa bukan untuk saling merendahkan, melainkan untuk saling mengenal (lita'arafu).",
+      "Ukuran kemuliaan seorang manusia di sisi Allah SWT bukanlah harta atau keturunan, melainkan ketakwaannya (inna akramakum 'indallahi atqakum)."
+    ],
+    "example": "Menjalin pertemanan akrab tanpa membeda-bedakan warna kulit dan suku merupakan pengamalan QS. Al-Hujurat ayat 13."
+  },
+  {
+    "id": "PAI-B2",
+    "subject": "PAI",
+    "semester": 1,
+    "bab": "Bab 2: Meneladani Asmaul Husna (Al-Ghaffar, Al-'Afuw, Al-Wahid, As-Samad)",
+    "summary": "Memahami makna dan meneladani nama-nama agung Allah: Al-Ghaffar (Maha Pengampun), Al-'Afuw (Maha Pemaaf), Al-Wahid (Maha Esa), dan As-Samad (Maha Dibutuhkan).",
+    "keyPoints": [
+      "Al-Ghaffar: Allah menutupi dosa dan aib hamba-Nya di dunia dan mengampuninya di akhirat.",
+      "Al-'Afuw: Allah menghapus kesalahan hamba-Nya hingga bersih tanpa bekas hisab.",
+      "Meneladani Al-'Afuw dalam kehidupan: memaafkan kesalahan teman dengan tulus tanpa membalas dendam.",
+      "As-Samad: Allah tempat bergantung seluruh makhluk; manusia wajib hanya memohon pertolongan kepada Allah SWT."
+    ],
+    "example": "Ketika ada teman yang tidak sengaja merusak alat tulis kita lalu meminta maaf, sikap terbaik adalah memaafkannya dengan ikhlas."
+  },
+  {
+    "id": "PAI-B3",
+    "subject": "PAI",
+    "semester": 1,
+    "bab": "Bab 3: Hidup Rukun dalam Negeri Majemuk (Piagam Madinah & Toleransi)",
+    "summary": "Meneladani kepemimpinan Rasulullah SAW dalam merumuskan Piagam Madinah untuk mewujudkan kerukunan sosial antarumat beragama dan sikap moderat (tasamuh).",
+    "keyPoints": [
+      "Piagam Madinah (Shahifatul Madinah) adalah perjanjian tertulis pertama di dunia yang menjamin hak asasi dan kebebasan beragama bagi kaum Muslim dan non-Muslim.",
+      "Konsep toleransi Islam (tasamuh): saling menghargai urusan sosial kebangsaan, dengan tetap memegang teguh akidah masing-masing (Lakum diinukum wa liya diin)."
+    ],
+    "example": "Mempersilakan tetangga yang berbeda keyakinan melaksanakan ibadahnya dengan tenang dan aman."
+  },
+  {
+    "id": "PAI-B4",
+    "subject": "PAI",
+    "semester": 2,
+    "bab": "Bab 4: Mengagungkan Allah melalui Hari Akhir (Hari Kiamat)",
+    "summary": "Memahami rukun iman kelima yaitu beriman kepada Hari Akhir, membedakan tanda kiamat sugra dan kubra, serta tahapan alam akhirat.",
+    "keyPoints": [
+      "Kiamat Sugra (kecil): terjadinya kematian seseorang, gempa bumi, banjir, dan bencana alam.",
+      "Kiamat Kubra (besar): hancurnya seluruh alam semesta saat Malaikat Israfil meniup sangkakala yang pertama.",
+      "Tahapan alam akhirat: Yaumul Ba'ats (kebangkitan dari kubur), Yaumul Mahsyar (berkumpul di padang mahsyar), Yaumul Hisab (perhitungan amal), dan Yaumul Jaza (pembalasan surga/neraka)."
+    ],
+    "example": "Hikmah beriman kepada hari akhir adalah termotivasi untuk giat beramal saleh dan berhati-hati dalam bertindak."
+  },
+  {
+    "id": "PAI-B5",
+    "subject": "PAI",
+    "semester": 2,
+    "bab": "Bab 5: Makanan dan Minuman Halal serta Baik (Halalan Thayyiban)",
+    "summary": "Menelaah ketentuan syariat Islam tentang makanan dan minuman halal lagi bergizi (thayyib), serta bahaya mengonsumsi makanan yang diharamkan.",
+    "keyPoints": [
+      "Syarat halal makanan: Halal zatnya (bukan bangkai/babi/darah), Halal cara memperolehnya (bukan hasil curian), dan Halal cara pengolahannya (disembelih menyebut asma Allah).",
+      "Thayyib artinya makanan tersebut sehat, bersih, bergizi, dan bermanfaat bagi tubuh.",
+      "Bahaya makanan haram: mengeraskan hati nurani, merusak kesehatan akal, dan menyebabkan doa terhalang dikabulkan."
+    ],
+    "example": "Memeriksa label sertifikasi halal MUI/BPJPH pada kemasan makanan sebelum membeli di minimarket."
+  },
+  {
+    "id": "ARB-B1",
+    "subject": "Bahasa Arab",
+    "semester": 1,
+    "bab": "Bab 1: Perkenalan Diri & Keterangan Jam (At-Ta'aruf wa As-Sa'ah)",
+    "summary": "Menyatakan waktu/jam dalam bahasa Arab (as-saa'atul wahidah sampai as-saa'atuts tsaniyah 'asyrah) dan percakapan sapaan sopan.",
+    "keyPoints": [
+      "Menanyakan jam: 'Kamis saa'atul aana?' (Jam berapa sekarang?).",
+      "Menjawab jam: 'As-saa'atul aana as-saa'atus saadisah tamaaman' (Sekarang jam enam tepat).",
+      "Keterangan waktu: shobaahan (pagi), nahaaran (siang), masaa-an (sore), lailan (malam)."
+    ],
+    "example": "'Adz-habu ilal madrasati fis saa'atis saabi'ati shobaahan' (Saya berangkat ke sekolah pada jam tujuh pagi)."
+  },
+  {
+    "id": "ARB-B2",
+    "subject": "Bahasa Arab",
+    "semester": 1,
+    "bab": "Bab 2: Aktivitas di Rumah & Sekolah (Al-A'malul Yaumiyyah)",
+    "summary": "Mengenal fi'il mudhari' (kata kerja bentuk sekarang/rutin) untuk subjek Ana, Anta, Anti, Huwa, Hiya dalam konteks belajar di kelas.",
+    "keyPoints": [
+      "Perubahan awalan fi'il mudhari': Ana aqtubu (saya menulis), Anta taqtubu (kamu lk menulis), Anti taqtubiina (kamu pr menulis), Huwa yaqtubu (dia lk menulis), Hiya taqtubu (dia pr menulis).",
+      "Kosakata perlengkapan sekolah: qolamun (pulpen), kitaabun (buku paket), kurrosatun (buku tulis), sabburotun (papan tulis)."
+    ],
+    "example": "'Ahmad yaqra-ul qur-aana fil masjidi' (Ahmad sedang membaca Al-Qur'an di masjid)."
+  },
+  {
+    "id": "ARB-B3",
+    "subject": "Bahasa Arab",
+    "semester": 2,
+    "bab": "Bab 3: Hari Libur & Cita-Cita Masa Depan (Al-'Uthlah wa Al-Mihan)",
+    "summary": "Mengungkapkan profesi/cita-cita pekerjaan dan menceritakan rencana kegiatan rekreasi pada hari libur dalam kalimat bahasa Arab sederhana.",
+    "keyPoints": [
+      "Kosakata profesi: thobiibun (dokter), mudarrisun (guru), muhandisun (insinyur), syurthiyyun (polisi), thoyyaarun (pilot).",
+      "Ungkapan cita-cita: 'Uriidu an akuuna thobiiban fil mustaqbal' (Saya ingin menjadi dokter di masa depan).",
+      "Tujuan rekreasi: hadiiqatul hayawanaat (kebun binatang), syathi-ul bahri (pantai), al-mathaf (museum)."
+    ],
+    "example": "'Fii yaumil 'uthlah, adz-habu ma'a usratii ilaa syathi-il bahri' (Pada hari libur, saya pergi bersama keluargaku ke pantai)."
   }
 ];
 
@@ -2494,5 +2765,299 @@ window.DEFAULT_QUESTIONS_SD6 = [
     ],
     "correctIndex": 2,
     "explanation": "Atmosfer berfungsi sebagai perisai (lapisan ozon menahan UV) dan menyebabkan benda langit (meteor) bergesekan lalu terbakar habis sebelum menimpa makhluk hidup di bumi."
+  },
+  {
+    "id": "SD6-PAI-01",
+    "subject": "PAI",
+    "semester": 1,
+    "moduleId": "PAI-B1",
+    "topic": "Bab 1: Belajar Al-Qur'an dengan Menyenangkan (QS. Al-Hujurat: 13)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Berdasarkan Surah Al-Hujurat ayat 13, tujuan Allah SWT menciptakan manusia beraneka ragam suku dan bangsa adalah...",
+    "options": [
+      "Agar saling bersaing dan membandingkan keturunan",
+      "Agar saling mengenal dan menghargai (lita'arafu)",
+      "Agar suku yang besar menguasai suku yang kecil",
+      "Agar memisahkan tempat tinggal antarbangsa"
+    ],
+    "correctIndex": 1,
+    "explanation": "Dalam Surah Al-Hujurat ayat 13 ditegaskan: 'wa ja'alnaakum syu'uubaw wa qabaa-ila lita'aarafuu', artinya Allah menjadikan manusia berbangsa-bangsa dan bersuku-suku agar saling mengenal."
+  },
+  {
+    "id": "SD6-PAI-02",
+    "subject": "PAI",
+    "semester": 1,
+    "moduleId": "PAI-B2",
+    "topic": "Bab 2: Meneladani Asmaul Husna (Al-Ghaffar, Al-'Afuw, Al-Wahid, As-Samad)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Asmaul Husna 'Al-'Afuw' memiliki arti bahwa Allah SWT Maha...",
+    "options": [
+      "Maha Pencipta alam semesta",
+      "Maha Pemaaf dan menghapus kesalahan hamba-Nya",
+      "Maha Mendengar segala bisikan hati",
+      "Maha Melihat segala perbuatan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Al-'Afuw artinya Allah Maha Pemaaf, yaitu memaafkan dan menghapuskan dosa hamba-Nya hingga bersih tanpa tersisa."
+  },
+  {
+    "id": "SD6-PAI-03",
+    "subject": "PAI",
+    "semester": 2,
+    "moduleId": "PAI-B4",
+    "topic": "Bab 4: Mengagungkan Allah melalui Hari Akhir (Hari Kiamat)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Peristiwa hancurnya seluruh alam semesta dan seisinya saat ditiupnya sangkakala pertama oleh Malaikat Israfil disebut...",
+    "options": [
+      "Kiamat Sugra",
+      "Kiamat Kubra",
+      "Yaumul Ba'ats",
+      "Yaumul Mizan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kiamat Kubra adalah kiamat besar yaitu kehancuran total seluruh alam semesta dan binasanya seluruh makhluk hidup."
+  },
+  {
+    "id": "SD6-PAI-04",
+    "subject": "PAI",
+    "semester": 2,
+    "moduleId": "PAI-B5",
+    "topic": "Bab 5: Makanan dan Minuman Halal serta Baik (Halalan Thayyiban)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Selain harus halal menurut syariat, makanan yang kita konsumsi sehari-hari juga harus 'Thayyib', yang artinya...",
+    "options": [
+      "Harganya mahal dan mewah",
+      "Berasal dari restoran terkenal",
+      "Bergizi, bersih, sehat, dan bermanfaat bagi tubuh",
+      "Porsinya banyak dan mengenyangkan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Makanan thayyib adalah makanan yang baik, bersih, higienis, bergizi seimbang, dan tidak menimbulkan penyakit pada tubuh."
+  },
+  {
+    "id": "SD6-PLBJ-01",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B1",
+    "topic": "Bab 1: Kesenian Musik Gambang Kromong & Tanjidor",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Alat musik petik atau gesek berdawai dua khas Tionghoa yang menjadi bagian penting dalam orkes Gambang Kromong Betawi adalah...",
+    "options": [
+      "Kongahyan dan Tehyan",
+      "Suling dan Rebab",
+      "Gitar dan Biola",
+      "Kecapi dan Sasando"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kongahyan, Tehyan, dan Sukong adalah instrumen gesek berdawai dua peninggalan Tionghoa yang dipadukan dalam musik Gambang Kromong Betawi."
+  },
+  {
+    "id": "SD6-PLBJ-02",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B2",
+    "topic": "Bab 2: Upacara Tradisi Adat Palang Pintu & Roti Buaya",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Makna filosofis dari hantaran sepasang Roti Buaya dalam upacara pernikahan adat Betawi adalah...",
+    "options": [
+      "Menandakan bahwa mempelai pria pandai berenang",
+      "Lambang kesetiaan seumur hidup dan kemakmuran rumah tangga",
+      "Sebagai penolak bala dari serangan binatang buas",
+      "Tanda kekayaan keluarga pihak pengantin wanita"
+    ],
+    "correctIndex": 1,
+    "explanation": "Buaya secara alami hanya kawin satu kali seumur hidup, sehingga masyarakat Betawi menjadikannya simbol kesetiaan abadi suami-istri."
+  },
+  {
+    "id": "SD6-PLBJ-03",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Bab 3: Kuliner Khas Betawi (Kerak Telor, Bir Pletok & Selendang Mayang)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bahan alami yang memberikan warna merah cerah menawan pada minuman rempah tradisional Bir Pletok Betawi adalah...",
+    "options": [
+      "Pewarna sirup sintetik",
+      "Kayu secang",
+      "Gula aren merah",
+      "Buah naga"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kayu secang (Caesalpinia sappan) mengeluarkan warna merah alami yang kaya antioksidan saat direbus bersama jahe dan rempah Bir Pletok."
+  },
+  {
+    "id": "SD6-PLBJ-04",
+    "subject": "PLBJ",
+    "semester": 2,
+    "moduleId": "PLBJ-B4",
+    "topic": "Bab 4: Transportasi Modern Terintegrasi Jakarta (JakLingko, MRT & LRT)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Sistem transportasi publik di DKI Jakarta yang mengintegrasikan rute, halte, dan tarif pembayaran antarmoda (Mikrotrans, Transjakarta, LRT, MRT) disebut...",
+    "options": [
+      "JakLingko",
+      "KRL Commuter",
+      "Bajaj Gas",
+      "Busway Mandiri"
+    ],
+    "correctIndex": 0,
+    "explanation": "JakLingko adalah sistem transportasi massal terintegrasi di Jakarta yang memungkinkan satu tiket dan tarif terpadu antarberbagai moda."
+  },
+  {
+    "id": "SD6-SNR-01",
+    "subject": "Seni Rupa",
+    "semester": 1,
+    "moduleId": "SNR-B1",
+    "topic": "Bab 1: Menggambar Konstruksi Perspektif 1 & 2 Titik Hilang",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dalam hukum gambar perspektif, garis khayal mendatar yang sejajar dengan ketinggian mata orang yang memandang disebut...",
+    "options": [
+      "Garis Horizon",
+      "Titik Lenyap",
+      "Garis Pembagi",
+      "Garis Diagonal"
+    ],
+    "correctIndex": 0,
+    "explanation": "Garis Horizon (cakrawala) adalah garis datar horizontal setinggi pandangan mata yang memisahkan area langit dengan daratan/lautan."
+  },
+  {
+    "id": "SD6-SNR-02",
+    "subject": "Seni Rupa",
+    "semester": 1,
+    "moduleId": "SNR-B2",
+    "topic": "Bab 2: Ritme dan Pola Ragam Hias Nusantara",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Motif ragam hias batik tradisional yang menyerupai bentuk awan bergulung khas dari daerah Cirebon adalah...",
+    "options": [
+      "Motif Parang Rusak",
+      "Motif Megamendung",
+      "Motif Kawung",
+      "Motif Asmat"
+    ],
+    "correctIndex": 1,
+    "explanation": "Motif Megamendung adalah mahakarya seni batik khas Cirebon dengan gradasi warna membentuk awan pembawa hujan kesuburan."
+  },
+  {
+    "id": "SD6-SNR-03",
+    "subject": "Seni Rupa",
+    "semester": 2,
+    "moduleId": "SNR-B3",
+    "topic": "Bab 3: Seni Anyaman Tradisional dan Kriya 3 Dimensi",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pada teknik dasar seni anyaman, lajur pita yang berdiri tegak (vertikal) dan berfungsi sebagai rangka penahan disebut...",
+    "options": [
+      "Pita Lungsi",
+      "Pita Pakan",
+      "Suji",
+      "Canting"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lungsi adalah jalur pita vertikal yang diam sebagai kerangka, sedangkan pakan adalah pita horizontal yang disusupkan bolak-balik."
+  },
+  {
+    "id": "SD6-ARB-01",
+    "subject": "Bahasa Arab",
+    "semester": 1,
+    "moduleId": "ARB-B1",
+    "topic": "Bab 1: Perkenalan Diri & Keterangan Jam (At-Ta'aruf wa As-Sa'ah)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kalimat tanya bahasa Arab yang digunakan untuk menanyakan waktu 'Jam berapa sekarang?' adalah...",
+    "options": [
+      "Maa ismuka?",
+      "Kamis saa'atul aana?",
+      "Min aina anta?",
+      "Khaifa haaluka?"
+    ],
+    "correctIndex": 1,
+    "explanation": "'Kamis saa'atul aana?' (كَمِ السَّاعَةُ الْآنَ؟) artinya 'Jam berapa sekarang?'."
+  },
+  {
+    "id": "SD6-ARB-02",
+    "subject": "Bahasa Arab",
+    "semester": 1,
+    "moduleId": "ARB-B2",
+    "topic": "Bab 2: Aktivitas di Rumah & Sekolah (Al-A'malul Yaumiyyah)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bentuk kata kerja (fi'il mudhari') yang tepat untuk melengkapi kalimat 'Ahmad ... al-kitaaba fil fashli' (Ahmad sedang membaca buku di kelas) adalah...",
+    "options": [
+      "Yaqra-u (يَقْرَأُ)",
+      "Taqra-u (تَقْرَأُ)",
+      "Aqra-u (أَقْرَأُ)",
+      "Naqra-u (نَقْرَأُ)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Untuk subjek orang ketiga tunggal laki-laki (Ahmad / Huwa), kata kerja diawali dengan huruf Ya: 'Yaqra-u' (يَقْرَأُ)."
+  },
+  {
+    "id": "SD6-ARB-03",
+    "subject": "Bahasa Arab",
+    "semester": 2,
+    "moduleId": "ARB-B3",
+    "topic": "Bab 3: Hari Libur & Cita-Cita Masa Depan (Al-'Uthlah wa Al-Mihan)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Arti dari kosakata profesi 'Thobiibun' (طَبِيْبٌ) dalam bahasa Indonesia adalah...",
+    "options": [
+      "Guru",
+      "Dokter",
+      "Polisi",
+      "Petani"
+    ],
+    "correctIndex": 1,
+    "explanation": "'Thobiibun' (طَبِيْبٌ) artinya dokter. Mudarrisun = guru, Syurthiyyun = polisi, Fallahun = petani."
   }
 ];

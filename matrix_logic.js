@@ -66,7 +66,11 @@ function renderMatrixTable() {
     'IPAS': { bg: 'bg-emerald-50 text-emerald-700 border-emerald-200', icon: '🌍' },
     'Bahasa Indonesia': { bg: 'bg-amber-50 text-amber-700 border-amber-200', icon: '📖' },
     'Pendidikan Pancasila': { bg: 'bg-rose-50 text-rose-700 border-rose-200', icon: '🦅' },
-    'Bahasa Inggris': { bg: 'bg-purple-50 text-purple-700 border-purple-200', icon: '🇬🇧' }
+    'Bahasa Inggris': { bg: 'bg-purple-50 text-purple-700 border-purple-200', icon: '🇬🇧' },
+    'PLBJ': { bg: 'bg-orange-50 text-orange-700 border-orange-200', icon: '🏛️' },
+    'Seni Rupa': { bg: 'bg-pink-50 text-pink-700 border-pink-200', icon: '🎨' },
+    'PAI': { bg: 'bg-teal-50 text-teal-700 border-teal-200', icon: '🕌' },
+    'Bahasa Arab': { bg: 'bg-cyan-50 text-cyan-700 border-cyan-200', icon: '🌙' }
   };
 
   // Filter rows

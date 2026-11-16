@@ -82,6 +82,10 @@ const flashcardSectionHtml = `
               <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
               <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila</option>
               <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris</option>
+              <option value="PLBJ">🏛️ PLBJ</option>
+              <option value="Seni Rupa">🎨 Seni Rupa</option>
+              <option value="PAI">🕌 PAI</option>
+              <option value="Bahasa Arab">🌙 Bahasa Arab</option>
             </select>
           </div>
 
@@ -218,6 +222,61 @@ const newCurSemesterDiv = `<div class="flex flex-wrap items-center gap-2">
         </div>`;
 tpl = tpl.replace(oldCurSemesterDiv, () => newCurSemesterDiv);
 
+// Tambah tombol filter subjek kurikulum untuk PLBJ, Seni Rupa, PAI, Bahasa Arab
+const oldCurBtnEng = `<button onclick="setCurrSubject('Bahasa Inggris')" id="csubj-Bahasa Inggris" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🇬🇧 Bahasa Inggris</button>`;
+const newCurBtnsAll = `<button onclick="setCurrSubject('Bahasa Inggris')" id="csubj-Bahasa Inggris" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🇬🇧 Bahasa Inggris</button>
+        <button onclick="setCurrSubject('PLBJ')" id="csubj-PLBJ" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🏛️ PLBJ</button>
+        <button onclick="setCurrSubject('Seni Rupa')" id="csubj-Seni Rupa" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🎨 Seni Rupa</button>
+        <button onclick="setCurrSubject('PAI')" id="csubj-PAI" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🕌 PAI</button>
+        <button onclick="setCurrSubject('Bahasa Arab')" id="csubj-Bahasa Arab" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)]">🌙 Bahasa Arab</button>`;
+tpl = tpl.replace(oldCurBtnEng, () => newCurBtnsAll);
+tpl = tpl.replace('Semua Mapel (5)', 'Semua Mapel (9)');
+
+// Tambah opsi subjek pada form modal, filter bank, dan paket ujian
+const oldFormSelectSubj = `<select id="form-subject" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">`;
+const oldFormOptions = `<option value="Bahasa Inggris">Bahasa Inggris</option>\n            </select>`;
+const newFormOptions = `<option value="Bahasa Inggris">Bahasa Inggris</option>
+              <option value="PLBJ">PLBJ</option>
+              <option value="Seni Rupa">Seni Rupa</option>
+              <option value="PAI">PAI</option>
+              <option value="Bahasa Arab">Bahasa Arab</option>
+            </select>`;
+tpl = tpl.replace(oldFormOptions, () => newFormOptions);
+
+// Filter bank soal
+const oldFilterBankSubj = `<select id="filter-subject" onchange="renderBank()" class="w-full px-3 py-2 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)]">`;
+tpl = tpl.replace(
+  '<option value="Bahasa Inggris">Bahasa Inggris</option>\n          </select>',
+  '<option value="Bahasa Inggris">Bahasa Inggris</option>\n          <option value="PLBJ">PLBJ</option>\n          <option value="Seni Rupa">Seni Rupa</option>\n          <option value="PAI">PAI</option>\n          <option value="Bahasa Arab">Bahasa Arab</option>\n          </select>'
+);
+
+// Paket soal ujian
+tpl = tpl.replace(
+  '<option value="Bahasa Inggris">Bahasa Inggris</option>\n            </select>',
+  '<option value="Bahasa Inggris">Bahasa Inggris</option>\n            <option value="PLBJ">PLBJ</option>\n            <option value="Seni Rupa">Seni Rupa</option>\n            <option value="PAI">PAI</option>\n            <option value="Bahasa Arab">Bahasa Arab</option>\n            </select>'
+);
+
+// Sidebar quick filter pills
+const oldPillEng = `<button onclick="quickFilterSubject('Pendidikan Pancasila')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">\n              <span>🦅</span> PPKn\n            </button>`;
+const newPillsAll = `<button onclick="quickFilterSubject('Pendidikan Pancasila')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">\n              <span>🦅</span> PPKn\n            </button>
+            <button onclick="quickFilterSubject('Bahasa Inggris')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
+              <span>🇬🇧</span> B.Inggris
+            </button>
+            <button onclick="quickFilterSubject('PLBJ')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
+              <span>🏛️</span> PLBJ
+            </button>
+            <button onclick="quickFilterSubject('Seni Rupa')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
+              <span>🎨</span> Seni Rupa
+            </button>
+            <button onclick="quickFilterSubject('PAI')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
+              <span>🕌</span> PAI
+            </button>
+            <button onclick="quickFilterSubject('Bahasa Arab')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
+              <span>🌙</span> B.Arab
+            </button>`;
+tpl = tpl.replace(oldPillEng, () => newPillsAll);
+
+
 // 6. Upgrade Filter Bar di View-Quiz agar ada Dropdown Pilih Bab Kuis
 console.log('6. Adding Bab dropdown filter to view-quiz...');
 const oldQuizFilterGroup = `<div>
@@ -229,6 +288,10 @@ const oldQuizFilterGroup = `<div>
               <option value="Bahasa Indonesia">📖 Bahasa Indonesia Kelas 6</option>
               <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila Kelas 6</option>
               <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris Kelas 6</option>
+              <option value="PLBJ">🏛️ PLBJ (Budaya Jakarta) Kelas 6</option>
+              <option value="Seni Rupa">🎨 Seni Rupa Kelas 6</option>
+              <option value="PAI">🕌 PAI & Budi Pekerti Kelas 6</option>
+              <option value="Bahasa Arab">🌙 Bahasa Arab Kelas 6</option>
             </select>
           </div>
 
@@ -1160,7 +1223,7 @@ coreJs = coreJs.replace('/*__DATA_PLACEHOLDER__*/', () => '/*__DATA_PLACEHOLDER_
 // Update setCurrSubject agar memperbarui dropdown Bab di Kurikulum
 const oldSetCurrSubject = `function setCurrSubject(subj) {
       currSelectedSubject = subj;
-      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris'];
+      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris', 'PLBJ', 'Seni Rupa', 'PAI', 'Bahasa Arab'];
       allBtns.forEach((s) => {
         const el = document.getElementById('csubj-' + s);
         if (!el) return;
@@ -1175,7 +1238,7 @@ const oldSetCurrSubject = `function setCurrSubject(subj) {
 
 const newSetCurrSubject = `function setCurrSubject(subj) {
       currSelectedSubject = subj;
-      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris'];
+      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris', 'PLBJ', 'Seni Rupa', 'PAI', 'Bahasa Arab'];
       allBtns.forEach((s) => {
         const el = document.getElementById('csubj-' + s);
         if (!el) return;
