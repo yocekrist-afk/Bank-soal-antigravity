@@ -9,6 +9,46 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     h1, h2, h3, h4, .font-heading { font-family: 'Space Grotesk', sans-serif; }
+  
+    /* Pecahan Vertikal Ramah Anak (Penyebut & Pembilang Susun Tegak) */
+    .inline-fraction {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: -0.35em;
+      margin: 0 0.15em;
+      font-family: inherit;
+      font-style: normal;
+      line-height: 1;
+    }
+    .fraction-whole {
+      margin-right: 0.25em;
+      font-weight: 700;
+      font-size: 1em;
+      line-height: 1;
+      display: inline-block;
+    }
+    .fraction-part {
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+      text-align: center;
+      font-size: 0.85em;
+      line-height: 1;
+    }
+    .fraction-top {
+      border-bottom: 1.8px solid currentColor;
+      padding: 0 0.2em 0.1em 0.2em;
+      font-weight: 700;
+      display: block;
+      line-height: 1.1;
+    }
+    .fraction-bottom {
+      padding: 0.12em 0.2em 0 0.2em;
+      font-weight: 700;
+      display: block;
+      line-height: 1.1;
+    }
+
   </style>
 </head>
 <body class="bg-slate-100 text-slate-800 p-4 sm:p-8 min-h-screen">
@@ -40,10 +80,10 @@
     </h2>
     <div class="p-5 rounded-3xl bg-gradient-to-br from-teal-500/10 via-emerald-500/5 to-transparent border border-teal-200/80 space-y-3 text-sm leading-relaxed text-slate-700">
       <p>
-        Bayangkan hari ini adalah hari ulang tahunmu! Di atas meja ada sebuah pizza lezat yang dipotong menjadi <strong>8 bagian sama besar</strong>. Kamu memakan 2 potong. Artinya, kamu telah menghabiskan <strong>2 dari 8 bagian</strong>, atau ditulis sebagai pecahan <strong>2/8</strong> (yang disederhanakan menjadi <strong>1/4</strong>).
+        Bayangkan hari ini adalah hari ulang tahunmu! Di atas meja ada sebuah pizza lezat yang dipotong menjadi <strong>8 bagian sama besar</strong>. Kamu memakan 2 potong. Artinya, kamu telah menghabiskan <strong>2 dari 8 bagian</strong>, atau ditulis sebagai pecahan <strong>2/8</strong> (yang disederhanakan menjadi <strong><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">4</span></span></span></strong>).
       </p>
       <p>
-        Lalu, Ibu membuat sirup segar. Ibu memiliki sebotol sirup berisi <strong>2 liter</strong> dan ingin menuangkannya ke dalam botol-botol kecil berukuran <strong>1/4 liter</strong>. Berapa banyak botol yang didapat? Kamu mungkin kaget: <em>angka 2 dibagi 1/4 hasilnya justru menjadi 8 botol! Mengapa bilangan yang dibagi pecahan nilainya malah makin banyak?</em>
+        Lalu, Ibu membuat sirup segar. Ibu memiliki sebotol sirup berisi <strong>2 liter</strong> dan ingin menuangkannya ke dalam botol-botol kecil berukuran <strong><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">4</span></span></span> liter</strong>. Berapa banyak botol yang didapat? Kamu mungkin kaget: <em>angka 2 dibagi <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">4</span></span></span> hasilnya justru menjadi 8 botol! Mengapa bilangan yang dibagi pecahan nilainya malah makin banyak?</em>
       </p>
       <div class="p-3.5 rounded-2xl bg-white/90 border border-teal-200 text-xs font-semibold text-teal-950 flex items-center gap-2.5 shadow-sm">
         <span class="text-xl">💡</span>
@@ -70,7 +110,7 @@
         <h3 class="text-lg font-bold text-slate-900">Perkalian Pecahan: Konsep "Bagian dari Bagian"</h3>
       </div>
       <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-        Kata kunci dalam perkalian pecahan adalah kata <strong>"DARI"</strong>. Contoh: <em>"Setengah DARI sepertiga kue"</em> artinya <code class="px-1.5 py-0.5 rounded bg-slate-100 text-teal-700 font-mono font-bold">1/2 × 1/3 = 1/6</code>.
+        Kata kunci dalam perkalian pecahan adalah kata <strong>"DARI"</strong>. Contoh: <em>"Setengah DARI sepertiga kue"</em> artinya <code class="px-1.5 py-0.5 rounded bg-slate-100 text-teal-700 font-mono font-bold"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> × 1/3 = 1/6</code>.
       </p>
 
       <!-- RUMUS UTAMA PERKALIAN -->
@@ -80,7 +120,7 @@
           <div class="text-center py-2 bg-white rounded-xl border border-teal-200 text-sm font-mono font-bold text-teal-800">
             n × (a / b) = (n × a) / b
           </div>
-          <p class="text-xs text-teal-700 mt-2">Contoh: 3 × 2/5 = (3 × 2) / 5 = 6/5 = <strong>1 1/5</strong></p>
+          <p class="text-xs text-teal-700 mt-2">Contoh: 3 × <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">2</span><span class="fraction-bottom">5</span></span></span> = (3 × 2) / 5 = 6/5 = <strong>1 1/5</strong></p>
         </div>
         <div class="p-3.5 rounded-2xl bg-indigo-50/70 border border-indigo-200">
           <div class="font-bold text-xs text-indigo-900 mb-1">2. Pecahan Biasa × Pecahan Biasa:</div>
@@ -96,7 +136,7 @@
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-700 pb-3 mb-3">
           <div class="flex items-center gap-2">
             <span class="p-1.5 rounded-lg bg-teal-500/20 text-teal-300">🎨</span>
-            <h4 class="font-extrabold text-sm sm:text-base text-white">Visualisasi Model Luas: Mengapa 1/2 × 3/4 = 3/8?</h4>
+            <h4 class="font-extrabold text-sm sm:text-base text-white">Visualisasi Model Luas: Mengapa <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> × <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> = <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">8</span></span></span>?</h4>
           </div>
           <span class="text-xs px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 font-mono">Area Model Grid</span>
         </div>
@@ -106,35 +146,35 @@
             <!-- Background square (1x1 unit) -->
             <rect x="20" y="20" width="200" height="200" rx="8" fill="#1e293b" stroke="#475569" stroke-width="2"/>
             
-            <!-- 4 Vertical columns (representing 3/4) -->
+            <!-- 4 Vertical columns (representing <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span>) -->
             <rect x="20" y="20" width="50" height="200" fill="#0d9488" fill-opacity="0.25" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="3 3"/>
             <rect x="70" y="20" width="50" height="200" fill="#0d9488" fill-opacity="0.25" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="3 3"/>
             <rect x="120" y="20" width="50" height="200" fill="#0d9488" fill-opacity="0.25" stroke="#0d9488" stroke-width="1.5" stroke-dasharray="3 3"/>
             <rect x="170" y="20" width="50" height="200" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="3 3"/>
 
-            <!-- 2 Horizontal rows (representing 1/2 top row) -->
+            <!-- 2 Horizontal rows (representing <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> top row) -->
             <rect x="20" y="20" width="200" height="100" fill="#6366f1" fill-opacity="0.25" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="3 3"/>
 
-            <!-- The Overlap Region (Top 3 boxes = 1/2 of 3/4 = 3/8) -->
+            <!-- The Overlap Region (Top 3 boxes = <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> of <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> = <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">8</span></span></span>) -->
             <rect x="20" y="20" width="50" height="100" fill="#14b8a6" fill-opacity="0.9" stroke="#5eead4" stroke-width="2"/>
             <rect x="70" y="20" width="50" height="100" fill="#14b8a6" fill-opacity="0.9" stroke="#5eead4" stroke-width="2"/>
             <rect x="120" y="20" width="50" height="100" fill="#14b8a6" fill-opacity="0.9" stroke="#5eead4" stroke-width="2"/>
 
             <!-- Labels inside overlap boxes -->
-            <text x="45" y="75" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">1/8</text>
-            <text x="95" y="75" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">1/8</text>
-            <text x="145" y="75" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">1/8</text>
+            <text x="45" y="75" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span></text>
+            <text x="95" y="75" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span></text>
+            <text x="145" y="75" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span></text>
 
             <!-- Remaining grid labels -->
-            <text x="195" y="75" fill="#64748b" font-size="12" text-anchor="middle">1/8</text>
-            <text x="45" y="175" fill="#64748b" font-size="12" text-anchor="middle">1/8</text>
-            <text x="95" y="175" fill="#64748b" font-size="12" text-anchor="middle">1/8</text>
-            <text x="145" y="175" fill="#64748b" font-size="12" text-anchor="middle">1/8</text>
-            <text x="195" y="175" fill="#64748b" font-size="12" text-anchor="middle">1/8</text>
+            <text x="195" y="75" fill="#64748b" font-size="12" text-anchor="middle"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span></text>
+            <text x="45" y="175" fill="#64748b" font-size="12" text-anchor="middle"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span></text>
+            <text x="95" y="175" fill="#64748b" font-size="12" text-anchor="middle"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span></text>
+            <text x="145" y="175" fill="#64748b" font-size="12" text-anchor="middle"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span></text>
+            <text x="195" y="175" fill="#64748b" font-size="12" text-anchor="middle"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span></text>
 
             <!-- Dimension indicators -->
-            <text x="85" y="14" fill="#5eead4" font-size="11" font-weight="bold" text-anchor="middle">Lebar: 3 dari 4 kolom (3/4)</text>
-            <text x="10" y="130" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle" transform="rotate(-90 10 130)">Tinggi: 1 dari 2 baris (1/2)</text>
+            <text x="85" y="14" fill="#5eead4" font-size="11" font-weight="bold" text-anchor="middle">Lebar: 3 dari 4 kolom (<span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span>)</text>
+            <text x="10" y="130" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle" transform="rotate(-90 10 130)">Tinggi: 1 dari 2 baris (<span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span>)</text>
           </svg>
 
           <!-- EXPLANATION OF SVG -->
@@ -144,13 +184,13 @@
                 <span>✨</span> Langkah Membaca Gambar:
               </div>
               <ol class="list-decimal list-inside space-y-1 text-slate-300 text-xs">
-                <li>Kotak utuh dibagi tegak jadi <strong>4 kolom</strong>, diwarnai 3 kolom (<strong>3/4</strong>).</li>
-                <li>Kotak yang sama dibagi mendatar jadi <strong>2 baris</strong>, diambil 1 baris (<strong>1/2</strong>).</li>
+                <li>Kotak utuh dibagi tegak jadi <strong>4 kolom</strong>, diwarnai 3 kolom (<strong><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span></strong>).</li>
+                <li>Kotak yang sama dibagi mendatar jadi <strong>2 baris</strong>, diambil 1 baris (<strong><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span></strong>).</li>
                 <li>Daerah tumpang tindih (hijau toska terang) ada <strong>3 kotak kecil</strong> dari total <strong>8 kotak</strong>!</li>
               </ol>
             </div>
             <p class="text-teal-300 font-semibold text-xs text-center">
-              Maka terbukti secara nyata: 1/2 × 3/4 = (1×3) / (2×4) = <strong>3/8</strong>.
+              Maka terbukti secara nyata: <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> × <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> = (1×3) / (2×4) = <strong><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">8</span></span></span></strong>.
             </p>
           </div>
         </div>
@@ -165,7 +205,7 @@
           Jangan kalikan angka besar dulu! Jika pembilang dan penyebut berseberangan bisa dibagi dengan angka yang sama (faktor persekutuan), sederhanakan di awal:
         </p>
         <div class="p-3 bg-white rounded-xl border border-amber-200 text-xs font-mono text-amber-950 flex flex-wrap items-center justify-between gap-2">
-          <span>Contoh: <strong>4/9 × 3/8</strong></span>
+          <span>Contoh: <strong>4/9 × <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">8</span></span></span></strong></span>
           <span>Coret 4 & 8 (bagi 4) → jadi 1 & 2</span>
           <span>Coret 3 & 9 (bagi 3) → jadi 1 & 3</span>
           <span class="font-bold text-teal-700">Hasil: (1×1) / (3×2) = 1/6 (Cepat & Anti Salah!)</span>
@@ -180,7 +220,7 @@
         <h3 class="text-lg font-bold text-slate-900">Pembagian Pecahan: Rahasia Mnemonic K-C-F</h3>
       </div>
       <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-        Mengapa membagi dengan pecahan diubah menjadi perkalian? Karena membagi dengan <code class="px-1 bg-slate-100 rounded text-indigo-700 font-bold">1/2</code> sama artinya dengan mencari <em>"Ada berapa banyak porsi setengah dalam bilangan tersebut?"</em>.
+        Mengapa membagi dengan pecahan diubah menjadi perkalian? Karena membagi dengan <code class="px-1 bg-slate-100 rounded text-indigo-700 font-bold"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span></code> sama artinya dengan mencari <em>"Ada berapa banyak porsi setengah dalam bilangan tersebut?"</em>.
       </p>
 
       <!-- VISUAL SVG 2: PEMBAGIAN PECAHAN (BANYAK WADAH) -->
@@ -256,7 +296,7 @@
           <div class="font-bold text-purple-900 text-sm">Metode 1: Jembatan 10, 100, 1000</div>
           <p class="text-slate-700">Ubah penyebut menjadi 10, 100, atau 1000 dengan mengalikan bilangan yang sama:</p>
           <p class="font-mono text-purple-800 font-semibold">• 3/5 = (3×2)/(5×2) = 6/10 = <strong>0,6</strong></p>
-          <p class="font-mono text-purple-800 font-semibold">• 3/4 = (3×25)/(4×25) = 75/100 = <strong>0,75</strong></p>
+          <p class="font-mono text-purple-800 font-semibold">• <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> = (3×25)/(4×25) = 75/100 = <strong>0,75</strong></p>
           <p class="font-mono text-purple-800 font-semibold">• 5/8 = (5×125)/(8×125) = 625/1000 = <strong>0,625</strong></p>
         </div>
         <div class="p-3.5 rounded-2xl bg-rose-50/70 border border-rose-200 space-y-1">
@@ -278,17 +318,17 @@
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
           <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 text-center">
-            <div class="text-amber-300 font-bold font-mono">1/2</div>
+            <div class="text-amber-300 font-bold font-mono"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span></div>
             <div class="text-white font-extrabold text-sm">0,5</div>
             <div class="text-slate-400 text-[10px]">50%</div>
           </div>
           <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 text-center">
-            <div class="text-amber-300 font-bold font-mono">1/4</div>
+            <div class="text-amber-300 font-bold font-mono"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">4</span></span></span></div>
             <div class="text-white font-extrabold text-sm">0,25</div>
             <div class="text-slate-400 text-[10px]">25%</div>
           </div>
           <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 text-center">
-            <div class="text-amber-300 font-bold font-mono">3/4</div>
+            <div class="text-amber-300 font-bold font-mono"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span></div>
             <div class="text-white font-extrabold text-sm">0,75</div>
             <div class="text-slate-400 text-[10px]">75%</div>
           </div>
@@ -298,7 +338,7 @@
             <div class="text-slate-400 text-[10px]">20%</div>
           </div>
           <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 text-center">
-            <div class="text-amber-300 font-bold font-mono">2/5</div>
+            <div class="text-amber-300 font-bold font-mono"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">2</span><span class="fraction-bottom">5</span></span></span></div>
             <div class="text-white font-extrabold text-sm">0,4</div>
             <div class="text-slate-400 text-[10px]">40%</div>
           </div>
@@ -308,12 +348,12 @@
             <div class="text-slate-400 text-[10px]">60%</div>
           </div>
           <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 text-center">
-            <div class="text-amber-300 font-bold font-mono">1/8</div>
+            <div class="text-amber-300 font-bold font-mono"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span></div>
             <div class="text-white font-extrabold text-sm">0,125</div>
             <div class="text-slate-400 text-[10px]">12,5%</div>
           </div>
           <div class="p-2.5 rounded-xl bg-white/10 border border-white/10 text-center">
-            <div class="text-amber-300 font-bold font-mono">3/8</div>
+            <div class="text-amber-300 font-bold font-mono"><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">8</span></span></span></div>
             <div class="text-white font-extrabold text-sm">0,375</div>
             <div class="text-slate-400 text-[10px]">37,5%</div>
           </div>
@@ -408,19 +448,19 @@
           <span class="text-xs text-slate-400 font-mono">K-C-F Strategy</span>
         </div>
         <p class="text-sm font-bold text-slate-900">
-          Hitunglah nilai dari: <code>2 1/4 ÷ 1 1/2</code>!
+          Hitunglah nilai dari: <code>2 <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">4</span></span></span> ÷ 1 <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span></code>!
         </p>
         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2 text-slate-700">
           <div class="font-bold text-indigo-800">📌 Langkah Penyelesaian:</div>
           <p><strong>Langkah 1:</strong> Wajib ubah pecahan campuran ke pecahan biasa terlebih dahulu:</p>
-          <p class="font-mono pl-3">• 2 1/4 = (2×4 + 1)/4 = <strong>9/4</strong></p>
-          <p class="font-mono pl-3">• 1 1/2 = (1×2 + 1)/2 = <strong>3/2</strong></p>
+          <p class="font-mono pl-3">• 2 <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">4</span></span></span> = (2×4 + 1)/4 = <strong>9/4</strong></p>
+          <p class="font-mono pl-3">• 1 <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> = (1×2 + 1)/2 = <strong>3/2</strong></p>
           <p><strong>Langkah 2:</strong> Terapkan jurus <strong>K-C-F</strong> (Keep 9/4, Change ÷ jadi ×, Flip 3/2 jadi 2/3):</p>
           <p class="font-mono pl-3">9/4 ÷ 3/2 = 9/4 × 2/3</p>
           <p><strong>Langkah 3:</strong> Coret silang: (9 dan 3 bagi 3 → 3 dan 1), (2 dan 4 bagi 2 → 1 dan 2):</p>
-          <p class="font-mono pl-3">= (3 × 1) / (2 × 1) = 3/2 = <strong>1 1/2</strong> (atau <strong>1,5</strong>)</p>
+          <p class="font-mono pl-3">= (3 × 1) / (2 × 1) = 3/2 = <strong>1 <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span></strong> (atau <strong>1,5</strong>)</p>
           <div class="p-2 rounded-xl bg-indigo-50 border border-indigo-200 font-bold text-indigo-900">
-            ✅ Jawaban Akhir: 1 1/2 (atau 1,5)
+            ✅ Jawaban Akhir: 1 <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> (atau 1,5)
           </div>
         </div>
       </div>
@@ -432,15 +472,15 @@
           <span class="text-xs text-slate-400 font-mono">Aplikasi Toko Kue</span>
         </div>
         <p class="text-sm font-bold text-slate-900">
-          Ibu Lovely memiliki persediaan 3,5 kg tepung terigu. Sebanyak 40% tepung digunakan untuk membuat puding. Sisanya akan dibagikan ke beberapa kantong plastik kecil dengan berat masing-masing 3/10 kg. Berapa kantong plastik yang dibutuhkan Ibu?
+          Ibu Lovely memiliki persediaan 3,5 kg tepung terigu. Sebanyak 40% tepung digunakan untuk membuat puding. Sisanya akan dibagikan ke beberapa kantong plastik kecil dengan berat masing-masing <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">10</span></span></span> kg. Berapa kantong plastik yang dibutuhkan Ibu?
         </p>
         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-2 text-slate-700">
           <div class="font-bold text-amber-900">📌 Tahapan Analisis Soal Cerita:</div>
-          <p><strong>1. Diketahui:</strong> Tepung awal = 3,5 kg; Puding = 40%; Wadah kantong = 3/10 kg.</p>
+          <p><strong>1. Diketahui:</strong> Tepung awal = 3,5 kg; Puding = 40%; Wadah kantong = <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">10</span></span></span> kg.</p>
           <p><strong>2. Menghitung Tepung untuk Puding:</strong> 40% = 0,40 → 0,40 × 3,5 kg = <strong>1,4 kg</strong>.</p>
           <p><strong>3. Menghitung Sisa Tepung:</strong> 3,5 kg - 1,4 kg = <strong>2,1 kg</strong>.</p>
-          <p><strong>4. Menghitung Banyak Kantong:</strong> 2,1 kg ÷ 3/10 kg.</p>
-          <p class="font-mono pl-3">Ubah ke desimal: 3/10 = 0,3 kg → 2,1 ÷ 0,3 = 21 ÷ 3 = <strong>7 kantong</strong>.</p>
+          <p><strong>4. Menghitung Banyak Kantong:</strong> 2,1 kg ÷ <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">10</span></span></span> kg.</p>
+          <p class="font-mono pl-3">Ubah ke desimal: <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">10</span></span></span> = 0,3 kg → 2,1 ÷ 0,3 = 21 ÷ 3 = <strong>7 kantong</strong>.</p>
           <div class="p-2 rounded-xl bg-amber-50 border border-amber-200 font-bold text-amber-900">
             ✅ Jawaban Akhir: 7 kantong plastik
           </div>
@@ -454,18 +494,18 @@
           <span class="text-xs text-rose-700 font-mono font-bold">Analisis Fraksi Bertingkat</span>
         </div>
         <p class="text-sm font-bold text-slate-900">
-          Sebuah drum penampungan air terisi 3/4 bagian dari kapasitas totalnya. Jika 1/3 DARI AIR YANG ADA DI DALAM DRUM tersebut dialirkan untuk menyiram tanaman, berapa bagian air yang tersisa di dalam drum dinyatakan terhadap kapasitas penuh drum?
+          Sebuah drum penampungan air terisi <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> bagian dari kapasitas totalnya. Jika 1/3 DARI AIR YANG ADA DI DALAM DRUM tersebut dialirkan untuk menyiram tanaman, berapa bagian air yang tersisa di dalam drum dinyatakan terhadap kapasitas penuh drum?
         </p>
         <div class="p-4 rounded-2xl bg-white border border-rose-200 text-xs space-y-2 text-slate-700">
           <div class="font-bold text-rose-800">📌 Jebakan Logika & Penyelesaian Benar:</div>
           <p class="text-rose-900 bg-rose-50 p-2 rounded-lg">
-            ⚠️ <em>Awas Jebakan:</em> Soal tidak mengatakan "diambil 1/3 bagian drum", melainkan <strong>1/3 DARI 3/4 bagian yang ada</strong>!
+            ⚠️ <em>Awas Jebakan:</em> Soal tidak mengatakan "diambil 1/3 bagian drum", melainkan <strong>1/3 DARI <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> bagian yang ada</strong>!
           </p>
-          <p><strong>Langkah 1 (Air yang dipakai):</strong> 1/3 × 3/4 = (1 × 3) / (3 × 4) = <strong>1/4 bagian drum</strong>.</p>
-          <p><strong>Langkah 2 (Sisa air):</strong> Air awal - Air terpakai = 3/4 - 1/4 = <strong>2/4 bagian = 1/2 bagian drum</strong>.</p>
-          <p class="text-slate-500 italic">💡 Cara Alternatif Cepat: Karena diambil 1/3 bagian, maka sisanya adalah (1 - 1/3) = 2/3 bagian dari air mula-mula → 2/3 × 3/4 = 2/4 = <strong>1/2 bagian</strong>.</p>
+          <p><strong>Langkah 1 (Air yang dipakai):</strong> 1/3 × <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> = (1 × 3) / (3 × 4) = <strong><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">4</span></span></span> bagian drum</strong>.</p>
+          <p><strong>Langkah 2 (Sisa air):</strong> Air awal - Air terpakai = <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> - <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">4</span></span></span> = <strong>2/4 bagian = <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> bagian drum</strong>.</p>
+          <p class="text-slate-500 italic">💡 Cara Alternatif Cepat: Karena diambil 1/3 bagian, maka sisanya adalah (1 - 1/3) = 2/3 bagian dari air mula-mula → 2/3 × <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> = 2/4 = <strong><span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> bagian</strong>.</p>
           <div class="p-2 rounded-xl bg-emerald-50 border border-emerald-200 font-bold text-emerald-900">
-            ✅ Jawaban Akhir: 1/2 bagian (atau 50% kapasitas penuh drum)
+            ✅ Jawaban Akhir: <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> bagian (atau 50% kapasitas penuh drum)
           </div>
         </div>
       </div>
@@ -505,8 +545,8 @@
             <td class="p-3">Yang dibalik HANYA pecahan kedua (pembagi), pecahan pertama harus tetap (Keep!).</td>
           </tr>
           <tr>
-            <td class="p-3 font-semibold text-rose-600">1 1/2 × 2 1/3 = 2 1/6</td>
-            <td class="p-3 font-semibold text-emerald-600">3/2 × 7/3 = 21/6 = 3 1/2</td>
+            <td class="p-3 font-semibold text-rose-600">1 <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> × 2 1/3 = 2 1/6</td>
+            <td class="p-3 font-semibold text-emerald-600">3/2 × 7/3 = 21/6 = 3 <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span></td>
             <td class="p-3">Pecahan campuran TIDAK BISA langsung dikalikan bilangan bulatnya saja. Wajib jadi pecahan biasa dulu!</td>
           </tr>
           <tr>
@@ -528,7 +568,7 @@
         <li><strong>Pembagian Pecahan:</strong> Selalu ingat <strong>K-C-F (Keep, Change, Flip)</strong>. Jangan pernah membalik pecahan di depan.</li>
         <li><strong>Pecahan Campuran:</strong> Jadikan pecahan biasa terlebih dahulu sebelum melakukan perkalian atau pembagian apapun!</li>
         <li><strong>Operasi Desimal:</strong> Penjumlahan dan pengurangan wajib lurus komanya. Perkalian desimal cukup hitung total angka di belakang koma di hasil akhir.</li>
-        <li><strong>Tabel Sakti:</strong> Pasangan emas: 1/2 = 0,5 | 1/4 = 0,25 | 3/4 = 0,75 | 1/5 = 0,2 | 1/8 = 0,125. Menghafal ini membuatmu selesai 3x lebih cepat dalam ujian!</li>
+        <li><strong>Tabel Sakti:</strong> Pasangan emas: <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">2</span></span></span> = 0,5 | <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">4</span></span></span> = 0,25 | <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">3</span><span class="fraction-bottom">4</span></span></span> = 0,75 | 1/5 = 0,2 | <span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">1</span><span class="fraction-bottom">8</span></span></span> = 0,125. Menghafal ini membuatmu selesai 3x lebih cepat dalam ujian!</li>
       </ul>
     </div>
   </section>
