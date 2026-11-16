@@ -646,6 +646,7 @@
     </section>
 
     <section id="view-quiz" class="hidden space-y-4">
+      <div id="quiz-lobby" class="space-y-5"></div>
       <!-- Pengaturan Cepat Kuis -->
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
         <div class="flex flex-wrap items-center gap-3">
@@ -697,6 +698,9 @@
           <div class="px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 font-mono text-xs font-bold" id="quiz-timer">
             ⏱ 20:00
           </div>
+          <button onclick="showQuizLobby()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200">
+            ← Menu Kuis
+          </button>
           <button onclick="startNewQuiz()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500">
             🔄 Acak Ulang Kuis
           </button>
@@ -6366,7 +6370,8 @@ function startQuizForBab(subject, moduleId, babTitle) {
 
       if (tab === 'quiz') {
         updateQuizTopicDropdown();
-        if (cbtQuestions.length === 0) startNewQuiz();
+        if (window.__quizDirect) { window.__quizDirect = false; }
+        else { showQuizLobby(); }
       } else if (tab === 'builder' && currentPackage.length === 0) {
         generateExamPackage();
       } else if (tab === 'analytics') {
@@ -6508,6 +6513,7 @@ function startQuizForBab(subject, moduleId, babTitle) {
         if (qTopic) qTopic.value = mod.id;
       }
 
+      window.__quizDirect = true;
       initCBT(subset, '🎯 ' + babTitle + ' (' + subset.length + ' Soal)');
       switchTab('quiz');
     }
@@ -6523,6 +6529,115 @@ function startQuizForBab(subject, moduleId, babTitle) {
     // =========================================================================
     // TAB 2: KUIS PETUALANGAN ANAK SD & SIMULATOR CBT
     // =========================================================================
+
+    // =========================================================================
+    // LOBI KUIS: PILIH MATA PELAJARAN -> PILIH BAB -> MULAI
+    // =========================================================================
+    let lobbySubject = null;
+    const LOBBY_SUBJECTS = [
+      { name: 'Matematika', icon: '📐', color: 'teal' },
+      { name: 'IPAS', icon: '🌍', color: 'emerald' },
+      { name: 'Bahasa Indonesia', icon: '📖', color: 'purple' },
+      { name: 'Pendidikan Pancasila', icon: '🦅', color: 'rose' },
+      { name: 'Bahasa Inggris', icon: '🇬🇧', color: 'amber' },
+      { name: 'PLBJ', icon: '🏛️', color: 'orange' },
+      { name: 'Seni Rupa', icon: '🎨', color: 'pink' },
+      { name: 'PAI', icon: '🕌', color: 'green' },
+      { name: 'Bahasa Arab', icon: '🌙', color: 'indigo' }
+    ];
+
+    function setQuizScreen(lobby) {
+      const sec = document.getElementById('view-quiz');
+      if (!sec) return;
+      Array.from(sec.children).forEach((el) => {
+        if (el.id === 'quiz-lobby') el.classList.toggle('hidden', !lobby);
+        else el.classList.toggle('hidden', lobby);
+      });
+    }
+
+    function showQuizLobby() {
+      if (typeof cbtTimerInterval !== 'undefined' && cbtTimerInterval) { clearInterval(cbtTimerInterval); cbtTimerInterval = null; }
+      setQuizScreen(true);
+      renderQuizLobby();
+    }
+
+    function lobbyPickSubject(name) {
+      lobbySubject = lobbySubject === name ? null : name;
+      renderQuizLobby();
+      const el = document.getElementById('lobby-chapters');
+      if (el && lobbySubject) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function lobbyApply(subject, moduleId) {
+      const subj = document.getElementById('quiz-subject-select');
+      const sem = document.getElementById('quiz-semester-select');
+      const mode = document.getElementById('quiz-mode-select');
+      const lm = document.getElementById('lobby-mode');
+      if (subj) subj.value = subject || 'ALL';
+      if (sem) sem.value = 'ALL';
+      updateQuizTopicDropdown();
+      const topic = document.getElementById('quiz-topic-select');
+      if (topic) topic.value = moduleId || 'ALL';
+      if (mode && lm) mode.value = lm.value;
+    }
+
+    function lobbyStart(subject, moduleId) {
+      lobbyApply(subject, moduleId);
+      startNewQuiz();
+    }
+
+    function renderQuizLobby() {
+      const box = document.getElementById('quiz-lobby');
+      if (!box) return;
+      const pg = questions.filter((q) => q.type === 'PG');
+      const mods = window.KURIKULUM_SD6 || [];
+      const prevMode = (document.getElementById('lobby-mode') || {}).value || 'INSTANT';
+
+      const cards = LOBBY_SUBJECTS.map((s) => {
+        const cnt = pg.filter((q) => q.subject === s.name).length;
+        const bab = mods.filter((m) => m.subject === s.name).length;
+        const active = lobbySubject === s.name;
+        return '<button onclick="lobbyPickSubject(\'' + s.name + '\')" class="text-left p-4 rounded-2xl border-2 transition shadow-xs ' +
+          (active ? 'border-indigo-500 bg-indigo-50' : 'border-slate-200 bg-white hover:border-indigo-300') + ' ' + (cnt === 0 ? 'opacity-60' : '') + '">' +
+          '<div class="text-2xl mb-1">' + s.icon + '</div>' +
+          '<div class="font-bold text-sm text-slate-900">' + escapeHtml(s.name) + '</div>' +
+          '<div class="text-[11px] text-slate-500 mt-0.5">' + bab + ' bab • ' + cnt + ' soal</div></button>';
+      }).join('');
+
+      let chapters = '';
+      if (lobbySubject) {
+        const list = mods.filter((m) => m.subject === lobbySubject);
+        const rows = list.map((m) => {
+          const cnt = pg.filter((q) => isQuestionInModule(q, m)).length;
+          return '<div class="flex items-center justify-between gap-3 p-3 rounded-xl border border-slate-200 bg-white">' +
+            '<div class="min-w-0"><div class="font-semibold text-sm text-slate-900 truncate">' + escapeHtml(m.bab) + '</div>' +
+            '<div class="text-[11px] text-slate-500">Semester ' + m.semester + ' • ' + cnt + ' soal</div></div>' +
+            (cnt > 0
+              ? '<button onclick="lobbyStart(\'' + lobbySubject + '\', \'' + m.id + '\')" class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white">Mulai ▶</button>'
+              : '<span class="shrink-0 text-[11px] text-slate-400">Belum ada soal</span>') + '</div>';
+        }).join('');
+        const total = pg.filter((q) => q.subject === lobbySubject).length;
+        chapters = '<div id="lobby-chapters" class="space-y-2">' +
+          '<div class="flex flex-wrap items-center justify-between gap-2">' +
+          '<h3 class="font-bold text-slate-900">Pilih Bab ' + escapeHtml(lobbySubject) + '</h3>' +
+          (total > 0 ? '<button onclick="lobbyStart(\'' + lobbySubject + '\', \'ALL\')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white">🌟 Campuran Semua Bab (' + total + ' soal)</button>' : '') +
+          '</div>' + (rows || '<div class="text-xs text-slate-400">Belum ada bab.</div>') + '</div>';
+      }
+
+      box.innerHTML =
+        '<div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-4">' +
+        '<div class="flex flex-wrap items-center justify-between gap-3">' +
+        '<div><h2 class="text-xl font-black text-slate-900">🎮 Kuis Interaktif</h2>' +
+        '<p class="text-xs text-slate-500">Pilih mata pelajaran, lalu pilih bab yang ingin dikerjakan.</p></div>' +
+        '<div><label class="block text-[11px] text-slate-500 mb-1">Mode</label>' +
+        '<select id="lobby-mode" class="px-3 py-1.5 rounded-lg text-xs bg-slate-50 border border-slate-200 font-medium">' +
+        '<option value="INSTANT"' + (prevMode === 'INSTANT' ? ' selected' : '') + '>💡 Belajar (langsung bahas tiap soal)</option>' +
+        '<option value="EXAM"' + (prevMode === 'EXAM' ? ' selected' : '') + '>⏱️ Simulasi Ujian (nilai di akhir)</option></select></div></div>' +
+        '<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">' + cards + '</div>' +
+        '<div><button onclick="lobbyStart(\'ALL\', \'ALL\')" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200">🌟 Campuran Semua Mata Pelajaran</button></div>' +
+        '</div>' + chapters;
+    }
+
     function startNewQuiz() {
       const subjEl = document.getElementById('quiz-subject-select');
       const semEl = document.getElementById('quiz-semester-select');
@@ -6561,6 +6676,7 @@ function startQuizForBab(subject, moduleId, babTitle) {
     }
 
     function initCBT(customList, labelTitle = 'Latihan SD Kelas 6') {
+      setQuizScreen(false);
       cbtQuestions = customList && customList.length ? customList : shuffleArray(questions.filter((q) => q.type === 'PG'));
       cbtIndex = 0;
       cbtAnswers = {};
@@ -7396,10 +7512,12 @@ function startQuizForBab(subject, moduleId, babTitle) {
           try {
             const imported = JSON.parse(content);
             if (Array.isArray(imported) && imported.length > 0) {
-              questions = imported;
+              const have = new Set(questions.map((q) => q.id));
+              const fresh = imported.filter((q) => q && q.question && !have.has(q.id));
+              questions = [...questions, ...fresh];
               saveData();
               refreshAll();
-              alert(`Berhasil mengimpor ${imported.length} soal dari file JSON!`);
+              alert(`Berhasil menambahkan ${fresh.length} soal baru dari file JSON (${imported.length - fresh.length} sudah ada, dilewati). Soal lama tetap aman.`);
             } else {
               alert('Format JSON tidak valid.');
             }
