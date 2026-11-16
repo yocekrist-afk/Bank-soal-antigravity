@@ -3026,7 +3026,7 @@ window.DEFAULT_QUESTIONS_SD6 = [
     "explanation": "'Thobiibun' (طَبِيْبٌ) artinya dokter. Mudarrisun = guru, Syurthiyyun = polisi, Fallahun = petani."
   },
   {
-    "id": "SD6-MTK-B1-01",
+    "id": "SD6-MTK1-01",
     "subject": "Matematika",
     "semester": 1,
     "moduleId": "MTK-B1",
@@ -3034,272 +3034,125 @@ window.DEFAULT_QUESTIONS_SD6 = [
     "type": "PG",
     "difficulty": "Mudah",
     "bloom": "C2",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Hasil dari perkalian bilangan bulat dengan pecahan 6 × 2/3 adalah...",
-    "options": [
-      "3",
-      "4",
-      "5",
-      "6"
-    ],
-    "correctIndex": 1,
-    "explanation": "6 × 2/3 = (6 × 2) / 3 = 12 / 3 = 4. Atau dengan metode coret: 6 dibagi 3 menghasilkan 2, lalu 2 × 2 = 4."
-  },
-  {
-    "id": "SD6-MTK-B1-02",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Mudah",
-    "bloom": "C2",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Berapakah hasil perkalian pecahan biasa 3/4 × 2/5 dalam bentuk paling sederhana?",
-    "options": [
-      "5/9",
-      "6/20",
-      "3/10",
-      "1/4"
-    ],
-    "correctIndex": 2,
-    "explanation": "Kalikan pembilang dengan pembilang, penyebut dengan penyebut: (3 × 2) / (4 × 5) = 6/20. Sederhanakan dengan membagi pembilang dan penyebut dengan 2: 6/20 = 3/10."
-  },
-  {
-    "id": "SD6-MTK-B1-03",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Sedang",
-    "bloom": "C3",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Hitunglah hasil dari perkalian pecahan 5/8 × 4/15 dengan metode pencoretan silang!",
-    "options": [
-      "1/6",
-      "1/8",
-      "2/15",
-      "3/10"
-    ],
-    "correctIndex": 0,
-    "explanation": "Metode coret: bagi 5 dan 15 dengan 5 (menjadi 1 dan 3). Bagi 4 dan 8 dengan 4 (menjadi 1 dan 2). Maka hasilnya: (1 × 1) / (2 × 3) = 1/6."
-  },
-  {
-    "id": "SD6-MTK-B1-04",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Sedang",
-    "bloom": "C3",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Hasil perkalian pecahan campuran 1 1/2 × 2 2/3 adalah...",
-    "options": [
-      "3 1/3",
-      "3 2/5",
-      "4",
-      "4 1/2"
-    ],
-    "correctIndex": 2,
-    "explanation": "Ubah ke pecahan biasa terlebih dahulu: 1 1/2 = 3/2 dan 2 2/3 = 8/3. Kalikan keduanya: (3/2) × (8/3) = (3 × 8) / (2 × 3) = 24/6 = 4."
-  },
-  {
-    "id": "SD6-MTK-B1-05",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Mudah",
-    "bloom": "C2",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Hasil pembagian bilangan asli dengan pecahan 4 ÷ 1/2 adalah...",
-    "options": [
-      "2",
-      "4",
-      "6",
-      "8"
-    ],
-    "correctIndex": 3,
-    "explanation": "Gunakan aturan K-C-F (Keep, Change, Flip): 4 ÷ 1/2 = 4 × 2/1 = 8. (Artinya: dalam 4 buah benda utuh, terdapat 8 bagian berukuran setengah)."
-  },
-  {
-    "id": "SD6-MTK-B1-06",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Mudah",
-    "bloom": "C2",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Sebuah kue dipotong menjadi 3/4 bagian, kemudian 3/4 kue tersebut dibagi rata untuk 3 orang anak. Berapa bagian kue yang didapat setiap anak?",
-    "options": [
-      "1/4 bagian",
-      "1/3 bagian",
-      "1/2 bagian",
-      "9/4 bagian"
-    ],
-    "correctIndex": 0,
-    "explanation": "Operasi pembagian: 3/4 ÷ 3 = 3/4 × 1/3 = (3 × 1) / (4 × 3) = 3/12 = 1/4 bagian kue."
-  },
-  {
-    "id": "SD6-MTK-B1-07",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Sedang",
-    "bloom": "C3",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Hasil pembagian pecahan biasa 5/6 ÷ 2/3 adalah...",
-    "options": [
-      "1 1/4",
-      "1 1/5",
-      "5/9",
-      "10/18"
-    ],
-    "correctIndex": 0,
-    "explanation": "Gunakan aturan K-C-F: 5/6 ÷ 2/3 = 5/6 × 3/2. Coret 3 dan 6 (bagi 3 menjadi 1 dan 2) = (5 × 1) / (2 × 2) = 5/4 = 1 1/4."
-  },
-  {
-    "id": "SD6-MTK-B1-08",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Sedang",
-    "bloom": "C3",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Berapakah hasil pembagian pecahan campuran 3 1/3 ÷ 1 1/9?",
-    "options": [
-      "2",
-      "2 1/2",
-      "3",
-      "3 1/3"
-    ],
-    "correctIndex": 2,
-    "explanation": "Ubah ke pecahan biasa: 3 1/3 = 10/3 dan 1 1/9 = 10/9. Terapkan K-C-F: 10/3 ÷ 10/9 = 10/3 × 9/10. Coret angka 10 dan 10 (jadi 1), coret 9 dan 3 (9 ÷ 3 = 3). Maka hasilnya = 3."
-  },
-  {
-    "id": "SD6-MTK-B1-09",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Mudah",
-    "bloom": "C1",
     "points": 10,
     "timeMinutes": 1,
-    "question": "Bentuk desimal dari pecahan biasa 7/8 adalah...",
+    "question": "Hasil dari 8 × 3/4 adalah...",
     "options": [
-      "0,78",
-      "0,85",
-      "0,875",
-      "0,895"
-    ],
-    "correctIndex": 2,
-    "explanation": "Ubah penyebut 8 menjadi 1000 dengan mengalikan 125: (7 × 125) / (8 × 125) = 875/1000 = 0,875."
-  },
-  {
-    "id": "SD6-MTK-B1-10",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Mudah",
-    "bloom": "C2",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Pecahan biasa paling sederhana dari bilangan desimal 0,35 adalah...",
-    "options": [
-      "7/20",
-      "3/10",
-      "35/10",
-      "7/25"
-    ],
-    "correctIndex": 0,
-    "explanation": "0,35 memiliki 2 angka di belakang koma, jadi 35/100. Sederhanakan dengan membagi pembilang dan penyebut dengan FPB-nya yaitu 5: (35 ÷ 5) / (100 ÷ 5) = 7/20."
-  },
-  {
-    "id": "SD6-MTK-B1-11",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Mudah",
-    "bloom": "C2",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Bentuk pecahan campuran dari desimal 3,75 dalam bentuk paling sederhana adalah...",
-    "options": [
-      "3 1/4",
-      "3 1/2",
-      "3 3/4",
-      "3 4/5"
-    ],
-    "correctIndex": 2,
-    "explanation": "3,75 = 3 + 0,75. Nilai 0,75 = 75/100 = 3/4 (sama-sama dibagi 25). Jadi bentuk campurannya adalah 3 3/4."
-  },
-  {
-    "id": "SD6-MTK-B1-12",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Mudah",
-    "bloom": "C2",
-    "points": 10,
-    "timeMinutes": 2,
-    "question": "Hasil penjumlahan desimal: 14,25 + 6,8 = ...",
-    "options": [
-      "20,33",
-      "21,05",
-      "21,50",
-      "20,85"
+      "2",
+      "6",
+      "3/4",
+      "2 3/4"
     ],
     "correctIndex": 1,
-    "explanation": "Luruskan tanda koma: 14,25 + 6,80 = 21,05."
+    "explanation": "8 × 3/4 = (8 × 3) / 4 = 24/4 = 6."
   },
   {
-    "id": "SD6-MTK-B1-13",
+    "id": "SD6-MTK1-02",
     "subject": "Matematika",
     "semester": 1,
     "moduleId": "MTK-B1",
     "topic": "Bab 1: Pecahan dan Desimal",
     "type": "PG",
-    "difficulty": "Sedang",
-    "bloom": "C3",
+    "difficulty": "Mudah",
+    "bloom": "C2",
     "points": 10,
-    "timeMinutes": 2,
-    "question": "Hasil pengurangan bilangan bulat dengan desimal: 8 - 2,65 = ...",
+    "timeMinutes": 1,
+    "question": "Hasil dari 12 × 5/6 adalah...",
     "options": [
-      "5,35",
-      "5,45",
-      "6,35",
-      "5,65"
+      "10",
+      "3 1/3",
+      "5/6",
+      "2 5/6"
     ],
     "correctIndex": 0,
-    "explanation": "Tulis angka 8 sebagai 8,00 agar komanya sejajar. 8,00 - 2,65 = 5,35. (Jangan sampai terjebak mengurangkan 65 - 00)."
+    "explanation": "12 × 5/6 = (12 × 5) / 6 = 60/6 = 10."
   },
   {
-    "id": "SD6-MTK-B1-14",
+    "id": "SD6-MTK1-03",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 20 × 3/8 adalah...",
+    "options": [
+      "2 1/7",
+      "3/8",
+      "2 7/8",
+      "7 1/2"
+    ],
+    "correctIndex": 3,
+    "explanation": "20 × 3/8 = (20 × 3) / 8 = 60/8 = 7 1/2."
+  },
+  {
+    "id": "SD6-MTK1-04",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 6 × 5/9 adalah...",
+    "options": [
+      "2",
+      "5/9",
+      "3 1/3",
+      "1 2/9"
+    ],
+    "correctIndex": 2,
+    "explanation": "6 × 5/9 = (6 × 5) / 9 = 30/9 = 3 1/3."
+  },
+  {
+    "id": "SD6-MTK1-05",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 1,
+    "question": "Hasil dari 2/3 × 3/5 dalam bentuk paling sederhana adalah...",
+    "options": [
+      "5/8",
+      "2/5",
+      "1 1/9",
+      "3/5"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kalikan pembilang dengan pembilang dan penyebut dengan penyebut: (2 × 3) / (3 × 5) = 6/15 = 2/5 (setelah disederhanakan)."
+  },
+  {
+    "id": "SD6-MTK1-06",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 1,
+    "question": "Hasil dari 3/4 × 2/9 dalam bentuk paling sederhana adalah...",
+    "options": [
+      "1/6",
+      "5/13",
+      "3 3/8",
+      "1/3"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kalikan pembilang dengan pembilang dan penyebut dengan penyebut: (3 × 2) / (4 × 9) = 6/36 = 1/6 (setelah disederhanakan)."
+  },
+  {
+    "id": "SD6-MTK1-07",
     "subject": "Matematika",
     "semester": 1,
     "moduleId": "MTK-B1",
@@ -3309,18 +3162,522 @@ window.DEFAULT_QUESTIONS_SD6 = [
     "bloom": "C3",
     "points": 10,
     "timeMinutes": 2,
-    "question": "Hasil perkalian desimal 0,15 × 0,4 adalah...",
+    "question": "Hasil dari 5/6 × 3/10 dalam bentuk paling sederhana adalah...",
     "options": [
+      "1/2",
+      "2 7/9",
+      "1/5",
+      "1/4"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kalikan pembilang dengan pembilang dan penyebut dengan penyebut: (5 × 3) / (6 × 10) = 15/60 = 1/4 (setelah disederhanakan)."
+  },
+  {
+    "id": "SD6-MTK1-08",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 7/8 × 4/21 dalam bentuk paling sederhana adalah...",
+    "options": [
+      "11/29",
+      "4 19/32",
+      "1/6",
+      "1/3"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kalikan pembilang dengan pembilang dan penyebut dengan penyebut: (7 × 4) / (8 × 21) = 28/168 = 1/6 (setelah disederhanakan)."
+  },
+  {
+    "id": "SD6-MTK1-09",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 9/10 × 5/12 dalam bentuk paling sederhana adalah...",
+    "options": [
+      "7/11",
+      "3/8",
+      "2 4/25",
+      "1/2"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kalikan pembilang dengan pembilang dan penyebut dengan penyebut: (9 × 5) / (10 × 12) = 45/120 = 3/8 (setelah disederhanakan)."
+  },
+  {
+    "id": "SD6-MTK1-10",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 1 1/2 × 2 1/3 adalah...",
+    "options": [
+      "3 1/2",
+      "2 1/6",
+      "4",
+      "2 1/3"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ubah ke pecahan biasa dulu: 1 1/2 = 3/2 dan 2 1/3 = 7/3. Kalikan: 3/2 × 7/3 = 3 1/2."
+  },
+  {
+    "id": "SD6-MTK1-11",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 2 1/4 × 2/3 adalah...",
+    "options": [
+      "1/6",
+      "2",
+      "1",
+      "1 1/2"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ubah ke pecahan biasa dulu: 2 1/4 = 9/4 dan 2/3 = 2/3. Kalikan: 9/4 × 2/3 = 1 1/2."
+  },
+  {
+    "id": "SD6-MTK1-12",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 3 1/5 × 1 1/4 adalah...",
+    "options": [
+      "3 1/20",
+      "5",
+      "4",
+      "2"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ubah ke pecahan biasa dulu: 3 1/5 = 16/5 dan 1 1/4 = 5/4. Kalikan: 16/5 × 5/4 = 4."
+  },
+  {
+    "id": "SD6-MTK1-13",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 3,
+    "question": "Hasil dari 2 2/3 × 1 1/2 adalah...",
+    "options": [
+      "2 1/3",
+      "4",
+      "5",
+      "2"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ubah ke pecahan biasa dulu: 2 2/3 = 8/3 dan 1 1/2 = 3/2. Kalikan: 8/3 × 3/2 = 4."
+  },
+  {
+    "id": "SD6-MTK1-14",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 1,
+    "question": "Hasil dari 6 ÷ 1/3 adalah...",
+    "options": [
+      "18",
+      "2",
+      "1/18",
+      "19"
+    ],
+    "correctIndex": 0,
+    "explanation": "Gunakan K-C-F (Keep, Change, Flip): 6 ÷ 1/3 = 6 × 3 = 18."
+  },
+  {
+    "id": "SD6-MTK1-15",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 1,
+    "question": "Hasil dari 3/4 ÷ 3 adalah...",
+    "options": [
+      "2 1/4",
+      "4",
+      "1/2",
+      "1/4"
+    ],
+    "correctIndex": 3,
+    "explanation": "Gunakan K-C-F (Keep, Change, Flip): 3/4 ÷ 3 = 3/4 × 1/3 = 1/4."
+  },
+  {
+    "id": "SD6-MTK1-16",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 10 ÷ 2/5 adalah...",
+    "options": [
+      "4",
+      "1/25",
+      "25",
+      "26"
+    ],
+    "correctIndex": 2,
+    "explanation": "Gunakan K-C-F (Keep, Change, Flip): 10 ÷ 2/5 = 10 × 2 1/2 = 25."
+  },
+  {
+    "id": "SD6-MTK1-17",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 5/6 ÷ 5 adalah...",
+    "options": [
+      "4 1/6",
+      "1/6",
+      "6",
+      "1/3"
+    ],
+    "correctIndex": 1,
+    "explanation": "Gunakan K-C-F (Keep, Change, Flip): 5/6 ÷ 5 = 5/6 × 1/5 = 1/6."
+  },
+  {
+    "id": "SD6-MTK1-18",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 3/4 ÷ 5/8 dalam bentuk paling sederhana adalah...",
+    "options": [
+      "1 1/5",
+      "15/32",
+      "5/6",
+      "1 2/5"
+    ],
+    "correctIndex": 0,
+    "explanation": "3/4 ÷ 5/8 = 3/4 × 8/5 = 1 1/5. Ingat: yang dibalik hanya pecahan kedua."
+  },
+  {
+    "id": "SD6-MTK1-19",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 2/3 ÷ 4/9 dalam bentuk paling sederhana adalah...",
+    "options": [
+      "8/27",
+      "2/3",
+      "2",
+      "1 1/2"
+    ],
+    "correctIndex": 3,
+    "explanation": "2/3 ÷ 4/9 = 2/3 × 9/4 = 1 1/2. Ingat: yang dibalik hanya pecahan kedua."
+  },
+  {
+    "id": "SD6-MTK1-20",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 7/10 ÷ 14/15 dalam bentuk paling sederhana adalah...",
+    "options": [
+      "49/75",
+      "1 1/3",
+      "3/4",
+      "1"
+    ],
+    "correctIndex": 2,
+    "explanation": "7/10 ÷ 14/15 = 7/10 × 15/14 = 3/4. Ingat: yang dibalik hanya pecahan kedua."
+  },
+  {
+    "id": "SD6-MTK1-21",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 3,
+    "question": "Hasil dari 5/6 ÷ 10/3 dalam bentuk paling sederhana adalah...",
+    "options": [
+      "2 7/9",
+      "1/4",
+      "4",
+      "1/2"
+    ],
+    "correctIndex": 1,
+    "explanation": "5/6 ÷ 10/3 = 5/6 × 3/10 = 1/4. Ingat: yang dibalik hanya pecahan kedua."
+  },
+  {
+    "id": "SD6-MTK1-22",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 2 1/4 ÷ 1 1/2 adalah...",
+    "options": [
+      "1 1/2",
+      "3 3/8",
+      "2/3",
+      "2"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ubah ke pecahan biasa: 9/4 ÷ 3/2 = 9/4 × 2/3 = 1 1/2."
+  },
+  {
+    "id": "SD6-MTK1-23",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 3 1/3 ÷ 1 2/3 adalah...",
+    "options": [
+      "5 5/9",
+      "1/2",
+      "3",
+      "2"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ubah ke pecahan biasa: 10/3 ÷ 5/3 = 10/3 × 3/5 = 2."
+  },
+  {
+    "id": "SD6-MTK1-24",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 3,
+    "question": "Hasil dari 4 1/2 ÷ 3/4 adalah...",
+    "options": [
+      "3 3/8",
+      "1/6",
+      "6",
+      "7"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ubah ke pecahan biasa: 9/2 ÷ 3/4 = 9/2 × 4/3 = 6."
+  },
+  {
+    "id": "SD6-MTK1-25",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 1,
+    "question": "Bentuk desimal dari pecahan 3/5 adalah...",
+    "options": [
+      "6",
       "0,6",
       "0,06",
-      "0,006",
-      "0,60"
+      "0,35"
     ],
     "correctIndex": 1,
-    "explanation": "Kalikan tanpa menghiraukan koma: 15 × 4 = 60. Hitung total desimal: 0,15 (2 desimal) + 0,4 (1 desimal) = 3 desimal. Maka 60 dengan 3 desimal adalah 0,060 = 0,06."
+    "explanation": "Ubah penyebut menjadi 10, 100, atau 1000: 3/5 = (3 × 2) / (5 × 2) = 6/10 = 0,6."
   },
   {
-    "id": "SD6-MTK-B1-15",
+    "id": "SD6-MTK1-26",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 1,
+    "question": "Bentuk desimal dari pecahan 7/20 adalah...",
+    "options": [
+      "0,35",
+      "3,5",
+      "0,035",
+      "0,9"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ubah penyebut menjadi 10, 100, atau 1000: 7/20 = (7 × 5) / (20 × 5) = 35/100 = 0,35."
+  },
+  {
+    "id": "SD6-MTK1-27",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bentuk desimal dari pecahan 5/8 adalah...",
+    "options": [
+      "6,25",
+      "0,0625",
+      "0,58",
+      "0,625"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ubah penyebut menjadi 10, 100, atau 1000: 5/8 = (5 × 125) / (8 × 125) = 625/1000 = 0,625."
+  },
+  {
+    "id": "SD6-MTK1-28",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 1,
+    "question": "Bentuk pecahan paling sederhana dari 0,6 adalah...",
+    "options": [
+      "6/10",
+      "3/50",
+      "3/5",
+      "1 3/10"
+    ],
+    "correctIndex": 2,
+    "explanation": "0,6 = 6/10. Sederhanakan dengan FPB: 3/5."
+  },
+  {
+    "id": "SD6-MTK1-29",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bentuk pecahan paling sederhana dari 0,125 adalah...",
+    "options": [
+      "125/1000",
+      "1/8",
+      "1/80",
+      "251/1000"
+    ],
+    "correctIndex": 1,
+    "explanation": "0,125 = 125/1000. Sederhanakan dengan FPB: 1/8."
+  },
+  {
+    "id": "SD6-MTK1-30",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bentuk pecahan paling sederhana dari 2,4 adalah...",
+    "options": [
+      "2 2/5",
+      "24/10",
+      "6/25",
+      "4 9/10"
+    ],
+    "correctIndex": 0,
+    "explanation": "2,4 = 24/10. Sederhanakan dengan FPB: 2 2/5."
+  },
+  {
+    "id": "SD6-MTK1-31",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 1,
+    "question": "Hasil dari 12,75 + 8,6 adalah...",
+    "options": [
+      "213,5",
+      "2,135",
+      "21,45",
+      "21,35"
+    ],
+    "correctIndex": 3,
+    "explanation": "Luruskan tanda koma lalu hitung: 12,75 + 8,60 = 21,35."
+  },
+  {
+    "id": "SD6-MTK1-32",
     "subject": "Matematika",
     "semester": 1,
     "moduleId": "MTK-B1",
@@ -3330,18 +3687,249 @@ window.DEFAULT_QUESTIONS_SD6 = [
     "bloom": "C3",
     "points": 10,
     "timeMinutes": 2,
-    "question": "Berapakah hasil dari pembagian desimal 4,8 ÷ 0,12?",
+    "question": "Hasil dari 25,4 - 9,85 adalah...",
     "options": [
-      "0,4",
-      "4",
-      "40",
-      "400"
+      "155,5",
+      "1,555",
+      "15,55",
+      "15,65"
     ],
     "correctIndex": 2,
-    "explanation": "Kalikan kedua bilangan dengan 100 agar pembagi menjadi bilangan bulat: (4,8 × 100) ÷ (0,12 × 100) = 480 ÷ 12 = 40."
+    "explanation": "Luruskan tanda koma lalu hitung: 25,40 - 9,85 = 15,55."
   },
   {
-    "id": "SD6-MTK-B1-16",
+    "id": "SD6-MTK1-33",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 10 - 3,48 adalah...",
+    "options": [
+      "65,2",
+      "6,52",
+      "0,652",
+      "6,62"
+    ],
+    "correctIndex": 1,
+    "explanation": "Luruskan tanda koma lalu hitung: 10,00 - 3,48 = 6,52."
+  },
+  {
+    "id": "SD6-MTK1-34",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 1,
+    "question": "Hasil dari 0,6 × 0,7 adalah...",
+    "options": [
+      "0,42",
+      "4,2",
+      "0,042",
+      "0,52"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kalikan tanpa koma: 6 × 7 = 42. Jumlah angka di belakang koma = 1 + 1 = 2, sehingga hasilnya 0,42."
+  },
+  {
+    "id": "SD6-MTK1-35",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 1,5 × 0,24 adalah...",
+    "options": [
+      "3,6",
+      "0,036",
+      "0,46",
+      "0,36"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kalikan tanpa koma: 15 × 24 = 360. Jumlah angka di belakang koma = 1 + 2 = 3, sehingga hasilnya 0,36."
+  },
+  {
+    "id": "SD6-MTK1-36",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 3,2 × 0,05 adalah...",
+    "options": [
+      "1,6",
+      "0,016",
+      "0,16",
+      "0,26"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kalikan tanpa koma: 32 × 5 = 160. Jumlah angka di belakang koma = 1 + 2 = 3, sehingga hasilnya 0,16."
+  },
+  {
+    "id": "SD6-MTK1-37",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 7,2 ÷ 0,9 adalah...",
+    "options": [
+      "80",
+      "8",
+      "0,8",
+      "8,1"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kalikan kedua bilangan dengan 10 agar pembagi bulat: 72 ÷ 9 = 8."
+  },
+  {
+    "id": "SD6-MTK1-38",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 3,6 ÷ 0,15 adalah...",
+    "options": [
+      "24",
+      "240",
+      "2,4",
+      "24,1"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kalikan kedua bilangan dengan 100 agar pembagi bulat: 360 ÷ 15 = 24."
+  },
+  {
+    "id": "SD6-MTK1-39",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 3,
+    "question": "Hasil dari 0,84 ÷ 0,7 adalah...",
+    "options": [
+      "12",
+      "0,12",
+      "1,3",
+      "1,2"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kalikan kedua bilangan dengan 10 agar pembagi bulat: 8,4 ÷ 7 = 1,2."
+  },
+  {
+    "id": "SD6-MTK1-40",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 1/2 + 0,75 adalah...",
+    "options": [
+      "1,5",
+      "0,8",
+      "1,25",
+      "1,75"
+    ],
+    "correctIndex": 2,
+    "explanation": "1/2 = 0,5 sehingga 0,5 + 0,75 = 1,25."
+  },
+  {
+    "id": "SD6-MTK1-41",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hasil dari 3/4 × 0,8 adalah...",
+    "options": [
+      "0,06",
+      "0,6",
+      "6",
+      "1,55"
+    ],
+    "correctIndex": 1,
+    "explanation": "3/4 = 0,75 sehingga 0,75 × 0,8 = 0,6."
+  },
+  {
+    "id": "SD6-MTK1-42",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 3,
+    "question": "Hasil dari 2,5 ÷ 1/4 adalah...",
+    "options": [
+      "10",
+      "0,625",
+      "1",
+      "2,75"
+    ],
+    "correctIndex": 0,
+    "explanation": "2,5 ÷ 1/4 = 2,5 × 4 = 10."
+  },
+  {
+    "id": "SD6-MTK1-43",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Lovely memiliki pita sepanjang 7 1/2 meter. Pita itu dipotong-potong dengan panjang masing-masing 3/4 meter untuk menghias kado. Berapa banyak potongan pita yang diperoleh?",
+    "options": [
+      "5 potongan",
+      "8 potongan",
+      "12 potongan",
+      "10 potongan"
+    ],
+    "correctIndex": 3,
+    "explanation": "7 1/2 = 15/2 meter. Banyak potongan = 15/2 ÷ 3/4 = 15/2 × 4/3 = 10 potongan."
+  },
+  {
+    "id": "SD6-MTK1-44",
     "subject": "Matematika",
     "semester": 1,
     "moduleId": "MTK-B1",
@@ -3351,39 +3939,18 @@ window.DEFAULT_QUESTIONS_SD6 = [
     "bloom": "C4",
     "points": 10,
     "timeMinutes": 3,
-    "question": "Pak Ahmad memiliki sebidang tanah seluas 480 m². Sebanyak 3/8 bagian ditanami jagung, 1/4 bagian ditanami singkong, dan sisanya dibuat kolam ikan. Luas tanah yang dibuat kolam ikan adalah...",
+    "question": "Pak Ahmad memiliki tanah seluas 480 m². Sebanyak 3/8 bagian ditanami jagung, 1/4 bagian ditanami singkong, dan sisanya dibuat kolam ikan. Berapa luas kolam ikan?",
     "options": [
       "120 m²",
-      "180 m²",
       "200 m²",
+      "180 m²",
       "300 m²"
     ],
-    "correctIndex": 1,
-    "explanation": "Luas jagung = 3/8 × 480 = 180 m². Luas singkong = 1/4 × 480 = 120 m². Total terpakai = 180 + 120 = 300 m². Sisa kolam ikan = 480 - 300 = 180 m²."
-  },
-  {
-    "id": "SD6-MTK-B1-17",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Sulit",
-    "bloom": "C4",
-    "points": 10,
-    "timeMinutes": 3,
-    "question": "Lovely memiliki pita merah sepanjang 7 1/2 meter. Pita tersebut dipotong-potong sama panjang dengan ukuran masing-masing 3/4 meter untuk menghias kado. Berapa banyak potongan pita yang dihasilkan Lovely?",
-    "options": [
-      "8 potongan",
-      "9 potongan",
-      "10 potongan",
-      "12 potongan"
-    ],
     "correctIndex": 2,
-    "explanation": "Ubah ke pecahan biasa: 7 1/2 = 15/2 meter. Banyak potongan = 15/2 ÷ 3/4 = 15/2 × 4/3. Coret 15 dan 3 (jadi 5 dan 1), coret 4 dan 2 (jadi 2 dan 1) = 5 × 2 = 10 potongan pita."
+    "explanation": "Jagung = 3/8 × 480 = 180 m². Singkong = 1/4 × 480 = 120 m². Terpakai = 300 m². Kolam = 480 - 300 = 180 m²."
   },
   {
-    "id": "SD6-MTK-B1-18",
+    "id": "SD6-MTK1-45",
     "subject": "Matematika",
     "semester": 1,
     "moduleId": "MTK-B1",
@@ -3393,39 +3960,18 @@ window.DEFAULT_QUESTIONS_SD6 = [
     "bloom": "C4",
     "points": 10,
     "timeMinutes": 3,
-    "question": "Sebuah papan tulis kecil berbentuk persegi panjang memiliki panjang 1 1/4 meter dan lebar 0,8 meter. Luas permukaan papan tulis tersebut adalah...",
-    "options": [
-      "0,9 m²",
-      "1,0 m²",
-      "1,1 m²",
-      "1,2 m²"
-    ],
-    "correctIndex": 1,
-    "explanation": "Ubah 1 1/4 ke bentuk desimal: 1 1/4 = 1,25 meter. Luas = panjang × lebar = 1,25 × 0,8. Kalikan 125 × 8 = 1000. Jumlah angka di belakang koma ada 3 (2 pada 1,25 dan 1 pada 0,8), sehingga menjadi 1,000 = 1,0 m²."
-  },
-  {
-    "id": "SD6-MTK-B1-19",
-    "subject": "Matematika",
-    "semester": 1,
-    "moduleId": "MTK-B1",
-    "topic": "Bab 1: Pecahan dan Desimal",
-    "type": "PG",
-    "difficulty": "Sulit",
-    "bloom": "C4",
-    "points": 10,
-    "timeMinutes": 3,
-    "question": "Ibu membeli 2,5 kg beras merah seharga Rp16.000,00 per kg dan 3/4 kg gula aren seharga Rp24.000,00 per kg. Jika Ibu membayar dengan selembar uang Rp100.000,00, berapakah uang kembalian yang diterima Ibu?",
+    "question": "Ibu membeli 2,5 kg beras seharga Rp16.000,00 per kg dan 3/4 kg gula seharga Rp24.000,00 per kg. Jika Ibu membayar dengan uang Rp100.000,00, berapa uang kembaliannya?",
     "options": [
       "Rp40.000,00",
       "Rp42.000,00",
-      "Rp45.000,00",
-      "Rp48.000,00"
+      "Rp58.000,00",
+      "Rp52.000,00"
     ],
     "correctIndex": 1,
-    "explanation": "Harga beras merah = 2,5 × Rp16.000 = Rp40.000. Harga gula aren = 3/4 × Rp24.000 = Rp18.000. Total belanja = Rp40.000 + Rp18.000 = Rp58.000. Uang kembalian = Rp100.000 - Rp58.000 = Rp42.000,00."
+    "explanation": "Beras = 2,5 × 16.000 = 40.000. Gula = 3/4 × 24.000 = 18.000. Total = 58.000. Kembalian = 100.000 - 58.000 = 42.000."
   },
   {
-    "id": "SD6-MTK-B1-20",
+    "id": "SD6-MTK1-46",
     "subject": "Matematika",
     "semester": 1,
     "moduleId": "MTK-B1",
@@ -3434,15 +3980,99 @@ window.DEFAULT_QUESTIONS_SD6 = [
     "difficulty": "Sulit",
     "bloom": "C4",
     "points": 10,
-    "timeMinutes": 4,
-    "question": "Sebuah tangki air mulanya terisi 4/5 bagian. Sebanyak 1/2 DARI AIR DALAM TANGKI tersebut digunakan untuk mencuci mobil, kemudian tangki tersebut diisi kembali air bersih sebanyak 0,2 bagian dari kapasitas penuh tangki. Berapa bagian air dalam tangki sekarang?",
+    "timeMinutes": 3,
+    "question": "Ibu mempunyai 3,5 kg tepung. Sebanyak 40% dipakai untuk membuat puding, sisanya dibagi ke dalam kantong yang masing-masing berisi 3/10 kg. Berapa kantong yang diperlukan?",
     "options": [
-      "2/5 bagian",
-      "1/2 bagian",
-      "3/5 bagian",
-      "7/10 bagian"
+      "7 kantong",
+      "6 kantong",
+      "8 kantong",
+      "12 kantong"
+    ],
+    "correctIndex": 0,
+    "explanation": "40% × 3,5 = 1,4 kg. Sisa = 3,5 - 1,4 = 2,1 kg. Kantong = 2,1 ÷ 0,3 = 7."
+  },
+  {
+    "id": "SD6-MTK1-47",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 3,
+    "question": "Sebuah drum terisi 3/4 bagian. Sebanyak 1/3 DARI AIR YANG ADA dipakai untuk menyiram tanaman. Berapa bagian drum yang masih berisi air?",
+    "options": [
+      "5/12",
+      "1/4",
+      "2/3",
+      "1/2"
+    ],
+    "correctIndex": 3,
+    "explanation": "Air terpakai = 1/3 × 3/4 = 1/4 bagian drum. Sisa = 3/4 - 1/4 = 2/4 = 1/2 bagian."
+  },
+  {
+    "id": "SD6-MTK1-48",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Sebuah papan tulis berbentuk persegi panjang berukuran panjang 1 1/4 meter dan lebar 0,8 meter. Berapa luas papan tulis tersebut?",
+    "options": [
+      "0,9 m²",
+      "1,2 m²",
+      "1 m²",
+      "2,05 m²"
     ],
     "correctIndex": 2,
-    "explanation": "Air yang dipakai cuci mobil = 1/2 × 4/5 = 4/10 = 2/5 bagian. Sisa air setelah mencuci = 4/5 - 2/5 = 2/5 bagian. Ditambah air baru 0,2 bagian (0,2 = 2/10 = 1/5 bagian). Air sekarang = 2/5 + 1/5 = 3/5 bagian kapasitas tangki."
+    "explanation": "1 1/4 = 1,25 m. Luas = 1,25 × 0,8 = 1,0 m²."
+  },
+  {
+    "id": "SD6-MTK1-49",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C5",
+    "points": 10,
+    "timeMinutes": 3,
+    "question": "Sebuah tangki terisi 4/5 bagian. Sebanyak 1/2 DARI AIR DALAM TANGKI dipakai untuk mencuci mobil, lalu tangki diisi lagi 0,2 bagian dari kapasitas penuh. Berapa bagian tangki yang terisi sekarang?",
+    "options": [
+      "2/5",
+      "3/5",
+      "1/2",
+      "7/10"
+    ],
+    "correctIndex": 1,
+    "explanation": "Terpakai = 1/2 × 4/5 = 2/5. Sisa = 4/5 - 2/5 = 2/5. Ditambah 0,2 = 1/5 → 2/5 + 1/5 = 3/5."
+  },
+  {
+    "id": "SD6-MTK1-50",
+    "subject": "Matematika",
+    "semester": 1,
+    "moduleId": "MTK-B1",
+    "topic": "Bab 1: Pecahan dan Desimal",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C5",
+    "points": 10,
+    "timeMinutes": 3,
+    "question": "Perhatikan pernyataan berikut. Manakah yang BENAR?",
+    "options": [
+      "0,5 × 0,5 = 0,25",
+      "3/4 ÷ 1/2 = 3/8",
+      "2/3 + 1/3 = 2/6",
+      "5 - 0,25 = 5,25"
+    ],
+    "correctIndex": 0,
+    "explanation": "0,5 × 0,5 = 0,25 (benar). 3/4 ÷ 1/2 = 3/2 (bukan 3/8); 2/3 + 1/3 = 1 (bukan 2/6); 5 - 0,25 = 4,75."
   }
 ];
