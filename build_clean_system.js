@@ -34,7 +34,11 @@ const oldSideGroup1 = `<button onclick="switchTab('quiz'); autoCloseSidebarOnMob
               <span class="sidebar-text truncate">Kuis Interaktif Anak</span>
             </button>`;
 
-const newSideGroup1 = `<button onclick="switchTab('quiz'); autoCloseSidebarOnMobile();" id="side-tab-quiz" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
+const newSideGroup1 = `<button onclick="switchTab('matrix'); autoCloseSidebarOnMobile();" id="side-tab-matrix" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
+              <span class="text-base shrink-0">📊</span>
+              <span class="sidebar-text truncate">Matriks Progres & Status Bab</span>
+            </button>
+            <button onclick="switchTab('quiz'); autoCloseSidebarOnMobile();" id="side-tab-quiz" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
               <span class="text-base shrink-0">🎮</span>
               <span class="sidebar-text truncate">Kuis Interaktif Anak</span>
             </button>
@@ -48,7 +52,10 @@ const oldTopGroup1 = `<button onclick="switchTab('quiz')" id="tab-quiz" class="p
               <span>🎮</span> 2. Kuis Interaktif
             </button>`;
 
-const newTopGroup1 = `<button onclick="switchTab('quiz')" id="tab-quiz" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
+const newTopGroup1 = `<button onclick="switchTab('matrix')" id="tab-matrix" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
+              <span>📊</span> Matriks Status Bab
+            </button>
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
               <span>🎮</span> 2. Kuis Interaktif
             </button>
             <button onclick="switchTab('flashcards')" id="tab-flashcards" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
@@ -159,9 +166,30 @@ const flashcardSectionHtml = `
       </div>
     </section>
 `;
-tpl = tpl.replace('<section id="view-quiz"', () => flashcardSectionHtml + '\n    <section id="view-quiz"');
+const matrixSectionHtml = fs.readFileSync(path.join(cwd, 'matrix_section.html'), 'utf8');
+tpl = tpl.replace('<section id="view-quiz"', () => matrixSectionHtml + '\n' + flashcardSectionHtml + '\n    <section id="view-quiz"');
 
 // 5. Upgrade Filter Bar di View-Curriculum agar ada Pilih Bab
+// Banner Shortcut Matriks di View-Curriculum
+const matrixBannerHtml = `
+      <!-- BANNER SHORTCUT MATRIKS KELENGKAPAN -->
+      <div class="mb-5 p-4 rounded-2xl bg-linear-to-r from-indigo-900 via-indigo-950 to-slate-900 text-white shadow-md border border-indigo-700/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3.5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-xl shrink-0">
+            📊
+          </div>
+          <div>
+            <h4 class="font-extrabold text-sm text-white">Matriks Kelengkapan Materi & Kuis Siswa</h4>
+            <p class="text-xs text-indigo-200">Cek bab mana saja yang sudah lengkap modul mendalamnya dan sudah memiliki bank soal kuis.</p>
+          </div>
+        </div>
+        <button onclick="switchTab('matrix')" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 shadow-sm transition flex items-center gap-1.5 shrink-0">
+          <span>Buka Matriks Progres</span>
+          <span>→</span>
+        </button>
+      </div>`;
+tpl = tpl.replace('<section id="view-curriculum" class="space-y-4">', () => '<section id="view-curriculum" class="space-y-4">\n' + matrixBannerHtml);
+
 console.log('5. Adding Bab dropdown filter to view-curriculum...');
 const oldCurSemesterDiv = `<div class="flex items-center gap-2">
           <label class="text-xs text-[var(--muted-foreground)]">Semester:</label>
@@ -823,17 +851,28 @@ const flashcardCode = `
     }
 `;
 
-// Insert flashcardCode right after /*__DATA_PLACEHOLDER__*/
-coreJs = coreJs.replace('/*__DATA_PLACEHOLDER__*/', () => '/*__DATA_PLACEHOLDER__*/\n' + flashcardCode);
+// Load matrix_logic.js
+const matrixJsCode = fs.readFileSync(path.join(cwd, 'matrix_logic.js'), 'utf8');
 
-// Update switchTab in coreJs to include 'flashcards'
+// Insert matrixJsCode and flashcardCode right after /*__DATA_PLACEHOLDER__*/
+coreJs = coreJs.replace('/*__DATA_PLACEHOLDER__*/', () => '/*__DATA_PLACEHOLDER__*/\n' + matrixJsCode + '\n' + flashcardCode);
+
+// Update switchTab in coreJs to include 'matrix' and 'flashcards'
 coreJs = coreJs.replace(
   "const tabs = ['curriculum', 'quiz', 'bank', 'builder', 'analytics'];",
-  () => "const tabs = ['curriculum', 'quiz', 'flashcards', 'bank', 'builder', 'analytics'];"
+  () => "const tabs = ['curriculum', 'matrix', 'quiz', 'flashcards', 'bank', 'builder', 'analytics'];"
 );
 coreJs = coreJs.replace(
   "curriculum: '1. Pembelajaran Siswa • Rangkuman Materi',",
-  () => "curriculum: '1. Pembelajaran Siswa • Rangkuman Materi',\n        flashcards: '1. Pembelajaran Siswa • Flashcard Hafalan Cepat',"
+  () => "curriculum: '1. Pembelajaran Siswa • Rangkuman Materi',\n        matrix: '0. Pusat Kendali • Matriks Kelengkapan Materi & Kuis',\n        flashcards: '1. Pembelajaran Siswa • Flashcard Hafalan Cepat',"
+);
+coreJs = coreJs.replace(
+  "triggerKaTeXRender();",
+  () => "triggerKaTeXRender();\n      if (tab === 'matrix') renderMatrixTable();"
+);
+coreJs = coreJs.replace(
+  "renderCurriculum();",
+  () => "renderCurriculum();\n      renderMatrixTable();"
 );
 
 // Update handleFileImport

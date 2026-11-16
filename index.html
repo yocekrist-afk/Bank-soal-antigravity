@@ -81,6 +81,10 @@
               <span class="text-base shrink-0">📖</span>
               <span class="sidebar-text truncate">Rangkuman Materi & Bab</span>
             </button>
+            <button onclick="switchTab('matrix'); autoCloseSidebarOnMobile();" id="side-tab-matrix" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
+              <span class="text-base shrink-0">📊</span>
+              <span class="sidebar-text truncate">Matriks Progres & Status Bab</span>
+            </button>
             <button onclick="switchTab('quiz'); autoCloseSidebarOnMobile();" id="side-tab-quiz" class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80">
               <span class="text-base shrink-0">🎮</span>
               <span class="sidebar-text truncate">Kuis Interaktif Anak</span>
@@ -228,6 +232,9 @@
             <button onclick="switchTab('curriculum')" id="tab-curriculum" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition bg-indigo-600 text-white shadow-xs flex items-center gap-1.5">
               <span>🎒</span> 1. Rangkuman Materi
             </button>
+            <button onclick="switchTab('matrix')" id="tab-matrix" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
+              <span>📊</span> Matriks Status Bab
+            </button>
             <button onclick="switchTab('quiz')" id="tab-quiz" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-1.5">
               <span>🎮</span> 2. Kuis Interaktif
             </button>
@@ -331,6 +338,23 @@
     <!-- TAB 1: MODUL BELAJAR & RANGKUMAN MATERI SD KELAS 6 (SEMESTER 1 & 2)       -->
     <!-- ========================================================================= -->
     <section id="view-curriculum" class="space-y-4">
+
+      <!-- BANNER SHORTCUT MATRIKS KELENGKAPAN -->
+      <div class="mb-5 p-4 rounded-2xl bg-linear-to-r from-indigo-900 via-indigo-950 to-slate-900 text-white shadow-md border border-indigo-700/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3.5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-xl shrink-0">
+            📊
+          </div>
+          <div>
+            <h4 class="font-extrabold text-sm text-white">Matriks Kelengkapan Materi & Kuis Siswa</h4>
+            <p class="text-xs text-indigo-200">Cek bab mana saja yang sudah lengkap modul mendalamnya dan sudah memiliki bank soal kuis.</p>
+          </div>
+        </div>
+        <button onclick="switchTab('matrix')" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 shadow-sm transition flex items-center gap-1.5 shrink-0">
+          <span>Buka Matriks Progres</span>
+          <span>→</span>
+        </button>
+      </div>
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 shadow-sm flex flex-wrap items-center justify-between gap-3">
         <div class="flex flex-wrap items-center gap-2">
           <span class="text-xs font-semibold text-[var(--muted-foreground)] mr-1">Filter Mata Pelajaran:</span>
@@ -367,7 +391,133 @@
     <!-- ========================================================================= -->
     <!-- TAB 2: MODE KUIS & LATIHAN ANAK SD (INTERAKTIF + GAMIFIKASI)              -->
     <!-- ========================================================================= -->
-    
+        <!-- ========================================================================= -->
+    <!-- TAB MATRIKS KELENGKAPAN BAB (MATERI & KUIS KONTROL)                       -->
+    <!-- ========================================================================= -->
+    <section id="view-matrix" class="hidden space-y-5">
+      <div class="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs space-y-5">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <div class="space-y-1">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs font-bold uppercase tracking-wider">
+              <span>📊</span> Pusat Kendali Kurikulum & Bank Soal
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900">Matriks Kelengkapan Materi & Kuis SD Kelas 6</h2>
+            <p class="text-xs sm:text-sm text-slate-500">
+              Pantau status ketersediaan modul belajar mendalam dan jumlah soal kuis untuk setiap bab pada seluruh mata pelajaran.
+            </p>
+          </div>
+          <button onclick="openModal()" class="px-4 py-2.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-xs transition flex items-center gap-2 shrink-0">
+            <span>➕</span> Tambah Soal Baru
+          </button>
+        </div>
+
+        <!-- 4 KPI Progress Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-semibold text-slate-500 block mb-1">📚 Total Bab Kurikulum</span>
+            <div class="text-2xl font-black text-slate-900" id="matrix-kpi-total-bab">19 Bab</div>
+            <span class="text-[11px] text-slate-400">5 Mata Pelajaran SD 6</span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-semibold text-emerald-800">✨ Modul Mendalam</span>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-200/60 px-2 py-0.5 rounded-md" id="matrix-kpi-modul-pct">0%</span>
+            </div>
+            <div class="text-2xl font-black text-emerald-950" id="matrix-kpi-modul-count">0 / 19</div>
+            <div class="w-full bg-emerald-200 h-1.5 rounded-full mt-2 overflow-hidden">
+              <div id="matrix-kpi-modul-bar" class="bg-emerald-600 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-semibold text-blue-800">🎯 Bab Memiliki Kuis</span>
+              <span class="text-[10px] font-bold text-blue-700 bg-blue-200/60 px-2 py-0.5 rounded-md" id="matrix-kpi-quiz-pct">0%</span>
+            </div>
+            <div class="text-2xl font-black text-blue-950" id="matrix-kpi-quiz-count">0 / 19</div>
+            <div class="w-full bg-blue-200 h-1.5 rounded-full mt-2 overflow-hidden">
+              <div id="matrix-kpi-quiz-bar" class="bg-blue-600 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200">
+            <span class="text-xs font-semibold text-purple-800 block mb-1">📝 Total Butir Soal</span>
+            <div class="text-2xl font-black text-purple-950" id="matrix-kpi-total-soal">0 Butir</div>
+            <span class="text-[11px] text-purple-600">Tersimpan di Bank Soal</span>
+          </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Status Kelengkapan:</label>
+              <select id="matrix-filter-status" onchange="renderMatrixTable()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800 focus:outline-indigo-500">
+                <option value="ALL">🌟 Semua Bab (19 Bab)</option>
+                <option value="NEED_MODULE">⚠️ Butuh Modul Mendalam</option>
+                <option value="NEED_QUESTIONS">⚠️ Butuh Soal Kuis (0 Soal)</option>
+                <option value="READY_ALL">⭐ Siap Lengkap (Modul + Soal)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Mata Pelajaran:</label>
+              <select id="matrix-filter-subject" onchange="renderMatrixTable()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800 focus:outline-indigo-500">
+                <option value="ALL">Semua Mapel</option>
+                <option value="Matematika">📐 Matematika</option>
+                <option value="IPAS">🌍 IPAS</option>
+                <option value="Bahasa Indonesia">📖 Bahasa Indonesia</option>
+                <option value="Pendidikan Pancasila">🦅 Pendidikan Pancasila</option>
+                <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Semester:</label>
+              <select id="matrix-filter-semester" onchange="renderMatrixTable()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800 focus:outline-indigo-500">
+                <option value="ALL">Semua Semester</option>
+                <option value="1">Semester 1</option>
+                <option value="2">Semester 2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="w-full sm:w-64">
+            <label class="block text-[11px] font-bold text-slate-500 mb-1">Cari Bab / Materi:</label>
+            <div class="relative">
+              <input type="text" id="matrix-search-input" oninput="renderMatrixTable()" placeholder="Ketik kata kunci bab..." class="w-full pl-8 pr-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 text-slate-800 focus:outline-indigo-500">
+              <span class="absolute left-2.5 top-1.5 text-slate-400 text-xs">🔍</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table Section -->
+      <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xs">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase text-[11px] font-bold tracking-wider">
+              <tr>
+                <th class="p-3.5 text-center w-12">No</th>
+                <th class="p-3.5">Mata Pelajaran</th>
+                <th class="p-3.5">Semester & Bab / Topik</th>
+                <th class="p-3.5">Status Materi Belajar</th>
+                <th class="p-3.5">Status Kuis & Soal</th>
+                <th class="p-3.5 text-center w-40">Aksi Cepat</th>
+              </tr>
+            </thead>
+            <tbody id="matrix-table-body" class="divide-y divide-slate-100 font-medium text-slate-800">
+            </tbody>
+          </table>
+        </div>
+        <div id="matrix-empty-state" class="hidden p-8 text-center text-slate-400 text-xs">
+          Tidak ada bab yang sesuai dengan filter yang dipilih.
+        </div>
+      </div>
+    </section>
+
+
     <!-- ========================================================================= -->
     <!-- TAB FLASHCARD HAFALAN INTERAKTIF ANAK SD (KARTU BOLAK-BALIK 3D)          -->
     <!-- ========================================================================= -->
@@ -3662,6 +3812,214 @@ window.DEFAULT_QUESTIONS_SD6 = [
       }
     }
 
+// =========================================================================
+// LOGIKA MATRIKS KELENGKAPAN KURIKULUM & PREFILL SOAL
+// =========================================================================
+let _activeChapterModuleId = null;
+
+function isQuestionMatchingModule(q, m) {
+  if (q.moduleId && q.moduleId === m.id) return true;
+  if (q.subject !== m.subject) return false;
+  const babCode = m.bab.split(':')[0].trim().toLowerCase();
+  const qTopic = (q.topic || '').toLowerCase();
+  const qBab = (q.bab || '').toLowerCase();
+  if (qTopic.includes(babCode) || qBab.includes(babCode)) return true;
+  return false;
+}
+
+function renderMatrixTable() {
+  const tbody = document.getElementById('matrix-table-body');
+  if (!tbody) return;
+
+  const filterStatus = (document.getElementById('matrix-filter-status')?.value) || 'ALL';
+  const filterSubject = (document.getElementById('matrix-filter-subject')?.value) || 'ALL';
+  const filterSemester = (document.getElementById('matrix-filter-semester')?.value) || 'ALL';
+  const searchQuery = (document.getElementById('matrix-search-input')?.value || '').toLowerCase().trim();
+
+  const curList = window.KURIKULUM_SD6 || [];
+  const rich = richModulesData || {};
+
+  let totalBab = curList.length;
+  let readyModuleCount = 0;
+  let readyQuizBabCount = 0;
+  let totalQuestionsCount = questions.length;
+
+  // Hitung KPI
+  curList.forEach(m => {
+    if (rich[m.id]) readyModuleCount++;
+    const qCount = questions.filter(q => isQuestionMatchingModule(q, m)).length;
+    if (qCount > 0) readyQuizBabCount++;
+  });
+
+  // Update KPI UI
+  const kpiTotalBab = document.getElementById('matrix-kpi-total-bab');
+  if (kpiTotalBab) kpiTotalBab.textContent = totalBab + ' Bab';
+
+  const kpiModulCount = document.getElementById('matrix-kpi-modul-count');
+  const kpiModulPct = document.getElementById('matrix-kpi-modul-pct');
+  const kpiModulBar = document.getElementById('matrix-kpi-modul-bar');
+  const modPct = totalBab > 0 ? Math.round((readyModuleCount / totalBab) * 100) : 0;
+  if (kpiModulCount) kpiModulCount.textContent = readyModuleCount + ' / ' + totalBab;
+  if (kpiModulPct) kpiModulPct.textContent = modPct + '%';
+  if (kpiModulBar) kpiModulBar.style.width = modPct + '%';
+
+  const kpiQuizCount = document.getElementById('matrix-kpi-quiz-count');
+  const kpiQuizPct = document.getElementById('matrix-kpi-quiz-pct');
+  const kpiQuizBar = document.getElementById('matrix-kpi-quiz-bar');
+  const quizPct = totalBab > 0 ? Math.round((readyQuizBabCount / totalBab) * 100) : 0;
+  if (kpiQuizCount) kpiQuizCount.textContent = readyQuizBabCount + ' / ' + totalBab;
+  if (kpiQuizPct) kpiQuizPct.textContent = quizPct + '%';
+  if (kpiQuizBar) kpiQuizBar.style.width = quizPct + '%';
+
+  const kpiTotalSoal = document.getElementById('matrix-kpi-total-soal');
+  if (kpiTotalSoal) kpiTotalSoal.textContent = totalQuestionsCount + ' Butir';
+
+  // Subject badge styles
+  const subjectBadgeMap = {
+    'Matematika': { bg: 'bg-blue-50 text-blue-700 border-blue-200', icon: '📐' },
+    'IPAS': { bg: 'bg-emerald-50 text-emerald-700 border-emerald-200', icon: '🌍' },
+    'Bahasa Indonesia': { bg: 'bg-amber-50 text-amber-700 border-amber-200', icon: '📖' },
+    'Pendidikan Pancasila': { bg: 'bg-rose-50 text-rose-700 border-rose-200', icon: '🦅' },
+    'Bahasa Inggris': { bg: 'bg-purple-50 text-purple-700 border-purple-200', icon: '🇬🇧' }
+  };
+
+  // Filter rows
+  let visibleRows = [];
+  curList.forEach((m, idx) => {
+    const hasRich = !!rich[m.id];
+    const qCount = questions.filter(q => isQuestionMatchingModule(q, m)).length;
+
+    // Filter subject
+    if (filterSubject !== 'ALL' && m.subject !== filterSubject) return;
+
+    // Filter semester
+    if (filterSemester !== 'ALL' && String(m.semester) !== filterSemester) return;
+
+    // Filter status
+    if (filterStatus === 'NEED_MODULE' && hasRich) return;
+    if (filterStatus === 'NEED_QUESTIONS' && qCount > 0) return;
+    if (filterStatus === 'READY_ALL' && (!hasRich || qCount === 0)) return;
+
+    // Filter search
+    if (searchQuery) {
+      const matchText = (m.subject + ' ' + m.bab + ' ' + (m.summary || '')).toLowerCase();
+      if (!matchText.includes(searchQuery)) return;
+    }
+
+    visibleRows.push({ m, idx: idx + 1, hasRich, qCount });
+  });
+
+  const emptyEl = document.getElementById('matrix-empty-state');
+  if (visibleRows.length === 0) {
+    tbody.innerHTML = '';
+    if (emptyEl) emptyEl.classList.remove('hidden');
+    return;
+  }
+  if (emptyEl) emptyEl.classList.add('hidden');
+
+  let htmlRows = '';
+  visibleRows.forEach(item => {
+    const { m, idx, hasRich, qCount } = item;
+    const bStyle = subjectBadgeMap[m.subject] || { bg: 'bg-slate-100 text-slate-700 border-slate-200', icon: '📚' };
+
+    // Material status badge & button
+    const materialHtml = hasRich
+      ? `<div class="flex items-center gap-2">
+           <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+             <span>✨</span> Modul Mendalam Siap
+           </span>
+           <button onclick="openModuleReaderModal('${m.id}')" class="px-2 py-1 rounded-lg text-[11px] font-semibold bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 transition">
+             📖 Baca
+           </button>
+         </div>`
+      : `<div class="flex items-center gap-2">
+           <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+             <span>📝</span> Ringkasan Standar
+           </span>
+           <button onclick="openModuleReaderModal('${m.id}')" class="px-2 py-1 rounded-lg text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition">
+             Lihat
+           </button>
+         </div>`;
+
+    // Quiz status badge & button
+    const quizHtml = qCount > 0
+      ? `<div class="flex items-center gap-2">
+           <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-300">
+             <span>🎯</span> ${qCount} Soal Tersedia
+           </span>
+           <button onclick="startQuizForBab('${m.subject}', '${m.id}', '${m.bab.replace(/'/g, "\\'")}')" class="px-2 py-1 rounded-lg text-[11px] font-semibold bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition">
+             🎮 Uji Kuis
+           </button>
+         </div>`
+      : `<div class="flex items-center gap-2">
+           <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-rose-100 text-rose-800 border border-rose-300">
+             <span>⚠️</span> 0 Soal (Kosong)
+           </span>
+         </div>`;
+
+    // Quick action buttons
+    const actionHtml = `
+      <div class="flex items-center justify-center gap-1.5">
+        <button onclick="openModalForChapter('${m.subject}', ${m.semester}, '${m.bab.replace(/'/g, "\\'")}', '${m.id}')" 
+                title="Tambah Soal untuk Bab ini"
+                class="px-2.5 py-1.5 rounded-lg text-[11px] font-bold bg-amber-400 hover:bg-amber-300 text-slate-950 transition flex items-center gap-1 shadow-xs">
+          <span>➕</span> Tambah Soal
+        </button>
+        <button onclick="openModuleReaderModal('${m.id}')" 
+                title="Buka Modul Belajar"
+                class="px-2.5 py-1.5 rounded-lg text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition">
+          📖 Modul
+        </button>
+      </div>
+    `;
+
+    htmlRows += `
+      <tr class="hover:bg-slate-50/80 transition">
+        <td class="p-3.5 text-center text-slate-400 font-bold">${idx}</td>
+        <td class="p-3.5">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-bold border ${bStyle.bg}">
+            <span>${bStyle.icon}</span> ${m.subject}
+          </span>
+        </td>
+        <td class="p-3.5">
+          <div class="font-extrabold text-slate-900 text-xs sm:text-sm">${m.bab}</div>
+          <div class="text-[11px] text-slate-500 font-normal">Semester ${m.semester} • ${m.summary ? m.summary.substring(0, 65) + '...' : ''}</div>
+        </td>
+        <td class="p-3.5">${materialHtml}</td>
+        <td class="p-3.5">${quizHtml}</td>
+        <td class="p-3.5 text-center">${actionHtml}</td>
+      </tr>
+    `;
+  });
+
+  tbody.innerHTML = htmlRows;
+}
+
+// Helper untuk buka modal soal dengan prefill bab & mapel
+function openModalForChapter(subject, semester, topic, moduleId) {
+  _activeChapterModuleId = moduleId;
+  openModal();
+  document.getElementById('modal-title').textContent = 'Tambah Soal Baru (' + subject + ' • ' + topic.split(':')[0] + ')';
+  document.getElementById('form-subject').value = subject;
+  document.getElementById('form-semester').value = String(semester || 1);
+  document.getElementById('form-topic').value = topic;
+}
+
+// Helper untuk langsung mulai kuis dari baris matriks
+function startQuizForBab(subject, moduleId, babTitle) {
+  switchTab('quiz');
+  const topicSelect = document.getElementById('quiz-topic-select');
+  if (topicSelect) {
+    const opts = Array.from(topicSelect.options);
+    const babPrefix = babTitle.split(':')[0].toLowerCase();
+    const match = opts.find(o => o.value.toLowerCase().includes(babPrefix) || o.text.toLowerCase().includes(babPrefix));
+    if (match) {
+      topicSelect.value = match.value;
+    }
+  }
+  startNewQuiz();
+}
+
 
     // =========================================================================
     // OPSI A: DATA & LOGIKA FLASHCARD HAFALAN INTERAKTIF (3D FLIP CARD)
@@ -3834,6 +4192,7 @@ window.DEFAULT_QUESTIONS_SD6 = [
       if (backDesc) backDesc.innerHTML = card.backDesc;
 
       triggerKaTeXRender();
+      if (tab === 'matrix') renderMatrixTable();
     }
 
     function flipCurrentCard() {
@@ -4119,6 +4478,7 @@ window.DEFAULT_QUESTIONS_SD6 = [
 
         localStorage.setItem(STORAGE_KEY_RICH_MODULES, JSON.stringify(richModulesData));
         renderCurriculum();
+      renderMatrixTable();
 
         alert(`🎉 Berhasil Mengimpor Modul Materi Lengkap!\n\nFile "${fileName}" telah berhasil disimpan dan disematkan ke dalam: ${babTitle}.\n\nAnda sekarang dapat mengklik tombol "📖 Baca Modul Lengkap" pada kartu bab tersebut untuk membacanya!`);
 
@@ -4342,9 +4702,10 @@ window.DEFAULT_QUESTIONS_SD6 = [
     }
 
     function switchTab(tab) {
-      const tabs = ['curriculum', 'quiz', 'flashcards', 'bank', 'builder', 'analytics'];
+      const tabs = ['curriculum', 'matrix', 'quiz', 'flashcards', 'bank', 'builder', 'analytics'];
       const titles = {
         curriculum: '1. Pembelajaran Siswa • Rangkuman Materi',
+        matrix: '0. Pusat Kendali • Matriks Kelengkapan Materi & Kuis',
         flashcards: '1. Pembelajaran Siswa • Flashcard Hafalan Cepat',
         quiz: '1. Pembelajaran Siswa • Kuis Interaktif Anak',
         bank: '2. Bank Soal & Kurikulum • Katalog Butir Soal',
