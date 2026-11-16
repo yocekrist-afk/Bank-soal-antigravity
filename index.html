@@ -9590,18 +9590,18 @@ function startQuizForBab(subject, moduleId, babTitle) {
       const data = richModulesData[moduleId];
       if (data) {
         titleEl.textContent = data.title;
-        bodyEl.innerHTML = data.html;
+        bodyEl.innerHTML = formatFractions(data.html);
       } else {
         const mod = (window.KURIKULUM_SD6 || []).find(m => m.id === moduleId);
         titleEl.textContent = mod ? mod.bab : 'Modul Pembelajaran';
         bodyEl.innerHTML = `
           <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
             <h3 class="text-lg font-bold text-slate-800">${mod ? mod.bab : ''}</h3>
-            <p class="text-slate-600 leading-relaxed">${mod ? mod.summary : ''}</p>
+            <p class="text-slate-600 leading-relaxed">${mod ? formatFractions(mod.summary) : ''}</p>
             <div class="p-4 rounded-xl bg-white border border-slate-200">
               <h4 class="font-bold text-indigo-700 mb-2">Poin-Poin Konsep Kunci:</h4>
               <ul class="list-disc list-inside space-y-1 text-slate-700">
-                ${(mod && mod.keyPoints ? mod.keyPoints : []).map(p => `<li>${escapeHtml(p)}</li>`).join('')}
+                ${(mod && mod.keyPoints ? mod.keyPoints : []).map(p => `<li>${formatFractions(escapeHtml(p))}</li>`).join('')}
               </ul>
             </div>
             ${mod && mod.example ? `
@@ -11260,7 +11260,7 @@ function startQuizForBab(subject, moduleId, babTitle) {
     }
 
     
-    // Helper Format Pecahan Menjadi Tumpuk Vertikal Otomatis
+    // Helper Format Pecahan Menjadi Tumpuk Vertikal Otomatis (Universal)
     function formatFractions(text) {
       if (!text || typeof text !== 'string') return text;
 
@@ -11271,13 +11271,18 @@ function startQuizForBab(subject, moduleId, babTitle) {
         return `___DATE_TOKEN_${dates.length - 1}___`;
       });
 
-      // 1. Pecahan Campuran: misal '7 1/2', '1 1/4', '3 3/4'
+      // 1. Pecahan Campuran: misal '7 1/2', '1 1/4', '3 3/4', '2 2/3'
       res = res.replace(/\b(\d+)\s+(\d+)\/(\d+)\b/g, (match, whole, top, bottom) => {
         return `<span class="inline-fraction"><span class="fraction-whole">${whole}</span><span class="fraction-part"><span class="fraction-top">${top}</span><span class="fraction-bottom">${bottom}</span></span></span>`;
       });
 
-      // 2. Pecahan Biasa: misal '3/4', '15/2', '4/3', '1/10'
-      res = res.replace(/(^|[^\/\w])(\d+)\/(\d+)(?=[^\/\w]|$)/g, (match, prefix, top, bottom) => {
+      // 2. Pecahan Biasa (Positif & Negatif): misal '3/4', '15/2', '4/3', '1/10', '-1/2'
+      res = res.replace(/(^|[^\/\w])(-?\d+)\/(\d+)(?=[^\/\w]|$)/g, (match, prefix, top, bottom) => {
+        return `${prefix}<span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">${top}</span><span class="fraction-bottom">${bottom}</span></span></span>`;
+      });
+
+      // 3. Pecahan Variabel Huruf: misal a/b, c/d, d/c, n/d
+      res = res.replace(/(^|[^\/\w])([a-z])\/([a-z])(?=[^\/\w]|$)/gi, (match, prefix, top, bottom) => {
         return `${prefix}<span class="inline-fraction"><span class="fraction-part"><span class="fraction-top">${top}</span><span class="fraction-bottom">${bottom}</span></span></span>`;
       });
 
