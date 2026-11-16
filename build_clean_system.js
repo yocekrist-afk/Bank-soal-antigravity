@@ -707,13 +707,19 @@ const flashcardCode = `
     // MODUL PEMBACA MATERI MENDALAM (DEEP LEARNING MODULE READER)
     // =========================================================================
     const STORAGE_KEY_RICH_MODULES = 'pintarsd6_rich_modules_v1';
-    let richModulesData = ${JSON.stringify(richModules)};
+    const DEFAULT_RICH_MODULES = ${JSON.stringify(richModules)};
+    let richModulesData = { ...DEFAULT_RICH_MODULES };
 
     try {
       const savedRich = localStorage.getItem(STORAGE_KEY_RICH_MODULES);
       if (savedRich) {
         const parsed = JSON.parse(savedRich);
-        richModulesData = { ...richModulesData, ...parsed };
+        // Sanitasi otomatis: jika IPAS-B1 di localStorage terkontaminasi materi Tata Surya / Antariksa, pulihkan ke modul asli
+        if (parsed['IPAS-B1'] && (parsed['IPAS-B1'].html.includes('Tata Surya') || parsed['IPAS-B1'].html.includes('Antariksa') || parsed['IPAS-B1'].html.includes('Planet'))) {
+          delete parsed['IPAS-B1'];
+        }
+        richModulesData = { ...DEFAULT_RICH_MODULES, ...parsed };
+        localStorage.setItem(STORAGE_KEY_RICH_MODULES, JSON.stringify(richModulesData));
       }
     } catch(e) {}
 
@@ -772,17 +778,29 @@ const flashcardCode = `
           richHtml = htmlContent;
         }
 
-        // Tentukan Bab berdasarkan teks
+        // Deteksi bab secara presisi dari <title>, <h1>, dan nama file
+        const titleMatch = htmlContent.match(new RegExp('<title[^>]*>([\\s\\S]*?)<\\/title>', 'i')) || htmlContent.match(new RegExp('<h1[^>]*>([\\s\\S]*?)<\\/h1>', 'i'));
+        const headerInfo = ((titleMatch ? titleMatch[1] : '') + ' ' + (fileName || '')).toLowerCase();
+
         let targetModuleId = 'IPAS-B4';
         let babTitle = 'Bab 4: Indonesia dan Masyarakat Dunia';
 
-        if (htmlContent.includes('Tubuh Kita Bergerak') || htmlContent.includes('Sendi')) {
-          targetModuleId = 'IPAS-B1';
-          babTitle = 'Bab 1: Bagaimana Tubuh Kita Bergerak?';
-        } else if (htmlContent.includes('Tata Surya') || htmlContent.includes('Planet')) {
+        if (headerInfo.includes('bab 5') || headerInfo.includes('tata surya') || headerInfo.includes('bumi dan antariksa') || headerInfo.includes('planet')) {
           targetModuleId = 'IPAS-B5';
           babTitle = 'Bab 5: Menjelajahi Bumi dan Antariksa';
-        } else if (htmlContent.includes('Pecahan') || htmlContent.includes('Desimal')) {
+        } else if (headerInfo.includes('bab 1') || headerInfo.includes('tubuh kita bergerak') || headerInfo.includes('sistem gerak') || headerInfo.includes('rangka') || headerInfo.includes('otot')) {
+          targetModuleId = 'IPAS-B1';
+          babTitle = 'Bab 1: Bagaimana Tubuh Kita Bergerak?';
+        } else if (headerInfo.includes('bab 2') || headerInfo.includes('indonesia kita') || headerInfo.includes('kemerdekaan')) {
+          targetModuleId = 'IPAS-B2';
+          babTitle = 'Bab 2: Cerita tentang Indonesia Kita';
+        } else if (headerInfo.includes('bab 3') || headerInfo.includes('keliling dunia') || headerInfo.includes('benua')) {
+          targetModuleId = 'IPAS-B3';
+          babTitle = 'Bab 3: Pelesir Keliling Dunia';
+        } else if (headerInfo.includes('bab 4') || headerInfo.includes('masyarakat dunia') || headerInfo.includes('globalisasi')) {
+          targetModuleId = 'IPAS-B4';
+          babTitle = 'Bab 4: Indonesia dan Masyarakat Dunia';
+        } else if (headerInfo.includes('pecahan') || headerInfo.includes('desimal')) {
           targetModuleId = 'MTK-B1';
           babTitle = 'Bab 1: Pecahan dan Desimal';
         }
