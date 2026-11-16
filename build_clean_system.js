@@ -1312,6 +1312,43 @@ coreJs = coreJs.replace(
         if (pBox) pBox.classList.add('hidden');`
 );
 
+// Logika Pembersihan Duplikasi Soal Otomatis di loadData
+const oldLoadData = `function loadData() {
+      try {
+        const rawQ = localStorage.getItem(STORAGE_KEY_Q);
+        questions = rawQ ? JSON.parse(rawQ) : JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      } catch (e) {
+        questions = JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      }`;
+
+const newLoadData = `function deduplicateQuestions(list) {
+      if (!Array.isArray(list)) return [];
+      const seen = new Set();
+      const result = [];
+      list.forEach(q => {
+        const key = (q.subject || '') + '||' + (q.question || '').toLowerCase().trim().replace(/^[0-9]+[\\.\\)]\\s*/, '');
+        if (!seen.has(key)) {
+          seen.add(key);
+          result.push(q);
+        }
+      });
+      return result;
+    }
+
+    function loadData() {
+      try {
+        const rawQ = localStorage.getItem(STORAGE_KEY_Q);
+        questions = rawQ ? JSON.parse(rawQ) : JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      } catch (e) {
+        questions = JSON.parse(JSON.stringify(window.DEFAULT_QUESTIONS_SD6));
+      }
+      const prevLen = questions.length;
+      questions = deduplicateQuestions(questions);
+      if (questions.length !== prevLen) {
+        saveData();
+      }`;
+coreJs = coreJs.replace(oldLoadData, () => newLoadData);
+
 // Panggil updateCurriculumBabDropdown, updateQuizTopicDropdown & updateFlashcardBabDropdown saat refreshAll
 coreJs = coreJs.replace(
   'renderAnalytics();',
