@@ -82,12 +82,12 @@
       <!-- Sidebar Header with Logo -->
       <div class="p-4 border-b border-slate-800/80 flex items-center justify-between gap-3 bg-slate-950/60">
         <div class="flex items-center gap-3 overflow-hidden">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center font-extrabold text-sm shrink-0 shadow-md">
+          <div id="app-sidebar-logo" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center font-extrabold text-sm shrink-0 shadow-md overflow-hidden">
             SD6
           </div>
           <div class="sidebar-text truncate">
-            <h2 class="font-bold text-sm tracking-tight text-white truncate">PintarSD6 Pro</h2>
-            <p class="text-[11px] text-slate-400 truncate">Sistem Asesmen Modern</p>
+            <h2 id="app-sidebar-title" class="font-bold text-sm tracking-tight text-white truncate">PintarSD6 Pro</h2>
+            <p id="app-sidebar-subtitle" class="text-[11px] text-slate-400 truncate">Sistem Asesmen Modern</p>
           </div>
         </div>
         <button onclick="toggleSidebar(false)" class="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" title="Tutup Menu">
@@ -289,6 +289,10 @@
 
       <!-- Sidebar Footer -->
       <div class="p-3 border-t border-slate-800 space-y-1.5 bg-slate-950">
+        <button onclick="openSettingsModal(); autoCloseSidebarOnMobile();" class="w-full py-1.5 px-3 rounded-lg text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 hover:text-white text-slate-300 flex items-center justify-center gap-2 border border-slate-700/60 shadow-xs transition cursor-pointer" title="Buka Pengaturan Aplikasi">
+          <span>⚙️</span>
+          <span class="sidebar-text truncate">Pengaturan & Personalisasi</span>
+        </button>
         <button onclick="openModal(); autoCloseSidebarOnMobile();" class="w-full py-2 px-3 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white flex items-center justify-center gap-2 shadow-sm transition">
           <span>+</span>
           <span class="sidebar-text truncate">Tambah Soal Baru</span>
@@ -308,16 +312,16 @@
       <!-- Top App Bar -->
       <header class="sticky top-0 z-30 no-print shadow-sm">
         <!-- Top Wave Gradient Banner (ala Accurate Online) -->
-        <div class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 text-white px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-inner">
+        <div id="top-header-banner" class="bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 text-white px-4 sm:px-6 py-2.5 flex items-center justify-between gap-3 shadow-inner transition-colors duration-300">
           <div class="flex items-center gap-3">
             <button onclick="toggleSidebar()" class="p-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-white transition flex items-center gap-1.5" title="Buka/Tutup Menu Sidebar (Ctrl+B)">
               <span class="text-lg">☰</span>
               <span class="text-xs font-semibold hidden sm:inline">Menu</span>
             </button>
             <div class="flex items-center gap-2">
-              <span class="w-7 h-7 rounded-lg bg-white text-indigo-700 font-extrabold flex items-center justify-center text-xs shadow-xs">SD6</span>
-              <span class="font-bold text-sm sm:text-base tracking-tight text-white drop-shadow-xs">PintarSD6 Pro Enterprise</span>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 font-semibold hidden md:inline">Kurikulum Merdeka</span>
+              <span id="app-header-logo" class="w-7 h-7 rounded-lg bg-white text-indigo-700 font-extrabold flex items-center justify-center text-xs shadow-xs overflow-hidden shrink-0">SD6</span>
+              <span id="app-header-title" class="font-bold text-sm sm:text-base tracking-tight text-white drop-shadow-xs">PintarSD6 Pro Enterprise</span>
+              <span id="app-header-tagline" class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 font-semibold hidden md:inline">Kurikulum Merdeka</span>
               <button onclick="openGlobalSearchModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-semibold transition border border-white/25 shadow-xs cursor-pointer ml-1.5" title="Cari Cepat Materi & Soal (Ctrl + K)">
                 <span>🔍</span>
                 <span class="hidden md:inline font-medium">Cari materi/soal...</span>
@@ -332,7 +336,7 @@
               <span class="w-5 h-5 rounded-full bg-amber-400 text-slate-900 font-black flex items-center justify-center text-[10px]">⭐</span>
               <span id="topbar-xp" class="font-bold text-amber-300">120 XP</span>
               <span class="text-white/60">•</span>
-              <span class="font-medium text-white/90">Guru & Siswa Kelas 6</span>
+              <span id="app-student-profile-text" class="font-medium text-white/90">Guru & Siswa Kelas 6</span>
             </div>
 
             <!-- Quick Action Buttons -->
@@ -355,6 +359,10 @@
               <span class="hidden sm:inline">Impor File</span>
               <input type="file" id="import-any-file" accept=".html,.htm,.json" class="hidden" onchange="handleFileImport(event)" />
             </label>
+            <button onclick="openSettingsModal()" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white/20 hover:bg-white/30 text-white border border-white/25 shadow-xs transition flex items-center gap-1.5 cursor-pointer" title="Pengaturan & Personalisasi Aplikasi (Ctrl + ,)">
+              <span class="text-sm">⚙️</span>
+              <span class="hidden md:inline">Pengaturan</span>
+            </button>
             <button onclick="openModal()" class="px-3 py-1 rounded-lg text-xs font-bold bg-amber-400 hover:bg-amber-300 text-slate-900 shadow-xs transition">
               + Tambah Soal
             </button>
@@ -1506,6 +1514,429 @@
     </div>
   </div>
 
+  
+  <!-- ========================================================================= -->
+  <!-- MODAL PENGATURAN & PERSONALISASI APLIKASI (SETTINGS)                     -->
+  <!-- ========================================================================= -->
+  <div id="app-settings-modal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-6 transition-all duration-200">
+    <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Modal Header -->
+      <div class="px-5 py-4 bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white flex items-center justify-between gap-3 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-white/15 text-white flex items-center justify-center text-xl shadow-inner border border-white/20">
+            ⚙️
+          </div>
+          <div>
+            <h2 class="text-base sm:text-lg font-black tracking-tight">Pengaturan & Personalisasi Aplikasi</h2>
+            <p class="text-xs text-indigo-200">Kustomisasi nama aplikasi, logo, profil siswa, tema warna, dan cadangan data.</p>
+          </div>
+        </div>
+        <button onclick="closeSettingsModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center font-bold text-sm transition cursor-pointer" title="Tutup (Esc)">✕</button>
+      </div>
+
+      <!-- Live Preview Banner Card -->
+      <div class="px-5 py-3 bg-slate-100 border-b border-slate-200 shrink-0">
+        <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1.5">
+          <span>👁️</span> Pratinjau Tampilan Header & Identitas:
+        </div>
+        <div id="settings-preview-banner" class="p-3 rounded-2xl bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 text-white flex items-center justify-between gap-3 shadow-sm transition-all duration-200">
+          <div class="flex items-center gap-2.5 overflow-hidden">
+            <div id="settings-preview-logo" class="w-8 h-8 rounded-xl bg-white text-indigo-700 font-extrabold flex items-center justify-center text-sm shadow-xs shrink-0 overflow-hidden">
+              SD6
+            </div>
+            <div class="truncate">
+              <div class="flex items-center gap-1.5">
+                <span id="settings-preview-title" class="font-extrabold text-sm tracking-tight text-white truncate">PintarSD6 Pro Enterprise</span>
+                <span class="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 font-semibold hidden sm:inline">Kurikulum Merdeka</span>
+              </div>
+              <p id="settings-preview-tagline" class="text-[10px] text-white/80 truncate">Sistem Asesmen Modern & Bank Soal SD</p>
+            </div>
+          </div>
+          <div class="shrink-0 text-right hidden sm:block">
+            <span id="settings-preview-student" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/20 border border-white/25 text-white">
+              Lovely • Kelas 6 SD
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Horizontal Tabs -->
+      <div class="flex border-b border-slate-200 bg-slate-50 px-3 sm:px-5 gap-1 overflow-x-auto custom-scroll shrink-0">
+        <button onclick="switchSettingsTab('branding')" id="tab-btn-branding" class="px-3.5 py-2.5 text-xs font-bold border-b-2 border-indigo-600 text-indigo-600 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
+          <span>🏷️</span> Identitas & Logo
+        </button>
+        <button onclick="switchSettingsTab('profile')" id="tab-btn-profile" class="px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
+          <span>👧</span> Profil Siswa
+        </button>
+        <button onclick="switchSettingsTab('theme')" id="tab-btn-theme" class="px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
+          <span>🎨</span> Tema Warna
+        </button>
+        <button onclick="switchSettingsTab('quiz')" id="tab-btn-quiz" class="px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
+          <span>⚙️</span> Kuis & Suara
+        </button>
+        <button onclick="switchSettingsTab('data')" id="tab-btn-data" class="px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
+          <span>💾</span> Cadangan & Data
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6 custom-scroll text-slate-700 text-xs sm:text-sm">
+        
+        <!-- ========================================== -->
+        <!-- TAB 1: IDENTITAS & LOGO                    -->
+        <!-- ========================================== -->
+        <div id="settings-tab-branding" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1">Nama Aplikasi Utama</label>
+              <input type="text" id="setting-app-name" oninput="updateSettingsLivePreview()" placeholder="Contoh: PintarSD6 Pro Enterprise atau Belajar Pintar Lovely" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-semibold text-slate-900" />
+              <p class="text-[11px] text-slate-500 mt-1">Tampil di bar header atas dan judul tab browser.</p>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1">Nama Singkat (Sidebar & Mobile)</label>
+              <input type="text" id="setting-app-shortname" oninput="updateSettingsLivePreview()" placeholder="Contoh: PintarSD6 Pro atau Lovely Pintar" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-semibold text-slate-900" />
+              <p class="text-[11px] text-slate-500 mt-1">Tampil pada logo menu navigasi sidebar sebelah kiri.</p>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-800 mb-1">Sub-judul / Tagline Aplikasi</label>
+            <input type="text" id="setting-app-tagline" oninput="updateSettingsLivePreview()" placeholder="Contoh: Sistem Asesmen Modern & Bank Soal SD" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-semibold text-slate-900" />
+            <p class="text-[11px] text-slate-500 mt-1">Slogan penjelas di bawah nama aplikasi di sidebar.</p>
+          </div>
+
+          <!-- Pilihan Jenis Logo -->
+          <div class="p-4 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-3.5">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-extrabold text-indigo-950 uppercase tracking-wide flex items-center gap-1.5">
+                <span>🖼️</span> Pilih Gaya Logo Aplikasi
+              </label>
+              <span id="setting-active-logo-label" class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-indigo-200/70 text-indigo-900">
+                Teks Inisial
+              </span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" onclick="setLogoType('emoji')" id="btn-logotype-emoji" class="p-2.5 rounded-xl border border-slate-200 bg-white font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer hover:border-indigo-400">
+                <span>🌟</span> Pilihan Emoji
+              </button>
+              <button type="button" onclick="setLogoType('text')" id="btn-logotype-text" class="p-2.5 rounded-xl border-2 border-indigo-600 bg-indigo-50 font-bold text-xs text-indigo-900 flex items-center justify-center gap-1.5 transition cursor-pointer">
+                <span>🔤</span> Teks Inisial
+              </button>
+              <button type="button" onclick="setLogoType('image')" id="btn-logotype-image" class="p-2.5 rounded-xl border border-slate-200 bg-white font-bold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer hover:border-indigo-400">
+                <span>📸</span> Upload Gambar
+              </button>
+            </div>
+
+            <!-- Panel 1: Emoji Grid -->
+            <div id="panel-logo-emoji" class="hidden space-y-2 pt-1">
+              <div class="text-[11px] text-slate-600 font-medium">Klik salah satu emoji ikon untuk memilih:</div>
+              <div class="grid grid-cols-8 sm:grid-cols-12 gap-1.5 bg-white p-2.5 rounded-xl border border-slate-200 text-xl">
+                <!-- 24 Emoji Pilihan -->
+                <button type="button" onclick="pickEmojiLogo('🎓')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Topi Sarjana">🎓</button>
+                <button type="button" onclick="pickEmojiLogo('🎒')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Tas Sekolah">🎒</button>
+                <button type="button" onclick="pickEmojiLogo('🌟')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Bintang Juara">🌟</button>
+                <button type="button" onclick="pickEmojiLogo('🚀')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Roket Prestasi">🚀</button>
+                <button type="button" onclick="pickEmojiLogo('📚')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Buku Belajar">📚</button>
+                <button type="button" onclick="pickEmojiLogo('🦁')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Singa Berani">🦁</button>
+                <button type="button" onclick="pickEmojiLogo('🦉')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Burung Hantu Bijak">🦉</button>
+                <button type="button" onclick="pickEmojiLogo('👑')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Mahkota Juara">👑</button>
+                <button type="button" onclick="pickEmojiLogo('🦄')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Unicorn Cantik">🦄</button>
+                <button type="button" onclick="pickEmojiLogo('🏆')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Piala Emas">🏆</button>
+                <button type="button" onclick="pickEmojiLogo('💎')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Berlian Cemerlang">💎</button>
+                <button type="button" onclick="pickEmojiLogo('🌸')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Bunga Sakura">🌸</button>
+                <button type="button" onclick="pickEmojiLogo('⚡')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Kilat Energi">⚡</button>
+                <button type="button" onclick="pickEmojiLogo('🎨')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Palet Seni">🎨</button>
+                <button type="button" onclick="pickEmojiLogo('🔬')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Mikroskop Sains">🔬</button>
+                <button type="button" onclick="pickEmojiLogo('⚽')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Sepak Bola">⚽</button>
+                <button type="button" onclick="pickEmojiLogo('🧠')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Otak Cerdas">🧠</button>
+                <button type="button" onclick="pickEmojiLogo('🎯')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Target Sasaran">🎯</button>
+                <button type="button" onclick="pickEmojiLogo('💡')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Lampu Ide">💡</button>
+                <button type="button" onclick="pickEmojiLogo('🧩')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Puzzle Asah Otak">🧩</button>
+                <button type="button" onclick="pickEmojiLogo('🌈')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Pelangi Indah">🌈</button>
+                <button type="button" onclick="pickEmojiLogo('🤖')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Robot Masa Depan">🤖</button>
+                <button type="button" onclick="pickEmojiLogo('🥇')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Medali Emas Ke-1">🥇</button>
+                <button type="button" onclick="pickEmojiLogo('🧸')" class="w-8 h-8 rounded-lg hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Boneka Beruang">🧸</button>
+              </div>
+            </div>
+
+            <!-- Panel 2: Teks Inisial -->
+            <div id="panel-logo-text" class="space-y-2 pt-1">
+              <label class="block text-xs font-bold text-slate-800">Teks Inisial Logo (Maksimal 4 Karakter)</label>
+              <div class="flex items-center gap-3">
+                <input type="text" id="setting-logo-text-input" maxlength="4" oninput="updateSettingsLivePreview()" placeholder="SD6" class="w-32 px-3.5 py-2 rounded-xl border border-slate-300 font-black text-center text-base tracking-wider uppercase text-indigo-700 bg-white" />
+                <span class="text-[11px] text-slate-500 leading-tight">Contoh inisial: <strong>SD6</strong>, <strong>LV</strong>, <strong>STAR</strong>, <strong>OK</strong>, atau <strong>A+</strong></span>
+              </div>
+            </div>
+
+            <!-- Panel 3: Upload Gambar Logo -->
+            <div id="panel-logo-image" class="hidden space-y-3 pt-1">
+              <div class="p-4 rounded-xl bg-white border border-slate-200 flex flex-col sm:flex-row items-center gap-4">
+                <div id="setting-image-preview-thumb" class="w-16 h-16 rounded-2xl bg-slate-100 border border-slate-300 flex items-center justify-center text-slate-400 overflow-hidden shrink-0 shadow-inner">
+                  <span class="text-xs">No Image</span>
+                </div>
+                <div class="space-y-2 flex-1 text-center sm:text-left">
+                  <div class="text-xs font-bold text-slate-800">Pilih File Gambar dari Komputer / HP</div>
+                  <p class="text-[11px] text-slate-500">Mendukung format PNG, JPG, JPEG, SVG, WebP (Maksimal 2 MB). Gambar otomatis diubah menjadi Data URL permanen.</p>
+                  <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    <label class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-xs transition cursor-pointer flex items-center gap-1.5">
+                      <span>📁</span> Pilih Gambar Logo
+                      <input type="file" id="setting-logo-file-input" accept="image/png,image/jpeg,image/svg+xml,image/webp" class="hidden" onchange="handleLogoFileUpload(event)" />
+                    </label>
+                    <button type="button" onclick="clearCustomLogoImage()" id="btn-clear-logo-img" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-600 font-semibold text-xs border border-slate-200 transition cursor-pointer hidden">
+                      Hapus Gambar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Atau gunakan URL Gambar Eksternal:</label>
+                <input type="url" id="setting-logo-url-input" oninput="handleLogoUrlInput(this.value)" placeholder="https://example.com/logo.png" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 2: PROFIL SISWA                        -->
+        <!-- ========================================== -->
+        <div id="settings-tab-profile" class="hidden space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1">Nama Panggilan Siswa</label>
+              <input type="text" id="setting-student-name" oninput="updateSettingsLivePreview()" placeholder="Lovely" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-semibold text-slate-900" />
+              <p class="text-[11px] text-slate-500 mt-1">Digunakan pada pesan sapaan, sertifikat nilai, dan instruksi latihan kuis.</p>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1">Jenjang / Kelas</label>
+              <input type="text" id="setting-student-grade" oninput="updateSettingsLivePreview()" placeholder="Kelas 6 SD" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-semibold text-slate-900" />
+              <p class="text-[11px] text-slate-500 mt-1">Contoh: Kelas 6 SD, SD Kelas 6 Juara, dsb.</p>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-800 mb-1">Target Nilai Kelulusan (KKM / Passing Grade)</label>
+            <div class="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+              <input type="range" id="setting-kkm-slider" min="60" max="95" step="5" oninput="document.getElementById('setting-kkm-val').value = this.value" class="flex-1 accent-indigo-600 cursor-pointer" />
+              <div class="flex items-center gap-1 shrink-0">
+                <input type="number" id="setting-kkm-val" min="60" max="100" oninput="document.getElementById('setting-kkm-slider').value = this.value" class="w-16 px-2 py-1 rounded-lg border border-slate-300 font-black text-center text-sm text-indigo-700 bg-white" />
+                <span class="font-bold text-slate-600">/ 100</span>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-1">Soal kuis dengan nilai di atas batas ini akan otomatis mendapat status Lulus & Tuntas ⭐.</p>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-800 mb-1">Kalimat Motivasi Belajar Harian</label>
+            <input type="text" id="setting-student-motto" placeholder="Semangat belajar meraih masa depan gemilang! 🌟" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium text-slate-800" />
+            <p class="text-[11px] text-slate-500 mt-1">Kalimat penyemangat yang tampil saat Lovely menyelesaikan kuis.</p>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 3: TEMA WARNA                          -->
+        <!-- ========================================== -->
+        <div id="settings-tab-theme" class="hidden space-y-4">
+          <div>
+            <div class="font-bold text-slate-900 mb-1">Pilih Tema Gradien Aksen Aplikasi</div>
+            <p class="text-xs text-slate-500 mb-3">Warna gradien ini akan diterapkan langsung ke bar navigasi atas dan elemen utama.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            <!-- Theme 1: Indigo Royal -->
+            <button type="button" onclick="pickTheme('indigo')" id="theme-card-indigo" class="p-3.5 rounded-2xl border-2 border-indigo-600 bg-indigo-50/50 text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-black text-xs text-indigo-900">🔵 Indigo Royal</span>
+                <span id="theme-check-indigo" class="text-xs font-bold text-indigo-600">✓ Aktif</span>
+              </div>
+              <div class="h-6 rounded-lg bg-gradient-to-r from-blue-700 via-indigo-600 to-purple-600 shadow-inner"></div>
+              <span class="text-[10px] text-slate-500">Tema bawaan resmi, modern & elegan.</span>
+            </button>
+
+            <!-- Theme 2: Emerald Edu -->
+            <button type="button" onclick="pickTheme('emerald')" id="theme-card-emerald" class="p-3.5 rounded-2xl border border-slate-200 hover:border-emerald-400 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-black text-xs text-emerald-900">🟢 Emerald Edukasi</span>
+                <span id="theme-check-emerald" class="text-xs font-bold text-emerald-600 hidden">✓ Aktif</span>
+              </div>
+              <div class="h-6 rounded-lg bg-gradient-to-r from-emerald-700 via-teal-600 to-cyan-600 shadow-inner"></div>
+              <span class="text-[10px] text-slate-500">Hijau toska segar bernuansa alam & ilmu.</span>
+            </button>
+
+            <!-- Theme 3: Violet Magis -->
+            <button type="button" onclick="pickTheme('violet')" id="theme-card-violet" class="p-3.5 rounded-2xl border border-slate-200 hover:border-purple-400 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-black text-xs text-purple-900">🟣 Violet Magis</span>
+                <span id="theme-check-violet" class="text-xs font-bold text-purple-600 hidden">✓ Aktif</span>
+              </div>
+              <div class="h-6 rounded-lg bg-gradient-to-r from-purple-700 via-fuchsia-600 to-pink-600 shadow-inner"></div>
+              <span class="text-[10px] text-slate-500">Ungu fuchsia royal, kreatif & imajinatif.</span>
+            </button>
+
+            <!-- Theme 4: Cherry Rose -->
+            <button type="button" onclick="pickTheme('rose')" id="theme-card-rose" class="p-3.5 rounded-2xl border border-slate-200 hover:border-rose-400 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-black text-xs text-rose-900">🌸 Cherry Rose</span>
+                <span id="theme-check-rose" class="text-xs font-bold text-rose-600 hidden">✓ Aktif</span>
+              </div>
+              <div class="h-6 rounded-lg bg-gradient-to-r from-rose-600 via-pink-600 to-orange-500 shadow-inner"></div>
+              <span class="text-[10px] text-slate-500">Merah muda ceria, manis & menyenangkan.</span>
+            </button>
+
+            <!-- Theme 5: Golden Star -->
+            <button type="button" onclick="pickTheme('amber')" id="theme-card-amber" class="p-3.5 rounded-2xl border border-slate-200 hover:border-amber-400 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-black text-xs text-amber-900">🟡 Golden Juara</span>
+                <span id="theme-check-amber" class="text-xs font-bold text-amber-600 hidden">✓ Aktif</span>
+              </div>
+              <div class="h-6 rounded-lg bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 shadow-inner"></div>
+              <span class="text-[10px] text-slate-500">Emas juara hangat, kobarkan semangat.</span>
+            </button>
+
+            <!-- Theme 6: Midnight Dark -->
+            <button type="button" onclick="pickTheme('cyber')" id="theme-card-cyber" class="p-3.5 rounded-2xl border border-slate-200 hover:border-slate-500 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+              <div class="flex items-center justify-between">
+                <span class="font-black text-xs text-slate-900">🌑 Midnight Focus</span>
+                <span id="theme-check-cyber" class="text-xs font-bold text-slate-600 hidden">✓ Aktif</span>
+              </div>
+              <div class="h-6 rounded-lg bg-gradient-to-r from-slate-900 via-slate-800 to-zinc-900 shadow-inner"></div>
+              <span class="text-[10px] text-slate-500">Gelap tegas minimalis, tenang & bebas silau.</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 4: KUIS & AUDIO                        -->
+        <!-- ========================================== -->
+        <div id="settings-tab-quiz" class="hidden space-y-5">
+          <!-- Mode Kuis Default -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div class="font-bold text-slate-900 flex items-center gap-2">
+              <span>🎯</span> Gaya Latihan Soal Bawaan (Default Quiz Mode)
+            </div>
+            <p class="text-xs text-slate-600">Pilih mode yang otomatis aktif ketika Lovely membuka paket soal:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <label class="p-3 rounded-xl border border-slate-200 bg-white flex items-start gap-3 cursor-pointer hover:border-emerald-400 transition">
+                <input type="radio" name="setting-default-mode" value="STUDY" id="setting-mode-study" class="mt-0.5 accent-emerald-600" />
+                <div>
+                  <div class="font-bold text-xs text-emerald-950 flex items-center gap-1">
+                    <span>🧘</span> Mode Santai (Waktu Bebas)
+                  </div>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Tanpa batasan waktu, penjelasan dan kunci jawaban langsung tampil setiap kali memilih jawaban.</p>
+                </div>
+              </label>
+
+              <label class="p-3 rounded-xl border border-slate-200 bg-white flex items-start gap-3 cursor-pointer hover:border-indigo-400 transition">
+                <input type="radio" name="setting-default-mode" value="EXAM" id="setting-mode-exam" class="mt-0.5 accent-indigo-600" />
+                <div>
+                  <div class="font-bold text-xs text-indigo-950 flex items-center gap-1">
+                    <span>⏱️</span> Mode Serius (Timer Ujian CBT)
+                  </div>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Simulasi ujian resmi dengan timer hitung mundur; skor & pembahasan baru dibuka setelah kuis selesai.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pengaturan Audio & TTS -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <div class="font-bold text-slate-900 flex items-center gap-2">
+                  <span>🔊</span> Efek Suara (Audio Feedback)
+                </div>
+                <input type="checkbox" id="setting-sound-enabled" class="w-4 h-4 accent-indigo-600 cursor-pointer" />
+              </div>
+              <p class="text-xs text-slate-500">Mainkan efek suara gamifikasi saat menjawab benar, salah, atau naik level XP.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+              <div class="font-bold text-slate-900 flex items-center gap-2">
+                <span>🗣️</span> Kecepatan Pembaca Teks (TTS)
+              </div>
+              <p class="text-xs text-slate-500">Atur kecepatan suara AI saat membacakan materi & soal:</p>
+              <select id="setting-tts-speed" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white">
+                <option value="0.8">0.8x - Santai & Jelas (Direkomendasikan Anak SD)</option>
+                <option value="1.0">1.0x - Normal Standar</option>
+                <option value="1.2">1.2x - Cepat Ringkas</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TAB 5: CADANGAN & DATA                     -->
+        <!-- ========================================== -->
+        <div id="settings-tab-data" class="hidden space-y-4">
+          <!-- Backup Card -->
+          <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div class="font-bold text-emerald-950 flex items-center gap-2 text-xs sm:text-sm">
+                <span>💾</span> Ekspor Cadangan Lengkap (.json)
+              </div>
+              <button type="button" onclick="exportFullBackupJSON()" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer">
+                <span>📥</span> Unduh Cadangan
+              </button>
+            </div>
+            <p class="text-xs text-emerald-800 leading-relaxed">
+              Unduh seluruh file cadangan berisi nama aplikasi, logo, profil Lovely, seluruh nilai hasil kuis, bintang bookmark, modul catatan, dan bank soal ke format file JSON aman di komputer Ayah.
+            </p>
+          </div>
+
+          <!-- Restore Card -->
+          <div class="p-4 rounded-2xl bg-indigo-50 border border-indigo-200 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div class="font-bold text-indigo-950 flex items-center gap-2 text-xs sm:text-sm">
+                <span>📤</span> Pulihkan Data dari Cadangan (.json)
+              </div>
+              <label class="px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer">
+                <span>📂</span> Pilih File Cadangan
+                <input type="file" id="setting-restore-file" accept=".json" class="hidden" onchange="importFullBackupJSON(event)" />
+              </label>
+            </div>
+            <p class="text-xs text-indigo-800 leading-relaxed">
+              Pulihkan riwayat belajar Lovely saat berpindah komputer atau setelah membersihkan riwayat browser dengan memilih file JSON hasil cadangan sebelumnya.
+            </p>
+          </div>
+
+          <!-- Reset Section -->
+          <div class="p-4 rounded-2xl bg-rose-50/70 border border-rose-200 space-y-3">
+            <div class="font-bold text-rose-950 flex items-center gap-2 text-xs sm:text-sm">
+              <span>⚠️</span> Pemulihan Setelan & Pembersihan Data
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+              <button type="button" onclick="resetSettingsToDefault()" class="flex-1 px-3 py-2 rounded-xl bg-white hover:bg-rose-50 border border-rose-300 text-rose-800 font-bold text-xs transition cursor-pointer flex items-center justify-center gap-1.5">
+                <span>🔄</span> Kembalikan Setelan Tampilan ke Default
+              </button>
+              <button type="button" onclick="resetStudentProgress()" class="flex-1 px-3 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs transition cursor-pointer flex items-center justify-center gap-1.5 shadow-xs">
+                <span>🗑️</span> Kosongkan Riwayat Nilai & Progres
+              </button>
+            </div>
+            <p class="text-[11px] text-rose-700">Tombol di atas dilengkapi konfirmasi keamanan sebelum dieksekusi.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-5 py-3.5 bg-slate-100 border-t border-slate-200 flex items-center justify-between gap-3 shrink-0">
+        <button type="button" onclick="resetSettingsToDefault()" class="text-xs font-semibold text-slate-500 hover:text-slate-800 transition cursor-pointer hidden sm:inline">
+          Reset ke Bawaan
+        </button>
+        <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+          <button type="button" onclick="closeSettingsModal()" class="px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs transition cursor-pointer">
+            Batal
+          </button>
+          <button type="button" onclick="saveAppSettingsFromModal()" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs shadow-md hover:shadow-lg transition flex items-center gap-1.5 cursor-pointer">
+            <span>💾</span> Simpan Pengaturan
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- FLOATING BACK-TO-TOP BUTTON -->
   <button id="btn-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-1.5 text-xs font-bold opacity-0 pointer-events-none translate-y-4" title="Kembali ke Atas Halaman">
     <span class="text-base">⬆️</span>
@@ -1650,6 +2081,15 @@
           <div>
             <div class="text-xs font-bold text-cyan-900">Ekspor Dokumen</div>
             <div class="text-[10px] text-cyan-600">CSV Excel & JSON</div>
+          </div>
+        </button>
+
+        <!-- Tile 9: Pengaturan Aplikasi -->
+        <button onclick="openSettingsModal(); closeMenuHubModal();" class="p-4 rounded-xl bg-violet-50 hover:bg-violet-100/80 border border-violet-200 flex flex-col items-center justify-center text-center gap-2 group transition shadow-xs hover:shadow-md cursor-pointer col-span-2 sm:col-span-4">
+          <span class="text-3xl group-hover:rotate-45 transition-transform">⚙️</span>
+          <div>
+            <div class="text-xs font-bold text-violet-900">Pengaturan & Personalisasi Aplikasi</div>
+            <div class="text-[10px] text-violet-600">Ganti Nama Aplikasi, Logo Sendiri, Profil Lovely, Tema Warna & Cadangan Data</div>
           </div>
         </button>
       </div>
@@ -15550,6 +15990,539 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       }
     } catch(e) {}
 
+    
+    // =========================================================================
+    // SISTEM PENGATURAN & PERSONALISASI APLIKASI (SETTINGS SYSTEM)
+    // =========================================================================
+    const STORAGE_KEY_SETTINGS = 'pintarsd6_app_settings';
+
+    const DEFAULT_APP_SETTINGS = {
+      appName: 'PintarSD6 Pro Enterprise',
+      appShortName: 'PintarSD6 Pro',
+      tagline: 'Sistem Asesmen Modern & Bank Soal',
+      logoType: 'text', // 'text', 'emoji', 'image'
+      logoValue: 'SD6',
+      theme: 'indigo', // 'indigo', 'emerald', 'violet', 'rose', 'amber', 'cyber'
+      studentName: 'Lovely',
+      studentGrade: 'Kelas 6 SD',
+      studentMotto: 'Semangat belajar meraih masa depan gemilang! 🌟',
+      passingGrade: 75,
+      defaultQuizMode: 'STUDY',
+      soundEnabled: true,
+      ttsSpeed: 1.0
+    };
+
+    let appSettings = { ...DEFAULT_APP_SETTINGS };
+
+    // Palet Warna Gradien Tema
+    const THEME_GRADIENTS = {
+      indigo: 'linear-gradient(135deg, #1d4ed8 0%, #4f46e5 50%, #7c3aed 100%)',
+      emerald: 'linear-gradient(135deg, #047857 0%, #0d9488 50%, #0891b2 100%)',
+      violet: 'linear-gradient(135deg, #6d28d9 0%, #9333ea 50%, #db2777 100%)',
+      rose: 'linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #ea580c 100%)',
+      amber: 'linear-gradient(135deg, #d97706 0%, #ea580c 50%, #ca8a04 100%)',
+      cyber: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
+    };
+
+    // Muat Pengaturan dari LocalStorage
+    function loadAppSettings() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY_SETTINGS);
+        if (raw) {
+          appSettings = { ...DEFAULT_APP_SETTINGS, ...JSON.parse(raw) };
+        }
+      } catch (e) {
+        console.warn('Gagal memuat appSettings:', e);
+      }
+      applyAppSettings();
+    }
+
+    // Terapkan Pengaturan ke Elemen DOM
+    function applyAppSettings() {
+      // 1. Nama Aplikasi & Judul Halaman
+      const elHeaderTitle = document.getElementById('app-header-title');
+      if (elHeaderTitle) elHeaderTitle.textContent = appSettings.appName || DEFAULT_APP_SETTINGS.appName;
+
+      const elSidebarTitle = document.getElementById('app-sidebar-title');
+      if (elSidebarTitle) elSidebarTitle.textContent = appSettings.appShortName || appSettings.appName;
+
+      const elSidebarSubtitle = document.getElementById('app-sidebar-subtitle');
+      if (elSidebarSubtitle) elSidebarSubtitle.textContent = appSettings.tagline || DEFAULT_APP_SETTINGS.tagline;
+
+      const studentName = appSettings.studentName || 'Lovely';
+      const studentGrade = appSettings.studentGrade || 'Kelas 6 SD';
+
+      // Update profil di topbar
+      const elProfile = document.getElementById('app-student-profile-text');
+      if (elProfile) elProfile.textContent = studentName + ' • ' + studentGrade;
+
+      // Update judul tab browser
+      document.title = (appSettings.appShortName || appSettings.appName) + ' • Belajar ' + studentName;
+
+      // 2. Render Logo di Header dan Sidebar
+      renderAppLogoToElement(document.getElementById('app-header-logo'), 'header');
+      renderAppLogoToElement(document.getElementById('app-sidebar-logo'), 'sidebar');
+
+      // 3. Terapkan Tema Warna
+      applyThemeGradient(appSettings.theme || 'indigo');
+
+      // 4. Update Nama di Modal Paket Soal jika ada
+      const setModalSub = document.getElementById('set-modal-subtitle');
+      if (setModalSub) {
+        setModalSub.textContent = 'Pilih paket soal yang ingin dikerjakan ' + studentName + '. Masing-masing paket tidak dibatasi jumlah soalnya, memiliki rekaman nilai mandiri, dan dapat dipelajari pembahasannya!';
+      }
+    }
+
+    // Render Logo ke Elemen Kontainer
+    function renderAppLogoToElement(container, location = 'header') {
+      if (!container) return;
+      const type = appSettings.logoType || 'text';
+      const val = appSettings.logoValue || 'SD6';
+
+      if (type === 'image') {
+        container.innerHTML = '<img src="' + val + '" alt="Logo" class="w-full h-full object-cover rounded-lg" onerror="this.onerror=null; this.parentElement.textContent=\'SD6\';" />';
+      } else if (type === 'emoji') {
+        const sizeClass = location === 'header' ? 'text-base sm:text-lg leading-none' : 'text-xl leading-none';
+        container.innerHTML = '<span class="' + sizeClass + '">' + val + '</span>';
+      } else {
+        // Teks
+        const sizeClass = location === 'header' ? 'text-xs font-black' : 'text-sm font-black';
+        container.innerHTML = '<span class="' + sizeClass + ' tracking-tight">' + escapeHtml(val) + '</span>';
+      }
+    }
+
+    // Terapkan Gradien Tema ke Header
+    function applyThemeGradient(themeKey) {
+      const grad = THEME_GRADIENTS[themeKey] || THEME_GRADIENTS.indigo;
+      const banner = document.getElementById('top-header-banner');
+      if (banner) {
+        banner.style.background = grad;
+      }
+    }
+
+    // Buka Modal Pengaturan
+    let currentSettingsTab = 'branding';
+    let tempLogoType = 'text';
+    let tempLogoValue = 'SD6';
+    let tempTheme = 'indigo';
+
+    function openSettingsModal(defaultTab = 'branding') {
+      tempLogoType = appSettings.logoType || 'text';
+      tempLogoValue = appSettings.logoValue || 'SD6';
+      tempTheme = appSettings.theme || 'indigo';
+
+      document.getElementById('setting-app-name').value = appSettings.appName || '';
+      document.getElementById('setting-app-shortname').value = appSettings.appShortName || '';
+      document.getElementById('setting-app-tagline').value = appSettings.tagline || '';
+      document.getElementById('setting-student-name').value = appSettings.studentName || 'Lovely';
+      document.getElementById('setting-student-grade').value = appSettings.studentGrade || 'Kelas 6 SD';
+      document.getElementById('setting-student-motto').value = appSettings.studentMotto || '';
+
+      const kkm = appSettings.passingGrade || 75;
+      document.getElementById('setting-kkm-slider').value = kkm;
+      document.getElementById('setting-kkm-val').value = kkm;
+
+      if (appSettings.defaultQuizMode === 'EXAM') {
+        document.getElementById('setting-mode-exam').checked = true;
+      } else {
+        document.getElementById('setting-mode-study').checked = true;
+      }
+
+      document.getElementById('setting-sound-enabled').checked = (appSettings.soundEnabled !== false);
+      document.getElementById('setting-tts-speed').value = (appSettings.ttsSpeed || 1.0).toString();
+
+      // Setup state logo
+      setLogoType(tempLogoType);
+      if (tempLogoType === 'text') {
+        document.getElementById('setting-logo-text-input').value = tempLogoValue;
+      }
+
+      pickTheme(tempTheme);
+      updateSettingsLivePreview();
+
+      switchSettingsTab(defaultTab);
+      document.getElementById('app-settings-modal').classList.remove('hidden');
+    }
+
+    function closeSettingsModal() {
+      const modal = document.getElementById('app-settings-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // Switch Tab di Modal Pengaturan
+    function switchSettingsTab(tabKey) {
+      currentSettingsTab = tabKey;
+      const tabs = ['branding', 'profile', 'theme', 'quiz', 'data'];
+      tabs.forEach(t => {
+        const content = document.getElementById('settings-tab-' + t);
+        const btn = document.getElementById('tab-btn-' + t);
+        if (content) {
+          if (t === tabKey) content.classList.remove('hidden');
+          else content.classList.add('hidden');
+        }
+        if (btn) {
+          if (t === tabKey) {
+            btn.className = 'px-3.5 py-2.5 text-xs font-bold border-b-2 border-indigo-600 text-indigo-600 flex items-center gap-1.5 shrink-0 transition cursor-pointer';
+          } else {
+            btn.className = 'px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1.5 shrink-0 transition cursor-pointer';
+          }
+        }
+      });
+    }
+
+    // Ubah Jenis Logo (Emoji, Teks, Gambar)
+    function setLogoType(type) {
+      tempLogoType = type;
+      const btnEmoji = document.getElementById('btn-logotype-emoji');
+      const btnText = document.getElementById('btn-logotype-text');
+      const btnImage = document.getElementById('btn-logotype-image');
+
+      const panelEmoji = document.getElementById('panel-logo-emoji');
+      const panelText = document.getElementById('panel-logo-text');
+      const panelImage = document.getElementById('panel-logo-image');
+      const label = document.getElementById('setting-active-logo-label');
+
+      // Reset button styles
+      [btnEmoji, btnText, btnImage].forEach(b => {
+        if (b) b.className = 'p-2.5 rounded-xl border border-slate-200 bg-white font-bold text-xs text-slate-700 flex items-center justify-center gap-1.5 transition cursor-pointer hover:border-indigo-400';
+      });
+
+      if (panelEmoji) panelEmoji.classList.add('hidden');
+      if (panelText) panelText.classList.add('hidden');
+      if (panelImage) panelImage.classList.add('hidden');
+
+      if (type === 'emoji') {
+        if (btnEmoji) btnEmoji.className = 'p-2.5 rounded-xl border-2 border-indigo-600 bg-indigo-50 font-bold text-xs text-indigo-900 flex items-center justify-center gap-1.5 transition cursor-pointer';
+        if (panelEmoji) panelEmoji.classList.remove('hidden');
+        if (label) label.textContent = 'Pilihan Emoji (' + (tempLogoValue.length < 4 ? tempLogoValue : '🌟') + ')';
+      } else if (type === 'image') {
+        if (btnImage) btnImage.className = 'p-2.5 rounded-xl border-2 border-indigo-600 bg-indigo-50 font-bold text-xs text-indigo-900 flex items-center justify-center gap-1.5 transition cursor-pointer';
+        if (panelImage) panelImage.classList.remove('hidden');
+        if (label) label.textContent = 'Upload Gambar';
+      } else {
+        // Text
+        if (btnText) btnText.className = 'p-2.5 rounded-xl border-2 border-indigo-600 bg-indigo-50 font-bold text-xs text-indigo-900 flex items-center justify-center gap-1.5 transition cursor-pointer';
+        if (panelText) panelText.classList.remove('hidden');
+        if (label) label.textContent = 'Teks Inisial (' + tempLogoValue + ')';
+      }
+
+      updateSettingsLivePreview();
+    }
+
+    function pickEmojiLogo(emoji) {
+      tempLogoType = 'emoji';
+      tempLogoValue = emoji;
+      setLogoType('emoji');
+      updateSettingsLivePreview();
+    }
+
+    function pickTheme(themeKey) {
+      tempTheme = themeKey;
+      const themes = ['indigo', 'emerald', 'violet', 'rose', 'amber', 'cyber'];
+      themes.forEach(t => {
+        const card = document.getElementById('theme-card-' + t);
+        const check = document.getElementById('theme-check-' + t);
+        if (card) {
+          if (t === themeKey) {
+            card.classList.add('border-2', 'border-indigo-600', 'bg-indigo-50/60');
+            card.classList.remove('border-slate-200', 'bg-white');
+          } else {
+            card.classList.remove('border-2', 'border-indigo-600', 'bg-indigo-50/60');
+            card.classList.add('border-slate-200', 'bg-white');
+          }
+        }
+        if (check) {
+          if (t === themeKey) check.classList.remove('hidden');
+          else check.classList.add('hidden');
+        }
+      });
+
+      // Update banner preview
+      const previewBanner = document.getElementById('settings-preview-banner');
+      if (previewBanner && THEME_GRADIENTS[themeKey]) {
+        previewBanner.style.background = THEME_GRADIENTS[themeKey];
+      }
+    }
+
+    // Handler Upload File Gambar Logo Sendiri
+    function handleLogoFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      if (file.size > 2 * 1024 * 1024) {
+        alert('Ukuran gambar maksimal 2 MB agar aplikasi tetap ringan dan cepat!');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        tempLogoType = 'image';
+        tempLogoValue = e.target.result;
+        setLogoType('image');
+        updateSettingsLivePreview();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleLogoUrlInput(url) {
+      if (!url || !url.trim()) return;
+      tempLogoType = 'image';
+      tempLogoValue = url.trim();
+      setLogoType('image');
+      updateSettingsLivePreview();
+    }
+
+    function clearCustomLogoImage() {
+      tempLogoType = 'text';
+      tempLogoValue = 'SD6';
+      setLogoType('text');
+      const fileInput = document.getElementById('setting-logo-file-input');
+      if (fileInput) fileInput.value = '';
+      const urlInput = document.getElementById('setting-logo-url-input');
+      if (urlInput) urlInput.value = '';
+      updateSettingsLivePreview();
+    }
+
+    // Live Preview Update di dalam Modal
+    function updateSettingsLivePreview() {
+      const appName = document.getElementById('setting-app-name').value || 'PintarSD6 Pro Enterprise';
+      const tagline = document.getElementById('setting-app-tagline').value || 'Sistem Asesmen Modern & Bank Soal SD';
+      const studentName = document.getElementById('setting-student-name').value || 'Lovely';
+      const studentGrade = document.getElementById('setting-student-grade').value || 'Kelas 6 SD';
+
+      if (tempLogoType === 'text') {
+        const textVal = document.getElementById('setting-logo-text-input').value;
+        if (textVal) tempLogoValue = textVal.trim().toUpperCase();
+      }
+
+      const titleEl = document.getElementById('settings-preview-title');
+      if (titleEl) titleEl.textContent = appName;
+
+      const tagEl = document.getElementById('settings-preview-tagline');
+      if (tagEl) tagEl.textContent = tagline;
+
+      const studentEl = document.getElementById('settings-preview-student');
+      if (studentEl) studentEl.textContent = studentName + ' • ' + studentGrade;
+
+      // Preview Logo
+      const logoEl = document.getElementById('settings-preview-logo');
+      const thumbEl = document.getElementById('setting-image-preview-thumb');
+      const clearBtn = document.getElementById('btn-clear-logo-img');
+
+      if (logoEl) {
+        if (tempLogoType === 'image') {
+          logoEl.innerHTML = '<img src="' + tempLogoValue + '" class="w-full h-full object-cover rounded-xl" alt="Logo" />';
+        } else if (tempLogoType === 'emoji') {
+          logoEl.innerHTML = '<span class="text-base leading-none">' + tempLogoValue + '</span>';
+        } else {
+          logoEl.innerHTML = '<span class="text-xs font-black">' + escapeHtml(tempLogoValue) + '</span>';
+        }
+      }
+
+      if (thumbEl) {
+        if (tempLogoType === 'image') {
+          thumbEl.innerHTML = '<img src="' + tempLogoValue + '" class="w-full h-full object-cover" alt="Thumb" />';
+          if (clearBtn) clearBtn.classList.remove('hidden');
+        } else {
+          thumbEl.innerHTML = '<span class="text-xs">No Image</span>';
+          if (clearBtn) clearBtn.classList.add('hidden');
+        }
+      }
+    }
+
+    // Simpan Pengaturan dari Form Modal
+    function saveAppSettingsFromModal() {
+      const appName = document.getElementById('setting-app-name').value.trim() || DEFAULT_APP_SETTINGS.appName;
+      const appShortName = document.getElementById('setting-app-shortname').value.trim() || DEFAULT_APP_SETTINGS.appShortName;
+      const tagline = document.getElementById('setting-app-tagline').value.trim() || DEFAULT_APP_SETTINGS.tagline;
+      const studentName = document.getElementById('setting-student-name').value.trim() || 'Lovely';
+      const studentGrade = document.getElementById('setting-student-grade').value.trim() || 'Kelas 6 SD';
+      const studentMotto = document.getElementById('setting-student-motto').value.trim() || DEFAULT_APP_SETTINGS.studentMotto;
+      const passingGrade = parseInt(document.getElementById('setting-kkm-val').value, 10) || 75;
+
+      const defaultMode = document.getElementById('setting-mode-exam').checked ? 'EXAM' : 'STUDY';
+      const soundEnabled = document.getElementById('setting-sound-enabled').checked;
+      const ttsSpeed = parseFloat(document.getElementById('setting-tts-speed').value) || 1.0;
+
+      appSettings = {
+        appName,
+        appShortName,
+        tagline,
+        logoType: tempLogoType,
+        logoValue: tempLogoValue,
+        theme: tempTheme,
+        studentName,
+        studentGrade,
+        studentMotto,
+        passingGrade,
+        defaultQuizMode: defaultMode,
+        soundEnabled,
+        ttsSpeed
+      };
+
+      try {
+        localStorage.setItem(STORAGE_KEY_SETTINGS, JSON.stringify(appSettings));
+        localStorage.setItem('pintarsd6_quiz_mode', defaultMode);
+      } catch (e) {
+        console.error('Gagal menyimpan appSettings ke localStorage:', e);
+      }
+
+      // Terapkan perubahan seketika
+      applyAppSettings();
+      closeSettingsModal();
+
+      // Notifikasi Toast
+      showSettingsToast('✨ Pengaturan berhasil disimpan dan langsung aktif!');
+    }
+
+    // Reset Pengaturan Tampilan ke Default
+    function resetSettingsToDefault() {
+      if (!confirm('Apakah Ayah yakin ingin mengembalikan nama aplikasi, logo, dan tema ke setelan bawaan pabrik?')) {
+        return;
+      }
+      appSettings = { ...DEFAULT_APP_SETTINGS };
+      try {
+        localStorage.setItem(STORAGE_KEY_SETTINGS, JSON.stringify(appSettings));
+      } catch (e) {}
+
+      applyAppSettings();
+      openSettingsModal('branding');
+      showSettingsToast('🔄 Setelan aplikasi berhasil dipulihkan ke default!');
+    }
+
+    // Reset Progres Nilai Siswa
+    function resetStudentProgress() {
+      const confirmation = prompt('PERINGATAN: Seluruh riwayat nilai kuis, poin XP, dan bintang latihan siswa akan dikosongkan.\n\nKetik kata "RESET" (huruf besar) untuk melanjutkan:');
+      if (confirmation === 'RESET') {
+        studentStats = {
+          streak: 0,
+          lastDate: null,
+          history: [],
+          setResults: {}
+        };
+        try {
+          localStorage.setItem(STORAGE_KEY_STATS, JSON.stringify(studentStats));
+        } catch (e) {}
+        refreshAll();
+        closeSettingsModal();
+        showSettingsToast('🗑️ Riwayat nilai berhasil dikosongkan.');
+      } else if (confirmation !== null) {
+        alert('Konfirmasi batal: Kata yang dimasukkan tidak sesuai.');
+      }
+    }
+
+    // Ekspor Cadangan Lengkap (Full Backup)
+    function exportFullBackupJSON() {
+      const now = new Date();
+      const dateStr = now.toISOString().split('T')[0];
+      const backupData = {
+        version: '2.0',
+        exportedAt: now.toISOString(),
+        appSettings: appSettings,
+        studentStats: studentStats,
+        questions: questions,
+        richModulesData: richModulesData,
+        missionProgress: missionProgress,
+        bookmarks: [...bookmarkedQuestionIds]
+      };
+
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backupData, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute('href', dataStr);
+      downloadAnchor.setAttribute('download', 'cadangan_pintarsd6_' + (appSettings.studentName || 'siswa') + '_' + dateStr + '.json');
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+
+      showSettingsToast('📥 Berkas cadangan lengkap berhasil diunduh!');
+    }
+
+    // Impor Cadangan Lengkap (Full Restore)
+    function importFullBackupJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (!imported || typeof imported !== 'object') {
+            throw new Error('Format file JSON tidak valid');
+          }
+
+          if (imported.appSettings) {
+            appSettings = { ...DEFAULT_APP_SETTINGS, ...imported.appSettings };
+            localStorage.setItem(STORAGE_KEY_SETTINGS, JSON.stringify(appSettings));
+          }
+
+          if (imported.studentStats) {
+            studentStats = imported.studentStats;
+            localStorage.setItem(STORAGE_KEY_STATS, JSON.stringify(studentStats));
+          }
+
+          if (Array.isArray(imported.questions) && imported.questions.length > 0) {
+            questions = imported.questions;
+            localStorage.setItem(STORAGE_KEY_Q, JSON.stringify(questions));
+          }
+
+          if (imported.richModulesData) {
+            richModulesData = { ...DEFAULT_RICH_MODULES, ...imported.richModulesData };
+            localStorage.setItem(STORAGE_KEY_RICH_MODULES, JSON.stringify(richModulesData));
+          }
+
+          if (imported.missionProgress) {
+            missionProgress = imported.missionProgress;
+            localStorage.setItem(STORAGE_KEY_MISSION, JSON.stringify(missionProgress));
+          }
+
+          if (Array.isArray(imported.bookmarks)) {
+            bookmarkedQuestionIds = new Set(imported.bookmarks);
+            localStorage.setItem('pintarsd6_bookmarks', JSON.stringify(imported.bookmarks));
+          }
+
+          applyAppSettings();
+          refreshAll();
+          closeSettingsModal();
+          alert('🎉 Data cadangan berhasil dipulihkan secara menyeluruh!');
+        } catch (err) {
+          alert('Gagal memulihkan file cadangan: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Notifikasi Toast
+    function showSettingsToast(msg) {
+      let toast = document.getElementById('settings-toast-banner');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'settings-toast-banner';
+        toast.className = 'fixed bottom-6 right-6 z-50 px-4 py-3 rounded-2xl bg-slate-900 text-white text-xs font-bold shadow-2xl border border-indigo-500/40 flex items-center gap-2 transform transition-all duration-300 translate-y-12 opacity-0';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.classList.remove('translate-y-12', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-12', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3500);
+    }
+
+    // Shortcut Keyboard: Ctrl + , (Settings) & Esc
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === ',') {
+        e.preventDefault();
+        openSettingsModal();
+      }
+      if (e.key === 'Escape') {
+        closeSettingsModal();
+      }
+    });
+
+
+    // Inisialisasi Pengaturan Aplikasi
+    loadAppSettings();
     refreshAll();
   </script>
 </body>
