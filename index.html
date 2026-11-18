@@ -318,6 +318,11 @@
               <span class="w-7 h-7 rounded-lg bg-white text-indigo-700 font-extrabold flex items-center justify-center text-xs shadow-xs">SD6</span>
               <span class="font-bold text-sm sm:text-base tracking-tight text-white drop-shadow-xs">PintarSD6 Pro Enterprise</span>
               <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 font-semibold hidden md:inline">Kurikulum Merdeka</span>
+              <button onclick="openGlobalSearchModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-semibold transition border border-white/25 shadow-xs cursor-pointer ml-1.5" title="Cari Cepat Materi & Soal (Ctrl + K)">
+                <span>🔍</span>
+                <span class="hidden md:inline font-medium">Cari materi/soal...</span>
+                <kbd class="hidden lg:inline-block px-1.5 py-0.2 text-[10px] bg-black/25 rounded border border-white/20 font-mono text-white/90">Ctrl K</kbd>
+              </button>
             </div>
           </div>
 
@@ -331,6 +336,11 @@
             </div>
 
             <!-- Quick Action Buttons -->
+            <div class="flex items-center bg-white/20 rounded-xl border border-white/25 p-0.5" title="Atur Ukuran Tulisan Modul & Soal">
+              <button onclick="changeFontSize(-1)" class="px-2 py-0.5 text-xs font-bold text-white hover:bg-white/20 rounded-lg transition" title="Perkecil Tulisan">A⁻</button>
+              <button onclick="changeFontSize(0)" id="btn-font-reset" class="px-2 py-0.5 text-xs font-bold text-white hover:bg-white/20 rounded-lg transition" title="Ukuran Normal">A</button>
+              <button onclick="changeFontSize(1)" class="px-2 py-0.5 text-xs font-bold text-white hover:bg-white/20 rounded-lg transition" title="Perbesar Tulisan">A⁺</button>
+            </div>
             <button onclick="toggleSound()" id="btn-sound" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white/15 hover:bg-white/25 text-white border border-white/20 transition">
               🔊 Suara
             </button>
@@ -1445,6 +1455,38 @@
       </div>
     </div>
   </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL PENCARIAN PINTAR GLOBAL (OMNIBOX / CTRL + K)                        -->
+  <!-- ========================================================================= -->
+  <div id="global-search-modal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-xs z-50 hidden flex items-start justify-center p-3 sm:p-6 pt-12 sm:pt-20 transition-all duration-200">
+    <div class="bg-white rounded-3xl max-w-2xl w-full flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="p-4 border-b border-slate-100 flex items-center gap-3 bg-slate-50">
+        <span class="text-xl text-indigo-600">🔍</span>
+        <input type="text" id="global-search-input" oninput="onGlobalSearchInput(this.value)" placeholder="Cari materi, bab, rumus, atau soal... (misal: pecahan, delman, whoosh, galasin)" class="flex-1 bg-transparent text-sm sm:text-base font-semibold text-slate-900 placeholder:text-slate-400 focus:outline-none" autofocus />
+        <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-slate-200 text-slate-600 font-semibold hidden sm:inline">ESC</span>
+        <button onclick="closeGlobalSearchModal()" class="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center font-bold text-sm transition">✕</button>
+      </div>
+
+      <!-- Live Search Results Container -->
+      <div id="global-search-results" class="max-h-[60vh] overflow-y-auto p-4 space-y-3 custom-scroll">
+        <div class="p-8 text-center text-slate-400 text-xs">
+          Ketik kata kunci untuk mencari seluruh 49 bab materi dan 442 butir soal kelas 6...
+        </div>
+      </div>
+      
+      <div class="p-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+        <span>Tekan <strong>Esc</strong> untuk menutup • Klik hasil untuk langsung menuju materi</span>
+        <span id="global-search-count">0 hasil</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING BACK-TO-TOP BUTTON -->
+  <button id="btn-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-1.5 text-xs font-bold opacity-0 pointer-events-none translate-y-4" title="Kembali ke Atas Halaman">
+    <span class="text-base">⬆️</span>
+    <span class="hidden sm:inline">Ke Atas</span>
+  </button>
 
   <!-- MODAL PELAJARI SOAL & PEMBAHASAN (STUDY SHEET MODE) -->
   <div id="study-sheet-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-6 transition-all duration-200">
@@ -12589,6 +12631,10 @@ function openModalForChapter(subject, semester, topic, moduleId) {
       switchTab('quiz');
 
       const label = (isRemedial ? '🔁 Remedial: ' : '🎯 ') + set.title + ' (' + selectedQuestions.length + ' Soal)';
+      const modeSelectEl = document.getElementById('quiz-mode-select');
+      if (modeSelectEl) {
+        modeSelectEl.value = (selectedQuizMode === 'STUDY') ? 'INSTANT' : 'EXAM';
+      }
       // Tanpa dibatasi jumlah soalnya, acak urutan soal
       initCBT(shuffleArray(selectedQuestions), label);
     }
@@ -13930,7 +13976,19 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       document.getElementById('cbt-q-subject').textContent = `${q.subject} • ${q.topic}`;
       document.getElementById('cbt-q-bloom').textContent = `${q.bloom} (${q.difficulty})`;
       document.getElementById('cbt-q-points').textContent = `+${q.points} XP`;
-      document.getElementById('cbt-q-text').innerHTML = formatFractions(escapeHtml(q.question));
+      document.getElementById('cbt-q-text').innerHTML = `
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex-1">${formatFractions(escapeHtml(q.question))}</div>
+          <div class="flex items-center gap-1.5 shrink-0 pt-0.5">
+            <button onclick="speakCurrentCBTQuestion()" class="tts-speaker-btn px-2.5 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs font-bold transition flex items-center gap-1 cursor-pointer" title="Dengarkan Soal Dibacakan Suara">
+              <span>🔊</span> <span>Dengarkan</span>
+            </button>
+            <button onclick="toggleBookmark('${q.id}')" data-bookmark-id="${q.id}" class="${bookmarkedQuestionIds.has(q.id) ? 'px-2.5 py-1 rounded-lg bg-amber-50 text-amber-700 border border-amber-300 font-bold' : 'px-2.5 py-1 rounded-lg bg-slate-50 text-slate-500 border border-slate-200'} text-xs transition flex items-center gap-1 cursor-pointer" title="Tandai Soal untuk Dipelajari Lagi">
+              <span>${bookmarkedQuestionIds.has(q.id) ? '⭐' : '☆'}</span>
+            </button>
+          </div>
+        </div>
+      `;
       document.getElementById('cbt-flag-checkbox').checked = !!cbtFlags[cbtIndex];
 
       const letters = ['A', 'B', 'C', 'D', 'E'];
@@ -15020,6 +15078,433 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       }
     } catch(e) {}
     loadData();
+    
+    // =========================================================================
+    // FITUR KENYAMANAN BARU: FONT SCALER, TTS, BOOKMARK, GLOBAL SEARCH, PRINT
+    // =========================================================================
+    
+    // 1. PENGATUR UKURAN HURUF (FONT SCALER A⁻ / A / A⁺)
+    let currentFontScale = 0; // -1: Kecil (14px), 0: Normal (16px), 1: Besar (18px), 2: Jumbo (20px)
+
+    function changeFontSize(val) {
+      if (val === 0) currentFontScale = 0;
+      else if (val === -1) currentFontScale = Math.max(-1, currentFontScale - 1);
+      else if (val === 1) currentFontScale = Math.min(2, currentFontScale + 1);
+
+      const fontSizes = { '-1': '14.5px', '0': '16px', '1': '18px', '2': '20px' };
+      document.documentElement.style.fontSize = fontSizes[currentFontScale] || '16px';
+      
+      const resetBtn = document.getElementById('btn-font-reset');
+      if (resetBtn) {
+        resetBtn.textContent = currentFontScale === 0 ? 'A' : (currentFontScale > 0 ? `A+${currentFontScale}` : 'A-1');
+      }
+
+      try {
+        localStorage.setItem('pintarsd6_font_scale', currentFontScale);
+      } catch(e) {}
+    }
+
+    // 2. MODE KUIS SANTAI (STUDY) VS MODE UJIAN (EXAM)
+    let selectedQuizMode = 'STUDY'; // 'STUDY' or 'EXAM'
+
+    function setQuizMode(mode) {
+      selectedQuizMode = mode;
+      const btnStudy = document.getElementById('btn-set-mode-study');
+      const btnExam = document.getElementById('btn-set-mode-exam');
+      const selectEl = document.getElementById('quiz-mode-select');
+
+      if (mode === 'STUDY') {
+        if (btnStudy) btnStudy.className = 'px-3 py-1.5 rounded-lg font-bold text-xs bg-indigo-600 text-white shadow-xs transition flex items-center gap-1.5 cursor-pointer';
+        if (btnExam) btnExam.className = 'px-3 py-1.5 rounded-lg font-semibold text-xs text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer';
+        if (selectEl) selectEl.value = 'INSTANT';
+      } else {
+        if (btnStudy) btnStudy.className = 'px-3 py-1.5 rounded-lg font-semibold text-xs text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer';
+        if (btnExam) btnExam.className = 'px-3 py-1.5 rounded-lg font-bold text-xs bg-indigo-600 text-white shadow-xs transition flex items-center gap-1.5 cursor-pointer';
+        if (selectEl) selectEl.value = 'EXAM';
+      }
+
+      try {
+        localStorage.setItem('pintarsd6_quiz_mode', mode);
+      } catch(e) {}
+    }
+
+    // 3. TEXT-TO-SPEECH (AUDIO PEMBACA SOAL INDONESIA)
+    let isSpeaking = false;
+
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) {
+        alert('Fitur pembaca suara tidak didukung di browser ini.');
+        return;
+      }
+
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        updateSpeakButtonIcons(false);
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+
+      // Bersihkan rumus LaTeX dan HTML agar terdengar alami
+      const clean = String(text)
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '$1 per $2')
+        .replace(/\$/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const utter = new SpeechSynthesisUtterance(clean);
+      utter.lang = 'id-ID';
+      utter.rate = 0.95; // Kecepatan ramah anak
+      utter.pitch = 1.05;
+
+      const voices = window.speechSynthesis.getVoices();
+      const idVoice = voices.find(v => v.lang && (v.lang.startsWith('id') || v.lang.includes('ID')));
+      if (idVoice) utter.voice = idVoice;
+
+      utter.onstart = () => {
+        isSpeaking = true;
+        updateSpeakButtonIcons(true);
+      };
+      utter.onend = utter.onerror = () => {
+        isSpeaking = false;
+        updateSpeakButtonIcons(false);
+      };
+
+      window.speechSynthesis.speak(utter);
+    }
+
+    function updateSpeakButtonIcons(speaking) {
+      const icons = document.querySelectorAll('.tts-speaker-btn');
+      icons.forEach(el => {
+        if (speaking) {
+          el.classList.add('animate-pulse', 'bg-rose-100', 'text-rose-700', 'border-rose-300');
+          el.innerHTML = '<span>⏹️</span> <span>Stop</span>';
+        } else {
+          el.classList.remove('animate-pulse', 'bg-rose-100', 'text-rose-700', 'border-rose-300');
+          el.innerHTML = '<span>🔊</span> <span>Dengarkan</span>';
+        }
+      });
+    }
+
+    function speakCurrentCBTQuestion() {
+      if (!cbtQuestions || !cbtQuestions[cbtIndex]) return;
+      const q = cbtQuestions[cbtIndex];
+      const letters = ['A', 'B', 'C', 'D'];
+      const optText = (q.options || []).map((o, idx) => `Pilihan ${letters[idx]}: ${o}`).join('. ');
+      speakText(`Soal nomor ${cbtIndex + 1}. ${q.question}. ${optText}`);
+    }
+
+    // 4. BOOKMARK / SOAL BERBINTANG (SOAL SULIT / PERLU DIULANG)
+    let bookmarkedQuestionIds = new Set();
+    try {
+      const savedBm = localStorage.getItem('pintarsd6_bookmarks');
+      if (savedBm) {
+        bookmarkedQuestionIds = new Set(JSON.parse(savedBm));
+      }
+    } catch(e) {}
+
+    function toggleBookmark(questionId) {
+      if (bookmarkedQuestionIds.has(questionId)) {
+        bookmarkedQuestionIds.delete(questionId);
+      } else {
+        bookmarkedQuestionIds.add(questionId);
+      }
+      try {
+        localStorage.setItem('pintarsd6_bookmarks', JSON.stringify([...bookmarkedQuestionIds]));
+      } catch(e) {}
+      
+      updateAllBookmarkButtons(questionId);
+    }
+
+    function updateAllBookmarkButtons(targetId) {
+      const btns = document.querySelectorAll(`[data-bookmark-id="${targetId}"]`);
+      const isBm = bookmarkedQuestionIds.has(targetId);
+      btns.forEach(b => {
+        if (isBm) {
+          b.className = 'px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 bg-amber-50 text-amber-800 border border-amber-300 shadow-2xs';
+          b.innerHTML = '<span>⭐</span> <span>Tersimpan di Bintang</span>';
+        } else {
+          b.className = 'px-3 py-1.5 rounded-xl text-xs font-medium transition flex items-center gap-1.5 bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200';
+          b.innerHTML = '<span>☆</span> <span>Tandai Soal</span>';
+        }
+      });
+    }
+
+    function startBookmarkedQuiz() {
+      const bQuestions = questions.filter(q => bookmarkedQuestionIds.has(q.id));
+      if (bQuestions.length === 0) {
+        alert('Belum ada soal yang ditandai bintang ⭐.\n\nLovely bisa mengklik tombol bintang pada soal-soal yang dirasa membingungkan untuk disimpan di sini!');
+        return;
+      }
+      switchTab('quiz');
+      initCBT(bQuestions, `⭐ Latihan Khusus Soal Berbintang (${bQuestions.length} Soal)`);
+    }
+
+    // 5. PENCARIAN PINTAR GLOBAL (OMNIBOX / CTRL + K)
+    function openGlobalSearchModal() {
+      const modal = document.getElementById('global-search-modal');
+      const input = document.getElementById('global-search-input');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      if (input) {
+        input.value = '';
+        setTimeout(() => input.focus(), 50);
+        onGlobalSearchInput('');
+      }
+    }
+
+    function closeGlobalSearchModal() {
+      const modal = document.getElementById('global-search-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function onGlobalSearchInput(query) {
+      const q = (query || '').toLowerCase().trim();
+      const container = document.getElementById('global-search-results');
+      const countEl = document.getElementById('global-search-count');
+      if (!container) return;
+
+      if (!q) {
+        container.innerHTML = `
+          <div class="p-8 text-center text-slate-400 text-xs space-y-2">
+            <span class="text-3xl block">💡</span>
+            <p>Ketik kata kunci apa saja untuk mencari langsung di antara <strong>49 Bab</strong> dan <strong>442 Soal</strong> SD Kelas 6.</p>
+            <div class="flex flex-wrap items-center justify-center gap-1.5 pt-2">
+              <button onclick="document.getElementById('global-search-input').value='pecahan'; onGlobalSearchInput('pecahan');" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px]">pecahan</button>
+              <button onclick="document.getElementById('global-search-input').value='galasin'; onGlobalSearchInput('galasin');" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px]">galasin</button>
+              <button onclick="document.getElementById('global-search-input').value='whoosh'; onGlobalSearchInput('whoosh');" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px]">whoosh</button>
+              <button onclick="document.getElementById('global-search-input').value='sendi'; onGlobalSearchInput('sendi');" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px]">sendi</button>
+              <button onclick="document.getElementById('global-search-input').value='tata surya'; onGlobalSearchInput('tata surya');" class="px-2 py-1 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px]">tata surya</button>
+            </div>
+          </div>
+        `;
+        if (countEl) countEl.textContent = '0 hasil';
+        return;
+      }
+
+      // Cari di Kurikulum (Bab)
+      const matchedBabs = (window.KURIKULUM_SD6 || []).filter(m => 
+        (m.bab && m.bab.toLowerCase().includes(q)) ||
+        (m.subject && m.subject.toLowerCase().includes(q)) ||
+        (m.summary && m.summary.toLowerCase().includes(q)) ||
+        (m.keyPoints && m.keyPoints.some(kp => kp.toLowerCase().includes(q)))
+      );
+
+      // Cari di Butir Soal (Questions)
+      const matchedQuestions = (questions || []).filter(item => 
+        (item.question && item.question.toLowerCase().includes(q)) ||
+        (item.topic && item.topic.toLowerCase().includes(q)) ||
+        (item.explanation && item.explanation.toLowerCase().includes(q))
+      ).slice(0, 8); // Tampilkan maksimal 8 soal teratas
+
+      const totalResults = matchedBabs.length + matchedQuestions.length;
+      if (countEl) countEl.textContent = `${totalResults} hasil ditemukan`;
+
+      if (totalResults === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center text-slate-500 text-xs">
+            Tidak ditemukan materi atau soal dengan kata kunci "<strong>${escapeHtml(q)}</strong>". Coba kata kunci yang lebih pendek!
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+
+      if (matchedBabs.length > 0) {
+        html += `
+          <div class="text-[11px] font-bold uppercase tracking-wider text-indigo-700 mb-1 flex items-center gap-1.5">
+            <span>📚</span> Bab & Rangkuman Materi (${matchedBabs.length})
+          </div>
+          <div class="space-y-2 mb-4">
+            ${matchedBabs.map(b => `
+              <div onclick="selectSidebarMapel('${b.subject}'); closeGlobalSearchModal();" class="p-3.5 rounded-2xl bg-indigo-50/60 hover:bg-indigo-100/80 border border-indigo-200 transition cursor-pointer flex items-start justify-between gap-3 group">
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-600 text-white">${b.subject}</span>
+                    <span class="text-[11px] font-semibold text-slate-500">Semester ${b.semester}</span>
+                  </div>
+                  <h4 class="font-bold text-xs sm:text-sm text-slate-900 group-hover:text-indigo-900">${escapeHtml(b.bab)}</h4>
+                  <p class="text-[11px] text-slate-600 line-clamp-2">${escapeHtml(b.summary)}</p>
+                </div>
+                <span class="shrink-0 text-xs text-indigo-600 font-bold group-hover:translate-x-1 transition-transform">Buka Bab →</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      if (matchedQuestions.length > 0) {
+        html += `
+          <div class="text-[11px] font-bold uppercase tracking-wider text-emerald-700 mb-1 flex items-center gap-1.5">
+            <span>❓</span> Butir Soal Latihan Terkait (${matchedQuestions.length})
+          </div>
+          <div class="space-y-2">
+            ${matchedQuestions.map(item => `
+              <div onclick="openStudySheetForQuestion('${item.moduleId}'); closeGlobalSearchModal();" class="p-3.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 hover:border-emerald-300 transition cursor-pointer space-y-1 group">
+                <div class="flex items-center justify-between text-[10px] text-slate-500">
+                  <span class="font-bold text-emerald-700">${item.subject} • ${item.topic}</span>
+                  <span class="bg-slate-100 px-2 py-0.5 rounded">${item.difficulty}</span>
+                </div>
+                <div class="text-xs font-semibold text-slate-900 group-hover:text-emerald-950">${formatFractions(escapeHtml(item.question))}</div>
+                <div class="text-[11px] text-slate-500 line-clamp-1">💡 ${escapeHtml(item.explanation)}</div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    function openStudySheetForQuestion(moduleId) {
+      if (moduleId) {
+        openQuestionSetsModal(moduleId);
+      }
+    }
+
+    // 6. CETAK LEMBAR KERJA KE KERTAS (PRINTABLE WORKSHEET)
+    function printQuestionSet(setId, moduleId) {
+      const sets = getModuleQuestionSets(moduleId);
+      const set = sets.find(s => s.id === setId);
+      const mod = (window.KURIKULUM_SD6 || []).find(m => m.id === moduleId);
+      if (!set) return;
+
+      const setQs = questions.filter(q => set.questionIds.includes(q.id));
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+
+      const printWindow = window.open('', '_blank');
+      if (!printWindow) {
+        alert('Harap izinkan popup browser untuk membuka pratinjau cetak.');
+        return;
+      }
+
+      const qListHtml = setQs.map((q, idx) => `
+        <div style="margin-bottom: 20px; page-break-inside: avoid;">
+          <div style="font-weight: 700; margin-bottom: 8px;">
+            ${idx + 1}. ${escapeHtml(q.question).replace(/\n/g, '<br>')}
+          </div>
+          <div style="margin-left: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            ${q.options.map((opt, oIdx) => `
+              <div><strong>${letters[oIdx]}.</strong> ${escapeHtml(opt)}</div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      const keyListHtml = setQs.map((q, idx) => `
+        <div style="margin-bottom: 10px; font-size: 11px; page-break-inside: avoid;">
+          <strong>${idx + 1}. Jawaban: ${letters[q.correctIndex]}</strong> (${escapeHtml(q.options[q.correctIndex])})<br>
+          <span style="color: #475569;"><em>Penjelasan:</em> ${escapeHtml(q.explanation)}</span>
+        </div>
+      `).join('');
+
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Lembar Kerja Siswa: ${escapeHtml(set.title)}</title>
+          <style>
+            body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-size: 13px; line-height: 1.5; color: #111; margin: 25mm 20mm; }
+            .header-bar { border-bottom: 2.5px solid #000; padding-bottom: 8px; margin-bottom: 16px; text-align: center; }
+            .header-bar h2 { margin: 0; font-size: 17px; letter-spacing: 0.5px; }
+            .header-bar p { margin: 3px 0 0; font-size: 11px; color: #333; }
+            .meta-table { width: 100%; margin-bottom: 20px; font-size: 12px; border-collapse: collapse; }
+            .meta-table td { padding: 4px 0; }
+            .divider { border-bottom: 1px dashed #666; margin-bottom: 20px; }
+            .page-break { page-break-before: always; }
+            @media print { body { margin: 15mm; } }
+          </style>
+        </head>
+        <body>
+          <div class="header-bar">
+            <h2>LEMBAR KERJA & LATIHAN SOAL SISWA SD KELAS 6</h2>
+            <p>PINTARSD6 PRO • KURIKULUM MERDEKA INDONESIA</p>
+          </div>
+          
+          <table class="meta-table">
+            <tr>
+              <td style="width: 15%;"><strong>Mata Pelajaran</strong></td>
+              <td style="width: 35%;">: ${escapeHtml(mod ? mod.subject : 'Pendidikan')}</td>
+              <td style="width: 15%;"><strong>Nama Siswa</strong></td>
+              <td style="width: 35%;">: ___________________________</td>
+            </tr>
+            <tr>
+              <td><strong>Materi / Bab</strong></td>
+              <td>: ${escapeHtml(mod ? mod.bab : set.title)}</td>
+              <td><strong>Kelas / Semester</strong></td>
+              <td>: VI (Enam) / ${mod ? mod.semester : '1'}</td>
+            </tr>
+            <tr>
+              <td><strong>Paket Soal</strong></td>
+              <td>: ${escapeHtml(set.title)} (${setQs.length} Soal)</td>
+              <td><strong>Hari / Tanggal</strong></td>
+              <td>: ___________________________</td>
+            </tr>
+          </table>
+
+          <div class="divider"></div>
+
+          <div>
+            ${qListHtml}
+          </div>
+
+          <div class="page-break"></div>
+
+          <div class="header-bar" style="margin-top: 25px;">
+            <h2>KUNCI JAWABAN & PEMBAHASAN</h2>
+            <p>Pegangan Orang Tua / Guru Pembimbing</p>
+          </div>
+          <div style="columns: 2; column-gap: 30px;">
+            ${keyListHtml}
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.focus();
+      setTimeout(() => printWindow.print(), 500);
+    }
+
+    // Keyboard Shortcuts: Ctrl + K (Search) & Esc (Close Modal)
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        openGlobalSearchModal();
+      }
+      if (e.key === 'Escape') {
+        closeGlobalSearchModal();
+      }
+    });
+
+    // Scroll Listener for Floating Back-to-Top Button
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('btn-back-to-top');
+      if (!btn) return;
+      if (window.scrollY > 250) {
+        btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        btn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        btn.classList.remove('opacity-100', 'translate-y-0');
+      }
+    });
+
+    // Init font size from storage
+    try {
+      const savedScale = localStorage.getItem('pintarsd6_font_scale');
+      if (savedScale !== null) {
+        changeFontSize(parseInt(savedScale, 10));
+      }
+      const savedMode = localStorage.getItem('pintarsd6_quiz_mode');
+      if (savedMode) {
+        setQuizMode(savedMode);
+      }
+    } catch(e) {}
+
     refreshAll();
   </script>
 </body>
