@@ -111,6 +111,105 @@
 
       <!-- Navigation Menu Items -->
       <nav class="flex-1 px-3 py-2 space-y-3 overflow-y-auto custom-scroll">
+                <!-- ========================================================================= -->
+        <!-- ACCORDION: DAFTAR MATA PELAJARAN (EXPAND & COLLAPSE)                      -->
+        <!-- ========================================================================= -->
+        <div class="rounded-2xl bg-slate-950/70 border border-slate-800/80 p-1.5 space-y-1">
+          <button onclick="toggleSidebarMapelAccordion()" id="btn-toggle-mapel-sidebar" class="w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-bold text-slate-200 hover:text-white hover:bg-slate-800/80 transition group" title="Klik untuk Buka/Tutup (Expand/Collapse) Daftar Mapel">
+            <div class="flex items-center gap-2">
+              <span class="text-base text-indigo-400 shrink-0">📚</span>
+              <span class="sidebar-text font-bold text-white tracking-wide">Mata Pelajaran</span>
+            </div>
+            <div class="flex items-center gap-1.5 sidebar-text">
+              <span id="sidebar-active-mapel-pill" class="text-[10px] px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 font-bold truncate max-w-[90px]">Semua (9)</span>
+              <span id="mapel-accordion-chevron" class="text-xs text-slate-400 group-hover:text-white transition-transform duration-200">▼</span>
+            </div>
+          </button>
+
+          <!-- DAFTAR TOMBOL MAPEL (BISA EXPAND / COLLAPSE) -->
+          <div id="sidebar-mapel-content" class="space-y-0.5 pt-1 transition-all duration-200">
+            <button onclick="selectSidebarMapel('ALL')" id="side-mapel-ALL" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white shadow-xs transition text-left" title="Tampilkan Semua Mata Pelajaran">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">🌟</span>
+                <span class="sidebar-text truncate">Semua Mapel</span>
+              </div>
+              <span class="sidebar-text text-[10px] px-1.5 py-0.5 rounded bg-black/20 text-white/90 shrink-0">49 Bab</span>
+            </button>
+
+            <button onclick="selectSidebarMapel('Matematika')" id="side-mapel-Matematika" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition text-left" title="Pelajaran Matematika">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">📐</span>
+                <span class="sidebar-text truncate">Matematika</span>
+              </div>
+              <span class="sidebar-text text-[10px] text-slate-400 shrink-0">6 Bab</span>
+            </button>
+
+            <button onclick="selectSidebarMapel('IPAS')" id="side-mapel-IPAS" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition text-left" title="Pelajaran IPAS">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">🌍</span>
+                <span class="sidebar-text truncate">IPAS (Sains & Sosial)</span>
+              </div>
+              <span class="sidebar-text text-[10px] text-slate-400 shrink-0">6 Bab</span>
+            </button>
+
+            <button onclick="selectSidebarMapel('Bahasa Indonesia')" id="side-mapel-Bahasa Indonesia" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition text-left" title="Pelajaran Bahasa Indonesia">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">📖</span>
+                <span class="sidebar-text truncate">Bahasa Indonesia</span>
+              </div>
+              <span class="sidebar-text text-[10px] text-slate-400 shrink-0">6 Bab</span>
+            </button>
+
+            <button onclick="selectSidebarMapel('Pendidikan Pancasila')" id="side-mapel-Pendidikan Pancasila" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition text-left" title="Pelajaran Pendidikan Pancasila">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">🦅</span>
+                <span class="sidebar-text truncate">Pendidikan Pancasila</span>
+              </div>
+              <span class="sidebar-text text-[10px] text-slate-400 shrink-0">4 Bab</span>
+            </button>
+
+            <button onclick="selectSidebarMapel('Bahasa Inggris')" id="side-mapel-Bahasa Inggris" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition text-left" title="Pelajaran Bahasa Inggris">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">🇬🇧</span>
+                <span class="sidebar-text truncate">Bahasa Inggris</span>
+              </div>
+              <span class="sidebar-text text-[10px] text-slate-400 shrink-0">4 Bab</span>
+            </button>
+
+            <button onclick="selectSidebarMapel('PLBJ')" id="side-mapel-PLBJ" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition text-left" title="Pelajaran PLBJ">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">🏛️</span>
+                <span class="sidebar-text truncate font-semibold">PLBJ</span>
+              </div>
+              <span class="sidebar-text text-[10px] text-emerald-400 font-bold shrink-0">12 Bab</span>
+            </button>
+
+            <button onclick="selectSidebarMapel('Seni Rupa')" id="side-mapel-Seni Rupa" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition text-left" title="Pelajaran Seni Rupa">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">🎨</span>
+                <span class="sidebar-text truncate">Seni Rupa</span>
+              </div>
+              <span class="sidebar-text text-[10px] text-slate-400 shrink-0">4 Bab</span>
+            </button>
+
+            <button onclick="selectSidebarMapel('PAI')" id="side-mapel-PAI" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition text-left" title="Pelajaran PAI">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">🕌</span>
+                <span class="sidebar-text truncate">PAI</span>
+              </div>
+              <span class="sidebar-text text-[10px] text-slate-400 shrink-0">6 Bab</span>
+            </button>
+
+            <button onclick="selectSidebarMapel('Bahasa Arab')" id="side-mapel-Bahasa Arab" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition text-left" title="Pelajaran Bahasa Arab">
+              <div class="flex items-center gap-2 truncate">
+                <span class="text-sm shrink-0">🌙</span>
+                <span class="sidebar-text truncate">Bahasa Arab</span>
+              </div>
+              <span class="sidebar-text text-[10px] text-slate-400 shrink-0">3 Bab</span>
+            </button>
+          </div>
+        </div>
+
         <!-- MODUL 1: SISWA & BELAJAR -->
         <div>
           <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5 sidebar-text">
@@ -186,42 +285,7 @@
           </div>
         </div>
 
-        <!-- PINTASAN MAPEL -->
-        <div class="pt-2 border-t border-slate-800/80 sidebar-text">
-          <div class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-            Pintasan Mata Pelajaran
-          </div>
-          <div class="grid grid-cols-2 gap-1 mt-1">
-            <button onclick="quickFilterSubject('Matematika')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
-              <span>📐</span> MTK
-            </button>
-            <button onclick="quickFilterSubject('IPAS')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
-              <span>🌍</span> IPAS
-            </button>
-            <button onclick="quickFilterSubject('Bahasa Indonesia')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
-              <span>📖</span> B.Indo
-            </button>
-            <button onclick="quickFilterSubject('Pendidikan Pancasila')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
-              <span>🦅</span> PPKn
-            </button>
-            <button onclick="quickFilterSubject('Bahasa Inggris')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
-              <span>🇬🇧</span> B.Inggris
-            </button>
-            <button onclick="quickFilterSubject('PLBJ')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
-              <span>🏛️</span> PLBJ
-            </button>
-            <button onclick="quickFilterSubject('Seni Rupa')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
-              <span>🎨</span> Seni Rupa
-            </button>
-            <button onclick="quickFilterSubject('PAI')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
-              <span>🕌</span> PAI
-            </button>
-            <button onclick="quickFilterSubject('Bahasa Arab')" class="px-2.5 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800 transition text-left truncate flex items-center gap-1">
-              <span>🌙</span> B.Arab
-            </button>
-          </div>
-        </div>
-      </nav>
+        </nav>
 
       <!-- Sidebar Footer -->
       <div class="p-3 border-t border-slate-800 space-y-1.5 bg-slate-950">
@@ -13378,9 +13442,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     }
 
     function quickFilterSubject(subj) {
-      setCurrSubject(subj);
-      switchTab('curriculum');
-      autoCloseSidebarOnMobile();
+      selectSidebarMapel(subj);
     }
 
     // Keyboard shortcut: Ctrl + B to toggle sidebar
@@ -13493,18 +13555,103 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     // =========================================================================
     // TAB 1: MODUL KURIKULUM MERDEKA SD KELAS 6
     // =========================================================================
+    // State Accordion Mapel di Sidebar
+    let isSidebarMapelOpen = true;
+
+    function toggleSidebarMapelAccordion(forceState) {
+      const content = document.getElementById('sidebar-mapel-content');
+      const chevron = document.getElementById('mapel-accordion-chevron');
+      if (!content) return;
+
+      if (typeof forceState === 'boolean') {
+        isSidebarMapelOpen = forceState;
+      } else {
+        isSidebarMapelOpen = !isSidebarMapelOpen;
+      }
+
+      if (isSidebarMapelOpen) {
+        content.classList.remove('hidden');
+        if (chevron) {
+          chevron.textContent = '▼';
+          chevron.style.transform = 'rotate(0deg)';
+        }
+      } else {
+        content.classList.add('hidden');
+        if (chevron) {
+          chevron.textContent = '▶';
+          chevron.style.transform = 'rotate(0deg)';
+        }
+      }
+
+      try {
+        localStorage.setItem('pintarsd6_sidebar_mapel_open', isSidebarMapelOpen ? '1' : '0');
+      } catch (e) {}
+    }
+
+    // Aksi Klik Mapel dari Sidebar (Langsung ganti mata pelajaran tanpa perlu scroll ke atas)
+    function selectSidebarMapel(subj) {
+      setCurrSubject(subj);
+
+      // Sinkronisasi otomatis ke Tab yang sedang aktif
+      if (currentTab === 'quiz') {
+        lobbySubject = (subj === 'ALL' ? null : subj);
+        renderQuizLobby();
+      } else if (currentTab === 'bank') {
+        const fSubj = document.getElementById('filter-subject');
+        if (fSubj) {
+          fSubj.value = subj;
+          filterQuestions();
+        }
+      } else if (currentTab === 'flashcards') {
+        const fcSubj = document.getElementById('fc-subject-select');
+        if (fcSubj) {
+          fcSubj.value = subj;
+          onFlashcardSubjectChange();
+        }
+      } else if (currentTab !== 'curriculum') {
+        // Jika sedang di tab lain, buka tab kurikulum untuk melihat bab mapel tersebut
+        switchTab('curriculum');
+      }
+
+      // Scroll halus ke atas area konten
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Pada layar HP/tablet, tutup sidebar drawer otomatis setelah memilih
+      autoCloseSidebarOnMobile();
+    }
+
     function setCurrSubject(subj) {
       currSelectedSubject = subj;
       const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris', 'PLBJ', 'Seni Rupa', 'PAI', 'Bahasa Arab'];
+
       allBtns.forEach((s) => {
+        // 1. Update tombol filter di header konten utama
         const el = document.getElementById('csubj-' + s);
-        if (!el) return;
-        if (s === subj) {
-          el.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white';
-        } else {
-          el.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)] hover:border-indigo-500/40';
+        if (el) {
+          if (s === subj) {
+            el.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-xs';
+          } else {
+            el.className = 'px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--background)] border border-[var(--border)] hover:border-indigo-500/40 text-[var(--foreground)]';
+          }
+        }
+
+        // 2. Update tombol di Accordion Sidebar
+        const sideEl = document.getElementById('side-mapel-' + s);
+        if (sideEl) {
+          if (s === subj) {
+            sideEl.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-bold transition text-left bg-indigo-600 text-white shadow-xs';
+          } else {
+            sideEl.className = 'w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition text-left text-slate-300 hover:text-white hover:bg-slate-800/80';
+          }
         }
       });
+
+      // Update badge nama mapel aktif pada header accordion
+      const activePill = document.getElementById('sidebar-active-mapel-pill');
+      if (activePill) {
+        activePill.textContent = (subj === 'ALL' ? 'Semua (9)' : subj);
+      }
+
       renderCurriculum();
     }
 
@@ -14863,6 +15010,15 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     }
 
     // Init
+    // Inisialisasi status Accordion Mapel Sidebar dari localStorage
+    try {
+      const savedMapelOpen = localStorage.getItem('pintarsd6_sidebar_mapel_open');
+      if (savedMapelOpen === '0') {
+        toggleSidebarMapelAccordion(false);
+      } else {
+        toggleSidebarMapelAccordion(true);
+      }
+    } catch(e) {}
     loadData();
     refreshAll();
   </script>
