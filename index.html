@@ -1336,6 +1336,102 @@
   </div>
 
   <!-- MODAL PUSAT MODUL CEPAT (ALA ACCURATE ONLINE GRID TILES) -->
+  
+  <!-- MODAL PEMILIHAN SET SOAL UJIAN (PHB 1, PHB 2, PHB 3, UTS) -->
+  <div id="question-sets-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-6 transition-all duration-200">
+    <div class="bg-slate-50 rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white p-4 sm:p-5 flex items-center justify-between shrink-0 shadow-sm">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-2xl shadow-xs shrink-0">
+            🎯
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2">
+              <span id="set-modal-track" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-white/25 text-white"></span>
+              <span class="text-[10px] text-blue-200">• Multi-Set Bebas Jumlah Soal</span>
+            </div>
+            <h2 id="set-modal-title" class="text-base sm:text-lg font-bold text-white tracking-tight mt-0.5 truncate">Pilih Set Soal</h2>
+          </div>
+        </div>
+        <button onclick="closeQuestionSetsModal()" title="Tutup (Esc)" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center text-lg font-bold transition shadow-xs ml-2">
+          ✕
+        </button>
+      </div>
+
+      <!-- Deskripsi Info -->
+      <div class="p-4 bg-indigo-50/70 border-b border-indigo-100 text-xs text-indigo-950 flex items-center gap-2 shrink-0">
+        <span>💡</span>
+        <span id="set-modal-subtitle"></span>
+      </div>
+
+      <!-- List Set Soal -->
+      <div id="set-modal-list" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 custom-scroll">
+        <!-- Render kartu-kartu paket soal -->
+      </div>
+
+      <!-- Footer -->
+      <div class="p-4 bg-white border-t border-slate-200 flex items-center justify-between gap-3 shrink-0">
+        <div class="text-xs text-slate-500">
+          <span>Semua paket menampilkan seluruh soal tanpa batas nomor.</span>
+        </div>
+        <button onclick="closeQuestionSetsModal()" class="px-5 py-2 rounded-xl text-xs font-bold bg-slate-200 hover:bg-slate-300 text-slate-800 transition">
+          Tutup
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PELAJARI SOAL & PEMBAHASAN (STUDY SHEET MODE) -->
+  <div id="study-sheet-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-6 transition-all duration-200">
+    <div class="bg-slate-50 rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-emerald-700 via-teal-700 to-cyan-800 text-white p-4 sm:p-5 flex items-center justify-between shrink-0 shadow-sm">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-2xl shadow-xs shrink-0">
+            📖
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2">
+              <span id="study-sheet-track" class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-white/25 text-white"></span>
+              <span class="text-[10px] text-emerald-200">• Mode Belajar & Kisi-Kisi</span>
+            </div>
+            <h2 id="study-sheet-title" class="text-base sm:text-lg font-bold text-white tracking-tight mt-0.5 truncate">Pelajari Soal & Pembahasan</h2>
+          </div>
+        </div>
+        <button onclick="closeStudySheet()" title="Tutup (Esc)" class="w-9 h-9 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center text-lg font-bold transition shadow-xs ml-2">
+          ✕
+        </button>
+      </div>
+
+      <!-- Info -->
+      <div class="p-4 bg-emerald-50/70 border-b border-emerald-100 text-xs text-emerald-950 flex items-center justify-between gap-2 shrink-0">
+        <div class="flex items-center gap-2">
+          <span>✨</span>
+          <span id="study-sheet-desc">Pelajari setiap soal, kunci jawaban yang benar, serta penjelasan konsepnya secara mendalam.</span>
+        </div>
+        <button onclick="window.print()" class="px-3 py-1 rounded-lg bg-white border border-emerald-300 text-emerald-900 font-bold hover:bg-emerald-100 transition shadow-xs text-xs">
+          🖨️ Cetak Lembar Ini
+        </button>
+      </div>
+
+      <!-- Konten Daftar Soal & Kunci -->
+      <div id="study-sheet-body" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 custom-scroll">
+        <!-- Render soal satu per satu -->
+      </div>
+
+      <!-- Footer -->
+      <div class="p-4 bg-white border-t border-slate-200 flex items-center justify-between gap-3 shrink-0">
+        <div class="text-xs text-slate-500 font-medium">
+          Dapat dipelajari kapan saja tanpa batas waktu.
+        </div>
+        <button onclick="closeStudySheet()" class="px-5 py-2 rounded-xl text-xs font-bold bg-emerald-700 hover:bg-emerald-600 text-white transition shadow-xs">
+          Selesai Belajar ✓
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div id="menu-hub-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl max-w-3xl w-full p-6 shadow-2xl border border-slate-200 space-y-5 animate-in fade-in zoom-in-95 duration-200">
       <div class="flex items-center justify-between border-b border-slate-100 pb-4">
@@ -11067,7 +11163,312 @@ function openModalForChapter(subject, semester, topic, moduleId) {
 }
 
 // Helper untuk langsung mulai kuis dari baris matriks
+
+    // =========================================================================
+    // FITUR MULTI-SET SOAL PER BAB (PHB 1, 2, 3, UTS & MODE PELAJARI/REMEDIAL)
+    // =========================================================================
+    const CHAPTER_SETS = {
+      'PLBJ-B9': [
+        {
+          id: 'PLBJ-B9-PHB1',
+          code: 'PHB 1',
+          badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+          title: 'PHB 1: Transportasi Tradisional & Bus Transjakarta',
+          desc: 'Transportasi masa lalu (delman tenaga kuda), pengenalan bus perkotaan Transjakarta, mengurangi kemacetan, menekan polusi udara, serta etika kebersihan halte dan bus.',
+          questionIds: [
+            'SD6-PLBJ-B9-01', 'SD6-PLBJ-B9-02', 'SD6-PLBJ-B9-03', 'SD6-PLBJ-B9-04', 'SD6-PLBJ-B9-05',
+            'SD6-PLBJ-B9-06', 'SD6-PLBJ-B9-07', 'SD6-PLBJ-B9-08', 'SD6-PLBJ-B9-09', 'SD6-PLBJ-B9-10'
+          ]
+        },
+        {
+          id: 'PLBJ-B9-PHB2',
+          code: 'PHB 2',
+          badgeBg: 'bg-blue-100 text-blue-800 border-blue-300',
+          title: 'PHB 2: Rel Modern LRT Jabodebek & MRT Jakarta',
+          desc: 'Teknologi rel ketiga (third rail tanpa kabel gantung), 18 stasiun LRT (Line Cibubur & Bekasi), rute MRT Lebak Bulus-Bundaran HI 13 stasiun, armada Ratangga, dan sistem tiket STT & MTT.',
+          questionIds: [
+            'SD6-PLBJ-B9-11', 'SD6-PLBJ-B9-12', 'SD6-PLBJ-B9-13', 'SD6-PLBJ-B9-14', 'SD6-PLBJ-B9-15',
+            'SD6-PLBJ-B9-16', 'SD6-PLBJ-B9-17', 'SD6-PLBJ-B9-18', 'SD6-PLBJ-B9-19', 'SD6-PLBJ-B9-20',
+            'SD6-PLBJ-B9-21', 'SD6-PLBJ-B9-22', 'SD6-PLBJ-B9-23', 'SD6-PLBJ-B9-24', 'SD6-PLBJ-B9-25'
+          ]
+        },
+        {
+          id: 'PLBJ-B9-PHB3',
+          code: 'PHB 3',
+          badgeBg: 'bg-rose-100 text-rose-800 border-rose-300',
+          title: 'PHB 3: Kereta Cepat Whoosh & Etika Penumpang Cerdas',
+          desc: 'Kecepatan 350 km/jam, waktu 46 menit, 4 stasiun Ha-Ka-Pa-Te, aturan boarding tutup 5 menit sebelum jalan, 3 kelas layanan Whoosh, hak kursi prioritas, etika eskalator sisi kiri, dan budaya cashless.',
+          questionIds: [
+            'SD6-PLBJ-B9-26', 'SD6-PLBJ-B9-27', 'SD6-PLBJ-B9-28', 'SD6-PLBJ-B9-29', 'SD6-PLBJ-B9-30',
+            'SD6-PLBJ-B9-31', 'SD6-PLBJ-B9-32', 'SD6-PLBJ-B9-33', 'SD6-PLBJ-B9-34', 'SD6-PLBJ-B9-35',
+            'SD6-PLBJ-B9-36', 'SD6-PLBJ-B9-37', 'SD6-PLBJ-B9-38', 'SD6-PLBJ-B9-39', 'SD6-PLBJ-B9-40'
+          ]
+        },
+        {
+          id: 'PLBJ-B9-UTS',
+          code: 'Simulasi Lengkap',
+          badgeBg: 'bg-purple-100 text-purple-800 border-purple-300',
+          title: 'Paket Ujian Lengkap Bab 9 (Semua 40 Soal)',
+          desc: 'Simulasi ujian lengkap tanpa batas nomor, menguji seluruh penguasaan materi Bab 9 dari transportasi masa lalu hingga kereta cepat Whoosh.',
+          questionIds: [
+            'SD6-PLBJ-B9-01', 'SD6-PLBJ-B9-02', 'SD6-PLBJ-B9-03', 'SD6-PLBJ-B9-04', 'SD6-PLBJ-B9-05',
+            'SD6-PLBJ-B9-06', 'SD6-PLBJ-B9-07', 'SD6-PLBJ-B9-08', 'SD6-PLBJ-B9-09', 'SD6-PLBJ-B9-10',
+            'SD6-PLBJ-B9-11', 'SD6-PLBJ-B9-12', 'SD6-PLBJ-B9-13', 'SD6-PLBJ-B9-14', 'SD6-PLBJ-B9-15',
+            'SD6-PLBJ-B9-16', 'SD6-PLBJ-B9-17', 'SD6-PLBJ-B9-18', 'SD6-PLBJ-B9-19', 'SD6-PLBJ-B9-20',
+            'SD6-PLBJ-B9-21', 'SD6-PLBJ-B9-22', 'SD6-PLBJ-B9-23', 'SD6-PLBJ-B9-24', 'SD6-PLBJ-B9-25',
+            'SD6-PLBJ-B9-26', 'SD6-PLBJ-B9-27', 'SD6-PLBJ-B9-28', 'SD6-PLBJ-B9-29', 'SD6-PLBJ-B9-30',
+            'SD6-PLBJ-B9-31', 'SD6-PLBJ-B9-32', 'SD6-PLBJ-B9-33', 'SD6-PLBJ-B9-34', 'SD6-PLBJ-B9-35',
+            'SD6-PLBJ-B9-36', 'SD6-PLBJ-B9-37', 'SD6-PLBJ-B9-38', 'SD6-PLBJ-B9-39', 'SD6-PLBJ-B9-40'
+          ]
+        }
+      ]
+    };
+
+    let currentActiveSetId = null;
+    let currentActiveSetTitle = null;
+
+    // Mendapatkan daftar paket soal untuk modul tertentu
+    function getModuleQuestionSets(moduleId) {
+      if (CHAPTER_SETS[moduleId]) {
+        return CHAPTER_SETS[moduleId];
+      }
+      // Otomatis buat paket default jika modul memiliki banyak soal
+      const mod = (window.KURIKULUM_SD6 || []).find(m => m.id === moduleId);
+      const modQs = questions.filter(q => q.type === 'PG' && isQuestionInModule(q, mod));
+      if (modQs.length === 0) return [];
+
+      if (modQs.length <= 15) {
+        return [{
+          id: moduleId + '-SET1',
+          code: 'Paket Lengkap',
+          badgeBg: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+          title: 'Paket Soal: ' + (mod ? mod.bab : 'Materi'),
+          desc: 'Semua soal latihan pada bab ini.',
+          questionIds: modQs.map(q => q.id)
+        }];
+      }
+
+      const half = Math.ceil(modQs.length / 2);
+      return [
+        {
+          id: moduleId + '-PHB1',
+          code: 'PHB 1',
+          badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+          title: 'PHB 1: Bagian Awal Materi',
+          desc: 'Latihan penguasaan konsep dasar bab ' + (mod ? mod.bab : ''),
+          questionIds: modQs.slice(0, half).map(q => q.id)
+        },
+        {
+          id: moduleId + '-PHB2',
+          code: 'PHB 2',
+          badgeBg: 'bg-blue-100 text-blue-800 border-blue-300',
+          title: 'PHB 2: Pendalaman & Studi Kasus',
+          desc: 'Latihan lanjutan dan soal HOTS bab ' + (mod ? mod.bab : ''),
+          questionIds: modQs.slice(half).map(q => q.id)
+        },
+        {
+          id: moduleId + '-ALL',
+          code: 'Ujian Lengkap',
+          badgeBg: 'bg-purple-100 text-purple-800 border-purple-300',
+          title: 'Simulasi Lengkap Seluruh Bab (' + modQs.length + ' Soal)',
+          desc: 'Semua nomor soal dikerjakan secara utuh tanpa dibatasi.',
+          questionIds: modQs.map(q => q.id)
+        }
+      ];
+    }
+
+    // Buka Modal Pemilihan Set Soal
+    function openQuestionSetsModal(moduleId) {
+      const mod = (window.KURIKULUM_SD6 || []).find(m => m.id === moduleId);
+      if (!mod) return;
+
+      const sets = getModuleQuestionSets(moduleId);
+      const allModQs = questions.filter(q => q.type === 'PG' && isQuestionInModule(q, mod));
+
+      document.getElementById('set-modal-track').textContent = mod.subject + ' • Semester ' + mod.semester;
+      document.getElementById('set-modal-title').textContent = mod.bab;
+      document.getElementById('set-modal-subtitle').textContent = 
+        'Pilih paket soal yang ingin dikerjakan Lovely. Masing-masing paket tidak dibatasi jumlah soalnya, memiliki rekaman nilai mandiri, dan dapat dipelajari pembahasannya!';
+
+      const listContainer = document.getElementById('set-modal-list');
+      studentStats.setResults = studentStats.setResults || {};
+
+      if (sets.length === 0) {
+        listContainer.innerHTML = '<div class="p-8 text-center text-slate-500 text-sm">Belum ada bank soal untuk materi ini.</div>';
+      } else {
+        listContainer.innerHTML = sets.map((s, idx) => {
+          const qCount = s.questionIds.length;
+          const res = studentStats.setResults[s.id];
+          const hasScore = res && res.lastScore !== undefined;
+          const wrongCount = res && res.wrongQuestionIds ? res.wrongQuestionIds.length : 0;
+
+          let scoreBadge = '';
+          if (hasScore) {
+            let stars = '⭐⭐⭐';
+            if (res.bestScore >= 90) stars = '⭐⭐⭐⭐⭐';
+            else if (res.bestScore >= 75) stars = '⭐⭐⭐⭐';
+            scoreBadge = `
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-900 border border-amber-300">
+                <span>${stars}</span> Skor Terbaik: ${res.bestScore}/100 
+                <span class="text-slate-400 font-normal">• Terakhir: ${res.lastScore} (${res.correctCount}/${res.totalCount} Benar)</span>
+              </div>
+            `;
+          } else {
+            scoreBadge = `
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">
+                ⚪ Belum pernah dikerjakan
+              </span>
+            `;
+          }
+
+          let remedialBtn = '';
+          if (wrongCount > 0) {
+            remedialBtn = `
+              <button onclick="startSetQuiz('${s.id}', '${moduleId}', true)" 
+                      class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white transition shadow-xs flex items-center gap-1">
+                <span>🔁</span> Remedial (${wrongCount} Soal Salah)
+              </button>
+            `;
+          }
+
+          return `
+            <div class="p-5 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-md transition space-y-3.5">
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="px-2.5 py-0.5 rounded-md text-[11px] font-extrabold uppercase border ${s.badgeBg}">
+                      ${s.code}
+                    </span>
+                    <h3 class="font-bold text-sm sm:text-base text-slate-900">${escapeHtml(s.title)}</h3>
+                  </div>
+                  <p class="text-xs text-slate-600 leading-relaxed max-w-2xl">${escapeHtml(s.desc)}</p>
+                </div>
+                <div class="shrink-0 text-right">
+                  <span class="inline-flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-bold bg-slate-50 text-slate-700 border border-slate-200">
+                    📝 ${qCount} Soal Utuh
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100">
+                <div>${scoreBadge}</div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <button onclick="openStudySheet('${s.id}', '${moduleId}')" 
+                          class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 transition shadow-xs flex items-center gap-1.5">
+                    <span>📖</span> Pelajari Soal & Pembahasan
+                  </button>
+                  ${remedialBtn}
+                  <button onclick="startSetQuiz('${s.id}', '${moduleId}', false)" 
+                          class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-xs flex items-center gap-1.5">
+                    <span>▶️</span> Kerjakan Kuis CBT
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      document.getElementById('question-sets-modal').classList.remove('hidden');
+    }
+
+    function closeQuestionSetsModal() {
+      document.getElementById('question-sets-modal').classList.add('hidden');
+    }
+
+    // Mulai Kuis untuk Set Tertentu
+    function startSetQuiz(setId, moduleId, isRemedial = false) {
+      const sets = getModuleQuestionSets(moduleId);
+      const set = sets.find(s => s.id === setId);
+      if (!set) return;
+
+      let targetIds = set.questionIds;
+      if (isRemedial) {
+        const res = (studentStats.setResults || {})[setId];
+        if (res && res.wrongQuestionIds && res.wrongQuestionIds.length > 0) {
+          targetIds = res.wrongQuestionIds;
+        }
+      }
+
+      const selectedQuestions = questions.filter(q => targetIds.includes(q.id));
+      if (selectedQuestions.length === 0) {
+        alert('Soal untuk paket ini belum tersedia.');
+        return;
+      }
+
+      currentActiveSetId = setId;
+      currentActiveSetTitle = set.title + (isRemedial ? ' (Remedial Soal Salah)' : '');
+
+      closeQuestionSetsModal();
+      switchTab('quiz');
+
+      const label = (isRemedial ? '🔁 Remedial: ' : '🎯 ') + set.title + ' (' + selectedQuestions.length + ' Soal)';
+      // Tanpa dibatasi jumlah soalnya, acak urutan soal
+      initCBT(shuffleArray(selectedQuestions), label);
+    }
+
+    // Modal Pelajari Soal & Pembahasan (Study Sheet)
+    function openStudySheet(setId, moduleId) {
+      const sets = getModuleQuestionSets(moduleId);
+      const set = sets.find(s => s.id === setId);
+      if (!set) return;
+
+      const setQs = questions.filter(q => set.questionIds.includes(q.id));
+      document.getElementById('study-sheet-track').textContent = set.code + ' • ' + setQs.length + ' Soal';
+      document.getElementById('study-sheet-title').textContent = set.title;
+      document.getElementById('study-sheet-desc').textContent = set.desc;
+
+      const letters = ['A', 'B', 'C', 'D', 'E'];
+      const body = document.getElementById('study-sheet-body');
+      body.innerHTML = setQs.map((q, idx) => {
+        const optionsHtml = q.options.map((opt, oIdx) => {
+          const isCorrect = oIdx === q.correctIndex;
+          return `
+            <div class="p-3 rounded-xl border flex items-start gap-2.5 text-xs sm:text-sm ${isCorrect ? 'bg-emerald-50/80 border-emerald-400 font-bold text-emerald-950' : 'bg-slate-50/50 border-slate-200 text-slate-700'}">
+              <span class="w-6 h-6 rounded-lg flex items-center justify-center shrink-0 ${isCorrect ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700'}">
+                ${letters[oIdx]}
+              </span>
+              <div class="pt-0.5 leading-relaxed flex-1">
+                ${escapeHtml(opt)}
+                ${isCorrect ? '<span class="ml-2 text-[11px] font-black uppercase text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">✓ Kunci Jawaban</span>' : ''}
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+            <div class="flex items-center justify-between text-xs text-slate-500">
+              <span class="font-black text-slate-900 bg-slate-100 px-2.5 py-1 rounded-md">Soal #${idx + 1}</span>
+              <span class="px-2 py-0.5 rounded-md bg-blue-50 text-blue-800 border border-blue-200 font-semibold">${q.bloom} • ${q.difficulty}</span>
+            </div>
+            <div class="text-sm sm:text-base font-bold text-slate-900 leading-snug">
+              ${formatFractions(escapeHtml(q.question))}
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+              ${optionsHtml}
+            </div>
+            <div class="p-3.5 rounded-xl bg-amber-50/90 border border-amber-200 text-xs sm:text-sm text-amber-950 leading-relaxed">
+              💡 <strong>Pembahasan & Konsep Kunci:</strong> ${formatFractions(escapeHtml(q.explanation))}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('study-sheet-modal').classList.remove('hidden');
+    }
+
+    function closeStudySheet() {
+      document.getElementById('study-sheet-modal').classList.add('hidden');
+    }
+
+
+// Helper yang kini membuka Modal Pemilihan Set Soal
 function startQuizForBab(subject, moduleId, babTitle) {
+  openQuestionSetsModal(moduleId);
+}
+
+function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
   switchTab('quiz');
   const topicSelect = document.getElementById('quiz-topic-select');
   if (topicSelect) {
@@ -12187,7 +12588,17 @@ function startQuizForBab(subject, moduleId, babTitle) {
         pool = questions.filter((q) => q.type === 'PG');
       }
 
-      const shuffled = shuffleArray(pool);
+      
+      // Untuk set campur (semua mata pelajaran atau campuran semua bab), batasi maksimal 40 nomor
+      let finalQuestions = pool;
+      if (subj === 'ALL' || topicId === 'ALL') {
+        finalQuestions = shuffleArray(pool).slice(0, 40);
+      } else {
+        // Jika dari bab spesifik di lobby dan bukan campuran, gunakan seluruhnya tanpa dibatasi
+        finalQuestions = shuffleArray(pool);
+      }
+      const shuffled = finalQuestions;
+
       let label = subj === 'ALL' ? 'Campuran Semua Mata Pelajaran' : `${subj} (Semester ${sem === 'ALL' ? '1 & 2' : sem})`;
       if (targetMod) {
         label = `🎯 ${targetMod.bab} (${shuffled.length} Soal)`;
@@ -12419,6 +12830,24 @@ function startQuizForBab(subject, moduleId, babTitle) {
       const finalScore = maxPoints ? Math.round((earnedPoints / maxPoints) * 100) : 0;
 
       // Record History
+      
+      // Catat hasil set soal jika kuis berasal dari paket tertentu
+      if (currentActiveSetId) {
+        studentStats.setResults = studentStats.setResults || {};
+        const prevRes = studentStats.setResults[currentActiveSetId] || { bestScore: 0, attempts: 0 };
+        const wrongIds = cbtQuestions.filter((q, idx) => cbtAnswers[idx] !== q.correctIndex).map(q => q.id);
+        studentStats.setResults[currentActiveSetId] = {
+          title: currentActiveSetTitle,
+          lastScore: finalScore,
+          bestScore: Math.max(prevRes.bestScore || 0, finalScore),
+          attempts: (prevRes.attempts || 0) + 1,
+          lastDate: new Date().toLocaleString('id-ID'),
+          correctCount: correctCount,
+          totalCount: cbtQuestions.length,
+          wrongQuestionIds: wrongIds
+        };
+      }
+
       studentStats.history.unshift({
         date: new Date().toLocaleString('id-ID'),
         topic: document.getElementById('cbt-topic-subtitle').textContent,
