@@ -2116,13 +2116,89 @@
         <!-- ========================================== -->
         <!-- TAB 4: KUIS & AUDIO                        -->
         <!-- ========================================== -->
-        <div id="settings-tab-quiz" class="hidden space-y-5">
+                <!-- ========================================================================= -->
+        <!-- TAB 4: MATA & HURUF (KESEHATAN MATA & TIPOGRAFI RAMAH ANAK)                -->
+        <!-- ========================================================================= -->
+        <div id="settings-tab-reading" class="hidden space-y-4">
+          <!-- Pilihan Font Family -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div class="font-bold text-slate-900 flex items-center gap-2 text-xs sm:text-sm">
+              <span>🔤</span> Pilihan Jenis Huruf (Font Ramah Anak SD)
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Pilih tipografi yang paling nyaman dibaca oleh Lovely saat mempelajari materi modul dan soal-soal panjang:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="p-3.5 rounded-xl border-2 border-indigo-600 bg-indigo-50/50 flex items-start gap-3 cursor-pointer transition shadow-xs" id="font-card-inter">
+                <input type="radio" name="setting-font-family" value="Inter" onchange="pickFontFamily('Inter')" class="mt-1 accent-indigo-600" checked />
+                <div>
+                  <div class="font-bold text-xs text-slate-900" style="font-family: 'Plus Jakarta Sans', sans-serif;">Plus Jakarta Sans / Inter</div>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Bawaan resmi: Modern, jernih, tajam, dan elegan.</p>
+                  <div class="text-xs font-semibold text-indigo-700 mt-1">"Lovely belajar matematika dan IPA dengan riang gembira."</div>
+                </div>
+              </label>
+
+              <label class="p-3.5 rounded-xl border border-slate-200 bg-white flex items-start gap-3 cursor-pointer hover:border-indigo-300 transition shadow-xs" id="font-card-quicksand">
+                <input type="radio" name="setting-font-family" value="Quicksand" onchange="pickFontFamily('Quicksand')" class="mt-1 accent-indigo-600" />
+                <div>
+                  <div class="font-bold text-xs text-slate-900" style="font-family: 'Quicksand', sans-serif;">Quicksand (Bulat & Ramah Anak)</div>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Ujung huruf membulat ramah anak, hangat dan tidak kaku.</p>
+                  <div class="text-xs font-semibold text-indigo-700 mt-1" style="font-family: 'Quicksand', sans-serif;">"Lovely belajar matematika dan IPA dengan riang gembira."</div>
+                </div>
+              </label>
+
+              <label class="p-3.5 rounded-xl border border-slate-200 bg-white flex items-start gap-3 cursor-pointer hover:border-indigo-300 transition shadow-xs" id="font-card-lexend">
+                <input type="radio" name="setting-font-family" value="Lexend" onchange="pickFontFamily('Lexend')" class="mt-1 accent-indigo-600" />
+                <div>
+                  <div class="font-bold text-xs text-slate-900" style="font-family: 'Lexend', sans-serif;">Lexend (Riset Kelancaran Membaca)</div>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Dirancang secara saintifik agar membaca naskah panjang tidak cepat lelah.</p>
+                  <div class="text-xs font-semibold text-indigo-700 mt-1" style="font-family: 'Lexend', sans-serif;">"Lovely belajar matematika dan IPA dengan riang gembira."</div>
+                </div>
+              </label>
+
+              <label class="p-3.5 rounded-xl border border-slate-200 bg-white flex items-start gap-3 cursor-pointer hover:border-indigo-300 transition shadow-xs" id="font-card-comic">
+                <input type="radio" name="setting-font-family" value="Comic Neue" onchange="pickFontFamily('Comic Neue')" class="mt-1 accent-indigo-600" />
+                <div>
+                  <div class="font-bold text-xs text-slate-900" style="font-family: 'Comic Neue', cursive;">Comic Neue (Gaya Buku Cerita Anak)</div>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Tulisan santai seperti novel edukasi anak, riang dan menyenangkan.</p>
+                  <div class="text-xs font-semibold text-indigo-700 mt-1" style="font-family: 'Comic Neue', cursive;">"Lovely belajar matematika dan IPA dengan riang gembira."</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Filter Pelindung Mata / Night Light -->
+          <div class="p-4 rounded-2xl bg-amber-50/80 border border-amber-200 space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="font-bold text-amber-950 flex items-center gap-2 text-xs sm:text-sm">
+                <span>🌙</span> Filter Pelindung Mata (*Warm Night Light / Anti Blue-Light*)
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="setting-eyecare-toggle" onchange="toggleEyeProtection(this.checked)" class="sr-only peer" />
+                <div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
+              </label>
+            </div>
+            <p class="text-xs text-amber-900 leading-relaxed">
+              Mengurangi pancaran radiasi cahaya biru (*blue light*) dengan memberi lapisan cahaya kuning hangat saat Lovely belajar pada malam hari agar mata tidak perih dan tidur lebih nyenyak.
+            </p>
+            <div class="flex items-center gap-3 pt-1">
+              <span class="text-[11px] font-bold text-amber-800">Tingkat Kehangatan Layar:</span>
+              <input type="range" id="setting-eyecare-warmth" min="5" max="28" step="1" value="14" oninput="updateEyeWarmth(this.value)" class="flex-1 accent-amber-500 cursor-pointer" />
+              <span id="eyecare-val-badge" class="text-xs font-bold text-amber-900 bg-amber-200/80 px-2 py-0.5 rounded-lg">14%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 5: KUIS & AUDIO (GAMIFIKASI, TIMER & CELEBRATION)                       -->
+        <!-- ========================================================================= -->
+        <div id="settings-tab-quiz" class="hidden space-y-4">
           <!-- Mode Kuis Default -->
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-            <div class="font-bold text-slate-900 flex items-center gap-2">
-              <span>🎯</span> Gaya Latihan Soal Bawaan (Default Quiz Mode)
+            <div class="font-bold text-slate-900 flex items-center gap-2 text-xs sm:text-sm">
+              <span>🎯</span> Gaya Latihan Soal Bawaan
             </div>
-            <p class="text-xs text-slate-600">Pilih mode yang otomatis aktif ketika Lovely membuka paket soal:</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <label class="p-3 rounded-xl border border-slate-200 bg-white flex items-start gap-3 cursor-pointer hover:border-emerald-400 transition">
                 <input type="radio" name="setting-default-mode" value="STUDY" id="setting-mode-study" class="mt-0.5 accent-emerald-600" />
@@ -2130,7 +2206,7 @@
                   <div class="font-bold text-xs text-emerald-950 flex items-center gap-1">
                     <span>🧘</span> Mode Santai (Waktu Bebas)
                   </div>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Tanpa batasan waktu, penjelasan dan kunci jawaban langsung tampil setiap kali memilih jawaban.</p>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Penjelasan & kunci jawaban langsung tampil saat memilih jawaban.</p>
                 </div>
               </label>
 
@@ -2140,42 +2216,125 @@
                   <div class="font-bold text-xs text-indigo-950 flex items-center gap-1">
                     <span>⏱️</span> Mode Serius (Timer Ujian CBT)
                   </div>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Simulasi ujian resmi dengan timer hitung mundur; skor & pembahasan baru dibuka setelah kuis selesai.</p>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Simulasi ujian resmi dengan timer hitung mundur.</p>
                 </div>
               </label>
             </div>
           </div>
 
-          <!-- Pengaturan Audio & TTS -->
+          <!-- Durasi Timer Mode Serius -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <div class="font-bold text-slate-900 text-xs sm:text-sm flex items-center gap-2">
+                <span>⏱️</span> Durasi Waktu Ujian (Mode Serius)
+              </div>
+              <label class="flex items-center gap-1.5 cursor-pointer text-xs font-semibold text-indigo-700 select-none">
+                <input type="checkbox" id="setting-timer-warning-bell" class="accent-indigo-600 w-3.5 h-3.5" checked />
+                Lonceng Pengingat 3 Menit Terakhir
+              </label>
+            </div>
+            <select id="setting-exam-duration" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="0">⚡ Otomatis Pintar (1,5 Menit per Butir Soal)</option>
+              <option value="10">10 Menit (Latihan Kilat Cepat)</option>
+              <option value="15">15 Menit (Standar Paket Ringkas)</option>
+              <option value="20">20 Menit (Standar Asesmen SD)</option>
+              <option value="30">30 Menit (Simulasi Ujian Panjang)</option>
+            </select>
+          </div>
+
+          <!-- Sound Themes & Konfeti Pesta -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
               <div class="flex items-center justify-between">
-                <div class="font-bold text-slate-900 flex items-center gap-2">
-                  <span>🔊</span> Efek Suara (Audio Feedback)
+                <div class="font-bold text-slate-900 flex items-center gap-2 text-xs">
+                  <span>🔊</span> Tema Efek Suara (*Sound Pack*)
                 </div>
-                <input type="checkbox" id="setting-sound-enabled" class="w-4 h-4 accent-indigo-600 cursor-pointer" />
+                <input type="checkbox" id="setting-sound-enabled" class="w-4 h-4 accent-indigo-600 cursor-pointer" checked />
               </div>
-              <p class="text-xs text-slate-500">Mainkan efek suara gamifikasi saat menjawab benar, salah, atau naik level XP.</p>
+              <select id="setting-sound-theme" onchange="previewSoundTheme(this.value)" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white">
+                <option value="game">🎮 Game Ceria (Koin Mario & Power-Up)</option>
+                <option value="applause">👏 Tepuk Tangan & Sorak Penonton</option>
+                <option value="school">🔔 Lonceng Bel Sekolah Lembut</option>
+                <option value="marimba">🎵 Marimba Kayu Santai</option>
+              </select>
             </div>
 
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
-              <div class="font-bold text-slate-900 flex items-center gap-2">
-                <span>🗣️</span> Kecepatan Pembaca Teks (TTS)
+              <div class="flex items-center justify-between">
+                <div class="font-bold text-slate-900 flex items-center gap-2 text-xs">
+                  <span>🎉</span> Animasi Hujan Konfeti (*Celebration*)
+                </div>
+                <input type="checkbox" id="setting-confetti-enabled" class="w-4 h-4 accent-indigo-600 cursor-pointer" checked />
               </div>
-              <p class="text-xs text-slate-500">Atur kecepatan suara AI saat membacakan materi & soal:</p>
-              <select id="setting-tts-speed" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white">
-                <option value="0.8">0.8x - Santai & Jelas (Direkomendasikan Anak SD)</option>
-                <option value="1.0">1.0x - Normal Standar</option>
-                <option value="1.2">1.2x - Cepat Ringkas</option>
-              </select>
+              <p class="text-[11px] text-slate-500">Munculkan ledakan konfeti warna-warni saat Lovely dapat nilai 100 atau tuntas KKM!</p>
+              <button type="button" onclick="fireConfettiCelebration()" class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition cursor-pointer">
+                ▶ Uji Coba Efek Konfeti Sekarang
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- TAB 5: CADANGAN & DATA                     -->
-        <!-- ========================================== -->
-        <div id="settings-tab-data" class="hidden space-y-4">
+        <!-- ========================================================================= -->
+        <!-- TAB 6: KOP CETAK PDF (IDENTITAS RESMI LEMBAR SOAL UJIAN KERTAS)             -->
+        <!-- ========================================================================= -->
+        <div id="settings-tab-print" class="hidden space-y-4">
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div class="font-bold text-slate-900 flex items-center gap-2 text-xs sm:text-sm">
+              <span>🖨️</span> Pengaturan Kop Resmi Naskah Ujian Cetak (PDF)
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Informasi di bawah ini akan otomatis tercetak rapi di bagian atas lembar soal kertas saat Ayah mengklik tombol <strong>🖨️ Cetak PDF</strong>:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-800 mb-1">Nama Sekolah / Lembaga</label>
+                <input type="text" id="setting-print-school" placeholder="SD Pintar Juara Kelas 6" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-800 mb-1">Nama Guru / Orang Tua Penguji</label>
+                <input type="text" id="setting-print-examiner" placeholder="Ayah Yoce" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-800 mb-1">Tahun Ajaran & Semester</label>
+                <input type="text" id="setting-print-year" placeholder="Tahun Ajaran 2026 / 2027 • Semester Ganjil" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-800 mb-1">Petunjuk Singkat di Naskah</label>
+                <input type="text" id="setting-print-instructions" placeholder="Berdoalah sebelum mengerjakan. Kerjakan dengan jujur dan teliti." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 7: KEAMANAN PIN & MANAJEMEN DATA                                        -->
+        <!-- ========================================================================= -->
+        <div id="settings-tab-security" class="hidden space-y-4">
+          <!-- Kunci PIN Orang Tua -->
+          <div class="p-4 rounded-2xl bg-indigo-50/80 border border-indigo-200 space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="font-bold text-indigo-950 flex items-center gap-2 text-xs sm:text-sm">
+                <span>🔒</span> Kunci Sandi Orang Tua (*Parental PIN Protection*)
+              </div>
+              <label class="flex items-center gap-1.5 cursor-pointer text-xs font-bold text-indigo-900 select-none">
+                <input type="checkbox" id="setting-pin-enabled" onchange="togglePinSetup(this.checked)" class="accent-indigo-600 w-4 h-4" />
+                Aktifkan PIN
+              </label>
+            </div>
+            <p class="text-xs text-indigo-900 leading-relaxed">
+              Cegah Lovely tidak sengaja mengosongkan riwayat nilai atau mereset data. Tindakan sensitif akan meminta PIN 4 angka Ayah.
+            </p>
+            <div id="pin-setup-box" class="hidden flex items-center gap-3 pt-1">
+              <span class="text-xs font-bold text-slate-700">Atur PIN 4 Angka:</span>
+              <input type="password" id="setting-pin-code" maxlength="4" placeholder="••••" class="w-24 px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-center font-black text-sm bg-white tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+              <span class="text-[11px] text-slate-500">Misal: 1234 atau PIN rahasia Ayah</span>
+            </div>
+          </div>
+
           <!-- Backup Card -->
           <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2.5">
             <div class="flex items-center justify-between">
@@ -2187,7 +2346,7 @@
               </button>
             </div>
             <p class="text-xs text-emerald-800 leading-relaxed">
-              Unduh seluruh file cadangan berisi nama aplikasi, logo, profil Lovely, seluruh nilai hasil kuis, bintang bookmark, modul catatan, dan bank soal ke format file JSON aman di komputer Ayah.
+              Unduh cadangan data nilai kuis Lovely, bintang bookmark, foto avatar, dan pengaturan ke file JSON aman di komputer.
             </p>
           </div>
 
@@ -2203,7 +2362,7 @@
               </label>
             </div>
             <p class="text-xs text-indigo-800 leading-relaxed">
-              Pulihkan riwayat belajar Lovely saat berpindah komputer atau setelah membersihkan riwayat browser dengan memilih file JSON hasil cadangan sebelumnya.
+              Pulihkan riwayat belajar Lovely saat berpindah laptop atau setelah membersihkan riwayat browser.
             </p>
           </div>
 
@@ -2220,7 +2379,6 @@
                 <span>🗑️</span> Kosongkan Riwayat Nilai & Progres
               </button>
             </div>
-            <p class="text-[11px] text-rose-700">Tombol di atas dilengkapi konfirmasi keamanan sebelum dieksekusi.</p>
           </div>
         </div>
 
