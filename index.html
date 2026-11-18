@@ -12340,7 +12340,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     // =========================================================================
     function setCurrSubject(subj) {
       currSelectedSubject = subj;
-      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris'];
+      const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris', 'PLBJ', 'Seni Rupa', 'PAI', 'Bahasa Arab'];
       allBtns.forEach((s) => {
         const el = document.getElementById('csubj-' + s);
         if (!el) return;
@@ -12403,8 +12403,8 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
                 <span>📖</span> Baca Modul Lengkap ${richModulesData && richModulesData[m.id] ? '✨ (Mendalam)' : ''}
               </button>
               <div class="flex items-center justify-between gap-2">
-                <button onclick="practiceModule('${m.id}', '${escapeHtml(m.bab)}')" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition">
-                  🎯 Latihan Kuis (${relatedQs.length} Soal)
+                <button onclick="openQuestionSetsModal('${m.id}')" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xs transition flex items-center justify-center gap-1">
+                  <span>🎯</span> Pilih Set Soal (${relatedQs.length} Soal)
                 </button>
                 <button onclick="filterBankByTopic('${escapeHtml(m.bab)}')" class="py-1.5 px-3 rounded-lg text-xs font-medium border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 transition">
                   📚 Bank Soal
@@ -12417,26 +12417,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     }
 
     function practiceModule(moduleId, babTitle) {
-      const mod = (window.KURIKULUM_SD6 || []).find(m => m.id === moduleId);
-      const subset = questions.filter((q) => q.type === 'PG' && isQuestionInModule(q, mod || { id: moduleId, bab: babTitle }));
-      if (subset.length === 0) {
-        alert('Belum ada soal Pilihan Ganda pada bab ini.\n\nSilakan impor atau tambahkan soal untuk: ' + babTitle);
-        return;
-      }
-
-      if (mod) {
-        const qSubj = document.getElementById('quiz-subject-select');
-        const qSem = document.getElementById('quiz-semester-select');
-        if (qSubj) qSubj.value = mod.subject;
-        if (qSem) qSem.value = String(mod.semester);
-        updateQuizTopicDropdown();
-        const qTopic = document.getElementById('quiz-topic-select');
-        if (qTopic) qTopic.value = mod.id;
-      }
-
-      window.__quizDirect = true;
-      initCBT(subset, '🎯 ' + babTitle + ' (' + subset.length + ' Soal)');
-      switchTab('quiz');
+      openQuestionSetsModal(moduleId);
     }
 
     function filterBankByTopic(babTitle) {
@@ -12503,6 +12484,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     }
 
     function lobbyStart(subject, moduleId) {
+      if (moduleId && moduleId !== 'ALL') { openQuestionSetsModal(moduleId); return; }
       lobbyApply(subject, moduleId);
       startNewQuiz();
     }
@@ -12534,7 +12516,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
             '<div class="min-w-0"><div class="font-semibold text-sm text-slate-900 truncate">' + escapeHtml(m.bab) + '</div>' +
             '<div class="text-[11px] text-slate-500">Semester ' + m.semester + ' • ' + cnt + ' soal</div></div>' +
             (cnt > 0
-              ? '<button onclick="lobbyStart(\'' + lobbySubject + '\', \'' + m.id + '\')" class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white">Mulai ▶</button>'
+              ? '<button onclick="lobbyStart(\'' + lobbySubject + '\', \'' + m.id + '\')" class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white">🎯 Pilih Set Soal</button>'
               : '<span class="shrink-0 text-[11px] text-slate-400">Belum ada soal</span>') + '</div>';
         }).join('');
         const total = pg.filter((q) => q.subject === lobbySubject).length;
