@@ -2272,6 +2272,18 @@
               </button>
             </div>
           </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
+              <div class="font-bold text-slate-900 flex items-center gap-2 text-xs">
+                <span>🗣️</span> Kecepatan Pembaca Teks Suara (TTS)
+              </div>
+              <p class="text-[11px] text-slate-500">Atur kecepatan suara narator AI saat membacakan butir soal:</p>
+              <select id="setting-tts-speed" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white">
+                <option value="0.8">0.8x - Santai & Jelas (Direkomendasikan Anak SD)</option>
+                <option value="1.0">1.0x - Normal Standar</option>
+                <option value="1.2">1.2x - Cepat Ringkas</option>
+              </select>
+            </div>
         </div>
 
         <!-- ========================================================================= -->
@@ -17120,121 +17132,117 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     let tempLogoValue = 'SD6';
     let tempTheme = 'indigo';
 
+        // Helper DOM Setter Aman (Mencegah Crash jika Ada Elemen Kosong)
+    function safeSetVal(id, val) {
+      const el = document.getElementById(id);
+      if (el) el.value = val !== undefined && val !== null ? val : '';
+    }
+    function safeSetChecked(id, val) {
+      const el = document.getElementById(id);
+      if (el) el.checked = Boolean(val);
+    }
+
     function openSettingsModal(defaultTab = 'branding') {
-      tempLogoType = appSettings.logoType || 'text';
-      tempLogoValue = appSettings.logoValue || 'SD6';
-      tempTheme = appSettings.theme || 'indigo';
-      tempSidebarTheme = appSettings.sidebarTheme || 'slate';
+      try {
+        tempLogoType = appSettings.logoType || 'text';
+        tempLogoValue = appSettings.logoValue || 'SD6';
+        tempTheme = appSettings.theme || 'indigo';
+        tempSidebarTheme = appSettings.sidebarTheme || 'slate';
 
-      document.getElementById('setting-app-name').value = appSettings.appName || '';
-      document.getElementById('setting-app-shortname').value = appSettings.appShortName || '';
-      document.getElementById('setting-app-tagline').value = appSettings.tagline || '';
-      document.getElementById('setting-student-name').value = appSettings.studentName || 'Lovely';
-      document.getElementById('setting-student-grade').value = appSettings.studentGrade || 'Kelas 6 SD';
-      document.getElementById('setting-student-motto').value = appSettings.studentMotto || '';
+        safeSetVal('setting-app-name', appSettings.appName || '');
+        safeSetVal('setting-app-shortname', appSettings.appShortName || '');
+        safeSetVal('setting-app-tagline', appSettings.tagline || '');
+        safeSetVal('setting-student-name', appSettings.studentName || 'Lovely');
+        safeSetVal('setting-student-grade', appSettings.studentGrade || 'Kelas 6 SD');
+        safeSetVal('setting-student-motto', appSettings.studentMotto || '');
 
-      const kkm = appSettings.passingGrade || 75;
-      document.getElementById('setting-kkm-slider').value = kkm;
-      document.getElementById('setting-kkm-val').value = kkm;
+        const kkm = appSettings.passingGrade || 75;
+        safeSetVal('setting-kkm-slider', kkm);
+        safeSetVal('setting-kkm-val', kkm);
 
-      if (appSettings.defaultQuizMode === 'EXAM') {
-        document.getElementById('setting-mode-exam').checked = true;
-      } else {
-        document.getElementById('setting-mode-study').checked = true;
+        if (appSettings.defaultQuizMode === 'EXAM') {
+          safeSetChecked('setting-mode-exam', true);
+        } else {
+          safeSetChecked('setting-mode-study', true);
+        }
+
+        safeSetChecked('setting-sound-enabled', appSettings.soundEnabled !== false);
+        safeSetVal('setting-tts-speed', (appSettings.ttsSpeed || 1.0).toString());
+
+        // Setup Avatar
+        tempAvatarType = appSettings.studentAvatarType || 'preset';
+        tempAvatarValue = appSettings.studentAvatarValue || '👸';
+        selectStudentAvatar(tempAvatarValue, tempAvatarType);
+
+        // Setup Countdown & Exam Date
+        safeSetVal('setting-exam-date', appSettings.examDate || '');
+        safeSetChecked('setting-countdown-active', appSettings.countdownActive !== false);
+
+        // Setup Font
+        const font = appSettings.fontFamily || 'Inter';
+        pickFontFamily(font);
+        const fontRadio = document.querySelector('input[name="setting-font-family"][value="' + font + '"]');
+        if (fontRadio) fontRadio.checked = true;
+
+        // Setup Eye-Care
+        safeSetChecked('setting-eyecare-toggle', appSettings.eyeProtectionActive === true);
+        safeSetVal('setting-eyecare-warmth', appSettings.eyeProtectionWarmth || 14);
+        const eyeBadge = document.getElementById('eyecare-val-badge');
+        if (eyeBadge) eyeBadge.textContent = (appSettings.eyeProtectionWarmth || 14) + '%';
+
+        // Setup Kuis & Timer
+        safeSetVal('setting-exam-duration', (appSettings.examDurationMinutes || 0).toString());
+        safeSetChecked('setting-timer-warning-bell', appSettings.examWarningBell !== false);
+
+        // Setup Sound Theme & Confetti
+        safeSetVal('setting-sound-theme', appSettings.soundTheme || 'game');
+        safeSetChecked('setting-confetti-enabled', appSettings.confettiEnabled !== false);
+
+        // Setup Kop Cetak PDF
+        safeSetVal('setting-print-school', appSettings.schoolName || 'SD Pintar Juara Kelas 6');
+        safeSetVal('setting-print-examiner', appSettings.examinerName || 'Ayah Yoce');
+        safeSetVal('setting-print-year', appSettings.academicYear || 'Tahun Ajaran 2026 / 2027 • Semester Ganjil');
+        safeSetVal('setting-print-instructions', appSettings.examInstructions || 'Berdoalah sebelum mengerjakan. Kerjakan dengan jujur dan teliti.');
+
+        // Setup PIN
+        safeSetChecked('setting-pin-enabled', appSettings.parentalPinEnabled === true);
+        togglePinSetup(appSettings.parentalPinEnabled === true);
+        safeSetVal('setting-pin-code', appSettings.parentalPinCode || '1234');
+
+        // Setup state logo
+        setLogoType(tempLogoType);
+        if (tempLogoType === 'text') {
+          safeSetVal('setting-logo-text-input', tempLogoValue);
+        }
+
+        pickTheme(tempTheme);
+        pickSidebarTheme(tempSidebarTheme);
+
+        // Setup custom colors
+        if (appSettings.sidebarCustomColor) {
+          customSidebarColorHex = appSettings.sidebarCustomColor;
+          safeSetVal('custom-sb-color-picker', customSidebarColorHex);
+          safeSetVal('custom-sb-color-hex', customSidebarColorHex.replace('#', '').toUpperCase());
+        }
+
+        if (appSettings.headerCustomColor1) {
+          customHeaderColor1Hex = appSettings.headerCustomColor1;
+          customHeaderColor2Hex = appSettings.headerCustomColor2 || '#7c3aed';
+          isHeaderGradientActive = (appSettings.isHeaderGradient !== false);
+          safeSetVal('custom-header-color-1', customHeaderColor1Hex);
+          safeSetVal('custom-header-color-2', customHeaderColor2Hex);
+          safeSetChecked('header-gradient-toggle', isHeaderGradientActive);
+        }
+
+        updateSettingsLivePreview();
+        switchSettingsTab(defaultTab);
+      } catch (err) {
+        console.error('Error saat inisialisasi modal pengaturan:', err);
       }
 
-      document.getElementById('setting-sound-enabled').checked = (appSettings.soundEnabled !== false);
-      document.getElementById('setting-tts-speed').value = (appSettings.ttsSpeed || 1.0).toString();
-
-      // Setup Avatar
-      tempAvatarType = appSettings.studentAvatarType || 'preset';
-      tempAvatarValue = appSettings.studentAvatarValue || '👸';
-      selectStudentAvatar(tempAvatarValue, tempAvatarType);
-
-      // Setup Countdown & Exam Date
-      const dateEl = document.getElementById('setting-exam-date');
-      if (dateEl) dateEl.value = appSettings.examDate || '';
-      const cdActiveEl = document.getElementById('setting-countdown-active');
-      if (cdActiveEl) cdActiveEl.checked = (appSettings.countdownActive !== false);
-
-      // Setup Font
-      const font = appSettings.fontFamily || 'Inter';
-      pickFontFamily(font);
-      const fontRadio = document.querySelector('input[name="setting-font-family"][value="' + font + '"]');
-      if (fontRadio) fontRadio.checked = true;
-
-      // Setup Eye-Care
-      const eyeToggle = document.getElementById('setting-eyecare-toggle');
-      if (eyeToggle) eyeToggle.checked = (appSettings.eyeProtectionActive === true);
-      const eyeWarmth = document.getElementById('setting-eyecare-warmth');
-      if (eyeWarmth) eyeWarmth.value = appSettings.eyeProtectionWarmth || 14;
-      const eyeBadge = document.getElementById('eyecare-val-badge');
-      if (eyeBadge) eyeBadge.textContent = (appSettings.eyeProtectionWarmth || 14) + '%';
-
-      // Setup Kuis & Timer
-      const examDurEl = document.getElementById('setting-exam-duration');
-      if (examDurEl) examDurEl.value = (appSettings.examDurationMinutes || 0).toString();
-      const bellEl = document.getElementById('setting-timer-warning-bell');
-      if (bellEl) bellEl.checked = (appSettings.examWarningBell !== false);
-
-      // Setup Sound Theme & Confetti
-      const soundThemeEl = document.getElementById('setting-sound-theme');
-      if (soundThemeEl) soundThemeEl.value = appSettings.soundTheme || 'game';
-      const confettiEl = document.getElementById('setting-confetti-enabled');
-      if (confettiEl) confettiEl.checked = (appSettings.confettiEnabled !== false);
-
-      // Setup Kop Cetak PDF
-      const pSchool = document.getElementById('setting-print-school');
-      if (pSchool) pSchool.value = appSettings.schoolName || 'SD Pintar Juara Kelas 6';
-      const pExaminer = document.getElementById('setting-print-examiner');
-      if (pExaminer) pExaminer.value = appSettings.examinerName || 'Ayah Yoce';
-      const pYear = document.getElementById('setting-print-year');
-      if (pYear) pYear.value = appSettings.academicYear || 'Tahun Ajaran 2026 / 2027 • Semester Ganjil';
-      const pInstr = document.getElementById('setting-print-instructions');
-      if (pInstr) pInstr.value = appSettings.examInstructions || 'Berdoalah sebelum mengerjakan. Kerjakan dengan jujur dan teliti.';
-
-      // Setup PIN
-      const pinToggle = document.getElementById('setting-pin-enabled');
-      if (pinToggle) pinToggle.checked = (appSettings.parentalPinEnabled === true);
-      togglePinSetup(appSettings.parentalPinEnabled === true);
-      const pinCodeEl = document.getElementById('setting-pin-code');
-      if (pinCodeEl) pinCodeEl.value = appSettings.parentalPinCode || '1234';
-
-
-      // Setup state logo
-      setLogoType(tempLogoType);
-      if (tempLogoType === 'text') {
-        document.getElementById('setting-logo-text-input').value = tempLogoValue;
-      }
-
-      pickTheme(tempTheme);
-      pickSidebarTheme(tempSidebarTheme);
-
-      // Setup custom colors
-      if (appSettings.sidebarCustomColor) {
-        customSidebarColorHex = appSettings.sidebarCustomColor;
-        const sbPicker = document.getElementById('custom-sb-color-picker');
-        const sbHex = document.getElementById('custom-sb-color-hex');
-        if (sbPicker) sbPicker.value = customSidebarColorHex;
-        if (sbHex) sbHex.value = customSidebarColorHex.replace('#', '').toUpperCase();
-      }
-
-      if (appSettings.headerCustomColor1) {
-        customHeaderColor1Hex = appSettings.headerCustomColor1;
-        customHeaderColor2Hex = appSettings.headerCustomColor2 || '#7c3aed';
-        isHeaderGradientActive = (appSettings.isHeaderGradient !== false);
-        const h1 = document.getElementById('custom-header-color-1');
-        const h2 = document.getElementById('custom-header-color-2');
-        const gradToggle = document.getElementById('header-gradient-toggle');
-        if (h1) h1.value = customHeaderColor1Hex;
-        if (h2) h2.value = customHeaderColor2Hex;
-        if (gradToggle) gradToggle.checked = isHeaderGradientActive;
-      }
-
-      updateSettingsLivePreview();
-
-      switchSettingsTab(defaultTab);
-      document.getElementById('app-settings-modal').classList.remove('hidden');
+      // Pastikan modal selalu muncul
+      const modal = document.getElementById('app-settings-modal');
+      if (modal) modal.classList.remove('hidden');
     }
 
     function closeSettingsModal() {
