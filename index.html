@@ -1439,6 +1439,30 @@
         <span id="set-modal-subtitle"></span>
       </div>
 
+      <!-- PILIHAN GAYA LATIHAN (SANTAI VS SERIUS) -->
+      <div class="px-5 py-3 bg-gradient-to-r from-amber-50 via-indigo-50 to-purple-50 border-b border-indigo-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-xs">
+            🎯
+          </div>
+          <div>
+            <div class="font-extrabold text-xs text-slate-900 flex items-center gap-1.5">
+              <span>Pilih Gaya Latihan Lovely:</span>
+              <span id="selected-mode-badge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-600 text-white">Mode Santai Aktif</span>
+            </div>
+            <p class="text-[11px] text-slate-600">Pilih apakah kuis ingin santai tanpa batas waktu atau serius dengan timer.</p>
+          </div>
+        </div>
+        <div class="flex items-center p-1 bg-white rounded-2xl border border-slate-300 shadow-xs gap-1 w-full sm:w-auto">
+          <button onclick="setQuizMode('STUDY')" id="btn-set-mode-study" class="flex-1 sm:flex-initial px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer bg-emerald-600 text-white shadow-xs">
+            <span>🧘</span> Mode Santai (Waktu Bebas)
+          </button>
+          <button onclick="setQuizMode('EXAM')" id="btn-set-mode-exam" class="flex-1 sm:flex-initial px-3.5 py-1.5 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer text-slate-600 hover:text-slate-900">
+            <span>⏱️</span> Mode Serius (Timer Ujian)
+          </button>
+        </div>
+      </div>
+
       <!-- List Set Soal -->
       <div id="set-modal-list" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 custom-scroll">
         <!-- Render kartu-kartu paket soal -->
@@ -12505,7 +12529,7 @@ function openModalForChapter(subject, semester, topic, moduleId) {
       ];
     }
 
-    // Buka Modal Pemilihan Set Soal
+        // Buka Modal Pemilihan Set Soal
     function openQuestionSetsModal(moduleId) {
       const mod = (window.KURIKULUM_SD6 || []).find(m => m.id === moduleId);
       if (!mod) return;
@@ -12552,8 +12576,8 @@ function openModalForChapter(subject, semester, topic, moduleId) {
           let remedialBtn = '';
           if (wrongCount > 0) {
             remedialBtn = `
-              <button onclick="startSetQuiz('${s.id}', '${moduleId}', true)" 
-                      class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white transition shadow-xs flex items-center gap-1">
+              <button onclick="startSetQuiz('${s.id}', '${moduleId}', true, 'STUDY')" 
+                      class="px-3 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white transition shadow-xs flex items-center gap-1 cursor-pointer">
                 <span>🔁</span> Remedial (${wrongCount} Soal Salah)
               </button>
             `;
@@ -12582,13 +12606,21 @@ function openModalForChapter(subject, semester, topic, moduleId) {
                 <div>${scoreBadge}</div>
                 <div class="flex flex-wrap items-center gap-2">
                   <button onclick="openStudySheet('${s.id}', '${moduleId}')" 
-                          class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 transition shadow-xs flex items-center gap-1.5">
-                    <span>📖</span> Pelajari Soal & Pembahasan
+                          class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                    <span>📖</span> Pelajari Pembahasan
                   </button>
                   ${remedialBtn}
-                  <button onclick="startSetQuiz('${s.id}', '${moduleId}', false)" 
-                          class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-xs flex items-center gap-1.5">
-                    <span>▶️</span> Kerjakan Kuis CBT
+                  <button onclick="startSetQuiz('${s.id}', '${moduleId}', false, 'STUDY')" 
+                          class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition shadow-xs flex items-center gap-1.5 cursor-pointer" title="Mode Santai: waktu bebas tanpa timer dan kunci jawaban/penjelasan langsung muncul">
+                    <span>🧘</span> Kuis Santai
+                  </button>
+                  <button onclick="startSetQuiz('${s.id}', '${moduleId}', false, 'EXAM')" 
+                          class="px-3.5 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-xs flex items-center gap-1.5 cursor-pointer" title="Mode Serius: simulasi ujian resmi dengan timer hitung mundur">
+                    <span>⏱️</span> Ujian Serius
+                  </button>
+                  <button onclick="printQuestionSet('${s.id}', '${moduleId}')" 
+                          class="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 transition shadow-xs flex items-center gap-1 cursor-pointer" title="Cetak Lembar Soal ke Kertas (PDF)">
+                    <span>🖨️</span> Cetak PDF
                   </button>
                 </div>
               </div>
@@ -12597,6 +12629,7 @@ function openModalForChapter(subject, semester, topic, moduleId) {
         }).join('');
       }
 
+      setQuizMode(selectedQuizMode);
       document.getElementById('question-sets-modal').classList.remove('hidden');
     }
 
@@ -12605,7 +12638,10 @@ function openModalForChapter(subject, semester, topic, moduleId) {
     }
 
     // Mulai Kuis untuk Set Tertentu
-    function startSetQuiz(setId, moduleId, isRemedial = false) {
+    function startSetQuiz(setId, moduleId, isRemedial = false, forceMode = null) {
+      if (forceMode) {
+        setQuizMode(forceMode);
+      }
       const sets = getModuleQuestionSets(moduleId);
       const set = sets.find(s => s.id === setId);
       if (!set) return;
@@ -15111,15 +15147,24 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       selectedQuizMode = mode;
       const btnStudy = document.getElementById('btn-set-mode-study');
       const btnExam = document.getElementById('btn-set-mode-exam');
+      const badge = document.getElementById('selected-mode-badge');
       const selectEl = document.getElementById('quiz-mode-select');
 
       if (mode === 'STUDY') {
-        if (btnStudy) btnStudy.className = 'px-3 py-1.5 rounded-lg font-bold text-xs bg-indigo-600 text-white shadow-xs transition flex items-center gap-1.5 cursor-pointer';
-        if (btnExam) btnExam.className = 'px-3 py-1.5 rounded-lg font-semibold text-xs text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer';
+        if (btnStudy) btnStudy.className = 'flex-1 sm:flex-initial px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer bg-emerald-600 text-white shadow-xs';
+        if (btnExam) btnExam.className = 'flex-1 sm:flex-initial px-3.5 py-1.5 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer text-slate-600 hover:text-slate-900';
+        if (badge) {
+          badge.textContent = 'Mode Santai Aktif';
+          badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-600 text-white';
+        }
         if (selectEl) selectEl.value = 'INSTANT';
       } else {
-        if (btnStudy) btnStudy.className = 'px-3 py-1.5 rounded-lg font-semibold text-xs text-slate-600 hover:text-slate-900 transition flex items-center gap-1.5 cursor-pointer';
-        if (btnExam) btnExam.className = 'px-3 py-1.5 rounded-lg font-bold text-xs bg-indigo-600 text-white shadow-xs transition flex items-center gap-1.5 cursor-pointer';
+        if (btnStudy) btnStudy.className = 'flex-1 sm:flex-initial px-3.5 py-1.5 rounded-xl text-xs font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer text-slate-600 hover:text-slate-900';
+        if (btnExam) btnExam.className = 'flex-1 sm:flex-initial px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer bg-indigo-600 text-white shadow-xs';
+        if (badge) {
+          badge.textContent = 'Mode Serius Aktif';
+          badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-600 text-white';
+        }
         if (selectEl) selectEl.value = 'EXAM';
       }
 
