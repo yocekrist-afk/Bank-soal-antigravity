@@ -64,6 +64,73 @@
       line-height: 1.1;
     }
 
+  
+    /* ========================================================================= */
+    /* CUSTOMISASI WARNA BILAH SAMPING (SIDEBAR THEMES)                          */
+    /* ========================================================================= */
+    #app-sidebar {
+      background-color: var(--sb-bg, #0f172a) !important;
+      color: var(--sb-text, #e2e8f0) !important;
+      border-color: var(--sb-border, #1e293b) !important;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease !important;
+    }
+    #sidebar-header-box {
+      background-color: var(--sb-header-bg, rgba(2, 6, 23, 0.6)) !important;
+      border-color: var(--sb-border, #1e293b) !important;
+      transition: background-color 0.25s ease !important;
+    }
+    #sidebar-footer-box {
+      background-color: var(--sb-footer-bg, #020617) !important;
+      border-color: var(--sb-border, #1e293b) !important;
+      transition: background-color 0.25s ease !important;
+    }
+    .sidebar-card-box {
+      background-color: var(--sb-card-bg, rgba(2, 6, 23, 0.7)) !important;
+      border-color: var(--sb-border, #1e293b) !important;
+      transition: background-color 0.25s ease !important;
+    }
+    #app-sidebar.sidebar-theme-light {
+      --sb-bg: #ffffff;
+      --sb-text: #0f172a;
+      --sb-text-muted: #64748b;
+      --sb-border: #e2e8f0;
+      --sb-header-bg: #f8fafc;
+      --sb-footer-bg: #f8fafc;
+      --sb-card-bg: #f1f5f9;
+    }
+    #app-sidebar.sidebar-theme-light #app-sidebar-title {
+      color: #0f172a !important;
+    }
+    #app-sidebar.sidebar-theme-light #app-sidebar-subtitle {
+      color: #64748b !important;
+    }
+    #app-sidebar.sidebar-theme-light button[id^="side-tab-"]:not(.bg-indigo-600) {
+      color: #334155 !important;
+    }
+    #app-sidebar.sidebar-theme-light button[id^="side-tab-"]:not(.bg-indigo-600):hover {
+      background-color: #f1f5f9 !important;
+      color: #0f172a !important;
+    }
+    #app-sidebar.sidebar-theme-light button[id^="side-mapel-"]:not(.bg-indigo-600) {
+      color: #334155 !important;
+    }
+    #app-sidebar.sidebar-theme-light button[id^="side-mapel-"]:not(.bg-indigo-600):hover {
+      background-color: #e2e8f0 !important;
+      color: #0f172a !important;
+    }
+    #app-sidebar.sidebar-theme-light #btn-toggle-mapel-sidebar {
+      color: #0f172a !important;
+    }
+    #app-sidebar.sidebar-theme-light #btn-toggle-mapel-sidebar:hover {
+      background-color: #e2e8f0 !important;
+    }
+    #app-sidebar.sidebar-theme-light #btn-toggle-mapel-sidebar span.sidebar-text {
+      color: #0f172a !important;
+    }
+    #app-sidebar.sidebar-theme-light .sidebar-heading-text {
+      color: #4338ca !important;
+    }
+
   </style>
   <!-- KaTeX for Math Equations -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -80,7 +147,7 @@
     <!-- ========================================================================= -->
     <aside id="app-sidebar" class="bg-slate-900 text-slate-200 border-r border-slate-800 fixed inset-y-0 left-0 z-50 flex flex-col transition-all duration-300 ease-in-out -translate-x-full lg:translate-x-0 w-64 no-print shadow-2xl lg:shadow-md select-none">
       <!-- Sidebar Header with Logo -->
-      <div class="p-4 border-b border-slate-800/80 flex items-center justify-between gap-3 bg-slate-950/60">
+      <div id="sidebar-header-box" class="p-4 border-b border-slate-800/80 flex items-center justify-between gap-3 bg-slate-950/60">
         <div class="flex items-center gap-3 overflow-hidden">
           <div id="app-sidebar-logo" class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white flex items-center justify-center font-extrabold text-sm shrink-0 shadow-md overflow-hidden">
             SD6
@@ -114,7 +181,7 @@
                 <!-- ========================================================================= -->
         <!-- ACCORDION: DAFTAR MATA PELAJARAN (EXPAND & COLLAPSE)                      -->
         <!-- ========================================================================= -->
-        <div class="rounded-2xl bg-slate-950/70 border border-slate-800/80 p-1.5 space-y-1">
+        <div class="rounded-2xl bg-slate-950/70 border border-slate-800/80 p-1.5 space-y-1 sidebar-card-box">
           <button onclick="toggleSidebarMapelAccordion()" id="btn-toggle-mapel-sidebar" class="w-full flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-bold text-slate-200 hover:text-white hover:bg-slate-800/80 transition group" title="Klik untuk Buka/Tutup (Expand/Collapse) Daftar Mapel">
             <div class="flex items-center gap-2">
               <span class="text-base text-indigo-400 shrink-0">📚</span>
@@ -288,7 +355,7 @@
         </nav>
 
       <!-- Sidebar Footer -->
-      <div class="p-3 border-t border-slate-800 space-y-1.5 bg-slate-950">
+      <div id="sidebar-footer-box" class="p-3 border-t border-slate-800 space-y-1.5 bg-slate-950">
         <button onclick="openSettingsModal(); autoCloseSidebarOnMobile();" class="w-full py-1.5 px-3 rounded-lg text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 hover:text-white text-slate-300 flex items-center justify-center gap-2 border border-slate-700/60 shadow-xs transition cursor-pointer" title="Buka Pengaturan Aplikasi">
           <span>⚙️</span>
           <span class="sidebar-text truncate">Pengaturan & Personalisasi</span>
@@ -1804,6 +1871,93 @@
               <span class="text-[10px] text-slate-500">Gelap tegas minimalis, tenang & bebas silau.</span>
             </button>
           </div>
+
+          <!-- ========================================== -->
+          <!-- PILIHAN WARNA BILAH SAMPING (SIDEBAR THEME) -->
+          <!-- ========================================== -->
+          <div class="pt-5 border-t border-slate-200 space-y-3.5">
+            <div>
+              <div class="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                <span>🧭</span> Pilihan Warna Bilah Samping (Sidebar)
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Ubah nuansa warna menu samping kiri sesuai kenyamanan membaca dan tema favorit:</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <!-- Sidebar 1: Dark Slate (Bawaan) -->
+              <button type="button" onclick="pickSidebarTheme('slate')" id="sbtheme-card-slate" class="p-3.5 rounded-2xl border-2 border-indigo-600 bg-indigo-50/50 text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-slate-900">🌑 Dark Slate</span>
+                  <span id="sbtheme-check-slate" class="text-xs font-bold text-indigo-600">✓ Aktif</span>
+                </div>
+                <div class="h-6 rounded-lg bg-slate-900 border border-slate-800 shadow-inner flex items-center px-2">
+                  <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                </div>
+                <span class="text-[10px] text-slate-500">Abu arang gelap klasik, kontras tinggi & elegan.</span>
+              </button>
+
+              <!-- Sidebar 2: Midnight Indigo -->
+              <button type="button" onclick="pickSidebarTheme('indigo')" id="sbtheme-card-indigo" class="p-3.5 rounded-2xl border border-slate-200 hover:border-indigo-400 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-slate-900">🌌 Midnight Indigo</span>
+                  <span id="sbtheme-check-indigo" class="text-xs font-bold text-indigo-600 hidden">✓ Aktif</span>
+                </div>
+                <div class="h-6 rounded-lg bg-[#1e1b4b] border border-indigo-900 shadow-inner flex items-center px-2">
+                  <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                </div>
+                <span class="text-[10px] text-slate-500">Biru dongker pekat bernuansa malam berbintang.</span>
+              </button>
+
+              <!-- Sidebar 3: Deep Emerald -->
+              <button type="button" onclick="pickSidebarTheme('emerald')" id="sbtheme-card-emerald" class="p-3.5 rounded-2xl border border-slate-200 hover:border-emerald-400 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-slate-900">🌲 Deep Emerald</span>
+                  <span id="sbtheme-check-emerald" class="text-xs font-bold text-emerald-600 hidden">✓ Aktif</span>
+                </div>
+                <div class="h-6 rounded-lg bg-[#064e3b] border border-emerald-900 shadow-inner flex items-center px-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                </div>
+                <span class="text-[10px] text-slate-500">Hijau pinus hutan teduh, sangat rileks di mata.</span>
+              </button>
+
+              <!-- Sidebar 4: Royal Purple -->
+              <button type="button" onclick="pickSidebarTheme('purple')" id="sbtheme-card-purple" class="p-3.5 rounded-2xl border border-slate-200 hover:border-purple-400 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-slate-900">🍇 Royal Purple</span>
+                  <span id="sbtheme-check-purple" class="text-xs font-bold text-purple-600 hidden">✓ Aktif</span>
+                </div>
+                <div class="h-6 rounded-lg bg-[#3b0764] border border-purple-900 shadow-inner flex items-center px-2">
+                  <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                </div>
+                <span class="text-[10px] text-slate-500">Ungu anggun imajinatif kesukaan anak perempuan.</span>
+              </button>
+
+              <!-- Sidebar 5: Warm Espresso -->
+              <button type="button" onclick="pickSidebarTheme('stone')" id="sbtheme-card-stone" class="p-3.5 rounded-2xl border border-slate-200 hover:border-amber-400 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-slate-900">☕ Warm Espresso</span>
+                  <span id="sbtheme-check-stone" class="text-xs font-bold text-amber-600 hidden">✓ Aktif</span>
+                </div>
+                <div class="h-6 rounded-lg bg-[#1c1917] border border-stone-800 shadow-inner flex items-center px-2">
+                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                </div>
+                <span class="text-[10px] text-slate-500">Cokelat hangat natural, teduh & nyaman.</span>
+              </button>
+
+              <!-- Sidebar 6: Clean Modern Light -->
+              <button type="button" onclick="pickSidebarTheme('light')" id="sbtheme-card-light" class="p-3.5 rounded-2xl border border-slate-200 hover:border-slate-400 bg-white text-left transition flex flex-col justify-between gap-2.5 cursor-pointer shadow-xs">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-slate-900">☀️ Clean Light</span>
+                  <span id="sbtheme-check-light" class="text-xs font-bold text-indigo-600 hidden">✓ Aktif</span>
+                </div>
+                <div class="h-6 rounded-lg bg-white border border-slate-300 shadow-inner flex items-center px-2">
+                  <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+                </div>
+                <span class="text-[10px] text-slate-500">Putih bersih modern, cerah & minimalis rapi.</span>
+              </button>
+            </div>
+          </div>
+
         </div>
 
         <!-- ========================================== -->
@@ -16002,7 +16156,8 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       tagline: 'Sistem Asesmen Modern & Bank Soal',
       logoType: 'text', // 'text', 'emoji', 'image'
       logoValue: 'SD6',
-      theme: 'indigo', // 'indigo', 'emerald', 'violet', 'rose', 'amber', 'cyber'
+      theme: 'indigo',
+      sidebarTheme: 'slate', // 'indigo', 'emerald', 'violet', 'rose', 'amber', 'cyber'
       studentName: 'Lovely',
       studentGrade: 'Kelas 6 SD',
       studentMotto: 'Semangat belajar meraih masa depan gemilang! 🌟',
@@ -16038,6 +16193,120 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     }
 
     // Terapkan Pengaturan ke Elemen DOM
+    
+    // Palet Warna Bilah Samping (Sidebar Themes)
+    const SIDEBAR_THEMES = {
+      slate: {
+        bg: '#0f172a',
+        headerBg: 'rgba(2, 6, 23, 0.75)',
+        footerBg: '#020617',
+        cardBg: 'rgba(2, 6, 23, 0.7)',
+        border: '#1e293b',
+        text: '#f8fafc',
+        textMuted: '#94a3b8',
+        isLight: false
+      },
+      indigo: {
+        bg: '#1e1b4b',
+        headerBg: 'rgba(15, 13, 46, 0.8)',
+        footerBg: '#0f0d2e',
+        cardBg: 'rgba(15, 13, 46, 0.75)',
+        border: '#312e81',
+        text: '#e0e7ff',
+        textMuted: '#a5b4fc',
+        isLight: false
+      },
+      emerald: {
+        bg: '#064e3b',
+        headerBg: 'rgba(2, 44, 34, 0.8)',
+        footerBg: '#022c22',
+        cardBg: 'rgba(2, 44, 34, 0.75)',
+        border: '#065f46',
+        text: '#d1fae5',
+        textMuted: '#6ee7b7',
+        isLight: false
+      },
+      purple: {
+        bg: '#3b0764',
+        headerBg: 'rgba(36, 4, 61, 0.8)',
+        footerBg: '#24043d',
+        cardBg: 'rgba(36, 4, 61, 0.75)',
+        border: '#581c87',
+        text: '#fae8ff',
+        textMuted: '#e879f9',
+        isLight: false
+      },
+      stone: {
+        bg: '#1c1917',
+        headerBg: 'rgba(12, 10, 9, 0.8)',
+        footerBg: '#0c0a09',
+        cardBg: 'rgba(12, 10, 9, 0.75)',
+        border: '#292524',
+        text: '#f5f5f4',
+        textMuted: '#a8a29e',
+        isLight: false
+      },
+      light: {
+        bg: '#ffffff',
+        headerBg: '#f8fafc',
+        footerBg: '#f8fafc',
+        cardBg: '#f1f5f9',
+        border: '#e2e8f0',
+        text: '#0f172a',
+        textMuted: '#64748b',
+        isLight: true
+      }
+    };
+
+    let tempSidebarTheme = 'slate';
+
+    function pickSidebarTheme(themeKey) {
+      tempSidebarTheme = themeKey;
+      const themes = ['slate', 'indigo', 'emerald', 'purple', 'stone', 'light'];
+      themes.forEach(t => {
+        const card = document.getElementById('sbtheme-card-' + t);
+        const check = document.getElementById('sbtheme-check-' + t);
+        if (card) {
+          if (t === themeKey) {
+            card.classList.add('border-2', 'border-indigo-600', 'bg-indigo-50/60');
+            card.classList.remove('border-slate-200', 'bg-white');
+          } else {
+            card.classList.remove('border-2', 'border-indigo-600', 'bg-indigo-50/60');
+            card.classList.add('border-slate-200', 'bg-white');
+          }
+        }
+        if (check) {
+          if (t === themeKey) check.classList.remove('hidden');
+          else check.classList.add('hidden');
+        }
+      });
+
+      // Terapkan langsung saat dipilih agar bisa dilihat hasilnya
+      applySidebarTheme(themeKey);
+    }
+
+    function applySidebarTheme(themeKey) {
+      const cfg = SIDEBAR_THEMES[themeKey] || SIDEBAR_THEMES.slate;
+      const sidebar = document.getElementById('app-sidebar');
+      if (!sidebar) return;
+
+      sidebar.style.setProperty('--sb-bg', cfg.bg);
+      sidebar.style.setProperty('--sb-header-bg', cfg.headerBg);
+      sidebar.style.setProperty('--sb-footer-bg', cfg.footerBg);
+      sidebar.style.setProperty('--sb-card-bg', cfg.cardBg);
+      sidebar.style.setProperty('--sb-border', cfg.border);
+      sidebar.style.setProperty('--sb-text', cfg.text);
+      sidebar.style.setProperty('--sb-text-muted', cfg.textMuted);
+
+      if (cfg.isLight) {
+        sidebar.classList.add('sidebar-theme-light');
+        sidebar.classList.remove('sidebar-theme-dark');
+      } else {
+        sidebar.classList.remove('sidebar-theme-light');
+        sidebar.classList.add('sidebar-theme-dark');
+      }
+    }
+
     function applyAppSettings() {
       // 1. Nama Aplikasi & Judul Halaman
       const elHeaderTitle = document.getElementById('app-header-title');
@@ -16065,6 +16334,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
 
       // 3. Terapkan Tema Warna
       applyThemeGradient(appSettings.theme || 'indigo');
+      applySidebarTheme(appSettings.sidebarTheme || 'slate');
 
       // 4. Update Nama di Modal Paket Soal jika ada
       const setModalSub = document.getElementById('set-modal-subtitle');
@@ -16110,6 +16380,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       tempLogoType = appSettings.logoType || 'text';
       tempLogoValue = appSettings.logoValue || 'SD6';
       tempTheme = appSettings.theme || 'indigo';
+      tempSidebarTheme = appSettings.sidebarTheme || 'slate';
 
       document.getElementById('setting-app-name').value = appSettings.appName || '';
       document.getElementById('setting-app-shortname').value = appSettings.appShortName || '';
@@ -16138,6 +16409,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       }
 
       pickTheme(tempTheme);
+      pickSidebarTheme(tempSidebarTheme);
       updateSettingsLivePreview();
 
       switchSettingsTab(defaultTab);
@@ -16351,6 +16623,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
         logoType: tempLogoType,
         logoValue: tempLogoValue,
         theme: tempTheme,
+        sidebarTheme: tempSidebarTheme,
         studentName,
         studentGrade,
         studentMotto,
