@@ -136,6 +136,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <!-- Kid-Friendly Fonts: Quicksand, Lexend, Comic Neue -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Lexend:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen flex flex-col">
   <!-- Overlay Backdrop untuk Mobile Sidebar -->
@@ -399,11 +403,17 @@
 
           <!-- User Profile & Action Pill -->
           <div class="flex items-center gap-2">
-            <div class="hidden sm:flex items-center gap-2 bg-white/10 backdrop-blur-xs px-3 py-1 rounded-full border border-white/20 text-xs text-white">
-              <span class="w-5 h-5 rounded-full bg-amber-400 text-slate-900 font-black flex items-center justify-center text-[10px]">⭐</span>
+            <div class="hidden sm:flex items-center gap-2 bg-white/15 backdrop-blur-xs px-3 py-1 rounded-full border border-white/25 text-xs text-white shadow-xs">
+              <div id="app-topbar-avatar" class="w-6 h-6 rounded-full bg-white text-indigo-700 flex items-center justify-center font-bold text-xs shrink-0 overflow-hidden shadow-xs">
+                👸
+              </div>
+              <span id="app-student-profile-text" class="font-bold text-white tracking-tight">Lovely • Kelas 6 SD</span>
+              <span class="text-white/40">•</span>
+              <span class="w-4 h-4 rounded-full bg-amber-400 text-slate-900 font-black flex items-center justify-center text-[9px]">⭐</span>
               <span id="topbar-xp" class="font-bold text-amber-300">120 XP</span>
-              <span class="text-white/60">•</span>
-              <span id="app-student-profile-text" class="font-medium text-white/90">Guru & Siswa Kelas 6</span>
+              <div id="topbar-countdown-pill" class="hidden items-center gap-1 px-2 py-0.5 rounded-full bg-amber-400/25 border border-amber-300/40 text-[10px] font-bold text-amber-200">
+                <span>📅</span> <span id="topbar-countdown-text">35 Hari Ujian</span>
+              </div>
             </div>
 
             <!-- Quick Action Buttons -->
@@ -1630,20 +1640,26 @@
 
       <!-- Horizontal Tabs -->
       <div class="flex border-b border-slate-200 bg-slate-50 px-3 sm:px-5 gap-1 overflow-x-auto custom-scroll shrink-0">
-        <button onclick="switchSettingsTab('branding')" id="tab-btn-branding" class="px-3.5 py-2.5 text-xs font-bold border-b-2 border-indigo-600 text-indigo-600 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
-          <span>🏷️</span> Identitas & Logo
+        <button onclick="switchSettingsTab('branding')" id="tab-btn-branding" class="px-3 py-2.5 text-xs font-bold border-b-2 border-indigo-600 text-indigo-600 flex items-center gap-1 shrink-0 transition cursor-pointer">
+          <span>🏷️</span> Identitas
         </button>
-        <button onclick="switchSettingsTab('profile')" id="tab-btn-profile" class="px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
-          <span>👧</span> Profil Siswa
+        <button onclick="switchSettingsTab('profile')" id="tab-btn-profile" class="px-3 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1 shrink-0 transition cursor-pointer">
+          <span>👧</span> Profil Lovely
         </button>
-        <button onclick="switchSettingsTab('theme')" id="tab-btn-theme" class="px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
-          <span>🎨</span> Tema Warna
+        <button onclick="switchSettingsTab('theme')" id="tab-btn-theme" class="px-3 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1 shrink-0 transition cursor-pointer">
+          <span>🎨</span> Tema & Warna
         </button>
-        <button onclick="switchSettingsTab('quiz')" id="tab-btn-quiz" class="px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
-          <span>⚙️</span> Kuis & Suara
+        <button onclick="switchSettingsTab('reading')" id="tab-btn-reading" class="px-3 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1 shrink-0 transition cursor-pointer">
+          <span>👁️</span> Mata & Huruf
         </button>
-        <button onclick="switchSettingsTab('data')" id="tab-btn-data" class="px-3.5 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1.5 shrink-0 transition cursor-pointer">
-          <span>💾</span> Cadangan & Data
+        <button onclick="switchSettingsTab('quiz')" id="tab-btn-quiz" class="px-3 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1 shrink-0 transition cursor-pointer">
+          <span>🎮</span> Kuis & Audio
+        </button>
+        <button onclick="switchSettingsTab('print')" id="tab-btn-print" class="px-3 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1 shrink-0 transition cursor-pointer">
+          <span>🖨️</span> Kop Cetak PDF
+        </button>
+        <button onclick="switchSettingsTab('security')" id="tab-btn-security" class="px-3 py-2.5 text-xs font-semibold border-b-2 border-transparent text-slate-600 hover:text-slate-900 flex items-center gap-1 shrink-0 transition cursor-pointer">
+          <span>🔒</span> PIN & Data
         </button>
       </div>
 
@@ -1769,11 +1785,12 @@
         <!-- TAB 2: PROFIL SISWA                        -->
         <!-- ========================================== -->
         <div id="settings-tab-profile" class="hidden space-y-4">
+          <!-- Profil & Nama -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold text-slate-800 mb-1">Nama Panggilan Siswa</label>
               <input type="text" id="setting-student-name" oninput="updateSettingsLivePreview()" placeholder="Lovely" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-semibold text-slate-900" />
-              <p class="text-[11px] text-slate-500 mt-1">Digunakan pada pesan sapaan, sertifikat nilai, dan instruksi latihan kuis.</p>
+              <p class="text-[11px] text-slate-500 mt-1">Digunakan pada pesan sapaan, piagam nilai, dan ucapan kuis.</p>
             </div>
             <div>
               <label class="block text-xs font-bold text-slate-800 mb-1">Jenjang / Kelas</label>
@@ -1782,22 +1799,72 @@
             </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-bold text-slate-800 mb-1">Target Nilai Kelulusan (KKM / Passing Grade)</label>
-            <div class="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
-              <input type="range" id="setting-kkm-slider" min="60" max="95" step="5" oninput="document.getElementById('setting-kkm-val').value = this.value" class="flex-1 accent-indigo-600 cursor-pointer" />
-              <div class="flex items-center gap-1 shrink-0">
-                <input type="number" id="setting-kkm-val" min="60" max="100" oninput="document.getElementById('setting-kkm-slider').value = this.value" class="w-16 px-2 py-1 rounded-lg border border-slate-300 font-black text-center text-sm text-indigo-700 bg-white" />
-                <span class="font-bold text-slate-600">/ 100</span>
+          <!-- Avatar Karakter & Foto Lovely -->
+          <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-100 space-y-3">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-extrabold text-indigo-950 uppercase tracking-wide flex items-center gap-1.5">
+                <span>👧</span> Pilihan Avatar Karakter & Foto Lovely
+              </label>
+              <span id="active-avatar-badge" class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-indigo-200/80 text-indigo-900">
+                Avatar Aktif: 👸
+              </span>
+            </div>
+
+            <!-- Avatar Grid Pilihan -->
+            <div class="grid grid-cols-5 sm:grid-cols-10 gap-2 bg-white p-3 rounded-xl border border-indigo-200 text-2xl">
+              <button type="button" onclick="selectStudentAvatar('👸', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Princess">👸</button>
+              <button type="button" onclick="selectStudentAvatar('🧕', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Siswi Berhijab">🧕</button>
+              <button type="button" onclick="selectStudentAvatar('👩‍🎓', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Juara Kelas">👩‍🎓</button>
+              <button type="button" onclick="selectStudentAvatar('🚀', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Astronaut Cilik">🚀</button>
+              <button type="button" onclick="selectStudentAvatar('🐱', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Kucing Pintar">🐱</button>
+              <button type="button" onclick="selectStudentAvatar('🦸‍♀️', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Super Hero">🦸‍♀️</button>
+              <button type="button" onclick="selectStudentAvatar('🥋', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Atlet Taekwondo">🥋</button>
+              <button type="button" onclick="selectStudentAvatar('🎨', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Seniman Cilik">🎨</button>
+              <button type="button" onclick="selectStudentAvatar('🔬', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Ilmuwan Cilik">🔬</button>
+              <button type="button" onclick="selectStudentAvatar('⚽', 'preset')" class="w-9 h-9 rounded-xl hover:bg-indigo-100 flex items-center justify-center transition cursor-pointer" title="Bintang Olahraga">⚽</button>
+            </div>
+
+            <!-- Upload Foto Asli Lovely -->
+            <div class="flex items-center gap-3 pt-1">
+              <label class="px-3 py-1.5 rounded-xl bg-white hover:bg-indigo-50 text-indigo-700 font-bold text-xs border border-indigo-300 transition cursor-pointer shadow-xs flex items-center gap-1.5">
+                <span>📸</span> Unggah Foto Asli Lovely
+                <input type="file" id="setting-avatar-file-input" accept="image/png,image/jpeg,image/webp" class="hidden" onchange="handleStudentPhotoUpload(event)" />
+              </label>
+              <button type="button" onclick="selectStudentAvatar('👸', 'preset')" id="btn-reset-avatar-photo" class="text-xs text-slate-500 hover:text-rose-600 transition cursor-pointer hidden">
+                Hapus Foto (Kembali ke Avatar)
+              </button>
+            </div>
+          </div>
+
+          <!-- Target KKM & Motto -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1">Target Nilai Kelulusan (KKM)</label>
+              <div class="flex items-center gap-3 bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                <input type="range" id="setting-kkm-slider" min="60" max="95" step="5" oninput="document.getElementById('setting-kkm-val').value = this.value" class="flex-1 accent-indigo-600 cursor-pointer" />
+                <div class="flex items-center gap-1 shrink-0">
+                  <input type="number" id="setting-kkm-val" min="60" max="100" oninput="document.getElementById('setting-kkm-slider').value = this.value" class="w-14 px-2 py-1 rounded-lg border border-slate-300 font-black text-center text-xs text-indigo-700 bg-white" />
+                  <span class="font-bold text-xs text-slate-500">/ 100</span>
+                </div>
               </div>
             </div>
-            <p class="text-[11px] text-slate-500 mt-1">Soal kuis dengan nilai di atas batas ini akan otomatis mendapat status Lulus & Tuntas ⭐.</p>
+
+            <!-- Countdown Ujian Sekolah -->
+            <div>
+              <label class="block text-xs font-bold text-slate-800 mb-1">Tanggal Target Ujian Sekolah</label>
+              <div class="flex items-center gap-2">
+                <input type="date" id="setting-exam-date" onchange="onExamDateChange(this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-300 font-semibold text-xs text-slate-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                <label class="flex items-center gap-1 cursor-pointer shrink-0 text-xs font-semibold text-indigo-900 select-none">
+                  <input type="checkbox" id="setting-countdown-active" class="accent-indigo-600 w-4 h-4" checked />
+                  Hitung Mundur
+                </label>
+              </div>
+            </div>
           </div>
 
           <div>
             <label class="block text-xs font-bold text-slate-800 mb-1">Kalimat Motivasi Belajar Harian</label>
-            <input type="text" id="setting-student-motto" placeholder="Semangat belajar meraih masa depan gemilang! 🌟" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium text-slate-800" />
-            <p class="text-[11px] text-slate-500 mt-1">Kalimat penyemangat yang tampil saat Lovely menyelesaikan kuis.</p>
+            <input type="text" id="setting-student-motto" placeholder="Semangat belajar meraih masa depan gemilang! 🌟" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium text-slate-800 text-xs" />
           </div>
         </div>
 
@@ -16186,7 +16253,11 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
           <div style="columns: 2; column-gap: 30px;">
             ${keyListHtml}
           </div>
-        </body>
+          <!-- EYE CARE FILTER (WARM NIGHT LIGHT BLUELIGHT FILTER) -->
+  <div id="eye-protection-overlay" class="fixed inset-0 pointer-events-none z-[60] transition-opacity duration-300 hidden" style="background-color: rgba(245, 158, 11, 0.14); mix-blend-mode: multiply;"></div>
+  <!-- CONFETTI CELEBRATION CANVAS -->
+  <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-[70] hidden"></canvas>
+</body>
         </html>
       `);
       printWindow.document.close();
@@ -16594,6 +16665,19 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       // Update judul tab browser
       document.title = (appSettings.appShortName || appSettings.appName) + ' • Belajar ' + studentName;
 
+      // Render Student Avatar
+      renderStudentAvatarToElement(document.getElementById('app-topbar-avatar'), appSettings.studentAvatarValue, appSettings.studentAvatarType);
+
+      // Apply Font Family
+      applyFontFamily(appSettings.fontFamily || 'Inter');
+
+      // Apply Eye Protection
+      toggleEyeProtection(appSettings.eyeProtectionActive === true);
+
+      // Update Countdown
+      updateExamCountdown();
+
+
       // 2. Render Logo di Header dan Sidebar
       renderAppLogoToElement(document.getElementById('app-header-logo'), 'header');
       renderAppLogoToElement(document.getElementById('app-sidebar-logo'), 'sidebar');
@@ -16646,6 +16730,232 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       }
     }
 
+    
+    // =========================================================================
+    // ENGINE FITUR LENGKAP PENGATURAN (AVATAR, EYE-CARE, CONFETTI, PIN, KOP)
+    // =========================================================================
+
+    // 1. ENGINE AVATAR & FOTO LOVELY
+    let tempAvatarType = 'preset';
+    let tempAvatarValue = '👸';
+
+    function selectStudentAvatar(val, type = 'preset') {
+      tempAvatarType = type;
+      tempAvatarValue = val;
+      const badge = document.getElementById('active-avatar-badge');
+      if (badge) {
+        badge.textContent = type === 'upload' ? 'Foto Asli Lovely Aktif 📸' : 'Avatar Aktif: ' + val;
+      }
+      const resetBtn = document.getElementById('btn-reset-avatar-photo');
+      if (resetBtn) {
+        if (type === 'upload') resetBtn.classList.remove('hidden');
+        else resetBtn.classList.add('hidden');
+      }
+      renderStudentAvatarToElement(document.getElementById('app-topbar-avatar'), tempAvatarValue, tempAvatarType);
+    }
+
+    function handleStudentPhotoUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      if (file.size > 2 * 1024 * 1024) {
+        alert('Ukuran foto maksimal 2 MB agar performa tetap cepat!');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        selectStudentAvatar(e.target.result, 'upload');
+        showSettingsToast('📸 Foto asli Lovely berhasil diunggah!');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderStudentAvatarToElement(container, val, type) {
+      if (!container) return;
+      val = val || appSettings.studentAvatarValue || '👸';
+      type = type || appSettings.studentAvatarType || 'preset';
+
+      if (type === 'upload') {
+        container.innerHTML = '<img src="' + val + '" alt="Lovely" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.textContent=\'👸\';" />';
+      } else {
+        container.innerHTML = '<span class="text-xs leading-none">' + val + '</span>';
+      }
+    }
+
+    // 2. ENGINE HITUNG MUNDUR UJIAN SEKOLAH (COUNTDOWN)
+    function updateExamCountdown() {
+      const pill = document.getElementById('topbar-countdown-pill');
+      const text = document.getElementById('topbar-countdown-text');
+      if (!pill || !text) return;
+
+      if (!appSettings.countdownActive || !appSettings.examDate) {
+        pill.classList.add('hidden');
+        pill.classList.remove('flex');
+        return;
+      }
+
+      const targetDate = new Date(appSettings.examDate);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      targetDate.setHours(0, 0, 0, 0);
+
+      const diffTime = targetDate - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      pill.classList.remove('hidden');
+      pill.classList.add('flex');
+
+      if (diffDays > 0) {
+        text.textContent = diffDays + ' Hari Menuju Ujian';
+      } else if (diffDays === 0) {
+        text.textContent = 'Hari Ini Ujian! Semangat!';
+      } else {
+        text.textContent = 'Ujian Telah Selesai';
+      }
+    }
+
+    function onExamDateChange(dateVal) {
+      appSettings.examDate = dateVal;
+      updateExamCountdown();
+    }
+
+    // 3. ENGINE TIPOGRAFI RAMAH ANAK
+    function pickFontFamily(fontName) {
+      appSettings.fontFamily = fontName;
+      applyFontFamily(fontName);
+      
+      const cards = ['inter', 'quicksand', 'lexend', 'comic'];
+      cards.forEach(c => {
+        const el = document.getElementById('font-card-' + c);
+        if (el) {
+          el.className = 'p-3.5 rounded-xl border border-slate-200 bg-white flex items-start gap-3 cursor-pointer hover:border-indigo-300 transition shadow-xs';
+        }
+      });
+      const activeCardMap = {
+        'Inter': 'font-card-inter',
+        'Quicksand': 'font-card-quicksand',
+        'Lexend': 'font-card-lexend',
+        'Comic Neue': 'font-card-comic'
+      };
+      const activeEl = document.getElementById(activeCardMap[fontName]);
+      if (activeEl) {
+        activeEl.className = 'p-3.5 rounded-xl border-2 border-indigo-600 bg-indigo-50/50 flex items-start gap-3 cursor-pointer transition shadow-xs';
+      }
+    }
+
+    function applyFontFamily(fontName) {
+      const fontMap = {
+        'Inter': "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
+        'Quicksand': "'Quicksand', 'Plus Jakarta Sans', sans-serif",
+        'Lexend': "'Lexend', 'Plus Jakarta Sans', sans-serif",
+        'Comic Neue': "'Comic Neue', 'Quicksand', cursive, sans-serif"
+      };
+      const family = fontMap[fontName] || fontMap.Inter;
+      document.body.style.fontFamily = family;
+    }
+
+    // 4. ENGINE EYE-CARE FILTER (WARM NIGHT LIGHT)
+    function toggleEyeProtection(isActive) {
+      appSettings.eyeProtectionActive = isActive;
+      const overlay = document.getElementById('eye-protection-overlay');
+      if (!overlay) return;
+      if (isActive) {
+        overlay.classList.remove('hidden');
+        overlay.style.backgroundColor = 'rgba(245, 158, 11, ' + ((appSettings.eyeProtectionWarmth || 14) / 100) + ')';
+      } else {
+        overlay.classList.add('hidden');
+      }
+    }
+
+    function updateEyeWarmth(val) {
+      appSettings.eyeProtectionWarmth = parseInt(val, 10) || 14;
+      const badge = document.getElementById('eyecare-val-badge');
+      if (badge) badge.textContent = val + '%';
+      const overlay = document.getElementById('eye-protection-overlay');
+      if (overlay && appSettings.eyeProtectionActive) {
+        overlay.style.backgroundColor = 'rgba(245, 158, 11, ' + (val / 100) + ')';
+      }
+    }
+
+    // 5. PREVIEW SOUND THEME
+    function previewSoundTheme(themeKey) {
+      appSettings.soundTheme = themeKey;
+      playQuizSound('correct');
+    }
+
+    // 6. ENGINE ANIMASI HUJAN KONFETI MURNI (CONFETTI CELEBRATION)
+    function fireConfettiCelebration() {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return;
+      canvas.classList.remove('hidden');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const particles = [];
+      const colors = ['#6366f1', '#ec4899', '#f59e0b', '#10b981', '#3b82f6', '#8b5cf6', '#ef4444', '#14b8a6'];
+      for (let i = 0; i < 90; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * -canvas.height * 0.5,
+          w: Math.random() * 9 + 5,
+          h: Math.random() * 7 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: Math.random() * 4 - 2,
+          vy: Math.random() * 3 + 2.5,
+          rot: Math.random() * 360,
+          vRot: Math.random() * 6 - 3
+        });
+      }
+
+      let frame = 0;
+      function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let activeCount = 0;
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vRot;
+          if (p.y < canvas.height + 20) activeCount++;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        });
+
+        frame++;
+        if (activeCount > 0 && frame < 200) {
+          requestAnimationFrame(render);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          canvas.classList.add('hidden');
+        }
+      }
+      render();
+    }
+
+    // 7. ENGINE KUNCI PIN ORANG TUA (PARENTAL PIN PROTECTION)
+    function togglePinSetup(isEnabled) {
+      const box = document.getElementById('pin-setup-box');
+      if (box) {
+        if (isEnabled) box.classList.remove('hidden');
+        else box.classList.add('hidden');
+      }
+    }
+
+    function verifyParentalPin(actionName = 'tindakan ini') {
+      if (!appSettings.parentalPinEnabled) return true;
+      const pin = prompt('🔒 PERLINDUNGAN ORANG TUA:\n\nMasukkan PIN 4-Angka untuk menyetujui ' + actionName + ':');
+      if (pin === (appSettings.parentalPinCode || '1234')) {
+        return true;
+      }
+      alert('❌ PIN salah atau dibatalkan. Akses ditolak demi keamanan data Lovely.');
+      return false;
+    }
+
     // Buka Modal Pengaturan
     let currentSettingsTab = 'branding';
     let tempLogoType = 'text';
@@ -16677,6 +16987,61 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
 
       document.getElementById('setting-sound-enabled').checked = (appSettings.soundEnabled !== false);
       document.getElementById('setting-tts-speed').value = (appSettings.ttsSpeed || 1.0).toString();
+
+      // Setup Avatar
+      tempAvatarType = appSettings.studentAvatarType || 'preset';
+      tempAvatarValue = appSettings.studentAvatarValue || '👸';
+      selectStudentAvatar(tempAvatarValue, tempAvatarType);
+
+      // Setup Countdown & Exam Date
+      const dateEl = document.getElementById('setting-exam-date');
+      if (dateEl) dateEl.value = appSettings.examDate || '';
+      const cdActiveEl = document.getElementById('setting-countdown-active');
+      if (cdActiveEl) cdActiveEl.checked = (appSettings.countdownActive !== false);
+
+      // Setup Font
+      const font = appSettings.fontFamily || 'Inter';
+      pickFontFamily(font);
+      const fontRadio = document.querySelector('input[name="setting-font-family"][value="' + font + '"]');
+      if (fontRadio) fontRadio.checked = true;
+
+      // Setup Eye-Care
+      const eyeToggle = document.getElementById('setting-eyecare-toggle');
+      if (eyeToggle) eyeToggle.checked = (appSettings.eyeProtectionActive === true);
+      const eyeWarmth = document.getElementById('setting-eyecare-warmth');
+      if (eyeWarmth) eyeWarmth.value = appSettings.eyeProtectionWarmth || 14;
+      const eyeBadge = document.getElementById('eyecare-val-badge');
+      if (eyeBadge) eyeBadge.textContent = (appSettings.eyeProtectionWarmth || 14) + '%';
+
+      // Setup Kuis & Timer
+      const examDurEl = document.getElementById('setting-exam-duration');
+      if (examDurEl) examDurEl.value = (appSettings.examDurationMinutes || 0).toString();
+      const bellEl = document.getElementById('setting-timer-warning-bell');
+      if (bellEl) bellEl.checked = (appSettings.examWarningBell !== false);
+
+      // Setup Sound Theme & Confetti
+      const soundThemeEl = document.getElementById('setting-sound-theme');
+      if (soundThemeEl) soundThemeEl.value = appSettings.soundTheme || 'game';
+      const confettiEl = document.getElementById('setting-confetti-enabled');
+      if (confettiEl) confettiEl.checked = (appSettings.confettiEnabled !== false);
+
+      // Setup Kop Cetak PDF
+      const pSchool = document.getElementById('setting-print-school');
+      if (pSchool) pSchool.value = appSettings.schoolName || 'SD Pintar Juara Kelas 6';
+      const pExaminer = document.getElementById('setting-print-examiner');
+      if (pExaminer) pExaminer.value = appSettings.examinerName || 'Ayah Yoce';
+      const pYear = document.getElementById('setting-print-year');
+      if (pYear) pYear.value = appSettings.academicYear || 'Tahun Ajaran 2026 / 2027 • Semester Ganjil';
+      const pInstr = document.getElementById('setting-print-instructions');
+      if (pInstr) pInstr.value = appSettings.examInstructions || 'Berdoalah sebelum mengerjakan. Kerjakan dengan jujur dan teliti.';
+
+      // Setup PIN
+      const pinToggle = document.getElementById('setting-pin-enabled');
+      if (pinToggle) pinToggle.checked = (appSettings.parentalPinEnabled === true);
+      togglePinSetup(appSettings.parentalPinEnabled === true);
+      const pinCodeEl = document.getElementById('setting-pin-code');
+      if (pinCodeEl) pinCodeEl.value = appSettings.parentalPinCode || '1234';
+
 
       // Setup state logo
       setLogoType(tempLogoType);
@@ -16722,7 +17087,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     // Switch Tab di Modal Pengaturan
     function switchSettingsTab(tabKey) {
       currentSettingsTab = tabKey;
-      const tabs = ['branding', 'profile', 'theme', 'quiz', 'data'];
+      const tabs = ['branding', 'profile', 'theme', 'reading', 'quiz', 'print', 'security'];
       tabs.forEach(t => {
         const content = document.getElementById('settings-tab-' + t);
         const btn = document.getElementById('tab-btn-' + t);
@@ -16914,6 +17279,31 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       const soundEnabled = document.getElementById('setting-sound-enabled').checked;
       const ttsSpeed = parseFloat(document.getElementById('setting-tts-speed').value) || 1.0;
 
+      // Gather extra settings
+      const examDate = (document.getElementById('setting-exam-date') || {}).value || '';
+      const countdownActive = (document.getElementById('setting-countdown-active') || {}).checked !== false;
+
+      const fontRadios = document.querySelectorAll('input[name="setting-font-family"]:checked');
+      const fontFamily = fontRadios.length ? fontRadios[0].value : 'Inter';
+
+      const eyeProtectionActive = (document.getElementById('setting-eyecare-toggle') || {}).checked === true;
+      const eyeProtectionWarmth = parseInt((document.getElementById('setting-eyecare-warmth') || {}).value, 10) || 14;
+
+      const examDurationMinutes = parseInt((document.getElementById('setting-exam-duration') || {}).value, 10) || 0;
+      const examWarningBell = (document.getElementById('setting-timer-warning-bell') || {}).checked !== false;
+
+      const soundTheme = (document.getElementById('setting-sound-theme') || {}).value || 'game';
+      const confettiEnabled = (document.getElementById('setting-confetti-enabled') || {}).checked !== false;
+
+      const schoolName = (document.getElementById('setting-print-school') || {}).value || 'SD Pintar Juara Kelas 6';
+      const examinerName = (document.getElementById('setting-print-examiner') || {}).value || 'Ayah Yoce';
+      const academicYear = (document.getElementById('setting-print-year') || {}).value || 'Tahun Ajaran 2026 / 2027';
+      const examInstructions = (document.getElementById('setting-print-instructions') || {}).value || 'Berdoalah sebelum mengerjakan.';
+
+      const parentalPinEnabled = (document.getElementById('setting-pin-enabled') || {}).checked === true;
+      const parentalPinCode = ((document.getElementById('setting-pin-code') || {}).value || '1234').trim();
+
+
       appSettings = {
         appName,
         appShortName,
@@ -16932,7 +17322,24 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
         passingGrade,
         defaultQuizMode: defaultMode,
         soundEnabled,
-        ttsSpeed
+        ttsSpeed,
+        studentAvatarType: tempAvatarType,
+        studentAvatarValue: tempAvatarValue,
+        examDate,
+        countdownActive,
+        fontFamily,
+        eyeProtectionActive,
+        eyeProtectionWarmth,
+        examDurationMinutes,
+        examWarningBell,
+        soundTheme,
+        confettiEnabled,
+        schoolName,
+        examinerName,
+        academicYear,
+        examInstructions,
+        parentalPinEnabled,
+        parentalPinCode
       };
 
       try {
@@ -16952,6 +17359,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
 
     // Reset Pengaturan Tampilan ke Default
     function resetSettingsToDefault() {
+      if (!verifyParentalPin('mengembalikan setelan ke bawaan pabrik')) return;
       if (!confirm('Apakah Ayah yakin ingin mengembalikan nama aplikasi, logo, dan tema ke setelan bawaan pabrik?')) {
         return;
       }
@@ -16967,6 +17375,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
 
     // Reset Progres Nilai Siswa
     function resetStudentProgress() {
+      if (!verifyParentalPin('mengosongkan seluruh nilai kuis siswa')) return;
       const confirmation = prompt('PERINGATAN: Seluruh riwayat nilai kuis, poin XP, dan bintang latihan siswa akan dikosongkan.\n\nKetik kata "RESET" (huruf besar) untuk melanjutkan:');
       if (confirmation === 'RESET') {
         studentStats = {
