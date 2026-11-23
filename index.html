@@ -35945,6 +35945,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     
     // =========================================================================
     // SINKRONISASI CLOUD REAL-TIME (FIREBASE REALTIME DATABASE — GRATIS)
+    // Sinkronkan: studentStats (Nilai & Matriks) + Bank Soal Salah + Catatan Tanya Ayah
     // =========================================================================
     const FIREBASE_STATS_URL = 'https://lovely-kece-default-rtdb.asia-southeast1.firebasedatabase.app/lovely_kece_stats/studentStats.json';
     let _cloudSyncTimer = null;
@@ -35967,7 +35968,6 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
         setResults: {}
       };
 
-      // Merge setResults (keep highest bestScore & most attempts/latest wrongQuestionIds)
       const allSetIds = new Set([...Object.keys(L.setResults || {}), ...Object.keys(C.setResults || {})]);
       allSetIds.forEach(sid => {
         const a = (L.setResults || {})[sid];
@@ -35984,7 +35984,6 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
         }
       });
 
-      // Merge history deduplicated by date+topic+score
       const histMap = new Map();
       [...(L.history || []), ...(C.history || [])].forEach(item => {
         if (!item) return;
@@ -35996,25 +35995,70 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       return merged;
     }
 
+    function mergeMistakeAndTanyaAyah(cloudData) {
+      // 1. Merge Bank Soal Salah (local + cloud + wrongQuestionIds from setResults)
+      let localMistakes = {};
+      try { localMistakes = JSON.parse(localStorage.getItem('pintarsd6_mistake_bank') || '{}'); } catch(e) {}
+      const cloudMistakes = (cloudData && cloudData._mistakeBank && typeof cloudData._mistakeBank === 'object') ? cloudData._mistakeBank : {};
+      const mergedMistakes = { ...cloudMistakes, ...localMistakes };
+
+      // Juga otomatis tarik wrongQuestionIds yang terekam di studentStats.setResults!
+      Object.values((studentStats && studentStats.setResults) || {}).forEach(res => {
+        if (res && Array.isArray(res.wrongQuestionIds)) {
+          res.wrongQuestionIds.forEach(qId => {
+            if (qId && !mergedMistakes[qId]) {
+              mergedMistakes[qId] = { wrongCount: 1, firstWrongAt: res.lastDate || new Date().toISOString(), lastWrongAt: res.lastDate || new Date().toISOString() };
+            }
+          });
+        }
+      });
+      try { localStorage.setItem('pintarsd6_mistake_bank', JSON.stringify(mergedMistakes)); } catch(e) {}
+
+      // 2. Merge Catatan Tanya Ayah (local + cloud)
+      let localFlags = [];
+      try { localFlags = JSON.parse(localStorage.getItem('pintarsd6_tanya_ayah') || '[]'); } catch(e) {}
+      const cloudFlags = (cloudData && Array.isArray(cloudData._tanyaAyah)) ? cloudData._tanyaAyah : [];
+      const mergedFlags = [...new Set([...cloudFlags, ...localFlags])];
+      try { localStorage.setItem('pintarsd6_tanya_ayah', JSON.stringify(mergedFlags)); } catch(e) {}
+
+      return { mergedMistakes, mergedFlags };
+    }
+
+    function refreshAllCloudViews() {
+      if (typeof updateGamificationHeader === 'function') updateGamificationHeader();
+      if (typeof updateMistakeBadges === 'function') updateMistakeBadges();
+      if (typeof pushStatsToCloud === "function") pushStatsToCloud();
+      if (typeof updateTanyaAyahBadges === 'function') updateTanyaAyahBadges();
+      if (typeof pushStatsToCloud === "function") pushStatsToCloud();
+      if (typeof renderAnalytics === 'function') renderAnalytics();
+      if (typeof renderMatrixTable === 'function') renderMatrixTable();
+    }
+
     async function pushStatsToCloud(immediate = false) {
       if (!FIREBASE_STATS_URL) return;
       const doPush = async () => {
         try {
           updateCloudSyncBadge('☁️ Menyimpan...', 'bg-amber-400/25 text-amber-100 border border-amber-300/40');
-          // Pull first so we never overwrite newer progress from another device
           const getRes = await fetch(FIREBASE_STATS_URL + '?t=' + Date.now());
           const cloudData = getRes.ok ? await getRes.json() : null;
           if (cloudData && typeof cloudData === 'object') {
             studentStats = mergeStudentStats(studentStats, cloudData);
-            try { localStorage.setItem(STORAGE_KEY_STATS, JSON.stringify(studentStats));
-        if (typeof pushStatsToCloud === "function") pushStatsToCloud(); } catch(e) {}
+            try { localStorage.setItem(STORAGE_KEY_STATS, JSON.stringify(studentStats)); } catch(e) {}
           }
+          const { mergedMistakes, mergedFlags } = mergeMistakeAndTanyaAyah(cloudData);
+          const payload = {
+            ...studentStats,
+            _mistakeBank: mergedMistakes,
+            _tanyaAyah: mergedFlags,
+            _updatedAt: new Date().toISOString()
+          };
           const putRes = await fetch(FIREBASE_STATS_URL, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...studentStats, _updatedAt: new Date().toISOString() })
+            body: JSON.stringify(payload)
           });
           if (putRes.ok) {
+            refreshAllCloudViews();
             updateCloudSyncBadge('☁️ Cloud Sinkron', 'bg-emerald-400/25 text-emerald-100 border border-emerald-300/40');
           } else {
             updateCloudSyncBadge('⚠️ Cloud Offline', 'bg-rose-400/25 text-rose-100 border border-rose-300/40');
@@ -36039,30 +36083,32 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
         const res = await fetch(FIREBASE_STATS_URL + '?t=' + Date.now());
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const cloudData = await res.json();
-        const beforeStr = JSON.stringify(studentStats);
         if (cloudData && typeof cloudData === 'object') {
           studentStats = mergeStudentStats(studentStats, cloudData);
           try { localStorage.setItem(STORAGE_KEY_STATS, JSON.stringify(studentStats)); } catch(e) {}
         }
-        // If local had data not yet in cloud (e.g., Lovely's previous quiz on phone), push merged result up!
-        const cloudStr = JSON.stringify(cloudData || {});
-        if (Object.keys(studentStats.setResults || {}).length > 0 || (studentStats.history || []).length > 0) {
-          if (beforeStr !== cloudStr) {
-            await fetch(FIREBASE_STATS_URL, {
-              method: 'PUT',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ ...studentStats, _updatedAt: new Date().toISOString() })
-            });
-          }
+        const { mergedMistakes, mergedFlags } = mergeMistakeAndTanyaAyah(cloudData);
+
+        if (Object.keys(studentStats.setResults || {}).length > 0 || (studentStats.history || []).length > 0 || Object.keys(mergedMistakes).length > 0 || mergedFlags.length > 0) {
+          await fetch(FIREBASE_STATS_URL, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...studentStats,
+              _mistakeBank: mergedMistakes,
+              _tanyaAyah: mergedFlags,
+              _updatedAt: new Date().toISOString()
+            })
+          });
         }
-        if (typeof updateGamificationHeader === 'function') updateGamificationHeader();
-        if (typeof renderAnalytics === 'function') renderAnalytics();
-        if (typeof renderMatrixTable === 'function') renderMatrixTable();
+        refreshAllCloudViews();
         updateCloudSyncBadge('☁️ Cloud Sinkron', 'bg-emerald-400/25 text-emerald-100 border border-emerald-300/40');
         if (showAlert) {
           const totalDone = Object.keys(studentStats.setResults || {}).length;
           const totalHist = (studentStats.history || []).length;
-          alert('Sinkronisasi Cloud Berhasil! ☁️\nPaket terekam: ' + totalDone + ' paket • Riwayat kuis: ' + totalHist + ' kali.');
+          const totalWrong = Object.keys(mergedMistakes).length;
+          const totalFlag = mergedFlags.length;
+          alert('Sinkronisasi Cloud Berhasil! ☁️\nPaket terekam: ' + totalDone + ' paket • Riwayat kuis: ' + totalHist + ' kali\nBank Soal Salah: ' + totalWrong + ' soal • Tanya Ayah: ' + totalFlag + ' soal.');
         }
       } catch (err) {
         updateCloudSyncBadge('⚠️ Mode Offline', 'bg-white/15 text-white/80 border border-white/20');
