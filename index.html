@@ -21,8 +21,45 @@
       --secondary-foreground: #1e293b;
     }
     @media print {
+      @page { size: A4 portrait; margin: 13mm 14mm; }
       .no-print { display: none !important; }
-      body { background: white !important; color: black !important; }
+      body { background: white !important; color: #0f172a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body.clean-printing > *:not(#clean-print-root) { display: none !important; }
+      body.clean-printing #clean-print-root {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: white !important;
+        color: #0f172a !important;
+        font-size: 11pt !important;
+        line-height: 1.55 !important;
+      }
+      /* Hemat tinta: ubah kotak gelap bg-slate-900 menjadi kotak terang berbingkai rapi */
+      #clean-print-root .bg-slate-900 {
+        background: #f8fafc !important;
+        color: #0f172a !important;
+        border: 1.5px solid #94a3b8 !important;
+        box-shadow: none !important;
+      }
+      #clean-print-root .bg-slate-900 * { color: #0f172a !important; }
+      #clean-print-root .bg-white\/10 {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+      }
+      /* Hindari potongan di tengah kotak / tabel / soal */
+      #clean-print-root section,
+      #clean-print-root .rounded-2xl,
+      #clean-print-root .rounded-3xl,
+      #clean-print-root tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      #clean-print-root table { width: 100% !important; border-collapse: collapse !important; font-size: 9.5pt !important; }
+      #clean-print-root th, #clean-print-root td { border: 1px solid #cbd5e1 !important; padding: 6px 8px !important; }
+      #clean-print-root button { display: none !important; }
     }
   
     /* Pecahan Vertikal Ramah Anak (Penyebut & Pembilang Susun Tegak) */
@@ -1655,7 +1692,7 @@
           <span>💡 Dilengkapi: Analogi Sehari-hari, Studi Kasus HOTS, dan Jembatan Keledai (Mnemonic)</span>
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="window.print()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition shadow-xs">
+          <button onclick="printCleanModal('reader')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition shadow-xs">
             🖨️ Cetak Modul
           </button>
           <button onclick="closeModuleReaderModal()" class="px-5 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs transition">
@@ -2988,7 +3025,7 @@
           <span>✨</span>
           <span id="study-sheet-desc">Pelajari setiap soal, kunci jawaban yang benar, serta penjelasan konsepnya secara mendalam.</span>
         </div>
-        <button onclick="window.print()" class="px-3 py-1 rounded-lg bg-white border border-emerald-300 text-emerald-900 font-bold hover:bg-emerald-100 transition shadow-xs text-xs">
+        <button onclick="printCleanModal('study')" class="px-3 py-1 rounded-lg bg-white border border-emerald-300 text-emerald-900 font-bold hover:bg-emerald-100 transition shadow-xs text-xs">
           🖨️ Cetak Lembar Ini
         </button>
       </div>
@@ -35800,6 +35837,63 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       if (lbl) lbl.textContent = readerFontPct + '%';
     }
 
+    
+    function printCleanModal(source) {
+      let title = 'Lembar Belajar Lovely — Kelas 6 SD';
+      let subtitle = 'https://lovelykece.my.id';
+      let contentHtml = '';
+
+      if (source === 'reader') {
+        title = (document.getElementById('reader-modal-title')?.textContent || 'Modul Pembelajaran').trim();
+        subtitle = (document.getElementById('reader-modal-track')?.textContent || 'Modul Mendalam Kelas 6 SD').trim();
+        contentHtml = document.getElementById('reader-modal-body')?.innerHTML || '';
+      } else if (source === 'study') {
+        title = (document.getElementById('study-sheet-title')?.textContent || 'Lembar Soal & Pembahasan').trim();
+        subtitle = 'Lembar Latihan Soal & Kunci Pembahasan';
+        contentHtml = document.getElementById('study-sheet-body')?.innerHTML || '';
+      } else if (source === 'wrong') {
+        title = (document.getElementById('ayah-wrong-modal-title')?.textContent || 'Evaluasi Soal Salah').trim();
+        subtitle = 'Daftar Soal yang Masih Perlu Dipelajari Ulang';
+        contentHtml = document.getElementById('ayah-wrong-modal-body')?.innerHTML || '';
+      }
+
+      if (!contentHtml.trim()) {
+        window.print();
+        return;
+      }
+
+      const root = document.getElementById('clean-print-root');
+      if (!root) { window.print(); return; }
+
+      const todayStr = new Date().toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      root.innerHTML = `
+        <div style="border-bottom: 2.5px solid #1e293b; padding-bottom: 10px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px;">
+          <div>
+            <div style="font-size: 9pt; font-weight: 800; color: #4338ca; text-transform: uppercase; letter-spacing: 0.05em;">📚 LEMBAR BELAJAR LOVELY • KELAS 6 SD (KURIKULUM MERDEKA)</div>
+            <h1 style="font-size: 15pt; font-weight: 800; color: #0f172a; margin: 3px 0 2px 0;">${escapeHtml(title)}</h1>
+            <div style="font-size: 9.5pt; color: #475569;">${escapeHtml(subtitle)}</div>
+          </div>
+          <div style="text-align: right; font-size: 8.5pt; color: #64748b; white-space: nowrap;">
+            <div>Dicetak: ${todayStr}</div>
+            <div style="font-weight: 700; color: #0f172a;">lovelykece.my.id</div>
+          </div>
+        </div>
+        <div class="space-y-4">${contentHtml}</div>
+      `;
+
+      document.body.classList.add('clean-printing');
+      const cleanup = () => {
+        document.body.classList.remove('clean-printing');
+        root.innerHTML = '';
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      setTimeout(() => {
+        window.print();
+        setTimeout(cleanup, 1500);
+      }, 120);
+    }
+
     function adjustReaderFont(delta) {
       if (delta === 0) {
         readerFontPct = 100;
@@ -38818,12 +38912,14 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
         <button onclick="document.getElementById('ayah-wrong-review-modal').classList.add('hidden')" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white font-bold">✕</button>
       </div>
       <div id="ayah-wrong-modal-body" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3 bg-slate-50"></div>
-      <div class="p-3.5 bg-white border-t border-slate-200 flex justify-end shrink-0">
+      <div class="p-3.5 bg-white border-t border-slate-200 flex items-center justify-between gap-2 shrink-0">
+        <button onclick="printCleanModal('wrong')" class="px-4 py-2 rounded-xl text-xs font-extrabold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs transition">🖨️ Cetak / Simpan PDF (A4)</button>
         <button onclick="document.getElementById('ayah-wrong-review-modal').classList.add('hidden')" class="px-5 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-white">Tutup</button>
       </div>
     </div>
   </div>
 
+  <div id="clean-print-root" class="hidden"></div>
 </body>
         </html>
       `);
