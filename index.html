@@ -35881,8 +35881,34 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
         <div class="space-y-4">${contentHtml}</div>
       `;
 
+      const prevDocTitle = document.title;
+      const cleanNamePart = (s) => String(s || '')
+        .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\uFE0F]/gu, '')
+        .replace(/[\\/:*?"<>|•·—–]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      let pdfPrefix = 'Lembar Belajar';
+      let pdfMeta = '';
+      if (source === 'reader') {
+        pdfPrefix = 'Modul';
+        pdfMeta = cleanNamePart((subtitle || '').split('•')[0]);
+      } else if (source === 'study') {
+        pdfPrefix = 'Soal Pembahasan';
+        const studyTrack = (document.getElementById('study-sheet-track')?.textContent || '').trim();
+        pdfMeta = cleanNamePart(studyTrack.split('•')[0]);
+      } else if (source === 'wrong') {
+        pdfPrefix = 'Soal Salah';
+      }
+
+      const cleanTitle = cleanNamePart(title);
+      const nameParts = [pdfPrefix, pdfMeta, cleanTitle].filter((p, idx, arr) => p && arr.indexOf(p) === idx);
+      const pdfFileName = nameParts.join(' - ').slice(0, 110).trim() || prevDocTitle;
+
+      document.title = pdfFileName;
       document.body.classList.add('clean-printing');
       const cleanup = () => {
+        document.title = prevDocTitle;
         document.body.classList.remove('clean-printing');
         root.innerHTML = '';
         window.removeEventListener('afterprint', cleanup);
