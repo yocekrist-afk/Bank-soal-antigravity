@@ -634,8 +634,8 @@
         <div class="flex flex-wrap items-center gap-2">
           <div>
             <button id="btn-fokus-asas1" onclick="activateFokusASAS()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">🎯 Fokus Ujian ASAS Sem 1 (23–27 Nov)</button>
-            <button id="btn-prediksi-bin-asas" onclick="startPrediksiASASBin()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">🔥 Prediksi ASAS B.Ind (Gabungan Bab 3–5 • 30 Soal)</button>
-            <button id="btn-prediksi-pai-asas" onclick="startPrediksiASASPai()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">🕌 Prediksi ASAS PAI (Akhlak & ZISWAF • 30 Soal)</button>
+            <button id="btn-prediksi-ipas-asas" onclick="startPrediksiASASIpas()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">🌍 Prediksi ASAS IPAS (Bab 3 & 4 • 30 Soal)</button>
+            <button id="btn-prediksi-eng-asas" onclick="startPrediksiASASEng()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">🇬🇧 Prediksi ASAS B. Inggris (Unit 3 & 4 • 30 Soal)</button>
             <label class="text-xs font-semibold text-slate-500 mr-1">Semester:</label>
             <select id="curr-semester" onchange="onCurriculumSemesterChange()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800 shadow-xs">
               <option value="ALL">🌟 Semua Semester</option>
@@ -12606,12 +12606,12 @@
     "timeMinutes": 2,
     "question": "Which traditional game uses a rope and jumping movements?",
     "options": [
-      "Jump rope",
       "Congklak",
       "Marbles",
-      "Hide-and-seek"
+      "Hide-and-seek",
+      "Jump rope"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Jump rope uses a rope and players jump over it."
   },
   {
@@ -12627,12 +12627,12 @@
     "timeMinutes": 2,
     "question": "The game engklek is commonly known in English as ....",
     "options": [
-      "Board game",
       "Hopscotch",
       "Video game",
-      "Badminton"
+      "Badminton",
+      "Board game"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Engklek is commonly known as hopscotch."
   },
   {
@@ -12648,12 +12648,12 @@
     "timeMinutes": 2,
     "question": "Which item is commonly used to play marbles?",
     "options": [
-      "A racket",
-      "A smartphone",
+      "A controller",
       "Small glass balls",
-      "A controller"
+      "A racket",
+      "A smartphone"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "Marbles are small glass balls used in the game of kelereng."
   },
   {
@@ -12669,12 +12669,12 @@
     "timeMinutes": 2,
     "question": "Which statement generally describes traditional games?",
     "options": [
-      "They often use simple tools and direct interaction",
       "They always require a computer",
       "They can only be played online",
+      "They often use simple tools and direct interaction",
       "They never involve other players"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Traditional games often use simple tools and involve direct interaction, although practices vary."
   },
   {
@@ -12690,12 +12690,12 @@
     "timeMinutes": 2,
     "question": "Which of the following is an example of a modern digital game?",
     "options": [
-      "Congklak",
       "Engklek",
-      "Mobile game",
-      "Petak umpet"
+      "Petak umpet",
+      "Congklak",
+      "Mobile game"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "A mobile game is played on a mobile device and is an example of a modern digital game."
   },
   {
@@ -12711,12 +12711,12 @@
     "timeMinutes": 2,
     "question": "What device is commonly used to play mobile games?",
     "options": [
-      "Chalk",
       "Smartphone",
-      "Bamboo stilts",
-      "Jump rope"
+      "Jump rope",
+      "Chalk",
+      "Bamboo stilts"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "A smartphone is a device commonly used to play mobile games."
   },
   {
@@ -12732,12 +12732,12 @@
     "timeMinutes": 2,
     "question": "What is an online game?",
     "options": [
-      "A game played through an internet connection",
       "A game played only with marbles",
+      "A game played through an internet connection",
       "A game that always takes place outdoors",
       "A game that never uses a device"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Online games are played through an internet connection."
   },
   {
@@ -12753,12 +12753,12 @@
     "timeMinutes": 2,
     "question": "Which statement about modern games is correct?",
     "options": [
-      "All modern games must be played outdoors",
-      "Some modern games use digital devices",
       "Modern games never have rules",
-      "Modern games cannot be played with friends"
+      "Modern games cannot be played with friends",
+      "Some modern games use digital devices",
+      "All modern games must be played outdoors"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Some modern games use digital devices, and some allow players to interact online."
   },
   {
@@ -12774,12 +12774,12 @@
     "timeMinutes": 2,
     "question": "Which is a possible difference between traditional and modern games?",
     "options": [
-      "Traditional games may use simple tools, while digital modern games may use electronic devices",
+      "Traditional games are always indoors, while modern games are always outdoors",
       "Traditional games always need Wi-Fi, while modern games never do",
       "Traditional games have no players, while modern games always have one",
-      "Traditional games are always indoors, while modern games are always outdoors"
+      "Traditional games may use simple tools, while digital modern games may use electronic devices"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "A general difference is that traditional games often use simple tools, while digital modern games may use electronic devices."
   },
   {
@@ -12795,12 +12795,12 @@
     "timeMinutes": 2,
     "question": "What does the verb 'run' mean in Indonesian?",
     "options": [
-      "Melompat",
       "Berlari",
+      "Melompat",
       "Menangkap",
       "Memutar"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Run means berlari."
   },
   {
@@ -12816,12 +12816,12 @@
     "timeMinutes": 2,
     "question": "What does 'jump' mean?",
     "options": [
-      "Melempar",
       "Menendang",
       "Melompat",
-      "Memilih"
+      "Memilih",
+      "Melempar"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "Jump means melompat."
   },
   {
@@ -12837,12 +12837,12 @@
     "timeMinutes": 2,
     "question": "In a ball game, 'throw the ball' means ....",
     "options": [
+      "Gelindingkan bolanya",
       "Tangkap bolanya",
       "Lempar bolanya",
-      "Tendang bolanya",
-      "Gelindingkan bolanya"
+      "Tendang bolanya"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Throw means melempar, so 'throw the ball' means lempar bolanya."
   },
   {
@@ -12858,12 +12858,12 @@
     "timeMinutes": 2,
     "question": "What is the meaning of 'catch'?",
     "options": [
-      "Menangkap",
       "Berlari",
       "Melompat",
-      "Memilih"
+      "Memilih",
+      "Menangkap"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Catch means menangkap."
   },
   {
@@ -12879,12 +12879,12 @@
     "timeMinutes": 2,
     "question": "Which verb means 'menendang'?",
     "options": [
-      "Roll",
       "Kick",
       "Hop",
-      "Spin"
+      "Spin",
+      "Roll"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Kick means menendang."
   },
   {
@@ -12900,12 +12900,12 @@
     "timeMinutes": 2,
     "question": "What does 'roll the marble' mean?",
     "options": [
-      "Lempar kelereng",
-      "Tangkap kelereng",
+      "Pilih kelereng",
       "Gelindingkan kelereng",
-      "Pilih kelereng"
+      "Lempar kelereng",
+      "Tangkap kelereng"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "Roll means menggelindingkan, so roll the marble means gelindingkan kelereng."
   },
   {
@@ -12921,12 +12921,12 @@
     "timeMinutes": 2,
     "question": "The instruction 'Hop on one foot' means ....",
     "options": [
-      "Melompat dengan satu kaki",
       "Berlari dengan dua kaki",
       "Menangkap dengan dua tangan",
+      "Melompat dengan satu kaki",
       "Memutar badan"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Hop means melompat dengan satu kaki."
   },
   {
@@ -12942,12 +12942,12 @@
     "timeMinutes": 2,
     "question": "What does 'take turns' mean?",
     "options": [
-      "Bermain sendirian",
-      "Bergiliran",
       "Berhenti bermain",
-      "Mengubah aturan"
+      "Mengubah aturan",
+      "Bermain sendirian",
+      "Bergiliran"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Take turns means bergiliran."
   },
   {
@@ -13026,12 +13026,12 @@
     "timeMinutes": 2,
     "question": "Which equipment is used to play badminton?",
     "options": [
-      "Racket",
+      "Marbles",
       "Rope",
       "Chalk",
-      "Marbles"
+      "Racket"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "A racket is used to play badminton."
   },
   {
@@ -13047,12 +13047,12 @@
     "timeMinutes": 2,
     "question": "A 'controller' is commonly used for ....",
     "options": [
-      "Hopscotch",
       "Video games",
+      "Hopscotch",
       "Jump rope",
       "Marbles"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "A controller is a device used to control actions in video games."
   },
   {
@@ -13068,12 +13068,12 @@
     "timeMinutes": 2,
     "question": "What is the English word for 'papan permainan'?",
     "options": [
-      "Net",
       "Ball",
       "Board",
-      "Rope"
+      "Rope",
+      "Net"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "Board means papan. In games, a board is the playing surface for a board game."
   },
   {
@@ -13089,12 +13089,12 @@
     "timeMinutes": 2,
     "question": "Which pair is correctly matched?",
     "options": [
-      "Rope — tali",
+      "Racket — dadu",
       "Dice — raket",
-      "Chalk — bola",
-      "Racket — dadu"
+      "Rope — tali",
+      "Chalk — bola"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Rope means tali. The other pairs do not match the English meanings."
   },
   {
@@ -13111,11 +13111,11 @@
     "question": "Which equipment is commonly used in volleyball?",
     "options": [
       "Marbles",
-      "Net",
       "Chalk",
-      "Controller"
+      "Controller",
+      "Net"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "A net is used in volleyball to separate the two sides of the court."
   },
   {
@@ -13194,12 +13194,12 @@
     "timeMinutes": 2,
     "question": "Which is the best title for instructions about playing engklek?",
     "options": [
-      "How to Play Hopscotch",
-      "My Favourite Food",
       "A Day at School",
-      "The History of My Family"
+      "The History of My Family",
+      "My Favourite Food",
+      "How to Play Hopscotch"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "How to Play Hopscotch clearly tells the reader that the text explains how to play engklek."
   },
   {
@@ -13215,12 +13215,12 @@
     "timeMinutes": 2,
     "question": "Game rules are commonly written using which tense in the material?",
     "options": [
-      "Past continuous",
       "Simple present tense",
-      "Future perfect",
-      "Present perfect continuous"
+      "Present perfect continuous",
+      "Past continuous",
+      "Future perfect"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "The material explains that game rules commonly use the simple present tense to describe rules and routines."
   },
   {
@@ -13236,12 +13236,12 @@
     "timeMinutes": 2,
     "question": "Which sentence uses the simple present tense to explain a game rule?",
     "options": [
-      "Each player throws a small stone.",
       "Each player threw a small stone yesterday.",
+      "Each player throws a small stone.",
       "Each player will throw a small stone tomorrow.",
       "Each player is throwing a stone right now."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Each player throws a small stone describes a general rule using the simple present tense."
   },
   {
@@ -13257,12 +13257,12 @@
     "timeMinutes": 2,
     "question": "Which sentence is an imperative instruction?",
     "options": [
-      "The ball is red.",
-      "Choose a player.",
       "The players are happy.",
-      "The game was fun."
+      "The game was fun.",
+      "Choose a player.",
+      "The ball is red."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Choose a player is an imperative sentence because it gives a direct instruction."
   },
   {
@@ -13278,12 +13278,12 @@
     "timeMinutes": 2,
     "question": "What is the basic form of a positive imperative sentence?",
     "options": [
-      "Verb 1 at the beginning of the sentence",
+      "A question word at the beginning",
       "A past-tense verb after 'was'",
       "A noun at the end of every sentence",
-      "A question word at the beginning"
+      "Verb 1 at the beginning of the sentence"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "A basic imperative sentence starts with the base form of a verb, such as choose, draw, or throw."
   },
   {
@@ -13299,12 +13299,12 @@
     "timeMinutes": 2,
     "question": "What does 'Do not cross the line' mean?",
     "options": [
-      "Silakan melewati garis",
       "Jangan melewati garis",
+      "Silakan melewati garis",
       "Gambarlah sebuah garis",
       "Berdirilah di garis"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Do not is used to make a negative instruction. The sentence means jangan melewati garis."
   },
   {
@@ -13320,12 +13320,12 @@
     "timeMinutes": 2,
     "question": "Which word is commonly used to introduce the first step?",
     "options": [
-      "Finally",
       "After that",
       "First",
-      "Next"
+      "Next",
+      "Finally"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "First is used to introduce the first step in a sequence."
   },
   {
@@ -13341,12 +13341,12 @@
     "timeMinutes": 2,
     "question": "Which sequence word means 'selanjutnya'?",
     "options": [
-      "Next",
+      "Before",
       "First",
-      "Finally",
-      "Before"
+      "Next",
+      "Finally"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Next means selanjutnya and introduces the following step."
   },
   {
@@ -13383,12 +13383,12 @@
     "timeMinutes": 2,
     "question": "Choose the best sequence: ___, draw the squares. ___, stand behind the starting line.",
     "options": [
-      "Finally — First",
       "First — Next",
       "Then — Finally",
-      "After that — First"
+      "After that — First",
+      "Finally — First"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "First introduces the initial action, and Next introduces the action that follows."
   },
   {
@@ -13404,12 +13404,12 @@
     "timeMinutes": 2,
     "question": "What does 'After that' mean?",
     "options": [
-      "Sebelum itu",
-      "Pada akhirnya",
+      "Pertama-tama",
       "Setelah itu",
-      "Pertama-tama"
+      "Sebelum itu",
+      "Pada akhirnya"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "After that means setelah itu and links one step to the next."
   },
   {
@@ -13425,12 +13425,12 @@
     "timeMinutes": 2,
     "question": "Which expression politely asks someone to repeat an instruction?",
     "options": [
-      "Can you repeat the instruction?",
       "I won the game.",
       "The rope is long.",
+      "Can you repeat the instruction?",
       "Finally, stop playing."
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Can you repeat the instruction? is used to ask someone to say the instruction again."
   },
   {
@@ -13446,12 +13446,12 @@
     "timeMinutes": 2,
     "question": "Someone says, 'Wait for your turn.' What should you do?",
     "options": [
-      "Start before everyone",
-      "Wait until it is your turn",
       "Leave the game",
-      "Take another player's turn"
+      "Take another player's turn",
+      "Start before everyone",
+      "Wait until it is your turn"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Wait for your turn means menunggu sampai giliranmu tiba."
   },
   {
@@ -13467,12 +13467,12 @@
     "timeMinutes": 2,
     "question": "What does 'Be careful!' mean?",
     "options": [
-      "Cepatlah!",
-      "Mulailah sekarang!",
       "Hati-hati!",
-      "Pilih pemain!"
+      "Pilih pemain!",
+      "Cepatlah!",
+      "Mulailah sekarang!"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Be careful is a warning that means hati-hati."
   },
   {
@@ -13488,12 +13488,12 @@
     "timeMinutes": 2,
     "question": "Which sentence asks someone to demonstrate how to do something?",
     "options": [
-      "Could you show me how?",
       "I am the winner.",
+      "Could you show me how?",
       "Do not cross the line.",
       "The game starts now."
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Could you show me how? asks another person to demonstrate the method."
   },
   {
@@ -13509,12 +13509,12 @@
     "timeMinutes": 2,
     "question": "A friend says, 'What do I do next?' What information does the friend need?",
     "options": [
-      "The name of the winner",
-      "The next step to perform",
       "The price of the tools",
-      "The history of the game"
+      "The history of the game",
+      "The next step to perform",
+      "The name of the winner"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "The question asks what action should be done after the current step."
   },
   {
@@ -13530,12 +13530,12 @@
     "timeMinutes": 2,
     "question": "Why should game instructions be written in the correct order?",
     "options": [
-      "So players can follow the steps clearly",
+      "So the rules can be confusing",
       "So the game has no tools",
       "So players do not need to read",
-      "So the rules can be confusing"
+      "So players can follow the steps clearly"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "A logical order helps players understand and follow each step without confusion."
   },
   {
@@ -13551,12 +13551,12 @@
     "timeMinutes": 2,
     "question": "What does 'opponent' mean?",
     "options": [
-      "Teman satu tim",
       "Lawan",
+      "Teman satu tim",
       "Pemenang",
       "Penonton"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Opponent means lawan, the person or team playing against you."
   },
   {
@@ -13572,12 +13572,12 @@
     "timeMinutes": 2,
     "question": "What does 'fair play' mean?",
     "options": [
-      "Bermain dengan sportif",
-      "Bermain tanpa aturan",
       "Bermain sendirian",
-      "Bermain dengan curang"
+      "Bermain dengan sportif",
+      "Bermain dengan curang",
+      "Bermain tanpa aturan"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Fair play means playing fairly and respecting the rules and other players."
   },
   {
@@ -14727,12 +14727,12 @@
     "timeMinutes": 2,
     "question": "Taktik perang gerilya yang dipimpin oleh Pangeran Diponegoro dalam Perang Jawa (1825–1830) sangat merepotkan Belanda karena...",
     "options": [
-      "Menggunakan meriam tercanggih dari Eropa",
       "Berpindah-pindah tempat secara cepat memanfaatkan bentang alam goa dan hutan",
+      "Menggunakan meriam tercanggih dari Eropa",
       "Menyerang dari laut dengan armada kapal besar",
       "Hanya bertempur di dalam benteng pertahanan kota"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Taktik gerilya Pangeran Diponegoro memanfaatkan pengenalan medan hutan, lembah, dan goa (seperti Goa Selarong) dengan serangan mendadak lalu menghilang ke pedalaman."
   },
   {
@@ -14748,12 +14748,12 @@
     "timeMinutes": 2,
     "question": "Kearifan lokal sistem pengairan persawahan berundak di Bali yang menjunjung tinggi keadilan pembagian air dan filosofi Tri Hita Karana dinamakan...",
     "options": [
-      "Pranata Mangsa",
       "Subak",
+      "Pranata Mangsa",
       "Sasi",
       "Nyabuk Gunung"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Subak adalah organisasi kemasyarakatan tradisional di Bali yang mengatur irigasi persawahan secara mandiri, adil, dan demokratis yang diakui UNESCO sebagai warisan dunia."
   },
   {
@@ -14895,12 +14895,12 @@
     "timeMinutes": 2,
     "question": "Complete the sentence with the correct past tense verb: 'Yesterday, Lovely and her classmates ... the elephant sanctuary.'",
     "options": [
+      "visited",
       "visit",
       "visits",
-      "visited",
       "visiting"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "The time indicator 'Yesterday' indicates the Simple Past Tense, so we use the regular past verb form (V2) 'visited'."
   },
   {
@@ -17121,12 +17121,12 @@
     "timeMinutes": 2,
     "question": "Tujuan utama kedatangan bangsa-bangsa Eropa ke Nusantara dikenal dengan semboyan 3G, yaitu...",
     "options": [
-      "Gold, Glory, Gospel",
-      "Good, Great, Green",
       "Gold, Guard, Government",
-      "Glory, Growth, Global"
+      "Gold, Glory, Gospel",
+      "Glory, Growth, Global",
+      "Good, Great, Green"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "3G adalah Gold (mencari kekayaan/rempah-rempah), Glory (mencari kejayaan/kekuasaan), dan Gospel (menyebarkan agama)."
   },
   {
@@ -17142,12 +17142,12 @@
     "timeMinutes": 2,
     "question": "Komoditas utama Nusantara yang sangat dicari bangsa Eropa karena harganya sangat mahal di pasar Eropa adalah...",
     "options": [
+      "Gandum dan apel",
       "Batu bara dan minyak bumi",
       "Rempah-rempah (cengkeh, pala, lada)",
-      "Karet sintetis dan plastik",
-      "Gandum dan apel"
+      "Karet sintetis dan plastik"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Rempah-rempah Nusantara (terutama dari Maluku) sangat dibutuhkan bangsa Eropa untuk pengawet makanan dan penghangat tubuh saat musim dingin."
   },
   {
@@ -17165,10 +17165,10 @@
     "options": [
       "Belanda",
       "Inggris",
-      "Portugis",
-      "Jepang"
+      "Jepang",
+      "Portugis"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "Portugis di bawah Alfonso de Albuquerque menaklukkan Malaka (1511) lalu mencapai Maluku (1512), disusul Spanyol, Belanda, dan Inggris."
   },
   {
@@ -17184,12 +17184,12 @@
     "timeMinutes": 2,
     "question": "Kongsi dagang milik Belanda yang didirikan tahun 1602 untuk memonopoli perdagangan rempah-rempah di Indonesia adalah...",
     "options": [
-      "EIC",
       "VOC",
       "PBB",
-      "ASEAN"
+      "ASEAN",
+      "EIC"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "VOC (Vereenigde Oostindische Compagnie) dibentuk Belanda tahun 1602 dan memiliki hak istimewa (hak oktroi) termasuk mencetak uang dan memiliki tentara."
   },
   {
@@ -17227,11 +17227,11 @@
     "question": "Sistem Tanam Paksa (Cultuurstelsel) yang mewajibkan rakyat menanam tanaman ekspor bagi Belanda dicetuskan oleh Gubernur Jenderal...",
     "options": [
       "Herman Willem Daendels",
-      "Johannes van den Bosch",
       "Thomas Stamford Raffles",
+      "Johannes van den Bosch",
       "Cornelis de Houtman"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Johannes van den Bosch menerapkan Tanam Paksa (1830) yang sangat menyengsarakan rakyat, sedangkan Daendels membangun Jalan Raya Pos (Anyer–Panarukan)."
   },
   {
@@ -17247,12 +17247,12 @@
     "timeMinutes": 2,
     "question": "Gubernur Jenderal Inggris yang pernah berkuasa di Indonesia (1811–1816), menerapkan sistem sewa tanah, dan menulis buku \"History of Java\" adalah...",
     "options": [
-      "Thomas Stamford Raffles",
-      "Jan Pieterszoon Coen",
       "Van den Bosch",
-      "Daendels"
+      "Daendels",
+      "Jan Pieterszoon Coen",
+      "Thomas Stamford Raffles"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Thomas Stamford Raffles juga dikenal berjasa merintis Kebun Raya Bogor dan menemukan bunga Rafflesia arnoldii."
   },
   {
@@ -17268,12 +17268,12 @@
     "timeMinutes": 2,
     "question": "Kerja paksa yang sangat kejam pada masa penjajahan Jepang (1942–1945) disebut...",
     "options": [
-      "Kerja Rodi",
       "Romusha",
-      "Tanam Paksa",
-      "Pelayaran Hongi"
+      "Pelayaran Hongi",
+      "Kerja Rodi",
+      "Tanam Paksa"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Kerja paksa masa Belanda disebut Kerja Rodi, sedangkan masa penjajahan Jepang disebut Romusha."
   },
   {
@@ -17289,12 +17289,12 @@
     "timeMinutes": 2,
     "question": "Pangeran Diponegoro memimpin perlawanan besar melawan Belanda dalam Perang Jawa (1825–1830). Penyebab khusus pecahnya perang ini adalah...",
     "options": [
-      "Belanda memasang patok jalan melintasi tanah makam leluhur Pangeran Diponegoro di Tegalrejo tanpa izin",
       "Belanda menutup pelabuhan di Maluku",
+      "Belanda memasang patok jalan melintasi tanah makam leluhur Pangeran Diponegoro di Tegalrejo tanpa izin",
       "Belanda melarang perdagangan di Aceh",
       "Belanda menyerang Benteng Duurstede"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Pemasangan patok pembangunan jalan oleh Belanda di atas tanah makam leluhur Pangeran Diponegoro memicu Perang Diponegoro (Perang Jawa)."
   },
   {
@@ -17310,12 +17310,12 @@
     "timeMinutes": 2,
     "question": "Pahlawan nasional dari Maluku yang memimpin perlawanan merebut Benteng Duurstede dari tangan Belanda pada tahun 1817 adalah...",
     "options": [
-      "Sultan Hasanuddin",
-      "Kapitan Pattimura (Thomas Matulessy)",
       "Tuanku Imam Bonjol",
-      "Pangeran Antasari"
+      "Pangeran Antasari",
+      "Kapitan Pattimura (Thomas Matulessy)",
+      "Sultan Hasanuddin"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Kapitan Pattimura bersama Martha Christina Tiahahu memimpin rakyat Maluku melawan Belanda di Saparua."
   },
   {
@@ -17331,12 +17331,12 @@
     "timeMinutes": 2,
     "question": "Tuanku Imam Bonjol adalah pemimpin perlawanan rakyat Sumatera Barat melawan Belanda yang dikenal dengan sebutan...",
     "options": [
+      "Perang Diponegoro",
       "Perang Puputan",
-      "Perang Padri",
       "Perang Banjar",
-      "Perang Diponegoro"
+      "Perang Padri"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Perang Padri terjadi di Sumatera Barat (1821–1837) dipimpin oleh Tuanku Imam Bonjol."
   },
   {
@@ -17373,12 +17373,12 @@
     "timeMinutes": 2,
     "question": "Pahlawan perempuan pemberani dari Aceh yang terus melanjutkan perang gerilya melawan Belanda setelah gugurnya Teuku Umar adalah...",
     "options": [
-      "R.A. Kartini",
       "Dewi Sartika",
       "Cut Nyak Dien",
-      "Fatmawati"
+      "Fatmawati",
+      "R.A. Kartini"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "Cut Nyak Dien memimpin perang gerilya rakyat Aceh melawan Belanda dengan semangat pantang menyerah."
   },
   {
@@ -17394,12 +17394,12 @@
     "timeMinutes": 2,
     "question": "Mengapa perlawanan rakyat Indonesia sebelum tahun 1908 sering mengalami kegagalan?",
     "options": [
-      "Karena masih bersifat kedaerahan, belum bersatu secara nasional, dan kalah persenjataan",
+      "Karena Belanda tidak punya tentara",
       "Karena rakyat Indonesia tidak punya pemimpin",
-      "Karena bangsa Indonesia tidak mau merdeka",
-      "Karena Belanda tidak punya tentara"
+      "Karena masih bersifat kedaerahan, belum bersatu secara nasional, dan kalah persenjataan",
+      "Karena bangsa Indonesia tidak mau merdeka"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Sebelum 1908 perjuangan masih terpecah per daerah dan bergantung pada satu tokoh kharismatik, sehingga mudah diadu domba Belanda."
   },
   {
@@ -17416,11 +17416,11 @@
     "question": "Organisasi modern pertama yang menandai lahirnya Kebangkitan Nasional pada 20 Mei 1908 adalah...",
     "options": [
       "Sarekat Islam",
-      "Budi Utomo",
       "Indische Partij",
-      "Taman Siswa"
+      "Taman Siswa",
+      "Budi Utomo"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Budi Utomo didirikan dr. Sutomo dkk. pada 20 Mei 1908, mengubah strategi perjuangan dari fisik kedaerahan menjadi organisasi modern."
   },
   {
@@ -17436,12 +17436,12 @@
     "timeMinutes": 2,
     "question": "Ikrar persatuan pemuda Indonesia \"Satu Nusa, Satu Bangsa, Satu Bahasa\" diucapkan pada peristiwa Sumpah Pemuda tanggal...",
     "options": [
-      "17 Agustus 1945",
       "28 Oktober 1928",
       "10 November 1945",
-      "20 Mei 1908"
+      "20 Mei 1908",
+      "17 Agustus 1945"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Sumpah Pemuda diikrarkan pada Kongres Pemuda II tanggal 28 Oktober 1928 di Jakarta."
   },
   {
@@ -17457,12 +17457,12 @@
     "timeMinutes": 2,
     "question": "Salah satu cara mengenang jasa pahlawan yang paling sering kita jumpai di lingkungan sekitar kita adalah...",
     "options": [
+      "Tidak mengikuti upacara bendera",
       "Menggunakan nama pahlawan untuk nama jalan, bandara, gedung, dan mata uang rupiah",
       "Menghapus sejarah dari buku pelajaran",
-      "Melupakan hari peringatan nasional",
-      "Tidak mengikuti upacara bendera"
+      "Melupakan hari peringatan nasional"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Jejak pahlawan di sekitar kita tampak pada nama jalan (Jl. Sudirman, Jl. Diponegoro), bandara (Soekarno-Hatta), monumen, dan gambar di uang rupiah."
   },
   {
@@ -17478,12 +17478,12 @@
     "timeMinutes": 2,
     "question": "Sebagai pelajar kelas 6 SD, cara terbaik meneladani semangat juang para pahlawan di masa sekarang adalah...",
     "options": [
-      "Belajar dengan sungguh-sungguh, disiplin, menjaga persatuan, dan berprestasi",
       "Mengajak teman bertengkar demi kelompok sendiri",
       "Malas belajar karena Indonesia sudah merdeka",
+      "Belajar dengan sungguh-sungguh, disiplin, menjaga persatuan, dan berprestasi",
       "Mengabaikan peraturan sekolah"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Mengisi kemerdekaan bagi pelajar dilakukan dengan giat belajar, berakhlak mulia, cinta tanah air, dan menjaga persatuan."
   },
   {
@@ -17499,12 +17499,12 @@
     "timeMinutes": 2,
     "question": "Pertempuran heroik arek-arek Suroboyo melawan tentara Sekutu yang dipimpin Bung Tomo diperingati setiap 10 November sebagai...",
     "options": [
-      "Hari Pendidikan Nasional",
-      "Hari Pahlawan",
       "Hari Kebangkitan Nasional",
-      "Hari Sumpah Pemuda"
+      "Hari Sumpah Pemuda",
+      "Hari Pendidikan Nasional",
+      "Hari Pahlawan"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Pertempuran 10 November 1945 di Surabaya diperingati sebagai Hari Pahlawan Nasional."
   },
   {
@@ -17562,12 +17562,12 @@
     "timeMinutes": 2,
     "question": "Sistem pengairan sawah secara adil dan gotong royong yang terkenal dari Bali dan diakui UNESCO disebut...",
     "options": [
+      "Mappalette Bola",
       "Sasi",
       "Subak",
-      "Mapalus",
-      "Mappalette Bola"
+      "Mapalus"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Subak adalah sistem irigasi tradisional Bali berbasis filosofi Tri Hita Karana (keharmonisan dengan Tuhan, manusia, dan alam)."
   },
   {
@@ -17583,12 +17583,12 @@
     "timeMinutes": 2,
     "question": "Tradisi \"Sasi\" yang berasal dari Maluku dan Papua merupakan kearifan lokal yang bertujuan untuk...",
     "options": [
-      "Melarang pengambilan hasil laut/hutan sementara waktu agar alam bisa pulih dan lestari",
       "Lomba memasak ikan di pantai",
       "Membangun rumah di atas air",
-      "Memanen hasil hutan sebanyak-banyaknya setiap hari"
+      "Memanen hasil hutan sebanyak-banyaknya setiap hari",
+      "Melarang pengambilan hasil laut/hutan sementara waktu agar alam bisa pulih dan lestari"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Sasi adalah larangan adat memanen sumber daya alam tertentu dalam jangka waktu tertentu demi menjaga kelestarian ekosistem."
   },
   {
@@ -17604,12 +17604,12 @@
     "timeMinutes": 2,
     "question": "Tradisi gotong royong memindahkan rumah panggung bersama-sama oleh masyarakat Bugis-Makassar (Sulawesi Selatan) disebut...",
     "options": [
-      "Subak",
       "Mappalette Bola",
       "Ngaben",
-      "Sekaten"
+      "Sekaten",
+      "Subak"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Mappalette Bola menunjukkan nilai luhur gotong royong dan persatuan yang sangat kuat di masyarakat Bugis."
   },
   {
@@ -17625,12 +17625,12 @@
     "timeMinutes": 2,
     "question": "Tradisi \"Lubuk Larangan\" di Sumatera Barat dan Jambi berfungsi untuk...",
     "options": [
+      "Menjual ikan impor",
       "Melindungi kelestarian ikan di bagian sungai tertentu agar tidak punah",
       "Membangun bendungan listrik",
-      "Melarang warga mandi di sungai",
-      "Menjual ikan impor"
+      "Melarang warga mandi di sungai"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Lubuk Larangan melarang penangkapan ikan di area sungai tertentu hingga waktu panen bersama, menjaga populasi ikan tetap lestari."
   },
   {
@@ -17646,12 +17646,12 @@
     "timeMinutes": 2,
     "question": "Hutan adat yang dijaga ketat oleh masyarakat Kampung Naga (Jawa Barat) atau Suku Baduy disebut \"Leuweung Larangan\". Manfaat utamanya adalah...",
     "options": [
-      "Menjaga sumber mata air, mencegah longsor, dan melestarikan keanekaragaman hayati",
       "Tempat penebangan kayu komersial",
       "Lokasi pembangunan pabrik",
+      "Menjaga sumber mata air, mencegah longsor, dan melestarikan keanekaragaman hayati",
       "Area balapan kendaraan"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Leuweung Larangan/Hutan Lindung Adat adalah bukti kearifan lokal masyarakat dalam menjaga keseimbangan alam dan mencegah bencana."
   },
   {
@@ -17667,12 +17667,12 @@
     "timeMinutes": 2,
     "question": "Rumah panggung tradisional di berbagai daerah Indonesia (seperti Rumah Gadang, Rumah Limas, Rumah Betang) dibuat tinggi dari tanah dengan tujuan kearifan lokal yaitu...",
     "options": [
-      "Menghindari banjir, kelembapan tanah, serta gangguan binatang buas",
-      "Agar lebih sulit dimasuki pemiliknya",
       "Mengikuti tren luar negeri",
-      "Menghabiskan kayu sebanyak mungkin"
+      "Menghabiskan kayu sebanyak mungkin",
+      "Agar lebih sulit dimasuki pemiliknya",
+      "Menghindari banjir, kelembapan tanah, serta gangguan binatang buas"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Arsitektur rumah panggung merupakan adaptasi cerdas nenek moyang terhadap iklim tropis, banjir, dan binatang liar."
   },
   {
@@ -17709,12 +17709,12 @@
     "timeMinutes": 2,
     "question": "Mengapa tradisi dan kearifan lokal masih terus dijaga hingga era modern sekarang?",
     "options": [
-      "Karena mengandung nilai moral luhur, menjaga kelestarian alam, serta menjadi identitas jati diri bangsa",
       "Karena masyarakat takut menggunakan teknologi",
+      "Karena mengandung nilai moral luhur, menjaga kelestarian alam, serta menjadi identitas jati diri bangsa",
       "Karena tradisi tidak boleh dipelajari anak muda",
       "Agar Indonesia terisolasi dari negara lain"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Kearifan lokal tetap relevan karena mengajarkan harmoni dengan alam, kerukunan sosial, dan menjadi ciri khas kebanggaan bangsa."
   },
   {
@@ -17730,12 +17730,12 @@
     "timeMinutes": 2,
     "question": "Salah satu ancaman terbesar yang dapat memudarkan kearifan lokal di era sekarang adalah...",
     "options": [
-      "Banyaknya festival budaya daerah",
-      "Masuknya budaya asing yang tidak disaring sehingga generasi muda melupakan budaya sendiri",
       "Diajarkannya bahasa daerah di sekolah",
-      "Wisatawan yang belajar membatik"
+      "Wisatawan yang belajar membatik",
+      "Masuknya budaya asing yang tidak disaring sehingga generasi muda melupakan budaya sendiri",
+      "Banyaknya festival budaya daerah"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Globalisasi tanpa penyaringan membuat sebagian generasi muda kurang mengenal tradisi lokal jika tidak aktif dilestarikan."
   },
   {
@@ -17751,12 +17751,12 @@
     "timeMinutes": 2,
     "question": "Upaya nyata yang dapat dilakukan siswa kelas 6 SD untuk ikut melestarikan kearifan lokal adalah...",
     "options": [
+      "Hanya menyukai budaya luar negeri",
       "Merasa malu menggunakan pakaian batik",
-      "Mempelajari kesenian daerah, bangga berbahasa daerah, dan mengenalkannya di media positif",
       "Menganggap tradisi lokal kuno dan tidak berguna",
-      "Hanya menyukai budaya luar negeri"
+      "Mempelajari kesenian daerah, bangga berbahasa daerah, dan mengenalkannya di media positif"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Bangga memakai batik, belajar tari/alat musik daerah, dan mempromosikannya secara kreatif menjaga kearifan lokal tetap hidup."
   },
   {
@@ -17772,12 +17772,12 @@
     "timeMinutes": 2,
     "question": "Nilai luhur utama yang hampir selalu ditemukan dalam setiap tradisi lokal di seluruh Indonesia (seperti Sambatan, Mapalus, Ngayah, Marsiadapari) adalah...",
     "options": [
-      "Individualisme",
       "Gotong royong dan kebersamaan",
+      "Individualisme",
       "Persaingan tidak sehat",
       "Sikap acuh tak acuh"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Gotong royong adalah akar budaya bangsa Indonesia yang mempersatukan warga dalam menyelesaikan pekerjaan berat bersama-sama."
   },
   {
@@ -17835,12 +17835,12 @@
     "timeMinutes": 2,
     "question": "Kearifan lokal masyarakat Baduy yang tidak menggunakan bahan kimia (sabun/sampo sintetis) saat mandi di sungai mencerminkan nilai...",
     "options": [
-      "Kepedulian menjaga kemurnian air sungai dari pencemaran",
       "Ketidaktahuan tentang kebersihan",
       "Larangan mandi di sungai",
-      "Penghematan uang belanja"
+      "Penghematan uang belanja",
+      "Kepedulian menjaga kemurnian air sungai dari pencemaran"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Aturan adat Baduy menjaga ekosistem sungai tetap bersih dan bebas dari polusi limbah kimia."
   },
   {
@@ -17856,12 +17856,12 @@
     "timeMinutes": 2,
     "question": "Kearifan lokal dapat dibedakan menjadi dua wujud, yaitu berwujud nyata (tangible) dan tidak berwujud (intangible). Contoh kearifan lokal berwujud NYATA adalah...",
     "options": [
-      "Pepatah dan petuah lisan",
       "Rumah adat, kain batik, dan alat musik angklung",
       "Lagu daerah yang dinyanyikan",
-      "Nilai sopan santun"
+      "Nilai sopan santun",
+      "Pepatah dan petuah lisan"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Tangible (berwujud fisik/benda) contohnya rumah adat, batik, keris, angklung; sedangkan intangible contohnya petuah, bahasa, tata krama."
   },
   {
@@ -17877,12 +17877,12 @@
     "timeMinutes": 2,
     "question": "Selain menjaga budaya, pelestarian kearifan lokal seperti desa wisata adat dan kerajinan batik juga memberikan manfaat di bidang ekonomi, yaitu...",
     "options": [
+      "Mengurangi kunjungan wisatawan",
       "Meningkatkan pendapatan warga lokal melalui pariwisata budaya dan UMKM",
       "Menghilangkan lapangan kerja",
-      "Membuat warga bergantung pada barang impor",
-      "Mengurangi kunjungan wisatawan"
+      "Membuat warga bergantung pada barang impor"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Kearifan lokal menjadi daya tarik pariwisata dan ekonomi kreatif yang menyejahterakan masyarakat setempat."
   },
   {
@@ -17899,11 +17899,11 @@
     "question": "Tradisi \"Pela Gandong\" di Maluku merupakan perjanjian persaudaraan antar-desa meskipun berbeda agama. Nilai luhur utama dari tradisi ini adalah...",
     "options": [
       "Persaingan ekonomi antar-desa",
-      "Toleransi, perdamaian, dan persaudaraan sejati dalam keberagaman",
       "Pembagian wilayah berburu",
+      "Toleransi, perdamaian, dan persaudaraan sejati dalam keberagaman",
       "Sistem perdagangan rempah"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Pela Gandong adalah kearifan lokal Maluku yang mengikat persaudaraan lintas agama untuk saling menjaga dan hidup damai."
   },
   {
@@ -17919,12 +17919,12 @@
     "timeMinutes": 2,
     "question": "Aturan adat yang mengatur tata kehidupan dan kelestarian lingkungan di masyarakat Bali dan Lombok disebut...",
     "options": [
-      "Awig-awig",
-      "Romusha",
       "Oktroi",
-      "Monopoli"
+      "Monopoli",
+      "Romusha",
+      "Awig-awig"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Awig-awig adalah hukum/aturan adat di Bali dan Lombok yang menjaga ketertiban sosial serta kelestarian alam."
   },
   {
@@ -17940,12 +17940,12 @@
     "timeMinutes": 3,
     "question": "Apa dampak negatif jika masyarakat modern mengabaikan nilai-nilai kearifan lokal dalam kehidupan sehari-hari?",
     "options": [
-      "Lingkungan menjadi semakin subur",
       "Menurunnya rasa kebersamaan/gotong royong, memudarnya identitas bangsa, dan meningkatnya kerusakan alam",
-      "Persatuan bangsa menjadi semakin kuat",
-      "Semua tradisi berkembang pesat"
+      "Semua tradisi berkembang pesat",
+      "Lingkungan menjadi semakin subur",
+      "Persatuan bangsa menjadi semakin kuat"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Mengabaikan kearifan lokal memicu sikap individualis, hilangnya jati diri budaya, serta eksploitasi alam berlebihan."
   },
   {
@@ -18004,11 +18004,11 @@
     "question": "Which animal can live BOTH on land and in water?",
     "options": [
       "Giraffe",
-      "Crocodile and frog",
       "Eagle",
-      "Shark"
+      "Shark",
+      "Crocodile and frog"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Crocodiles and frogs can live both on land and in water (amphibious/semi-aquatic)."
   },
   {
@@ -18024,12 +18024,12 @@
     "timeMinutes": 2,
     "question": "An elephant is a very big land animal. It has a long ... and two white ....",
     "options": [
-      "neck - feathers",
       "trunk - tusks",
       "wings - claws",
-      "fins - scales"
+      "fins - scales",
+      "neck - feathers"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Elephant (gajah) has a long trunk (belalai) and two tusks (gading)."
   },
   {
@@ -18066,12 +18066,12 @@
     "timeMinutes": 2,
     "question": "Zebras and tigers have ... on their bodies, while giraffes and cheetahs have ....",
     "options": [
-      "stripes - spots",
       "feathers - scales",
       "wings - fins",
+      "stripes - spots",
       "horns - shells"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Stripes = garis belang (zebra/harimau), Spots = bintik-bintik (jerapah/cheetah)."
   },
   {
@@ -18087,12 +18087,12 @@
     "timeMinutes": 2,
     "question": "\"I live in Australia. I have strong back legs to jump high, and I carry my baby in a pouch.\" What animal am I?",
     "options": [
-      "Penguin",
-      "Kangaroo",
       "Elephant",
-      "Octopus"
+      "Octopus",
+      "Penguin",
+      "Kangaroo"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Kangaroo (kanguru) lives in Australia, jumps high, and has a pouch (kantung) for its baby."
   },
   {
@@ -18130,11 +18130,11 @@
     "question": "Last Sunday, Lovely and her family ... to Ragunan Zoo.",
     "options": [
       "go",
-      "goes",
       "went",
+      "goes",
       "going"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "Because of \"Last Sunday\" (masa lampau), we use Simple Past Tense (Verb 2). Verb 2 of \"go\" is \"went\"."
   },
   {
@@ -18150,12 +18150,12 @@
     "timeMinutes": 2,
     "question": "At the zoo yesterday, we ... a huge Sumatran tiger sleeping under a tree.",
     "options": [
-      "see",
-      "saw",
       "seeing",
-      "sees"
+      "sees",
+      "saw",
+      "see"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "\"Yesterday\" indicates Simple Past Tense. Verb 2 of \"see\" is \"saw\"."
   },
   {
@@ -18171,12 +18171,12 @@
     "timeMinutes": 2,
     "question": "My little brother ... the rabbits with fresh carrots two days ago.",
     "options": [
+      "feeding",
       "feed",
       "feeds",
-      "fed",
-      "feeding"
+      "fed"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "\"Two days ago\" uses Simple Past Tense. Verb 2 of \"feed\" (memberi makan) is \"fed\"."
   },
   {
@@ -18192,12 +18192,12 @@
     "timeMinutes": 2,
     "question": "My father ... many wonderful photos of the colorful parrots last week.",
     "options": [
+      "took",
       "take",
       "takes",
-      "took",
       "taken"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "Verb 2 (Simple Past Tense) of \"take\" is \"took\"."
   },
   {
@@ -18234,12 +18234,12 @@
     "timeMinutes": 2,
     "question": "We ... the lion because it was too dangerous.",
     "options": [
-      "did not touch",
+      "was not touch",
       "did not touched",
-      "do not touched",
-      "was not touch"
+      "did not touch",
+      "do not touched"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "In Simple Past Tense negative sentences, use \"did not (didn't) + Verb 1\" ➔ \"did not touch\"."
   },
   {
@@ -18257,10 +18257,10 @@
     "options": [
       "Do",
       "Does",
-      "Did",
-      "Are"
+      "Are",
+      "Did"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "To ask a Yes/No question in Simple Past Tense, start with \"Did + Subject + Verb 1?\"."
   },
   {
@@ -18276,12 +18276,12 @@
     "timeMinutes": 2,
     "question": "Which set of words are TIME ORDER WORDS used to tell a story in sequence?",
     "options": [
-      "Big, small, tall, short",
       "First, next, then, after that, finally",
       "Lion, tiger, bear, wolf",
-      "Red, blue, green, yellow"
+      "Red, blue, green, yellow",
+      "Big, small, tall, short"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Time order words (First, Next, Then, After that, Finally) connect past events in chronological order."
   },
   {
@@ -18318,12 +18318,12 @@
     "timeMinutes": 3,
     "question": "Arrange these zoo activities into the best order:\n(1) Finally, we went home at 3 p.m.\n(2) First, we bought tickets at the gate.\n(3) After that, we had lunch near the lake.\n(4) Next, we saw elephants and giraffes.",
     "options": [
-      "(2) – (4) – (3) – (1)",
       "(1) – (2) – (3) – (4)",
       "(2) – (3) – (4) – (1)",
+      "(2) – (4) – (3) – (1)",
       "(4) – (2) – (1) – (3)"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Order by time markers: First (2) ➔ Next (4) ➔ After that (3) ➔ Finally (1)."
   },
   {
@@ -18339,12 +18339,12 @@
     "timeMinutes": 2,
     "question": "A lion is known as the \"King of the Jungle\". A male lion has thick hair around its head called a ....",
     "options": [
-      "beak",
-      "mane",
       "trunk",
-      "shell"
+      "shell",
+      "beak",
+      "mane"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Mane (surai) is the thick hair around a male lion's head and neck."
   },
   {
@@ -18360,12 +18360,12 @@
     "timeMinutes": 3,
     "question": "Read the short text: \"Yesterday I went to the zoo. First, I visited the reptile house and saw a giant Komodo dragon. Then, I fed the deer. Finally, I bought a panda keychain.\" What did the writer buy at the zoo?",
     "options": [
-      "A giant Komodo dragon",
-      "Carrots for the deer",
       "A panda keychain",
-      "A reptile book"
+      "A reptile book",
+      "A giant Komodo dragon",
+      "Carrots for the deer"
     ],
-    "correctIndex": 2,
+    "correctIndex": 0,
     "explanation": "From the last sentence: \"Finally, I bought a panda keychain\" (gantungan kunci panda)."
   },
   {
@@ -19431,12 +19431,12 @@
     "timeMinutes": 2,
     "question": "Peristiwa di Eropa tahun 1453 yang menyebabkan jalur perdagangan rempah-rempah ke Asia terputus sehingga bangsa Eropa berlayar ke Nusantara adalah...",
     "options": [
-      "Jatuhnya Konstantinopel ke tangan Turki Utsmani",
       "Berdirinya PBB",
+      "Jatuhnya Konstantinopel ke tangan Turki Utsmani",
       "Perjanjian Linggarjati",
       "Revolusi Industri di Jepang"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Jatuhnya Konstantinopel (1453) menutup akses darat Eropa ke rempah-rempah Asia sehingga Portugis dan Spanyol mencari jalur laut ke Nusantara."
   },
   {
@@ -19452,12 +19452,12 @@
     "timeMinutes": 2,
     "question": "Dalam semboyan 3G (Gold, Glory, Gospel), makna \"Glory\" adalah...",
     "options": [
-      "Mencari kekayaan emas dan rempah",
-      "Mencari kejayaan dengan memperluas wilayah kekuasaan/jajahan",
       "Menyebarkan ajaran agama",
-      "Membangun sekolah di desa"
+      "Membangun sekolah di desa",
+      "Mencari kejayaan dengan memperluas wilayah kekuasaan/jajahan",
+      "Mencari kekayaan emas dan rempah"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Gold = kekayaan, Glory = kejayaan/kekuasaan, Gospel = menyebarkan agama."
   },
   {
@@ -19473,12 +19473,12 @@
     "timeMinutes": 2,
     "question": "Tokoh pelaut Belanda yang pertama kali mendarat di Pelabuhan Banten pada tahun 1596 adalah...",
     "options": [
+      "Sebastian del Cano",
       "Alfonso de Albuquerque",
-      "Cornelis de Houtman",
       "Thomas Stamford Raffles",
-      "Sebastian del Cano"
+      "Cornelis de Houtman"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Cornelis de Houtman memimpin ekspedisi pertama Belanda mendarat di Banten tahun 1596."
   },
   {
@@ -19494,12 +19494,12 @@
     "timeMinutes": 2,
     "question": "Gubernur Jenderal Belanda yang memerintahkan kerja rodi pembangunan Jalan Raya Pos sepanjang 1.000 km dari Anyer hingga Panarukan adalah...",
     "options": [
-      "Johannes van den Bosch",
       "Herman Willem Daendels",
+      "Johannes van den Bosch",
       "Thomas Stamford Raffles",
       "J.P. Coen"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Herman Willem Daendels membangun Jalan Raya Pos (Anyer–Panarukan) dengan kerja paksa (kerja rodi) yang memakan banyak korban jiwa."
   },
   {
@@ -19536,12 +19536,12 @@
     "timeMinutes": 2,
     "question": "Strategi perang yang digunakan Pangeran Diponegoro dengan cara menyerang secara tiba-tiba lalu bersembunyi dan berpindah-pindah tempat disebut...",
     "options": [
+      "Tanam Paksa",
       "Perang Puputan",
       "Perang Gerilya",
-      "Pelayaran Hongi",
-      "Tanam Paksa"
+      "Pelayaran Hongi"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Strategi gerilya Pangeran Diponegoro sangat menyulitkan pasukan Belanda selama 5 tahun (1825–1830)."
   },
   {
@@ -19558,11 +19558,11 @@
     "question": "Perlawanan rakyat Bali hingga titik darah penghabisan yang dipimpin I Gusti Ketut Jelantik untuk mempertahankan hukum Tawan Karang disebut...",
     "options": [
       "Perang Padri",
-      "Perang Puputan Jagaraga",
       "Perang Banjar",
-      "Perang Diponegoro"
+      "Perang Diponegoro",
+      "Perang Puputan Jagaraga"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Puputan berarti perang habis-habisan sampai titik darah penghabisan demi kehormatan."
   },
   {
@@ -19620,12 +19620,12 @@
     "timeMinutes": 2,
     "question": "Perbedaan strategi perjuangan bangsa Indonesia SESUDAH tahun 1908 dibandingkan sebelum tahun 1908 adalah...",
     "options": [
-      "Sesudah 1908 berjuang melalui organisasi modern, pendidikan, dan persatuan nasional",
       "Sesudah 1908 hanya memakai bambu runcing di satu desa saja",
       "Sesudah 1908 berhenti menuntut kemerdekaan",
+      "Sesudah 1908 berjuang melalui organisasi modern, pendidikan, dan persatuan nasional",
       "Sesudah 1908 bersifat kedaerahan"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Sejak berdirinya Budi Utomo (1908), perjuangan beralih menggunakan organisasi modern, diplomasi, dan persatuan nasional."
   },
   {
@@ -19641,12 +19641,12 @@
     "timeMinutes": 2,
     "question": "Tokoh proklamator yang membacakan teks Proklamasi Kemerdekaan Indonesia pada 17 Agustus 1945 adalah...",
     "options": [
-      "Ir. Soekarno didampingi Drs. Moh. Hatta",
-      "Jenderal Sudirman dan Bung Tomo",
       "Ki Hajar Dewantara dan dr. Sutomo",
-      "Pangeran Diponegoro dan Pattimura"
+      "Pangeran Diponegoro dan Pattimura",
+      "Jenderal Sudirman dan Bung Tomo",
+      "Ir. Soekarno didampingi Drs. Moh. Hatta"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Ir. Soekarno membacakan teks Proklamasi didampingi Drs. Moh. Hatta di Jalan Pegangsaan Timur No. 56 Jakarta."
   },
   {
@@ -19662,12 +19662,12 @@
     "timeMinutes": 2,
     "question": "Penamaan Bandara Internasional Soekarno-Hatta dan Bandara Sultan Hasanuddin bertujuan untuk...",
     "options": [
-      "Mempersulit penumpang pesawat",
       "Mengenang dan menghormati jasa besar para pahlawan nasional",
-      "Meniru nama bandara negara lain",
-      "Mengganti sejarah kemerdekaan"
+      "Mengganti sejarah kemerdekaan",
+      "Mempersulit penumpang pesawat",
+      "Meniru nama bandara negara lain"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "Mengabadikan nama pahlawan pada fasilitas umum adalah bentuk penghormatan agar generasi penerus selalu mengingat jasa mereka."
   },
   {
@@ -19684,11 +19684,11 @@
     "question": "Semboyan Ki Hajar Dewantara \"Tut Wuri Handayani\" yang menjadi logo Kementerian Pendidikan Indonesia memiliki arti...",
     "options": [
       "Di depan memberi teladan",
-      "Di tengah membangun semangat",
       "Di belakang memberi dorongan/dukungan",
+      "Di tengah membangun semangat",
       "Maju terus pantang mundur"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "Tut Wuri Handayani artinya dari belakang seorang pendidik memberikan dorongan dan arahan agar siswa mandiri."
   },
   {
@@ -19704,12 +19704,12 @@
     "timeMinutes": 2,
     "question": "Pelayaran bersenjata VOC di perairan Maluku untuk memusnahkan pohon rempah-rempah milik rakyat agar harga tetap tinggi disebut...",
     "options": [
-      "Pelayaran Hongi",
-      "Romusha",
       "Landrent",
-      "Tawan Karang"
+      "Tawan Karang",
+      "Pelayaran Hongi",
+      "Romusha"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Pelayaran Hongi dan hak ekstirpasi (penebangan pohon rempah) dilakukan VOC untuk mempertahankan monopoli perdagangan di Maluku."
   },
   {
@@ -19725,12 +19725,12 @@
     "timeMinutes": 3,
     "question": "Nilai kepahlawanan manakah yang paling tepat diterapkan ketika tim kelasmu mengalami kekalahan dalam lomba cerdas cermat?",
     "options": [
+      "Mengejek tim pemenang",
       "Menyalahkan satu anggota tim di depan kelas",
-      "Tetap kompak, mengevaluasi kekurangan, dan berlatih lebih giat dengan semangat pantang menyerah",
       "Berhenti belajar dan tidak mau ikut lomba lagi",
-      "Mengejek tim pemenang"
+      "Tetap kompak, mengevaluasi kekurangan, dan berlatih lebih giat dengan semangat pantang menyerah"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Sikap pantang menyerah, sportif, dan menjaga persatuan tim adalah teladan nyata semangat juang para pahlawan."
   },
   {
@@ -19767,12 +19767,12 @@
     "timeMinutes": 2,
     "question": "Sistem irigasi Subak di Bali dijalankan berdasarkan filosofi luhur \"Tri Hita Karana\", yaitu keharmonisan hubungan manusia dengan...",
     "options": [
-      "Tuhan, sesama manusia, dan alam lingkungan",
-      "Uang, jabatan, dan kekuasaan",
       "Pabrik, mesin, dan kendaraan",
-      "Pasar, pelabuhan, dan bank"
+      "Pasar, pelabuhan, dan bank",
+      "Tuhan, sesama manusia, dan alam lingkungan",
+      "Uang, jabatan, dan kekuasaan"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Tri Hita Karana adalah tiga penyebab kebahagiaan: harmonis dengan Tuhan (Parahyangan), sesama manusia (Pawongan), dan alam (Palemahan)."
   },
   {
@@ -19788,12 +19788,12 @@
     "timeMinutes": 2,
     "question": "Tradisi gotong royong membangun rumah atau membantu hajatan tetangga di masyarakat Jawa disebut...",
     "options": [
-      "Sambatan",
+      "Pela Gandong",
       "Sasi",
       "Subak",
-      "Pela Gandong"
+      "Sambatan"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Sambatan (Jawa), Mapalus (Minahasa), Ngayah (Bali), dan Marsiadapari (Batak) adalah ragam tradisi gotong royong Indonesia."
   },
   {
@@ -19851,12 +19851,12 @@
     "timeMinutes": 2,
     "question": "Rumah adat Honai dari Papua berbentuk bulat dengan atap jerami tebal dan tanpa jendela besar. Bentuk arsitektur ini merupakan kearifan lokal untuk...",
     "options": [
-      "Menahan hawa dingin pegunungan Papua agar bagian dalam rumah tetap hangat",
+      "Meniru bangunan Eropa",
       "Menghindari panas pantai",
-      "Menampung kendaraan besar",
-      "Meniru bangunan Eropa"
+      "Menahan hawa dingin pegunungan Papua agar bagian dalam rumah tetap hangat",
+      "Menampung kendaraan besar"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Honai dirancang cerdas menyesuaikan suhu dingin pegunungan tengah Papua agar kehangatan di dalam rumah terjaga."
   },
   {
@@ -19873,11 +19873,11 @@
     "question": "Mengapa tradisi \"Sasi\" di Maluku dan \"Lubuk Larangan\" di Sumatera Barat sangat relevan dengan masalah lingkungan saat ini?",
     "options": [
       "Karena melarang penggunaan kapal modern",
-      "Karena keduanya mencegah eksploitasi berlebihan sehingga populasi ikan dan sumber daya alam tetap lestari",
       "Karena membuat harga ikan menjadi sangat mahal",
-      "Karena melarang masyarakat makan ikan selamanya"
+      "Karena melarang masyarakat makan ikan selamanya",
+      "Karena keduanya mencegah eksploitasi berlebihan sehingga populasi ikan dan sumber daya alam tetap lestari"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Keduanya memberi waktu bagi alam untuk beregenerasi (berkembang biak) sebelum dipanen secara bijaksana."
   },
   {
@@ -19914,12 +19914,12 @@
     "timeMinutes": 2,
     "question": "Tradisi \"Marsiadapari\" dari masyarakat Batak (Sumatera Utara) merupakan bentuk kearifan lokal berupa...",
     "options": [
+      "Upacara panen di Papua",
       "Saling membantu bergiliran mengerjakan sawah/ladang bersama-sama",
       "Lomba perahu di laut",
-      "Sistem pengairan sawah di Bali",
-      "Upacara panen di Papua"
+      "Sistem pengairan sawah di Bali"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Marsiadapari adalah tradisi tolong-menolong bergantian di ladang/sawah masyarakat Batak."
   },
   {
@@ -19935,12 +19935,12 @@
     "timeMinutes": 2,
     "question": "Cara kreatif yang dapat dilakukan generasi muda zaman sekarang untuk melestarikan kearifan lokal adalah...",
     "options": [
-      "Membuat konten video edukasi tentang batik, kuliner, dan cerita rakyat daerahnya di media sosial",
       "Menertawakan logat bahasa daerah teman",
       "Hanya membeli produk bermerek luar negeri",
+      "Membuat konten video edukasi tentang batik, kuliner, dan cerita rakyat daerahnya di media sosial",
       "Melupakan lagu-lagu daerah"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Memanfaatkan teknologi digital untuk mempromosikan budaya daerah membuat kearifan lokal dikenal luas dan dicintai generasi muda."
   },
   {
@@ -19956,12 +19956,12 @@
     "timeMinutes": 2,
     "question": "Saat melihat pertunjukan kesenian dari daerah lain yang belum pernah kamu lihat sebelumnya, sikap yang tepat adalah...",
     "options": [
-      "Menontonnya dengan menghargai dan ingin tahu maknanya",
-      "Meninggalkan tempat sambil mengejek",
       "Mengatakan kesenian daerah sendiri jauh lebih bagus",
-      "Membuat keributan agar pertunjukan berhenti"
+      "Membuat keributan agar pertunjukan berhenti",
+      "Meninggalkan tempat sambil mengejek",
+      "Menontonnya dengan menghargai dan ingin tahu maknanya"
     ],
-    "correctIndex": 0,
+    "correctIndex": 3,
     "explanation": "Menghargai kesenian daerah lain adalah wujud sikap toleransi budaya dan persatuan bangsa."
   },
   {
@@ -19977,12 +19977,12 @@
     "timeMinutes": 2,
     "question": "Kain tradisional Indonesia yang telah diakui UNESCO sebagai Warisan Budaya Takbenda Dunia sejak 2 Oktober 2009 adalah...",
     "options": [
-      "Kain Sutra Eropa",
       "Batik Indonesia",
-      "Kain Wol Australia",
-      "Kain Denim"
+      "Kain Denim",
+      "Kain Sutra Eropa",
+      "Kain Wol Australia"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "UNESCO menetapkan Batik Indonesia sebagai Warisan Kemanusiaan untuk Budaya Lisan dan Nonbendawi pada 2 Oktober 2009 (diperingati sebagai Hari Batik Nasional)."
   },
   {
@@ -19998,12 +19998,12 @@
     "timeMinutes": 3,
     "question": "Persamaan nilai luhur antara tradisi \"Subak\" (Bali), \"Sasi\" (Maluku), dan \"Leuweung Larangan\" (Baduy) adalah...",
     "options": [
-      "Ketiganya berfokus pada pelestarian alam dan keseimbangan ekosistem secara berkelanjutan",
       "Ketiganya hanya dilakukan di pantai",
+      "Ketiganya berfokus pada pelestarian alam dan keseimbangan ekosistem secara berkelanjutan",
       "Ketiganya merupakan tarian perang",
       "Ketiganya berasal dari satu provinsi yang sama"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "Meski berasal dari daerah berbeda, ketiganya sama-sama mengajarkan kebijaksanaan menjaga kelestarian alam."
   },
   {
@@ -20019,12 +20019,12 @@
     "timeMinutes": 2,
     "question": "Desa Wisata Penglipuran di Bali terkenal sangat bersih dan lestari hingga mendunia karena masyarakatnya patuh pada aturan adat setempat. Hal ini membuktikan bahwa kearifan lokal mampu...",
     "options": [
-      "Meningkatkan kesejahteraan ekonomi warga sekaligus menjaga kelestarian lingkungan",
-      "Membuat desa menjadi sepi pengunjung",
       "Menghambat pembangunan sekolah",
-      "Menghilangkan budaya lokal"
+      "Menghilangkan budaya lokal",
+      "Meningkatkan kesejahteraan ekonomi warga sekaligus menjaga kelestarian lingkungan",
+      "Membuat desa menjadi sepi pengunjung"
     ],
-    "correctIndex": 0,
+    "correctIndex": 2,
     "explanation": "Kearifan lokal yang dijaga dengan baik menciptakan lingkungan lestari sekaligus menggerakkan ekonomi pariwisata."
   },
   {
@@ -20040,12 +20040,12 @@
     "timeMinutes": 2,
     "question": "Sikap menganggap suku dan budaya daerah sendiri paling unggul serta merendahkan budaya daerah lain disebut... dan harus kita hindari.",
     "options": [
+      "Nasionalisme",
       "Toleransi",
-      "Etnosentrisme / Suku-isme berlebihan",
       "Gotong royong",
-      "Nasionalisme"
+      "Etnosentrisme / Suku-isme berlebihan"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Etnosentrisme (menganggap budaya sendiri paling hebat dan merendahkan suku lain) dapat memecah belah persatuan bangsa."
   },
   {
@@ -20062,11 +20062,11 @@
     "question": "Snakes, crocodiles, and Komodo dragons have dry scaly skin and lay eggs. They belong to the ... group.",
     "options": [
       "mammals",
-      "birds",
       "reptiles",
+      "birds",
       "fish"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "Snakes, crocodiles, and Komodo dragons are reptiles."
   },
   {
@@ -20082,12 +20082,12 @@
     "timeMinutes": 2,
     "question": "Although a whale and a dolphin live in the ocean, they breathe with lungs and give birth to live babies. So they are classified as...",
     "options": [
-      "fish",
-      "mammals",
       "reptiles",
-      "amphibians"
+      "amphibians",
+      "mammals",
+      "fish"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Whales and dolphins are water mammals, not fish, because they breathe air with lungs and nurse their babies."
   },
   {
@@ -20103,12 +20103,12 @@
     "timeMinutes": 2,
     "question": "A turtle has a hard ... on its back to protect its soft body from danger.",
     "options": [
+      "beak",
       "mane",
-      "shell",
       "trunk",
-      "beak"
+      "shell"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Shell = tempurung/cangkang keras pada kura-kura."
   },
   {
@@ -20166,12 +20166,12 @@
     "timeMinutes": 2,
     "question": "Last Saturday, we ... the safari park and ... an elephant ride.",
     "options": [
+      "visits - has",
       "visit - have",
       "visited - had",
-      "visiting - having",
-      "visits - has"
+      "visiting - having"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Simple Past Tense: visit ➔ visited (regular), have ➔ had (irregular)."
   },
   {
@@ -20188,11 +20188,11 @@
     "question": "After walking around the zoo, we were hungry, so we ... sandwiches and ... orange juice.",
     "options": [
       "eat - drink",
-      "ate - drank",
       "eaten - drunk",
-      "eating - drinking"
+      "eating - drinking",
+      "ate - drank"
     ],
-    "correctIndex": 1,
+    "correctIndex": 3,
     "explanation": "Past tense (Verb 2) of eat is \"ate\", and Verb 2 of drink is \"drank\"."
   },
   {
@@ -20208,12 +20208,12 @@
     "timeMinutes": 2,
     "question": "\"What ... you ... at the zoo yesterday?\" \"I saw three giant pandas!\"",
     "options": [
-      "do - saw",
       "did - see",
       "did - saw",
-      "were - see"
+      "were - see",
+      "do - saw"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "In Simple Past Tense questions, use \"did + Subject + Verb 1\" ➔ \"What did you see...?\"."
   },
   {
@@ -20229,12 +20229,12 @@
     "timeMinutes": 2,
     "question": "My sister ... afraid of the snakes, so she ... enter the reptile house.",
     "options": [
+      "was - did not entered",
       "was - did not",
       "were - do not",
-      "is - did not",
-      "was - did not entered"
+      "is - did not"
     ],
-    "correctIndex": 0,
+    "correctIndex": 1,
     "explanation": "For singular subject \"My sister\" in past tense, use \"was\", and negative past tense uses \"did not + Verb 1\" (enter)."
   },
   {
@@ -20251,11 +20251,11 @@
     "question": "Which sentence uses Simple Past Tense CORRECTLY?",
     "options": [
       "Yesterday we goed to the zoo and seed many monkeys.",
-      "Yesterday we went to the zoo and saw many monkeys.",
       "Yesterday we go to the zoo and see many monkeys.",
+      "Yesterday we went to the zoo and saw many monkeys.",
       "Yesterday we going to the zoo and seeing many monkeys."
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "\"Go\" and \"see\" are irregular verbs: their Verb 2 forms are \"went\" and \"saw\"."
   },
   {
@@ -20271,12 +20271,12 @@
     "timeMinutes": 2,
     "question": "Which time order word is best used to introduce the LAST activity in a recount story?",
     "options": [
-      "First",
       "Next",
-      "Finally",
-      "Before"
+      "Before",
+      "First",
+      "Finally"
     ],
-    "correctIndex": 2,
+    "correctIndex": 3,
     "explanation": "\"Finally\" (akhirnya) is used to mark the final event in a sequence."
   },
   {
@@ -20292,12 +20292,12 @@
     "timeMinutes": 2,
     "question": "\"First, we entered the zoo gate. ..., we visited the elephant cage. After that, we had lunch. Finally, we went home.\" Which word best fills the blank?",
     "options": [
-      "Finally",
       "Next",
-      "Last year",
-      "Because"
+      "Because",
+      "Finally",
+      "Last year"
     ],
-    "correctIndex": 1,
+    "correctIndex": 0,
     "explanation": "\"Next\" (selanjutnya) naturally follows \"First\" in chronological order."
   },
   {
@@ -20314,11 +20314,11 @@
     "question": "Read the text: \"Last Sunday, Rani went to the zoo. First, she saw tall giraffes eating leaves. Next, she watched a funny orangutan swinging on a rope. Then, she fed the rabbits. Finally, she took a photo near the zoo statue.\" Which animal did Rani feed?",
     "options": [
       "The giraffes",
-      "The orangutan",
       "The rabbits",
+      "The orangutan",
       "The lions"
     ],
-    "correctIndex": 2,
+    "correctIndex": 1,
     "explanation": "From the text: \"Then, she fed the rabbits.\""
   },
   {
@@ -20334,12 +20334,12 @@
     "timeMinutes": 2,
     "question": "A peacock is a very beautiful bird. It has colorful ... that can open like a big fan.",
     "options": [
-      "scales",
-      "feathers",
       "tusks",
-      "fins"
+      "fins",
+      "feathers",
+      "scales"
     ],
-    "correctIndex": 1,
+    "correctIndex": 2,
     "explanation": "Peacock (burung merak) has colorful feathers (bulu-bulu indah)."
   },
   {
@@ -31597,6 +31597,1266 @@
     ],
     "correctIndex": 0,
     "explanation": "Hanya Zakat yang wajib (dengan syarat nisab/haul dan 8 mustahik), sedangkan Infaq, Sedekah, dan Wakaf bersifat sunah tanpa nisab/haul."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-01",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Kedatangan Bangsa Asing (3G)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kedatangan bangsa-bangsa Eropa ke Nusantara pada abad ke-16 didorong oleh semboyan 3G. Pasangan makna 3G yang TEPAT adalah ....",
+    "options": [
+      "Gold = mencari kekayaan/rempah; Glory = mencari kejayaan/wilayah jajahan; Gospel = menyebarkan agama",
+      "Gold = kekuasaan; Glory = agama; Gospel = rempah",
+      "Gold = kerja paksa; Glory = sewa tanah; Gospel = tanam paksa",
+      "Gold = perdagangan bebas; Glory = persatuan; Gospel = kemerdekaan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Gold (kekayaan/rempah), Glory (kejayaan/kekuasaan), dan Gospel (penyebaran agama)."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-02",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Kronologi Bangsa Asing",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan daftar bangsa asing berikut!\n1) Belanda (VOC)\n2) Portugis\n3) Jepang\n4) Inggris\n\nUrutan kedatangan bangsa asing yang pernah menguasai wilayah Indonesia dari yang PALING AWAL hingga PALING AKHIR adalah ....",
+    "options": [
+      "1 – 2 – 3 – 4",
+      "2 – 1 – 4 – 3",
+      "2 – 4 – 1 – 3",
+      "4 – 2 – 1 – 3"
+    ],
+    "correctIndex": 1,
+    "explanation": "Portugis tiba 1511/1512, disusul Belanda (1596/VOC 1602), Inggris (1811–1816), lalu Jepang (1942–1945)."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-03",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Kebijakan Penjajah",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan pasangan tokoh penjajah dan kebijakannya berikut!\n1) Johannes van den Bosch -> Tanam Paksa (Cultuurstelsel)\n2) Herman Willem Daendels -> Kerja Rodi Jalan Raya Pos Anyer–Panarukan\n3) Thomas Stamford Raffles -> Pelayaran Hongi di Maluku\n4) Jepang -> Kerja Paksa Romusha\n\nPasangan yang TEPAT ditunjukkan oleh nomor ....",
+    "options": [
+      "1, 3, dan 4",
+      "1, 2, dan 3",
+      "1, 2, dan 4",
+      "2, 3, dan 4"
+    ],
+    "correctIndex": 2,
+    "explanation": "Nomor (3) salah karena Pelayaran Hongi adalah kebijakan VOC Belanda, sedangkan Raffles menerapkan sistem sewa tanah (Landrent) dan menulis History of Java."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-04",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Politik Devide et Impera",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Belanda sering berhasil menaklukkan kerajaan-kerajaan besar di Nusantara dengan cara mengadu domba pihak yang sedang berselisih di dalam kerajaan. Politik licik tersebut dikenal dengan istilah ....",
+    "options": [
+      "Cultuurstelsel",
+      "Politik Etis",
+      "Landrent",
+      "Devide et Impera"
+    ],
+    "correctIndex": 3,
+    "explanation": "Devide et Impera berarti pecah belah lalu kuasai (politik adu domba)."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-05",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Perang Diponegoro",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Penyebab khusus pecahnya Perang Jawa (1825–1830) yang dipimpin oleh Pangeran Diponegoro adalah ....",
+    "options": [
+      "Belanda memasang patok pembangunan jalan melintasi tanah makam leluhur Pangeran Diponegoro di Tegalrejo tanpa izin",
+      "Belanda membubarkan sekolah Taman Siswa",
+      "Jepang menerapkan kerja paksa Romusha",
+      "Belanda menutup pelabuhan Makassar"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pemasangan patok jalan di tanah makam leluhur Pangeran Diponegoro di Tegalrejo memicu kemarahan dan Perang Diponegoro."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-06",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Pasangan Pahlawan & Daerah",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan pasangan pahlawan dan daerah perlawanannya!\n1) Kapitan Pattimura -> Maluku (Benteng Duurstede)\n2) Tuanku Imam Bonjol -> Sumatera Barat (Perang Padri)\n3) Sultan Hasanuddin -> Aceh (Perang Aceh)\n4) Pangeran Antasari -> Kalimantan Selatan (Perang Banjar)\n\nPasangan yang TEPAT ditunjukkan oleh nomor ....",
+    "options": [
+      "1, 3, dan 4",
+      "1, 2, dan 4",
+      "1, 2, dan 3",
+      "2, 3, dan 4"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sultan Hasanuddin berasal dari Kerajaan Gowa-Tallo, Makassar (Sulawesi Selatan), bukan Aceh. Pemimpin Perang Aceh adalah Cut Nyak Dien & Teuku Umar."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-07",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Julukan Pahlawan",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C1",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Karena kegigihan dan keberaniannya menentang monopoli VOC di Makassar, Belanda menjuluki Sultan Hasanuddin sebagai ....",
+    "options": [
+      "Bapak Pendidikan Nasional",
+      "Singa dari Sumatera",
+      "Ayam Jantan dari Timur",
+      "Pahlawan Proklamator"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sultan Hasanuddin dijuluki \"De Haantjes van Het Oosten\" (Ayam Jantan dari Timur)."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-08",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Pahlawan Perempuan",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dua pahlawan perempuan pemberani yang langsung turun memimpin perlawanan bersenjata melawan Belanda di Aceh dan Maluku adalah ....",
+    "options": [
+      "Dewi Sartika dan Rasuna Said",
+      "Cut Meutia dan Ibu Sud",
+      "R.A. Kartini dan Fatmawati",
+      "Cut Nyak Dien dan Martha Christina Tiahahu"
+    ],
+    "correctIndex": 3,
+    "explanation": "Cut Nyak Dien memimpin gerilya di Aceh, sedangkan Martha Christina Tiahahu bertempur bersama Kapitan Pattimura di Maluku."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-09",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Perjuangan Sebelum vs Sesudah 1908",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perbedaan paling mendasar antara perjuangan bangsa Indonesia SEBELUM tahun 1908 dan SESUDAH tahun 1908 adalah ....",
+    "options": [
+      "sebelum 1908 bersifat kedaerahan dan mengandalkan satu tokoh; sesudah 1908 bersifat nasional melalui organisasi modern seperti Budi Utomo",
+      "tidak ada perbedaan strategi sama sekali",
+      "sebelum 1908 sudah bersatu se-Indonesia; sesudah 1908 bersifat kedaerahan",
+      "sesudah 1908 bangsa Indonesia berhenti melawan penjajah"
+    ],
+    "correctIndex": 0,
+    "explanation": "Berdirinya Budi Utomo (20 Mei 1908) menandai era Kebangkitan Nasional dengan perjuangan organisasi modern dan persatuan nasional."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-10",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Tonggak Sejarah Persatuan",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pasangan tanggal bersejarah dan peristiwanya yang BENAR adalah ....",
+    "options": [
+      "20 Mei 1908 = Sumpah Pemuda; 28 Oktober 1928 = Budi Utomo",
+      "20 Mei 1908 = Kebangkitan Nasional (Budi Utomo); 28 Oktober 1928 = Sumpah Pemuda; 10 November 1945 = Hari Pahlawan (Surabaya)",
+      "10 November 1945 = Proklamasi Kemerdekaan",
+      "17 Agustus 1945 = Perang Diponegoro"
+    ],
+    "correctIndex": 1,
+    "explanation": "20 Mei 1908 (Budi Utomo), 28 Oktober 1928 (Sumpah Pemuda), 17 Agustus 1945 (Proklamasi), 10 November 1945 (Pertempuran Surabaya / Hari Pahlawan)."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-11",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Semboyan Ki Hajar Dewantara",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Ki Hajar Dewantara mendirikan Taman Siswa dan mewariskan semboyan pendidikan. Arti dari \"Ing Ngarsa Sung Tulada\" dan \"Tut Wuri Handayani\" secara berurutan adalah ....",
+    "options": [
+      "di tengah membangun semangat — di depan memberi perintah",
+      "bersatu kita teguh — bercerai kita runtuh",
+      "di depan memberi teladan — di belakang memberi dorongan",
+      "di belakang memberi dorongan — di depan memberi teladan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ing Ngarsa Sung Tulada = di depan memberi teladan; Ing Madya Mangun Karsa = di tengah membangun semangat; Tut Wuri Handayani = di belakang memberi dorongan."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-12",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Jejak Pahlawan di Sekitar Kita",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan hal-hal berikut!\n1) Nama jalan protokol seperti Jl. Jenderal Sudirman dan Jl. Diponegoro.\n2) Nama bandara seperti Bandara Soekarno-Hatta dan Bandara Pattimura.\n3) Gambar pahlawan pada pecahan uang kertas rupiah.\n4) Nama merek makanan cepat saji luar negeri.\n\nYang termasuk JEJAK PAHLAWAN di sekitar kita ditunjukkan oleh nomor ....",
+    "options": [
+      "1, 3, dan 4",
+      "1, 2, dan 4",
+      "2, 3, dan 4",
+      "1, 2, dan 3"
+    ],
+    "correctIndex": 3,
+    "explanation": "Nama jalan, bandara, monumen, museum, dan gambar uang rupiah adalah jejak penghormatan terhadap pahlawan nasional."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-13",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Meneladani Pahlawan Masa Kini",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Raka melihat temannya patah semangat karena kalah dalam lomba sains tingkat kecamatan. Sikap meneladani semangat pahlawan yang tepat dilakukan Raka adalah ....",
+    "options": [
+      "menyemangatinya agar pantang menyerah, mengevaluasi kekurangan, dan giat berlatih lagi bersama",
+      "mengejeknya karena kalah",
+      "menyuruhnya berhenti belajar sains",
+      "membiarkannya sendirian"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pantang menyerah, saling mendukung, dan terus belajar adalah cara pelajar meneladani perjuangan para pahlawan."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-14",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Mengapa Rempah Dicari Eropa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Alasan utama rempah-rempah Nusantara (cengkih, pala, lada) sangat berharga di Eropa pada abad ke-15 hingga 16 adalah ....",
+    "options": [
+      "hanya digunakan sebagai mainan anak-anak",
+      "sangat dibutuhkan sebagai pengawet makanan, obat-obatan, dan penghangat tubuh saat musim dingin",
+      "mudah tumbuh di salju Eropa",
+      "tidak memiliki aroma maupun rasa"
+    ],
+    "correctIndex": 1,
+    "explanation": "Di Eropa yang beriklim dingin, rempah-rempah tropis sangat penting untuk mengawetkan daging, bumbu, dan obat."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-15",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Perang Puputan Bali",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perlawanan habis-habisan hingga titik darah penghabisan oleh rakyat Bali di bawah pimpinan I Gusti Ketut Jelantik untuk mempertahankan hak Tawan Karang disebut ....",
+    "options": [
+      "Perang Padri",
+      "Perang Banjar",
+      "Perang Puputan Jagaraga",
+      "Perang Gerilya"
+    ],
+    "correctIndex": 2,
+    "explanation": "Puputan berarti berjuang habis-habisan sampai titik darah penghabisan demi kehormatan."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-16",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Wujud Kearifan Lokal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kearifan lokal memiliki wujud nyata (tangible) dan tidak berwujud (intangible). Pasangan contoh yang TEPAT adalah ....",
+    "options": [
+      "nyata: petuah dan bahasa daerah; tidak berwujud: rumah adat dan batik",
+      "nyata: lagu daerah; tidak berwujud: keris",
+      "semua kearifan lokal hanya berupa bangunan",
+      "nyata: rumah adat, kain batik, dan angklung; tidak berwujud: hukum adat (awig-awig), pepatah, dan nilai gotong royong"
+    ],
+    "correctIndex": 3,
+    "explanation": "Tangible (berwujud fisik/benda) = rumah adat, batik, angklung; Intangible (tidak berwujud fisik) = nilai moral, petuah, bahasa, hukum adat."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-17",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Sistem Subak Bali",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Sistem pengairan sawah tradisional dari Bali yang diakui UNESCO dan berlandaskan filosofi Tri Hita Karana (harmonis dengan Tuhan, sesama manusia, dan alam) disebut ....",
+    "options": [
+      "Subak",
+      "Mapalus",
+      "Lubuk Larangan",
+      "Sasi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Subak adalah kearifan lokal irigasi sawah gotong royong khas Bali."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-18",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Tradisi Sasi & Lubuk Larangan",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tradisi \"Sasi\" di Maluku/Papua dan \"Lubuk Larangan\" di Sumatera Barat memiliki kesamaan tujuan utama, yaitu ....",
+    "options": [
+      "melarang masyarakat makan ikan selamanya",
+      "membatasi pengambilan hasil laut/sungai sementara waktu agar ekosistem dan populasi ikan pulih serta tetap lestari",
+      "menjual seluruh hasil hutan ke luar negeri",
+      "mengadakan lomba balap perahu"
+    ],
+    "correctIndex": 1,
+    "explanation": "Keduanya merupakan aturan adat pelestarian sumber daya alam agar tidak habis dieksploitasi."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-19",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Pasangan Kearifan Lokal & Daerah",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan pasangan kearifan lokal dan daerah asalnya!\n1) Mappalette Bola (memindahkan rumah panggung) -> Bugis, Sulawesi Selatan\n2) Leuweung Larangan (hutan lindung adat) -> Baduy / Kampung Naga, Jawa Barat\n3) Mapalus (gotong royong) -> Bali\n4) Pela Gandong (persaudaraan lintas agama) -> Maluku\n\nPasangan yang TEPAT ditunjukkan oleh nomor ....",
+    "options": [
+      "1, 2, dan 3",
+      "2, 3, dan 4",
+      "1, 2, dan 4",
+      "1, 3, dan 4"
+    ],
+    "correctIndex": 2,
+    "explanation": "Mapalus berasal dari Minahasa (Sulawesi Utara), bukan Bali (di Bali disebut Ngayah). Nomor 1, 2, dan 4 benar semua."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-20",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Kearifan Arsitektur Rumah Adat",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Rumah Honai di Papua dibuat bulat beratap jerami tebal tanpa jendela besar, sedangkan Rumah Limas/Betang dibuat berbentuk panggung tinggi. Kedua arsitektur ini membuktikan bahwa ....",
+    "options": [
+      "semua rumah adat di Indonesia bentuknya sama",
+      "rumah adat hanya dibuat untuk pajangan",
+      "masyarakat tradisional tidak tahu cara membuat jendela",
+      "nenek moyang Indonesia cerdas beradaptasi dengan iklim dan kondisi alam lingkungan masing-masing"
+    ],
+    "correctIndex": 3,
+    "explanation": "Honai menjaga kehangatan di pegunungan dingin Papua; rumah panggung menghindari banjir, kelembapan, dan binatang liar."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-21",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Alasan Tradisi Masih Dijaga (Bernomor)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan pernyataan berikut!\n1) Terbukti efektif menjaga kelestarian lingkungan dan mencegah bencana.\n2) Menjadi identitas dan jati diri kebanggaan bangsa Indonesia.\n3) Berfungsi sebagai filter (penyaring) budaya asing di era globalisasi.\n4) Membuat masyarakat tidak boleh menggunakan teknologi modern sama sekali.\n\nAlasan yang BENAR mengapa tradisi dan kearifan lokal masih dijaga hingga kini ditunjukkan oleh nomor ....",
+    "options": [
+      "1, 2, dan 3",
+      "1, 2, dan 4",
+      "2, 3, dan 4",
+      "1, 3, dan 4"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kearifan lokal menjaga alam (1), menjadi identitas bangsa (2), dan filter budaya asing (3) tanpa melarang kemajuan teknologi positif."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-22",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Kearifan Lokal Masyarakat Baduy",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Masyarakat adat Baduy melarang penggunaan sabun dan sampo berbahan kimia di sungai. Nilai kearifan lokal yang tercermin dari aturan tersebut adalah ....",
+    "options": [
+      "melarang warga mandi setiap hari",
+      "menjaga kemurnian air sungai dan ekosistem perairan agar bebas dari pencemaran limbah kimia",
+      "menghemat biaya listrik",
+      "menolak wisatawan datang"
+    ],
+    "correctIndex": 1,
+    "explanation": "Aturan adat Baduy melindungi kualitas air sungai dan makhluk hidup di dalamnya dari polusi kimia."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-23",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Nilai Luhur Gotong Royong Nusantara",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tradisi Sambatan (Jawa), Mapalus (Minahasa), Ngayah (Bali), dan Marsiadapari (Batak) semuanya mencerminkan satu nilai luhur pemersatu bangsa Indonesia, yaitu ....",
+    "options": [
+      "sikap individualis",
+      "kesombongan daerah",
+      "gotong royong dan tolong-menolong tanpa pamrih",
+      "persaingan bebas"
+    ],
+    "correctIndex": 2,
+    "explanation": "Meski namanya berbeda di tiap daerah, semuanya berakar pada semangat gotong royong dan kekeluargaan."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-24",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Manfaat Ekonomi Kearifan Lokal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Desa Wisata Penglipuran di Bali sangat terkenal hingga mancanegara karena warganya menjaga kebersihan dan tradisi adatnya. Manfaat ekonomi yang dirasakan masyarakat setempat adalah ....",
+    "options": [
+      "warga menjadi bergantung pada barang impor",
+      "berkurangnya lapangan pekerjaan warga desa",
+      "hilangnya budaya asli daerah",
+      "meningkatnya pendapatan warga melalui pariwisata budaya, penginapan, dan UMKM kerajinan lokal"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pelestarian kearifan lokal mendorong pariwisata berkelanjutan dan ekonomi kreatif masyarakat lokal."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-25",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Pela Gandong Maluku",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kearifan lokal \"Pela Gandong\" dari Maluku mengikat persaudaraan erat antar-desa meskipun warganya berbeda agama. Nilai luhur utama yang dapat kita teladani adalah ....",
+    "options": [
+      "toleransi, perdamaian, dan persatuan dalam keberagaman",
+      "persaingan dagang antar-desa",
+      "pembagian hasil tambang",
+      "eksploitasi hutan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pela Gandong adalah bukti nyata kuatnya tradisi toleransi dan persaudaraan di Nusantara."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-26",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Awig-Awig",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C1",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hukum atau aturan adat tertulis maupun tidak tertulis yang mengatur ketertiban hidup dan kelestarian lingkungan di masyarakat Bali dan Lombok disebut ....",
+    "options": [
+      "Oktroi",
+      "Awig-awig",
+      "Tanam Paksa",
+      "Romusha"
+    ],
+    "correctIndex": 1,
+    "explanation": "Awig-awig adalah aturan adat yang dipatuhi masyarakat Bali dan Lombok."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-27",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Semboyan Pemersatu",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C1",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Meskipun setiap daerah di Indonesia memiliki kearifan lokal dan tradisi yang berbeda-beda, kita tetap satu bangsa sesuai semboyan ....",
+    "options": [
+      "Cultuurstelsel",
+      "Devide et Impera",
+      "Bhinneka Tunggal Ika",
+      "Gold Glory Gospel"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bhinneka Tunggal Ika (berbeda-beda tetapi tetap satu jua) menjadi pengikat keberagaman budaya Indonesia."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-28",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Sikap Menghindari Etnosentrisme",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Di acara Pentas Budaya Sekolah, seorang siswa mengejek tarian daerah teman dari provinsi lain dan merasa budaya daerahnya sendiri paling hebat. Sikap tersebut harus dihindari karena termasuk ....",
+    "options": [
+      "nasionalisme sejati",
+      "toleransi budaya",
+      "kearifan lokal",
+      "etnosentrisme yang dapat merusak persatuan bangsa"
+    ],
+    "correctIndex": 3,
+    "explanation": "Etnosentrisme (menganggap budaya sendiri paling unggul dan merendahkan budaya lain) mengancam persatuan."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-29",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Peran Pelajar Melestarikan Tradisi",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Upaya konkret yang dapat dilakukan pelajar kelas 6 SD untuk ikut melestarikan kearifan lokal di era digital adalah ....",
+    "options": [
+      "bangga memakai batik, belajar seni/bahasa daerah, dan membagikan konten positif tentang budaya Indonesia",
+      "menganggap semua tradisi daerah ketinggalan zaman",
+      "menolak belajar sejarah budaya Nusantara",
+      "malu mengenakan baju batik saat acara resmi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pelajar dapat menjadi duta budaya dengan bangga memakai produk lokal, mempelajari kesenian daerah, dan mempromosikannya secara kreatif."
+  },
+  {
+    "id": "PREDIKSI-IPAS-ASAS-30",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "PREDIKSI-IPAS-ASAS",
+    "topic": "Prediksi ASAS IPAS — Dampak Mengabaikan Kearifan Lokal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Apa dampak negatif yang akan timbul apabila masyarakat modern melupakan nilai-nilai kearifan lokal seperti gotong royong dan larangan merusak hutan adat?",
+    "options": [
+      "alam semakin subur dan bebas banjir",
+      "tumbuhnya sikap individualis, memudarnya jati diri bangsa, serta meningkatnya kerusakan lingkungan dan bencana alam",
+      "persatuan warga menjadi semakin kuat",
+      "wisatawan asing semakin ramai"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mengabaikan kearifan lokal menyebabkan hilangnya kepedulian sosial, lunturnya identitas bangsa, dan rusaknya keseimbangan ekosistem."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-01",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Classifying Habitats",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Look at these animals: (1) Whale, (2) Eagle, (3) Giraffe, (4) Octopus. Which animals belong to the WATER habitat?",
+    "options": [
+      "(1) and (4)",
+      "(1) and (2)",
+      "(2) and (3)",
+      "(3) and (4)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Whale (paus) and Octopus (gurita) live in water. Eagle is an air animal, Giraffe is a land animal."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-02",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Amphibious / Both Habitats",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Frogs, crocodiles, and turtles are special because they can live ....",
+    "options": [
+      "only in the sky",
+      "both on land and in water",
+      "only in the desert",
+      "only underground"
+    ],
+    "correctIndex": 1,
+    "explanation": "Frogs, crocodiles, and turtles live both on land and in water."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-03",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Animal Groups",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dolphins and whales live in the ocean, but they breathe with lungs and give birth to live babies. They are classified as ....",
+    "options": [
+      "fish",
+      "reptiles",
+      "mammals",
+      "birds"
+    ],
+    "correctIndex": 2,
+    "explanation": "Dolphins and whales are marine mammals (mamalia laut), not fish."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-04",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Describing Animals (Riddle)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "\"I am the largest land animal. I have big ears, a long trunk to drink water, and two white tusks.\" Which animal is described?",
+    "options": [
+      "Giraffe",
+      "Zebra",
+      "Kangaroo",
+      "Elephant"
+    ],
+    "correctIndex": 3,
+    "explanation": "Trunk (belalai) and tusks (gading) are the iconic physical features of an elephant."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-05",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Describing Animals (Features)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Which pair of animal and its body part is CORRECT?",
+    "options": [
+      "Tiger – black stripes and sharp claws",
+      "Bird – fins and scales",
+      "Giraffe – shell and pouch",
+      "Fish – feathers and beak"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tigers have stripes (belang) and sharp claws (cakar tajam)."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-06",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Herbivore vs Carnivore",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Giraffes and elephants eat leaves, fruits, and grass, so they are called .... Lions and tigers eat meat, so they are called ....",
+    "options": [
+      "carnivores – herbivores",
+      "herbivores – carnivores",
+      "reptiles – amphibians",
+      "birds – mammals"
+    ],
+    "correctIndex": 1,
+    "explanation": "Herbivores eat plants; carnivores eat meat."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-07",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Simple Past Tense (Zoo)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Last Sunday, my family and I ... to Ragunan Zoo. We ... many amazing animals there.",
+    "options": [
+      "go – see",
+      "going – seeing",
+      "went – saw",
+      "goes – sees"
+    ],
+    "correctIndex": 2,
+    "explanation": "\"Last Sunday\" requires Simple Past Tense (Verb 2): go -> went, see -> saw."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-08",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Simple Past Tense (Irregular Verbs)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Yesterday at the zoo, Lovely ... the friendly deer with carrots and her father ... many photos.",
+    "options": [
+      "feeds – takes",
+      "feeding – taking",
+      "feed – take",
+      "fed – took"
+    ],
+    "correctIndex": 3,
+    "explanation": "Verb 2 of \"feed\" is \"fed\"; Verb 2 of \"take\" is \"took\"."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-09",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Past Tense Negative",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "We ... the hungry lion because the zookeeper warned us it was dangerous.",
+    "options": [
+      "did not touch",
+      "was not touch",
+      "did not touched",
+      "do not touched"
+    ],
+    "correctIndex": 0,
+    "explanation": "Negative Simple Past Tense formula: Subject + did not (didn't) + Verb 1 -> \"did not touch\"."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-10",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Past Tense Question",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Rani: \"... you ... the bird show at the zoo yesterday?\"\nBudi: \"Yes, I did! The parrots were so smart!\"",
+    "options": [
+      "Do – watched",
+      "Did – watch",
+      "Did – watched",
+      "Are – watch"
+    ],
+    "correctIndex": 1,
+    "explanation": "Simple Past Tense question formula: Did + Subject + Verb 1 -> \"Did you watch...?\"."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-11",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Time Order Words",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Complete the zoo story with the best Time Order Words:\n\"..., we bought tickets at the gate. ..., we visited the elephant park. ..., we went home at 4 p.m.\"",
+    "options": [
+      "After that – Finally – First",
+      "Then – First – Next",
+      "First – Next – Finally",
+      "Finally – First – Next"
+    ],
+    "correctIndex": 2,
+    "explanation": "Logical chronological order: First (pertama) -> Next (selanjutnya) -> Finally (akhirnya)."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-12",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Reading Comprehension (Zoo Trip)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Read the text!\n\"Last Saturday, Sinta went to Safari Park. First, she saw tall giraffes eating leaves. Next, she rode a bus through the lion area. Then, she fed the rabbits at the petting zoo. Finally, she bought a cute panda doll at the souvenir shop.\"\n\nWhat did Sinta do right AFTER riding the bus through the lion area?",
+    "options": [
+      "She went home immediately",
+      "She saw tall giraffes",
+      "She bought a panda doll",
+      "She fed the rabbits at the petting zoo"
+    ],
+    "correctIndex": 3,
+    "explanation": "Sequence in text: First (giraffes) -> Next (bus/lion area) -> Then (fed the rabbits) -> Finally (bought panda doll)."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-13",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Arranging Past Events",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Arrange the sentences into a good recount paragraph!\n(1) After that, we ate lunch under a shady tree.\n(2) First, we arrived at the zoo and bought tickets.\n(3) Finally, we went home happily.\n(4) Next, we saw elephants and fed the deer.",
+    "options": [
+      "(2) – (4) – (1) – (3)",
+      "(2) – (1) – (4) – (3)",
+      "(4) – (2) – (1) – (3)",
+      "(1) – (2) – (3) – (4)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Follow the Time Order Words: First (2) -> Next (4) -> After that (1) -> Finally (3)."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-14",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Correct Past Tense Sentences",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Look at these sentences!\n1) Yesterday we bought four zoo tickets.\n2) Last week I see a big Komodo dragon.\n3) My brother ate ice cream near the lake.\n4) She didn't went to the reptile house.\n\nWhich sentences are GRAMMATICALLY CORRECT?",
+    "options": [
+      "1 and 2",
+      "1 and 3",
+      "2 and 4",
+      "3 and 4"
+    ],
+    "correctIndex": 1,
+    "explanation": "(1) \"bought\" and (3) \"ate\" are correct. (2) should be \"saw\", and (4) should be \"didn't go\" (did not + Verb 1)."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-15",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Describing a Peacock & Lion",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "A male lion has thick hair around its head called a ..., while a peacock has colorful ... on its tail.",
+    "options": [
+      "pouch – stripes",
+      "trunk – scales",
+      "mane – feathers",
+      "beak – fins"
+    ],
+    "correctIndex": 2,
+    "explanation": "Mane = surai singa; feathers = bulu burung merak."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-16",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Traditional vs Modern Games",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Which group consists ONLY of TRADITIONAL games?",
+    "options": [
+      "Chess, Mobile Legends, and Jigsaw Puzzle",
+      "Video games, Ludo, and Marbles",
+      "Roblox, Egrang, and Snakes and Ladders",
+      "Hopscotch, Congklak, Hide and Seek, and Tug of War"
+    ],
+    "correctIndex": 3,
+    "explanation": "Hopscotch (engklek), Congklak, Hide and Seek (petak umpet), and Tug of War (tarik tambang) are traditional games."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-17",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Indonesian to English Game Names",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C1",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Match the Indonesian traditional games with their English names:\n\"Engklek\" = ..., \"Tarik Tambang\" = ..., \"Petak Umpet\" = ....",
+    "options": [
+      "Hopscotch – Tug of War – Hide and Seek",
+      "Hide and Seek – Stilts – Jump Rope",
+      "Congklak – Chess – Hopscotch",
+      "Tug of War – Hopscotch – Marbles"
+    ],
+    "correctIndex": 0,
+    "explanation": "Engklek = Hopscotch; Tarik Tambang = Tug of War; Petak Umpet = Hide and Seek."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-18",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Tools Used in Games",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "To play Hopscotch (Engklek) in the schoolyard, what two tools do we need?",
+    "options": [
+      "A wooden board and seeds",
+      "Chalk and a flat pebble (stone)",
+      "A long thick rope",
+      "A smartphone and charger"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chalk (kapur) is used to draw the numbered squares, and a flat pebble (batu gaco) is thrown into the squares."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-19",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Tools & Games Matching",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Look at these pairs of game and tool!\n1) Tug of War -> a long strong rope\n2) Stilts (Egrang) -> two long bamboo poles\n3) Congklak -> a wooden board with holes and seeds/shells\n4) Jump Rope -> dice and pawns\n\nWhich pairs are CORRECT?",
+    "options": [
+      "1, 2, and 4",
+      "2, 3, and 4",
+      "1, 2, and 3",
+      "1, 3, and 4"
+    ],
+    "correctIndex": 2,
+    "explanation": "Jump Rope uses a rope/rubber bands, not dice and pawns (which are for Snakes & Ladders / Ludo). Pairs 1, 2, and 3 are correct."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-20",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Action Verbs in Games",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "In Tug of War, two teams hold the rope tightly and ... it as hard as they can to cross the center line.",
+    "options": [
+      "hide",
+      "sleep",
+      "throw",
+      "pull"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pull = menarik (tarik tambang)."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-21",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Action Verbs in Hide and Seek",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "In Hide and Seek, one player closes his eyes and counts to twenty while the other players quickly ... behind trees or walls.",
+    "options": [
+      "hide",
+      "jump",
+      "pull",
+      "roll"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hide = bersembunyi; seek = mencari."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-22",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Imperative Sentences (Positive)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Which sentence is a correct IMPERATIVE instruction for playing a board game?",
+    "options": [
+      "You rolling the dice yesterday.",
+      "Roll the dice and move your pawn forward!",
+      "The dice is very small and white.",
+      "Did you roll the dice?"
+    ],
+    "correctIndex": 1,
+    "explanation": "Imperative sentences (kalimat perintah/instruksi) start directly with base Verb 1: \"Roll the dice...\"."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-23",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Imperative Sentences (Negative / Prohibition)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "When giving a rule NOT to step on the chalk line in Hopscotch, what is the correct negative imperative sentence?",
+    "options": [
+      "Doesn't step on the line!",
+      "Didn't step on the line!",
+      "Don't step on the line!",
+      "No stepping on the line!"
+    ],
+    "correctIndex": 2,
+    "explanation": "Negative imperative formula: \"Don't + Verb 1\" -> \"Don't step on the line!\"."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-24",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Reading \"How to Play Hopscotch\"",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Read the instructions!\n\"How to Play Hopscotch:\nFirst, draw ten numbered squares on the ground.\nSecond, throw your pebble into square number one.\nNext, hop on one foot through the squares. Don't step on the line!\nThen, turn around and pick up your pebble on the way back.\nFinally, the player who finishes all numbers first wins.\"\n\nWhat must players AVOID doing while hopping?",
+    "options": [
+      "Turning around",
+      "Drawing ten squares",
+      "Picking up the pebble",
+      "Stepping on the line"
+    ],
+    "correctIndex": 3,
+    "explanation": "The rule clearly states: \"Don't step on the line!\" (Jangan menginjak garis!)."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-25",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Arranging Steps (Hide and Seek)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Arrange these steps of playing Hide and Seek in the correct order!\n(1) Then, the other players find a safe place to hide.\n(2) First, choose one player to be the seeker.\n(3) Finally, the first person found becomes the next seeker.\n(4) Next, the seeker closes his eyes and counts to twenty.",
+    "options": [
+      "(2) – (4) – (1) – (3)",
+      "(2) – (1) – (4) – (3)",
+      "(4) – (2) – (1) – (3)",
+      "(1) – (2) – (4) – (3)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Correct sequence: First (2) -> Next (4) -> Then (1) -> Finally (3)."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-26",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Following Instructions in Steps",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "In Snakes and Ladders, the rule says: \"If your pawn lands on the bottom of a ladder, climb up! If it lands on a snake's head, slide down!\" If Budi's pawn lands on a snake's head at square 48, what should he do?",
+    "options": [
+      "Climb up to a higher number",
+      "Slide down to the square at the snake's tail",
+      "Win the game immediately",
+      "Throw away the dice"
+    ],
+    "correctIndex": 1,
+    "explanation": "Landing on a snake's head means the player must slide down to its tail."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-27",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Comparing Traditional & Modern Games",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "What is the main advantage of playing traditional outdoor games like Hopscotch, Jump Rope, and Gobak Sodor compared to playing mobile games all day?",
+    "options": [
+      "Traditional games hurt our eyes more than screens",
+      "Traditional games require expensive internet connections",
+      "Traditional games help keep our body physically active, healthy, and build direct teamwork with friends",
+      "Traditional games can only be played alone in a dark room"
+    ],
+    "correctIndex": 2,
+    "explanation": "Traditional games encourage physical exercise, teamwork, and face-to-face friendship."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-28",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Marbles Action Verb",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "In playing Marbles (kelereng), players draw a small circle on the ground and ... their marble using their thumb and finger to hit other marbles out.",
+    "options": [
+      "swim",
+      "cook",
+      "sing",
+      "flick / shoot"
+    ],
+    "correctIndex": 3,
+    "explanation": "Players flick or shoot (menyentil) the marble out of the circle."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-29",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Complete the Instructions",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "\"How to Play Jump Rope: First, two friends ... each end of the rope. Next, swing the rope smoothly. Then, the third player ... over the rope without touching it.\" Fill in the blanks!",
+    "options": [
+      "hold – jumps",
+      "eat – sleeps",
+      "hide – draws",
+      "throw – counts"
+    ],
+    "correctIndex": 0,
+    "explanation": "Two friends hold (memegang) the ends of the rope, and the player jumps (melompat) over it."
+  },
+  {
+    "id": "PREDIKSI-ENG-ASAS-30",
+    "subject": "Bahasa Inggris",
+    "semester": 1,
+    "moduleId": "PREDIKSI-ENG-ASAS",
+    "topic": "Prediksi ASAS English — Winning Condition",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "In Congklak, players take turns dropping seeds into each hole around the wooden board. How do you WIN the game?",
+    "options": [
+      "By hiding behind a tree",
+      "By collecting the most seeds in your big home hole (lumbung)",
+      "By pulling a long rope",
+      "By jumping on one foot"
+    ],
+    "correctIndex": 1,
+    "explanation": "The player with the highest number of seeds in their big store/home hole wins Congklak."
   }
 ];
 
@@ -31925,6 +33185,67 @@
 
     
     
+    
+    
+    window._lastQuizWrongIds = [];
+    window._lastQuizReportText = '';
+
+    function retryWrongQuestionsOnly() {
+      const ids = window._lastQuizWrongIds || [];
+      if (!ids.length) {
+        alert('Hebat! Tidak ada soal yang salah pada kuis terakhir.');
+        return;
+      }
+      const wrongQs = ids.map(id => questions.find(q => q.id === id)).filter(Boolean);
+      if (!wrongQs.length) return;
+      cbtQuestions = wrongQs;
+      cbtAnswers = new Array(cbtQuestions.length).fill(null);
+      cbtCurrentIndex = 0;
+      cbtFinished = false;
+      currentActiveSetTitle = '🔁 Ulangi Soal Salah (' + wrongQs.length + ' Soal)';
+      setQuizMode('STUDY');
+      document.getElementById('cbt-topic-subtitle').textContent = currentActiveSetTitle;
+      document.getElementById('cbt-result-container').classList.add('hidden');
+      document.getElementById('cbt-active-container').classList.remove('hidden');
+      document.getElementById('cbt-footer-nav').classList.remove('hidden');
+      renderCbtQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function shareLastQuizToWA() {
+      const txt = window._lastQuizReportText || 'Laporan nilai latihan Lovely di https://lovelykece.my.id';
+      const url = 'https://wa.me/?text=' + encodeURIComponent(txt);
+      window.open(url, '_blank');
+    }
+
+    function startPrediksiASASIpas() {
+      const predQs = (questions || []).filter(q => /^PREDIKSI-IPAS-ASAS-/.test(q.id));
+      if (predQs.length === 0) { alert('Soal Prediksi ASAS IPAS belum dimuat.'); return; }
+      CHAPTER_SETS['PREDIKSI-IPAS-ASAS'] = [{
+        id: 'IPAS-ASAS-PREDIKSI-30',
+        code: '🌍 PREDIKSI ASAS IPAS BESOK',
+        badgeBg: 'bg-emerald-100 text-emerald-900 border-emerald-300',
+        title: 'Prediksi ASAS IPAS — Gabungan Bab 3 & Bab 4 (' + predQs.length + ' Soal)',
+        desc: '15 soal Bab 3 (Pahlawan) + 15 soal Bab 4 (Kearifan Lokal) bergaya pola soal guru sekolah!',
+        questionIds: predQs.map(q => q.id)
+      }];
+      startSetQuiz('IPAS-ASAS-PREDIKSI-30', 'IPAS-B3', false, 'STUDY');
+    }
+
+    function startPrediksiASASEng() {
+      const predQs = (questions || []).filter(q => /^PREDIKSI-ENG-ASAS-/.test(q.id));
+      if (predQs.length === 0) { alert('Soal Prediksi ASAS Bahasa Inggris belum dimuat.'); return; }
+      CHAPTER_SETS['PREDIKSI-ENG-ASAS'] = [{
+        id: 'ENG-ASAS-PREDIKSI-30',
+        code: '🇬🇧 PREDIKSI ASAS B. INGGRIS BESOK',
+        badgeBg: 'bg-blue-100 text-blue-900 border-blue-300',
+        title: 'Prediksi ASAS Bahasa Inggris — Gabungan Unit 3 & Unit 4 (' + predQs.length + ' Soal)',
+        desc: '15 soal Unit 3 (Animals & Zoo) + 15 soal Unit 4 (Games & Instructions) bergaya pola soal guru!',
+        questionIds: predQs.map(q => q.id)
+      }];
+      startSetQuiz('ENG-ASAS-PREDIKSI-30', 'ENG-B3', false, 'STUDY');
+    }
+
     function startPrediksiASASPai() {
       const predQs = (questions || []).filter(q => /^PREDIKSI-PAI-ASAS-/.test(q.id));
       if (predQs.length === 0) {
@@ -32058,6 +33379,26 @@ function isQuestionMatchingModule(q, m) {
   return false;
 }
 
+
+function getLovelyModuleProgress(modId) {
+  const results = (studentStats && studentStats.setResults) ? studentStats.setResults : {};
+  let best = null;
+  let attempts = 0;
+  Object.entries(results).forEach(([setId, res]) => {
+    if (!res || res.bestScore === undefined) return;
+    const matchDirect = setId.startsWith(modId + '-');
+    const matchPredBin = setId === 'BIN-ASAS-PREDIKSI-30' && ['BIN-B3','BIN-B4','BIN-B5'].includes(modId);
+    const matchPredPai = setId === 'PAI-ASAS-PREDIKSI-30' && ['PAI-B6','PAI-B8'].includes(modId);
+    const matchPredIpas = setId === 'IPAS-ASAS-PREDIKSI-30' && ['IPAS-B3','IPAS-B4'].includes(modId);
+    const matchPredEng = setId === 'ENG-ASAS-PREDIKSI-30' && ['ENG-B3','ENG-B4'].includes(modId);
+    if (matchDirect || matchPredBin || matchPredPai || matchPredIpas || matchPredEng) {
+      best = (best === null) ? res.bestScore : Math.max(best, res.bestScore);
+      attempts += (res.attempts || 1);
+    }
+  });
+  return { best, attempts };
+}
+
 function renderMatrixTable() {
   const tbody = document.getElementById('matrix-table-body');
   if (!tbody) return;
@@ -32115,7 +33456,8 @@ function renderMatrixTable() {
     'PLBJ': { bg: 'bg-orange-50 text-orange-700 border-orange-200', icon: '🏛️' },
     'Seni Rupa': { bg: 'bg-pink-50 text-pink-700 border-pink-200', icon: '🎨' },
     'PAI': { bg: 'bg-teal-50 text-teal-700 border-teal-200', icon: '🕌' },
-    'Bahasa Arab': { bg: 'bg-cyan-50 text-cyan-700 border-cyan-200', icon: '🌙' }
+    'Bahasa Arab': { bg: 'bg-cyan-50 text-cyan-700 border-cyan-200', icon: '🌙' },
+    'PJOK': { bg: 'bg-lime-50 text-lime-700 border-lime-200', icon: '⚽' }
   };
 
   // Filter rows
@@ -32218,6 +33560,7 @@ function renderMatrixTable() {
         </td>
         <td class="p-3.5">
           <div class="font-extrabold text-slate-900 text-xs sm:text-sm">${m.bab}</div>
+          ${(() => { const p = getLovelyModuleProgress(m.id); return p.best !== null ? `<div class="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">✅ Dikerjakan Lovely • Skor Terbaik: ${p.best}/100 (${p.attempts}x)</div>` : `<div class="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-100 text-slate-500">⚪ Belum dikerjakan di perangkat ini</div>`; })()}
           <div class="text-[11px] text-slate-500 font-normal">Semester ${m.semester} • ${m.summary ? m.summary.substring(0, 65) + '...' : ''}</div>
         </td>
         <td class="p-3.5">${materialHtml}</td>
@@ -32429,7 +33772,44 @@ function openModalForChapter(subject, semester, topic, moduleId) {
         }];
       }
 
-            // Paket Prioritas Fokus ASAS untuk PAI-B8 (Akhlak Sesama) & PAI-B6 (ZISWAF)
+                  // Paket Prioritas Fokus ASAS Selasa untuk IPAS-B3/B4 & ENG-B3/B4
+      if (['IPAS-B3', 'IPAS-B4', 'ENG-B3', 'ENG-B4'].includes(moduleId)) {
+        const tueSets = [];
+        const isIpas = moduleId.startsWith('IPAS');
+        const predQs = (questions || []).filter(q => (isIpas ? /^PREDIKSI-IPAS-ASAS-/ : /^PREDIKSI-ENG-ASAS-/).test(q.id));
+        if (predQs.length > 0) {
+          tueSets.push({
+            id: isIpas ? 'IPAS-ASAS-PREDIKSI-30' : 'ENG-ASAS-PREDIKSI-30',
+            code: isIpas ? '⭐ PRIORITAS #1 • Prediksi ASAS IPAS' : '⭐ PRIORITAS #1 • Prediksi ASAS B. Inggris',
+            badgeBg: isIpas ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-blue-100 text-blue-900 border-blue-300',
+            title: isIpas ? 'Kerjakan Ini Dulu! Prediksi ASAS IPAS Gabungan Bab 3 & 4 (' + predQs.length + ' Soal)' : 'Kerjakan Ini Dulu! Prediksi ASAS B. Inggris Gabungan Unit 3 & 4 (' + predQs.length + ' Soal)',
+            desc: '1 set lengkap bergaya pola soal guru sekolah (soal bernomor 1–4, bacaan singkat, dan perbandingan) untuk simulasi ujian besok!',
+            questionIds: predQs.map(q => q.id)
+          });
+        }
+        const half = Math.ceil(modQs.length / 2);
+        tueSets.push({
+          id: moduleId + '-LATIHAN-1',
+          code: '🎯 Latihan Bab Bagian 1 (Opsional)',
+          badgeBg: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+          title: 'Pemantapan Khusus Bab Ini — Bagian 1 (' + half + ' Soal)',
+          desc: 'Latihan tambahan khusus materi bab ini jika paket prediksi sudah tuntas.',
+          questionIds: modQs.slice(0, half).map(q => q.id)
+        });
+        if (modQs.length > half) {
+          tueSets.push({
+            id: moduleId + '-LATIHAN-2',
+            code: '🎯 Latihan Bab Bagian 2 (Opsional)',
+            badgeBg: 'bg-purple-100 text-purple-800 border-purple-300',
+            title: 'Pemantapan Khusus Bab Ini — Bagian 2 (' + (modQs.length - half) + ' Soal)',
+            desc: 'Lanjutan latihan pendalaman bab ini.',
+            questionIds: modQs.slice(half).map(q => q.id)
+          });
+        }
+        return tueSets;
+      }
+
+      // Paket Prioritas Fokus ASAS untuk PAI-B8 (Akhlak Sesama) & PAI-B6 (ZISWAF)
       if (moduleId === 'PAI-B8' || moduleId === 'PAI-B6') {
         const paiSets = [];
         const sumatif3PaiQs = modQs.filter(q => /^SUMATIF3PAI-/.test(q.id));
@@ -34256,7 +35636,8 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
         }
         document.getElementById('quiz-streak-badge').textContent = `🔥 Streak Benar: ${cbtStreak}`;
         saveData();
-        updateGamificationHeader();
+      updateGamificationHeader();
+      if (typeof renderMatrixTable === "function") renderMatrixTable();
       }
 
       renderCBTQuestion();
@@ -34382,6 +35763,20 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       document.getElementById('cbt-footer-nav').classList.add('hidden');
       const resEl = document.getElementById('cbt-result-container');
       resEl.classList.remove('hidden');
+            // Simpan soal salah & ringkasan laporan WA untuk Ayah
+      const lastWrongQs = cbtQuestions.filter((q, idx) => cbtAnswers[idx] !== q.correctIndex);
+      window._lastQuizWrongIds = lastWrongQs.map(q => q.id);
+      const quizTitleNow = (document.getElementById('cbt-topic-subtitle')?.textContent || 'Latihan Soal').trim();
+      const wrongTopicsList = [...new Set(lastWrongQs.map(q => q.topic || q.subject))].slice(0, 6);
+      window._lastQuizReportText =
+        '📊 *Laporan Latihan Lovely (lovelykece.my.id)*\n' +
+        '📚 Paket: ' + quizTitleNow + '\n' +
+        '🏆 Nilai Akhir: *' + finalScore + ' / 100* (' + correctCount + '/' + cbtQuestions.length + ' Benar)\n' +
+        '⭐ Predikat: ' + predicate + '\n' +
+        (lastWrongQs.length > 0
+          ? '⚠️ Perlu dipelajari lagi (' + lastWrongQs.length + ' soal):\n- ' + wrongTopicsList.join('\n- ')
+          : '🎉 Sempurna! Semua soal terjawab benar!');
+
       resEl.innerHTML = `
         <div class="p-5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -34389,7 +35784,11 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
             <h3 class="text-2xl font-bold mt-1">Nilai Akhir: ${finalScore} / 100</h3>
             <p class="text-xs text-[var(--muted-foreground)]">Menjawab benar ${correctCount} dari ${cbtQuestions.length} soal (${earnedPoints} dari ${maxPoints} poin)</p>
           </div>
-          <div class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center gap-2">
+            ${lastWrongQs.length > 0 ? `<button onclick="retryWrongQuestionsOnly()" class="px-4 py-2 rounded-lg text-xs font-extrabold bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-sm hover:opacity-95 transition">🔁 Ulangi Soal yang Salah Saja (${lastWrongQs.length} Soal)</button>` : ''}
+            <button onclick="shareLastQuizToWA()" class="px-4 py-2 rounded-lg text-xs font-extrabold bg-emerald-600 text-white hover:bg-emerald-500 shadow-sm transition">
+              📲 Kirim Hasil ke WA Ayah
+            </button>
             <button onclick="startNewQuiz()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-indigo-600 text-white hover:bg-indigo-500">
               🔄 Mainkan Kuis Baru
             </button>
@@ -35724,7 +37123,9 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
         .trim();
 
       const utter = new SpeechSynthesisUtterance(clean);
-      utter.lang = 'id-ID';
+      const activeQ = (typeof cbtQuestions !== 'undefined' && cbtQuestions[cbtCurrentIndex]) ? cbtQuestions[cbtCurrentIndex] : null;
+      const isEnglishText = (activeQ && activeQ.subject === 'Bahasa Inggris') || /\b(Which|What|Complete the|Read the|Yesterday|Hopscotch|Traditional)\b/i.test(clean);
+      utter.lang = isEnglishText ? 'en-US' : 'id-ID';
       utter.rate = 0.95; // Kecepatan ramah anak
       utter.pitch = 1.05;
 
