@@ -633,7 +633,18 @@
 
         <div class="flex flex-wrap items-center gap-2">
           <div>
-            <button id="btn-fokus-asas1" onclick="activateFokusASAS()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-rose-500 to-amber-500 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">🎯 Fokus Ujian ASAS Sem 1 (23–27 Nov)</button>
+            <div class="w-full sm:w-auto inline-flex items-center gap-1.5 bg-gradient-to-r from-rose-500 to-amber-500 p-1 rounded-xl shadow-sm mb-1 sm:mb-0 sm:mr-2">
+              <span class="text-xs font-extrabold text-white pl-2 shrink-0">📅 Jadwal Ujian:</span>
+              <select id="curr-asas-date" onchange="onAsasDateChange()" class="flex-1 sm:flex-initial px-2.5 py-1 rounded-lg text-xs font-extrabold bg-white text-rose-900 border-0 focus:outline-none cursor-pointer">
+                <option value="Selasa, 24 Nov">🔥 Selasa, 24 Nov (IPAS & B. Inggris)</option>
+                <option value="Rabu, 25 Nov">📅 Rabu, 25 Nov (Matematika & PJOK)</option>
+                <option value="Kamis, 26 Nov">📅 Kamis, 26 Nov (B. Arab & Pancasila)</option>
+                <option value="Jumat, 27 Nov">📅 Jumat, 27 Nov (Seni Rupa & PLBJ)</option>
+                <option value="Senin, 23 Nov">✅ Senin, 23 Nov (PAI & B. Indonesia)</option>
+                <option value="ASAS_ALL">🎯 Semua Bab ASAS (Senin–Jumat • 22 Bab)</option>
+                <option value="ALL">🌟 Semua Materi Kelas 6 (63 Bab)</option>
+              </select>
+            </div>
             <button id="btn-prediksi-ipas-asas" onclick="startPrediksiASASIpas()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">🌍 Prediksi ASAS IPAS (Bab 3 & 4 • 30 Soal)</button>
             <button id="btn-prediksi-eng-asas" onclick="startPrediksiASASEng()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">🇬🇧 Prediksi ASAS B. Inggris (Unit 3 & 4 • 30 Soal)</button>
             <label class="text-xs font-semibold text-slate-500 mr-1">Semester:</label>
@@ -32857,6 +32868,1035 @@
     ],
     "correctIndex": 1,
     "explanation": "The player with the highest number of seeds in their big store/home hole wins Congklak."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-01",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Kedatangan Bangsa Portugis ke Kepulauan Nusantara",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bangsa Portugis tiba di Ternate, Kepulauan Maluku pada tahun ....",
+    "options": [
+      "1512",
+      "1511",
+      "1498",
+      "1487"
+    ],
+    "correctIndex": 0,
+    "explanation": "Setelah menguasai Malaka pada 1511, bangsa Portugis di bawah pimpinan Antonio de Abreu tiba di Ternate, Maluku pada tahun 1512 untuk mencari rempah-rempah."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-02",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Semboyan Misi 3G Bangsa Eropa",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Selain berdagang, bangsa Eropa datang ke Indonesia dengan membawa misi 3G. Berikut yang bukan termasuk misi 3G adalah ....",
+    "options": [
+      "Glory",
+      "Garden",
+      "Gospel",
+      "Gold"
+    ],
+    "correctIndex": 1,
+    "explanation": "Misi 3G terdiri atas Gold (kekayaan/emas), Glory (kejayaan/kekuasaan), dan Gospel (penyebaran agama), sehingga Garden bukan bagian dari 3G."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-03",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Kronologi Kedatangan Bangsa Inggris",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan pernyataan berikut!\n1) Bangsa Inggris datang ke Banten.\n2) Bangsa Inggris mencari rempah di India dan membentuk EIC.\n3) Bangsa Inggris membuka kantor dagang di Ambon, Makassar, Jepara, dan Jayakarta.\n\nUrutan kronologis kedatangan dan aktivitas awal bangsa Inggris ke Indonesia yang tepat adalah ....",
+    "options": [
+      "3 - 2 - 1",
+      "1 - 2 - 3",
+      "2 - 1 - 3",
+      "2 - 3 - 1"
+    ],
+    "correctIndex": 2,
+    "explanation": "Inggris terlebih dahulu membentuk kongsi dagang EIC (2), kemudian berlabuh/datang ke Banten pada awal abad ke-17 (1), lalu mendirikan kantor dagang di berbagai wilayah Nusantara seperti Ambon, Makassar, Jepara, dan Jayakarta (3)."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-04",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Tokoh Perjuangan Daerah (Tuanku Imam Bonjol)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan konteks tokoh pahlawan dalam soal (tokoh pejuang asal Sumatera Barat yang memimpin Perang Padri menggantikan Datuk Bandaro, yaitu Tuanku Imam Bonjol). Pernyataan yang tepat berhubungan dengan tokoh pahlawan tersebut adalah ....",
+    "options": [
+      "pahlawan yang ditahan di Benteng Rotterdam",
+      "pahlawan yang memimpin perang di Pulau Jawa",
+      "pahlawan yang mendapat dukungan dari Pangeran Mangkubumi",
+      "pahlawan yang menggantikan Datuk Bandaro dalam Perang Padri"
+    ],
+    "correctIndex": 3,
+    "explanation": "Tuanku Imam Bonjol merupakan pemimpin utama dalam Perang Padri di Sumatera Barat yang melanjutkan perjuangan Datuk Bandaro."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-05",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Penyebab dan Bukan Penyebab Perang Jawa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perang Jawa (1825–1830) dipimpin oleh Pangeran Diponegoro akibat berbagai tekanan dan intervensi kolonial Belanda di tanah Jawa. Berikut yang bukan merupakan penyebab terjadinya Perang Jawa adalah ....",
+    "options": [
+      "konflik internal antara kaum adat dan kelompok agama di Sumatera Barat (Perang Padri)",
+      "pengaruh tradisi Barat yang masuk ke Keraton Yogyakarta dan meresahkan masyarakat",
+      "Belanda menaikkan pajak yang memberatkan rakyat",
+      "Belanda memasang patok untuk membangun jalan di atas tanah leluhur"
+    ],
+    "correctIndex": 0,
+    "explanation": "Konflik antara kaum adat dan kaum Padri (kelompok agama) terjadi pada Perang Padri di Sumatera Barat, bukan pemicu Perang Jawa yang dipimpin Pangeran Diponegoro."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-06",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Berdirinya Budi Utomo dan Kebangkitan Nasional",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Budi Utomo berdiri pada 20 Mei 1908 dan menjadi salah satu organisasi yang mendorong munculnya kesadaran kebangsaan. Pernyataan yang sesuai dengan peristiwa tersebut adalah ....",
+    "options": [
+      "Budi Utomo dibentuk oleh pemerintah kolonial untuk membubarkan seluruh sekolah pribumi",
+      "tanggal 20 Mei diperingati sebagai Hari Kebangkitan Nasional dan berdirinya Budi Utomo menandai dimulainya masa kebangkitan nasional",
+      "Budi Utomo merupakan organisasi yang lahir setelah Indonesia merdeka",
+      "Hari Kebangkitan Nasional diperingati untuk mengenang Proklamasi Kemerdekaan 17 Agustus"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tanggal 20 Mei (berdirinya Budi Utomo tahun 1908) ditetapkan sebagai Hari Kebangkitan Nasional karena menjadi tonggak awal perjuangan modern melalui organisasi."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-07",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Tokoh Tiga Serangkai dan Indische Partij",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Indische Partij didirikan oleh Tiga Serangkai sebagai organisasi yang memperjuangkan kesadaran dan persatuan masyarakat. Pernyataan yang tepat mengenai tokoh-tokoh tersebut adalah ....",
+    "options": [
+      "dr. Wahidin Soedirohusodo adalah satu-satunya pendiri Indische Partij tanpa tokoh lain",
+      "Danudirjo Setiabudhi tidak termasuk dalam Tiga Serangkai",
+      "Ki Hajar Dewantara dan dr. Cipto Mangunkusumo bersama Douwes Dekker (Danudirjo Setiabudhi) merupakan tokoh Tiga Serangkai pendiri Indische Partij",
+      "Tiga Serangkai mendirikan Indische Partij pada tahun 1945 setelah kemerdekaan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Tiga Serangkai terdiri atas Ki Hajar Dewantara (Raden Mas Soewardi Soerjaningrat), dr. Cipto Mangunkusumo, dan Ernest Douwes Dekker (Danudirjo Setiabudhi)."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-08",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Makna dan Ikrar Sumpah Pemuda",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Sumpah Pemuda menunjukkan adanya tekad para pemuda untuk membangun persatuan di tengah keberagaman daerah dan suku bangsa. Pernyataan yang sesuai dengan isi Sumpah Pemuda adalah ....",
+    "options": [
+      "Sumpah Pemuda hanya mengatur persatuan pemuda dari Pulau Jawa saja",
+      "Sumpah Pemuda menghapus seluruh keberagaman budaya daerah di Nusantara",
+      "setiap daerah menetapkan bahasa daerah masing-masing sebagai bahasa persatuan nasional",
+      "para pemuda menyatakan satu tanah air, satu bangsa, dan menjunjung bahasa persatuan yaitu bahasa Indonesia"
+    ],
+    "correctIndex": 3,
+    "explanation": "Sumpah Pemuda 28 Oktober 1928 mengikrarkan satu tanah air Indonesia, satu bangsa Indonesia, dan menjunjung bahasa persatuan bahasa Indonesia."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-09",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Karakteristik Perjuangan Kedaerahan vs. Pergerakan Nasional",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perlawanan terhadap bangsa Eropa sebelum munculnya pergerakan nasional masih menghadapi berbagai kendala. Pernyataan yang tepat menunjukkan karakteristik perjuangan pada masa sebelum pergerakan nasional adalah ....",
+    "options": [
+      "perlawanan banyak bersifat kedaerahan dan belum terkoordinasi dalam satu gerakan nasional yang terpadu",
+      "perjuangan hanya dilakukan melalui perundingan meja hijau tanpa pertempuran fisik",
+      "seluruh daerah di Indonesia sejak awal abad ke-16 sudah memiliki komando nasional terpadu",
+      "persatuan nasional dan organisasi modern telah menjadi dasar utama seluruh perlawanan sejak awal"
+    ],
+    "correctIndex": 0,
+    "explanation": "Perlawanan sebelum masa pergerakan nasional umumnya masih bersifat lokal/kedaerahan, bergantung pada tokoh setempat, dan mudah dipecah belah karena belum terkoordinasi secara nasional."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-10",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Warisan dan Manfaat Perjuangan hingga Masa Kini",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perjuangan para pahlawan dan pembangunan infrastruktur/kemerdekaan meninggalkan manfaat yang masih dapat dirasakan hingga sekarang. Manfaat tersebut antara lain adalah ....",
+    "options": [
+      "membuat bangsa Indonesia bergantung sepenuhnya pada bangsa lain",
+      "berkembangnya layanan komunikasi/pos, transportasi, serta kegiatan ekonomi masyarakat yang lebih merdeka",
+      "menghentikan seluruh kegiatan transportasi dan perdagangan masyarakat",
+      "menghapus akses pendidikan bagi warga negara"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kemerdekaan dan pembangunan jalur/sarana komunikasi serta transportasi membuka ruang bagi kemajuan ekonomi, pendidikan, dan interaksi masyarakat."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-11",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Tujuan Utama Bangsa Asing ke Indonesia",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tujuan utama bangsa asing datang ke Kepulauan Indonesia pada masa penjelajahan samudra adalah berdagang dan mencari ....",
+    "options": [
+      "tempat bersembunyi dari bencana alam di benua sendiri",
+      "perjanjian pembagian wilayah milik kerajaan Nusantara",
+      "rempah-rempah serta kekayaan alam",
+      "bantuan pangan darurat akibat krisis lokal"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kekayaan alam Indonesia, terutama rempah-rempah yang bernilai ekonomi tinggi di Eropa, menjadi daya tarik utama kedatangan bangsa asing."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-12",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Bangsa Eropa Pertama di Nusantara",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bangsa Eropa pertama yang berhasil sampai dan melakukan pelayaran dagang ke Kepulauan Nusantara adalah bangsa ....",
+    "options": [
+      "Swedia",
+      "Jerman",
+      "Rusia",
+      "Portugis"
+    ],
+    "correctIndex": 3,
+    "explanation": "Bangsa Portugis merupakan bangsa Eropa pelopor penjelajahan yang tiba di Nusantara pada awal abad ke-16."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-13",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Makna Istilah Gospel dalam Misi 3G",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Selain mencari rempah-rempah, bangsa Eropa juga membawa misi 3G. Salah satunya yaitu menyebarkan agama kepada penduduk daerah yang dikuasainya. Misi ini disebut dengan istilah ....",
+    "options": [
+      "Gospel",
+      "Gold",
+      "Glory",
+      "Guild"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dalam semboyan 3G, Gospel merujuk pada misi penyebaran agama oleh bangsa Eropa."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-14",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Bangsa Asia yang Menjajah Indonesia",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bangsa Asia yang datang dan menjajah Indonesia pada masa Perang Dunia II adalah ....",
+    "options": [
+      "Belanda",
+      "Jepang",
+      "Inggris",
+      "Spanyol"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jepang merupakan negara Asia yang menduduki Indonesia setelah pemerintahan kolonial Hindia Belanda berakhir pada tahun 1942."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-15",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Sistem Kerja Paksa pada Masa Jepang",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pada masa penjajahan Jepang, pemerintah pendudukan mengerahkan rakyat Indonesia untuk bekerja paksa tanpa upah yang layak. Sistem kerja paksa tersebut disebut dengan ....",
+    "options": [
+      "tonarigumi",
+      "cultuurstelsel",
+      "romusha",
+      "seikerei"
+    ],
+    "correctIndex": 2,
+    "explanation": "Romusha adalah sistem kerja paksa pada masa pendudukan Jepang di Indonesia untuk membangun berbagai fasilitas perang dan pertahanan."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-16",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Pahlawan Perang Padri",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tokoh pahlawan nasional asal Sumatera Barat yang dikenal sebagai pemimpin perjuangan dalam Perang Padri adalah ....",
+    "options": [
+      "Pangeran Antasari",
+      "Sultan Hasanuddin",
+      "Kapitan Pattimura",
+      "Tuanku Imam Bonjol"
+    ],
+    "correctIndex": 3,
+    "explanation": "Tuanku Imam Bonjol adalah pemimpin Perang Padri di Sumatera Barat yang gigih melawan kolonialisme Belanda."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-17",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Organisasi Pelopor Pergerakan Nasional",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Organisasi modern pertama yang berdiri pada 20 Mei 1908 dan dipandang sebagai pelopor pergerakan nasional Indonesia adalah ....",
+    "options": [
+      "Budi Utomo",
+      "Partai Nasional Indonesia",
+      "Indische Social-Democratische Vereeniging",
+      "Sarekat Islam"
+    ],
+    "correctIndex": 0,
+    "explanation": "Budi Utomo didirikan pada 20 Mei 1908 oleh dr. Wahidin Soedirohusodo dan para mahasiswa STOVIA sehingga menjadi pelopor pergerakan nasional."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-18",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Pengambilalihan Kantor Pusat PTT",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pada tanggal 27 September 1945, para pemuda dan pegawai pos, telegraf, dan telepon (PTT) mengambil alih Kantor Pusat PTT dari tangan Jepang di kota ....",
+    "options": [
+      "Makassar",
+      "Bandung",
+      "Surabaya",
+      "Medan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Peristiwa bersejarah pengambilalihan Kantor Pusat PTT oleh Angkatan Muda PTT pada 27 September 1945 terjadi di Bandung."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-19",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Tokoh Bapak Koperasi Indonesia",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tokoh proklamator dan pejuang kemerdekaan Indonesia yang dikenal sebagai Bapak Koperasi Indonesia adalah ....",
+    "options": [
+      "Soedirman",
+      "Wage Rudolf Supratman",
+      "Mohammad Hatta",
+      "Ki Hajar Dewantara"
+    ],
+    "correctIndex": 2,
+    "explanation": "Drs. Mohammad Hatta (Bung Hatta) dikenal luas sebagai Bapak Koperasi Indonesia atas jasa dan pemikirannya dalam mengembangkan koperasi sebagai ekonomi kerakyatan."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-20",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Pengambilalihan Aset Perkeretaapian (DKA)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Setelah Indonesia merdeka, para pejuang kereta api yang bekerja di Jawatan Kereta Api (DKA) mengambil alih stasiun, jalur rel, dan perbengkelan dari tangan pihak asing, yaitu ....",
+    "options": [
+      "Spanyol",
+      "Amerika Serikat",
+      "Portugal",
+      "Jepang"
+    ],
+    "correctIndex": 3,
+    "explanation": "Usai Proklamasi Kemerdekaan 1945, pekerja dan pejuang perkeretaapian mengambil alih kendali operasional kereta api dari tentara/otoritas Jepang."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-21",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Menjelaskan Tujuan 3G Bangsa Eropa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bangsa Eropa datang ke Indonesia karena tertarik dengan kekayaan alam, terutama rempah-rempah, serta membawa tujuan yang dikenal dengan istilah 3G. Penjelasan yang tepat dari ketiga istilah 3G tersebut adalah ....",
+    "options": [
+      "Gold: mencari kekayaan/emas dan rempah; Glory: meraih kejayaan dan memperluas kekuasaan; Gospel: menyebarkan agama",
+      "Gold: menyewakan tanah pertanian; Glory: mengadakan pameran dagang; Gospel: mengatur pajak pelabuhan",
+      "Gold: membangun pertambangan emas modern; Glory: mendirikan sekolah tinggi; Gospel: membuat peta pelayaran",
+      "Gold: menukar barang dengan gandum; Glory: membangun benteng pertahanan; Gospel: menulis buku sejarah"
+    ],
+    "correctIndex": 0,
+    "explanation": "Gold berkaitan dengan motif ekonomi/kekayaan, Glory berkaitan dengan prestise dan dominasi wilayah, dan Gospel berkaitan dengan misi keagamaan."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-22",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Penderitaan Rakyat pada Masa Pendudukan Jepang",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Jepang datang dan menguasai Indonesia pada tahun 1942. Selama masa pendudukan, rakyat Indonesia mengalami berbagai kesulitan. Salah satu bentuk penderitaan rakyat pada masa pendudukan Jepang adalah ....",
+    "options": [
+      "penghapusan seluruh kewajiban kerja dan pemberian gaji tinggi untuk seluruh petani desa",
+      "kerja paksa (romusha) serta kewajiban menyetorkan hasil pertanian/pangan sehingga rakyat mengalami kekurangan pangan dan penderitaan fisik",
+      "kebebasan penuh membentuk pemerintahan merdeka tanpa pengawasan militer",
+      "pembangunan fasilitas hiburan gratis bagi seluruh warga di setiap kecamatan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pada masa pendudukan Jepang, rakyat menderita akibat kerja paksa (romusha), perampasan bahan makanan untuk kebutuhan perang, dan keterbatasan sandang-pangan."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-23",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Menganalisis Penyebab Perang Jawa",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bangsa Indonesia melakukan berbagai perlawanan terhadap penjajah di beberapa daerah, salah satunya Perang Jawa yang dipimpin oleh Pangeran Diponegoro. Pasangan penyebab terjadinya Perang Jawa yang tepat adalah ....",
+    "options": [
+      "Pangeran Diponegoro meminta Belanda membangun jalur kereta api lintas benua",
+      "terjadinya sengketa perbatasan laut di Kepulauan Maluku",
+      "Belanda memasang patok jalan melewati tanah leluhur/makam milik Pangeran Diponegoro serta menaikkan pajak dan mencampuri urusan keraton",
+      "Belanda memberikan seluruh tanah keraton kepada rakyat secara cuma-cuma dan menurunkan pajak hingga nol persen"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pemasangan patok jalan tanpa izin di atas tanah leluhur Pangeran Diponegoro menjadi puncak kemarahan yang diperparah tekanan pajak dan intervensi Belanda."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-24",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Alasan Beralih ke Organisasi Pergerakan Nasional",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perlawanan yang dilakukan secara kedaerahan belum berhasil mengusir penjajah sehingga bangsa Indonesia beralih berjuang melalui organisasi dan persatuan. Dua alasan utama beralihnya perjuangan ke organisasi pergerakan nasional adalah ....",
+    "options": [
+      "organisasi pergerakan hanya bertujuan membubarkan seluruh bahasa daerah",
+      "penjajah sudah meninggalkan seluruh wilayah Indonesia sehingga tidak diperlukan lagi persatuan",
+      "masyarakat ingin menunda kemerdekaan selama seratus tahun ke depan",
+      "perjuangan kedaerahan sebelumnya masih terpecah-pecah dan kalah persenjataan, sedangkan organisasi modern menyatukan kesadaran kebangsaan yang lebih terkoordinasi"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kegagalan perlawanan sporadis kedaerahan mendorong kaum terpelajar membangun persatuan yang lebih luas, terencana, dan terorganisasi melalui organisasi pergerakan nasional."
+  },
+  {
+    "id": "SUMATIF3IPAS-CUSTOM-IPAS-25",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B3",
+    "topic": "Tes Sumatif 3 Sekolah — Menghubungkan Jejak Perjuangan dengan Kehidupan Masa Kini",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perjuangan para pahlawan dan tokoh pergerakan meninggalkan berbagai jejak yang masih bermanfaat bagi masyarakat hingga sekarang. Manakah contoh jejak perjuangan dan nilai yang masih dirasakan dalam kehidupan sehari-hari? ....",
+    "options": [
+      "akses pendidikan/sekolah yang terbuka luas bagi semua kalangan (termasuk perempuan) serta jaringan komunikasi dan transportasi modern yang terus berkembang",
+      "berlakunya kembali kerja paksa dan larangan bersekolah bagi rakyat biasa",
+      "hilangnya hak belajar dan berkomunikasi bagi masyarakat",
+      "penutupan seluruh jalur komunikasi dan transportasi antarwilayah"
+    ],
+    "correctIndex": 0,
+    "explanation": "Perjuangan tokoh pergerakan dan pahlawan membuka kesempatan pendidikan yang lebih luas serta meletakkan fondasi kemajuan komunikasi, transportasi, dan kehidupan berbangsa saat ini."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-01",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Pengertian Kearifan Lokal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pengetahuan dan nilai-nilai bijak yang dimiliki suatu masyarakat untuk mengatur kehidupan mereka dengan cara yang baik disebut ....",
+    "options": [
+      "kebudayaan",
+      "gotong royong",
+      "kearifan lokal",
+      "persatuan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kearifan lokal adalah pandangan hidup, pengetahuan, dan nilai-nilai bijaksana masyarakat setempat yang berkembang dan diwariskan untuk menata kehidupan bersama."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-02",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Hakikat dan Makna Kearifan Lokal",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kearifan lokal merupakan kebiasaan dan tradisi masyarakat yang diwariskan secara turun-temurun serta mengandung ....",
+    "options": [
+      "kepentingan pribadi semata",
+      "pengaruh budaya asing yang menggeser nilai lokal",
+      "persaingan antarmasyarakat yang merugikan",
+      "makna dan filosofi kehidupan yang luhur"
+    ],
+    "correctIndex": 3,
+    "explanation": "Tradisi dan kearifan lokal sarat dengan makna, tata nilai, dan filosofi kehidupan yang membimbing perilaku masyarakat."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-03",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Contoh Kearifan Lokal dalam Kehidupan Sosial",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Berikut ini yang termasuk contoh kearifan lokal dalam kehidupan sosial adalah ....",
+    "options": [
+      "gotong royong",
+      "mengabaikan tetangga",
+      "hidup individualis",
+      "persaingan tidak sehat"
+    ],
+    "correctIndex": 0,
+    "explanation": "Gotong royong merupakan nilai dan praktik sosial khas masyarakat Indonesia yang memperkuat kerja sama dan kerukunan."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-04",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Nilai dalam Tradisi Mappalette Bola",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Nilai utama yang terkandung dalam tradisi Mappalette Bola (memindahkan rumah kayu secara bersama-sama di Sulawesi Selatan) adalah ....",
+    "options": [
+      "persaingan dan keberanian individu",
+      "kebersamaan dan kerja sama",
+      "kekayaan dan kemewahan",
+      "kepentingan pribadi"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mappalette Bola mencerminkan kuatnya kebersamaan, solidaritas, dan gotong royong warga saat memindahkan rumah panggung/kayu."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-05",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Fungsi Kearifan Lokal Menjaga Lingkungan dan Persatuan",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Warga membersihkan selokan secara bersama-sama agar tidak terjadi banjir. Kegiatan tersebut menunjukkan bahwa kearifan lokal berfungsi untuk ....",
+    "options": [
+      "mengikuti kebiasaan orang kota tanpa tujuan jelas",
+      "memecah belah kerukunan antarwarga",
+      "menjaga lingkungan dan kehidupan bersama serta menjaga persatuan tetap terjalin dengan baik",
+      "menambah penghasilan warga secara instan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Membersihkan selokan bersama mencegah banjir (menjaga lingkungan) sekaligus memperkuat kerukunan dan persatuan warga."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-06",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Persamaan Tujuan Tradisi Awig-Awig dan Celako Kumali",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tradisi awig-awig dan celako kumali memiliki persamaan tujuan, yaitu sama-sama bertujuan untuk ....",
+    "options": [
+      "mengutamakan keuntungan satu pihak saja",
+      "menghapus seluruh aturan adat yang sudah ada sejak lama",
+      "menunjukkan keberanian bermasyarakat dengan melanggar aturan alam",
+      "mengatur kehidupan agar tertib, menjaga kelestarian lingkungan, serta melestarikan budaya dan persatuan masyarakat"
+    ],
+    "correctIndex": 3,
+    "explanation": "Aturan adat seperti awig-awig dan celako kumali berfungsi menertibkan perilaku, menjaga alam, dan melestarikan nilai kebersamaan masyarakat."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-07",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Kebiasaan Turun-Temurun dalam Masyarakat",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Berikut merupakan contoh kebiasaan baik yang dilakukan secara turun-temurun dalam masyarakat adalah ....",
+    "options": [
+      "bermusyawarah untuk mendapatkan kesepakatan dan merayakan hari raya dengan saling mengunjungi serta bermaafan",
+      "bermain bersama teman hanya sekali tanpa berulang",
+      "mengikuti lomba cerdas cermat di sekolah saja",
+      "mengabaikan keluarga besar saat hari raya"
+    ],
+    "correctIndex": 0,
+    "explanation": "Musyawarah mufakat dan silaturahmi saat hari raya merupakan kebiasaan turun-temurun yang terjaga dalam kehidupan masyarakat."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-08",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Nilai dalam Tradisi Hombo Batu (Fahombo)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Hombo batu merupakan tradisi dari Pulau Nias yang dilakukan oleh anak laki-laki sebagai tanda kedewasaan. Tradisi ini mengajarkan keberanian, kerja keras, dan semangat pantang menyerah. Nilai yang dapat diterapkan dari tradisi hombo batu adalah ....",
+    "options": [
+      "malas berusaha dan menghindari latihan",
+      "pantang menyerah dan berani menghadapi tantangan",
+      "takut mencoba hal baru yang positif",
+      "mudah menyerah saat menghadapi kesulitan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tradisi lompat batu (hombo batu) menanamkan mental tangguh, keberanian menghadapi tantangan, dan ketekunan/pantang menyerah."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-09",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Manfaat Kearifan Lokal bagi Masyarakat",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan pernyataan mengenai manfaat kearifan lokal bagi kehidupan masyarakat berikut!\n1) Kearifan lokal menjaga hubungan antarmanusia.\n2) Kearifan lokal dapat menyebabkan perpecahan.\n3) Kearifan lokal dapat menjaga kelestarian alam.\n4) Kearifan lokal membuat masyarakat hidup sendiri-sendiri.\n\nPernyataan yang benar mengenai manfaat kearifan lokal ditunjukkan oleh nomor ....",
+    "options": [
+      "3 dan 4",
+      "2 dan 4",
+      "1 dan 3",
+      "1 dan 2"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kearifan lokal bermanfaat mempererat hubungan antarmanusia (1) dan menjaga kelestarian lingkungan/alam (3), bukan memecah belah atau membuat hidup individualis."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-10",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Tradisi Sasi Laut di Maluku",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tradisi Sasi laut di Maluku mengajarkan masyarakat untuk menjaga kelestarian ....",
+    "options": [
+      "kendaraan bermotor di jalan raya",
+      "bangunan gedung bertingkat di kota",
+      "peralatan elektronik rumah tangga",
+      "sumber daya alam laut dan pesisir"
+    ],
+    "correctIndex": 3,
+    "explanation": "Sasi merupakan kearifan lokal Maluku dan Papua yang mengatur waktu panen/pemanfaatan hasil alam laut dan darat agar sumber daya alam tetap lestari."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-11",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Nilai Gotong Royong dalam Masyarakat",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Nilai yang mengajarkan masyarakat untuk bekerja bersama-sama dan saling membantu demi kepentingan bersama disebut ....",
+    "options": [
+      "gotong royong",
+      "apatisme",
+      "konsumerisme",
+      "egoisme"
+    ],
+    "correctIndex": 0,
+    "explanation": "Gotong royong adalah sikap dan tindakan bekerja sama, bahu-membahu, dan saling menolong dalam menyelesaikan pekerjaan bersama."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-12",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Manfaat Kearifan Lokal terhadap Identitas Budaya",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Salah satu manfaat kearifan lokal adalah menjaga identitas daerah dan memperkuat rasa ... terhadap budaya sendiri.",
+    "options": [
+      "benci dan menolak",
+      "cinta dan bangga",
+      "malu dan minder",
+      "acuh tak acuh"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kearifan lokal memperkuat jati diri/identitas komunitas serta menumbuhkan rasa cinta dan bangga terhadap budaya sendiri."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-13",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Sistem Irigasi Tradisional Subak di Bali",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Masyarakat Bali memiliki sistem pengairan sawah tradisional berbasis filosofi Tri Hita Karana yang disebut ....",
+    "options": [
+      "Sasi",
+      "Lumbung",
+      "Subak",
+      "Jukung"
+    ],
+    "correctIndex": 2,
+    "explanation": "Subak adalah sistem organisasi pengairan sawah tradisional di Bali yang mengatur pembagian air secara adil dan selaras dengan alam serta spiritualitas."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-14",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Tradisi Mappalette Bola di Sulawesi Selatan",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tradisi Mappalette Bola yang berasal dari Sulawesi Selatan merupakan tradisi ... secara bergotong royong.",
+    "options": [
+      "menangkap ikan paus di laut lepas",
+      "membuat perahu layar berukuran besar",
+      "menanam padi di sawah bertingkat",
+      "memindahkan/mengangkat rumah kayu"
+    ],
+    "correctIndex": 3,
+    "explanation": "Mappalette Bola adalah tradisi warga Bugis/Makassar di Sulawesi Selatan yang menggotong rumah panggung kayu ke lokasi baru."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-15",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Aturan Adat Awig-Awig di Bali dan Lombok",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Aturan adat yang mengatur tata kehidupan dan pengelolaan lingkungan yang masih berlaku di Bali dan Lombok disebut ....",
+    "options": [
+      "awig-awig",
+      "tabuik",
+      "pamali",
+      "seren taun"
+    ],
+    "correctIndex": 0,
+    "explanation": "Awig-awig merupakan ketentuan/aturan adat yang disepakati masyarakat di Bali dan Lombok untuk menjaga ketertiban sosial dan kelestarian lingkungan."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-16",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Aturan Adat Celako Kumali di Bengkulu",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Aturan adat dalam berladang dan menanam yang mengajarkan masyarakat untuk menjaga alam dengan baik yang terdapat di Bengkulu bernama ....",
+    "options": [
+      "Subak",
+      "Celako Kumali",
+      "Sasi Laut",
+      "Ngaben"
+    ],
+    "correctIndex": 1,
+    "explanation": "Celako Kumali adalah kearifan/aturan adat di Bengkulu yang membatasi pembukaan lahan dan cara berladang agar kelestarian hutan dan lingkungan tetap terjaga."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-17",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Pelestarian Kearifan Lokal melalui Pembelajaran di Sekolah",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Salah satu upaya melestarikan kearifan lokal di sekolah adalah melalui kegiatan pembelajaran seperti muatan lokal/Pendidikan Lingkungan dan Budaya (misalnya PLBJ di Jakarta) serta penguatan nilai Pancasila. Tujuan kegiatan tersebut di sekolah adalah ....",
+    "options": [
+      "menghapus penggunaan bahasa Indonesia di lingkungan sekolah",
+      "melarang siswa mengenal budaya dari daerah lain",
+      "memperkenalkan, menanamkan rasa cinta, dan membiasakan siswa melestarikan budaya daerah sejak dini",
+      "menggantikan seluruh mata pelajaran wajib dengan permainan bebas"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pembelajaran budaya/muatan lokal di sekolah membantu siswa mengenal, menghargai, dan melestarikan warisan budaya daerah."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-18",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Melestarikan Warisan Tradisi Leluhur",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tradisi baik yang bernilai positif sebaiknya tetap ... sampai sekarang karena merupakan warisan nenek moyang yang berharga.",
+    "options": [
+      "diabaikan oleh generasi muda",
+      "dilupakan dan ditinggalkan",
+      "dihapuskan tanpa alasan",
+      "dijaga dan dilestarikan"
+    ],
+    "correctIndex": 3,
+    "explanation": "Tradisi luhur yang membawa kebaikan patut dijaga dan dilestarikan agar tidak punah."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-19",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Peran Keluarga dalam Menjaga Budaya",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Perhatikan pernyataan berikut!\n1) Menceritakan tradisi kepada anak.\n2) Melarang anak mengenal budaya daerah.\n3) Menggunakan bahasa daerah di rumah.\n4) Mengajak anak mengikuti upacara adat.\n\nPeran keluarga dalam menjaga budaya ditunjukkan melalui nomor ....",
+    "options": [
+      "1), 3), dan 4)",
+      "1), 2), dan 3)",
+      "1), 2), dan 4)",
+      "2), 3), dan 4)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Keluarga berperan melestarikan budaya dengan menceritakan tradisi (1), membiasakan bahasa daerah di rumah (3), dan mengajak anak mengikuti kegiatan/upacara adat (4)."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-20",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Menganalisis Contoh Kearifan Lokal dan Nilainya",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Manakah pasangan contoh kearifan lokal dan nilai utama yang terkandung di dalamnya yang paling tepat? ....",
+    "options": [
+      "Subak: memboroskan air; Mappalette Bola: persaingan permusuhan; Hombo Batu: takut tantangan",
+      "Hombo Batu: keberanian dan pantang menyerah; Mappalette Bola: gotong royong dan kebersamaan; Sasi Laut: menjaga kelestarian alam",
+      "Sasi Laut: merusak terumbu karang; Subak: mengabaikan pembagian air; Celako Kumali: membakar hutan",
+      "Hombo Batu: mudah menyerah; Mappalette Bola: individualisme; Sasi Laut: mengeksploitasi laut tanpa batas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hombo Batu melatih keberanian dan ketangguhan, Mappalette Bola menonjolkan gotong royong, dan Sasi Laut menjaga kelestarian sumber daya alam."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-21",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Upaya Generasi Muda Melestarikan Kearifan Lokal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bagaimana upaya yang tepat dilakukan generasi muda untuk menjaga dan melestarikan kearifan lokal di daerahnya di tengah pengaruh budaya asing? ....",
+    "options": [
+      "menghindari kegiatan budaya yang diadakan oleh masyarakat sekitar",
+      "meninggalkan seluruh tradisi daerah karena menganggap budaya asing selalu lebih modern",
+      "mempelajari, mempraktikkan, dan memperkenalkan kearifan lokal (termasuk lewat media digital/karya kreatif) serta menyaring budaya asing secara bijak",
+      "meniru seluruh budaya asing tanpa menyaring kesesuaiannya dengan nilai luhur"
+    ],
+    "correctIndex": 2,
+    "explanation": "Generasi muda dapat melestarikan kearifan lokal dengan aktif ikut serta, mempromosikannya secara kreatif, dan menyaring pengaruh luar dengan bijak."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-22",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Pengaruh Rasa Bangga terhadap Kelestarian Tradisi",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Mengapa rasa bangga terhadap budaya daerah dapat membuat tradisi tetap terjaga? ....",
+    "options": [
+      "karena rasa bangga membuat tradisi tidak perlu lagi dipelajari atau dilakukan",
+      "karena rasa bangga membuat masyarakat menutup diri dari kemajuan ilmu pengetahuan",
+      "karena rasa bangga otomatis menggantikan peran masyarakat dalam menjaga lingkungan",
+      "karena rasa bangga menumbuhkan kepedulian dan keinginan kuat untuk merawat, mempraktikkan, serta mewariskannya kepada generasi berikutnya"
+    ],
+    "correctIndex": 3,
+    "explanation": "Rasa bangga mendorong seseorang menghargai nilai budayanya dan berupaya mempertahankannya agar tetap hidup."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-23",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Mengenal Kearifan Lokal Daerah Setempat (Palang Pintu)",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C3",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dalam tradisi budaya Betawi, palang pintu merupakan salah satu tradisi adat yang memuat kegiatan seperti ....",
+    "options": [
+      "saling berbalas pantun, pertunjukan silat, dan untaian doa/nasihat dalam prosesi penyambutan pengantin",
+      "upacara pembakaran jenazah secara massal di pantai",
+      "panen raya padi dengan sistem terasering di pegunungan",
+      "balap perahu naga di sungai besar Kalimantan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tradisi palang pintu pada adat Betawi dikenal dengan saling berbalas pantun, atraksi pencak silat, serta doa/petuah yang sarat nilai kesopanan dan keakraban."
+  },
+  {
+    "id": "SUMATIF4IPAS-CUSTOM-IPAS-24",
+    "subject": "IPAS",
+    "semester": 1,
+    "moduleId": "IPAS-B4",
+    "topic": "Tes Sumatif 4 Sekolah — Tantangan Pelestarian Kearifan Lokal di Era Modern",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C4",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Apa tantangan terbesar dalam melestarikan kearifan lokal di era modern beserta contoh nyata yang dapat ditemui di sekitar kita? ....",
+    "options": [
+      "tidak adanya perkembangan teknologi komunikasi sama sekali di masyarakat",
+      "derasnya arus globalisasi dan masuknya budaya asing serta sikap individualistis/kurangnya minat generasi muda, misalnya lebih memilih hiburan instan atau gawai daripada tradisi dan gotong royong setempat",
+      "terlalu banyaknya kegiatan gotong royong yang diadakan setiap hari di lingkungan warga",
+      "melimpahnya buku cerita rakyat yang membuat tradisi tidak pernah dilupakan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Arus budaya luar, perubahan gaya hidup modern, dan berkurangnya partisipasi generasi muda menjadi tantangan utama sehingga perlu diimbangi dengan edukasi dan adaptasi yang bijak."
   }
 ];
 
@@ -33281,6 +34321,38 @@
       startSetQuiz('BIN-ASAS-PREDIKSI-30', 'BIN-B3', false, 'STUDY');
     }
 
+    
+    function getAutoTargetAsasDay() {
+      const now = new Date();
+      const y = now.getFullYear(), m = now.getMonth() + 1, d = now.getDate(), h = now.getHours();
+      if (y === 2026 && m === 11) {
+        if (d < 23 || (d === 23 && h < 12)) return 'Senin, 23 Nov';
+        if ((d === 23 && h >= 12) || (d === 24 && h < 12)) return 'Selasa, 24 Nov';
+        if ((d === 24 && h >= 12) || (d === 25 && h < 12)) return 'Rabu, 25 Nov';
+        if ((d === 25 && h >= 12) || (d === 26 && h < 12)) return 'Kamis, 26 Nov';
+        if ((d === 26 && h >= 12) || (d === 27 && h < 15)) return 'Jumat, 27 Nov';
+      }
+      return 'Selasa, 24 Nov';
+    }
+
+    function onAsasDateChange() {
+      const dateEl = document.getElementById('curr-asas-date');
+      const semEl = document.getElementById('curr-semester');
+      const val = dateEl ? dateEl.value : 'ALL';
+      if (val !== 'ALL') {
+        currSelectedSubject = 'ALL';
+        // Reset subject filter buttons highlight to ALL
+        if (typeof setCurrSubject === 'function') {
+          const prevDate = val;
+          setCurrSubject('ALL');
+          if (dateEl) dateEl.value = prevDate;
+        }
+        if (semEl) semEl.value = 'ALL';
+      }
+      updateCurriculumBabDropdown();
+      renderCurriculum();
+    }
+
     function activateFokusASAS() {
       setCurrSubject('ALL');
       const semEl = document.getElementById('curr-semester');
@@ -33304,9 +34376,13 @@
       if (currSelectedSubject !== 'ALL') {
         modules = modules.filter(m => m.subject === currSelectedSubject);
       }
-      if (sem === 'ASAS1') {
-        const sched = window.ASAS_SEM1_SCHEDULE || {};
+      const asasDateEl = document.getElementById('curr-asas-date');
+      const asasDateVal = asasDateEl ? asasDateEl.value : 'ALL';
+      const sched = window.ASAS_SEM1_SCHEDULE || {};
+      if (asasDateVal === 'ASAS_ALL' || sem === 'ASAS1') {
         modules = modules.filter(m => Boolean(sched[m.id])).sort((a, b) => sched[a.id].order - sched[b.id].order);
+      } else if (asasDateVal !== 'ALL') {
+        modules = modules.filter(m => sched[m.id] && sched[m.id].day === asasDateVal).sort((a, b) => sched[a.id].order - sched[b.id].order);
       } else if (sem !== 'ALL') {
         modules = modules.filter(m => String(m.semester) === String(sem));
       }
@@ -33776,34 +34852,27 @@ function openModalForChapter(subject, semester, topic, moduleId) {
       if (['IPAS-B3', 'IPAS-B4', 'ENG-B3', 'ENG-B4'].includes(moduleId)) {
         const tueSets = [];
         const isIpas = moduleId.startsWith('IPAS');
+        const sumatifIpasQs = modQs.filter(q => /^SUMATIF[34]IPAS-/.test(q.id));
         const predQs = (questions || []).filter(q => (isIpas ? /^PREDIKSI-IPAS-ASAS-/ : /^PREDIKSI-ENG-ASAS-/).test(q.id));
+
+        if (sumatifIpasQs.length > 0) {
+          tueSets.push({
+            id: moduleId + '-SUMATIF-SEKOLAH',
+            code: '⭐ PRIORITAS #1 • Tes Sumatif Sekolah',
+            badgeBg: 'bg-rose-100 text-rose-800 border-rose-300',
+            title: 'Kerjakan Ini Dulu! Paket Asli Tes Sumatif Sekolah (' + sumatifIpasQs.length + ' Soal)',
+            desc: 'Soal asli Tes Sumatif IPAS dari sekolah untuk bab ini. Fokus selesaikan paket ini dulu ya, Lovely!',
+            questionIds: sumatifIpasQs.map(q => q.id)
+          });
+        }
         if (predQs.length > 0) {
           tueSets.push({
             id: isIpas ? 'IPAS-ASAS-PREDIKSI-30' : 'ENG-ASAS-PREDIKSI-30',
-            code: isIpas ? '⭐ PRIORITAS #1 • Prediksi ASAS IPAS' : '⭐ PRIORITAS #1 • Prediksi ASAS B. Inggris',
+            code: sumatifIpasQs.length > 0 ? '🌍 PRIORITAS #2 • Prediksi ASAS Besok' : (isIpas ? '⭐ PRIORITAS #1 • Prediksi ASAS IPAS' : '⭐ PRIORITAS #1 • Prediksi ASAS B. Inggris'),
             badgeBg: isIpas ? 'bg-emerald-100 text-emerald-900 border-emerald-300' : 'bg-blue-100 text-blue-900 border-blue-300',
-            title: isIpas ? 'Kerjakan Ini Dulu! Prediksi ASAS IPAS Gabungan Bab 3 & 4 (' + predQs.length + ' Soal)' : 'Kerjakan Ini Dulu! Prediksi ASAS B. Inggris Gabungan Unit 3 & 4 (' + predQs.length + ' Soal)',
-            desc: '1 set lengkap bergaya pola soal guru sekolah (soal bernomor 1–4, bacaan singkat, dan perbandingan) untuk simulasi ujian besok!',
+            title: isIpas ? 'Prediksi ASAS IPAS — Gabungan Bab 3 & 4 (' + predQs.length + ' Soal)' : 'Kerjakan Ini Dulu! Prediksi ASAS B. Inggris — Gabungan Unit 3 & 4 (' + predQs.length + ' Soal)',
+            desc: '1 set lengkap bergaya pola soal guru sekolah untuk simulasi ujian besok!',
             questionIds: predQs.map(q => q.id)
-          });
-        }
-        const half = Math.ceil(modQs.length / 2);
-        tueSets.push({
-          id: moduleId + '-LATIHAN-1',
-          code: '🎯 Latihan Bab Bagian 1 (Opsional)',
-          badgeBg: 'bg-indigo-100 text-indigo-800 border-indigo-300',
-          title: 'Pemantapan Khusus Bab Ini — Bagian 1 (' + half + ' Soal)',
-          desc: 'Latihan tambahan khusus materi bab ini jika paket prediksi sudah tuntas.',
-          questionIds: modQs.slice(0, half).map(q => q.id)
-        });
-        if (modQs.length > half) {
-          tueSets.push({
-            id: moduleId + '-LATIHAN-2',
-            code: '🎯 Latihan Bab Bagian 2 (Opsional)',
-            badgeBg: 'bg-purple-100 text-purple-800 border-purple-300',
-            title: 'Pemantapan Khusus Bab Ini — Bagian 2 (' + (modQs.length - half) + ' Soal)',
-            desc: 'Lanjutan latihan pendalaman bab ini.',
-            questionIds: modQs.slice(half).map(q => q.id)
           });
         }
         return tueSets;
@@ -35161,6 +36230,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
 
     function setCurrSubject(subj) {
       currSelectedSubject = subj;
+      if (subj !== 'ALL') { const dEl = document.getElementById('curr-asas-date'); if (dEl) dEl.value = 'ALL'; }
       const allBtns = ['ALL', 'Matematika', 'IPAS', 'Bahasa Indonesia', 'Pendidikan Pancasila', 'Bahasa Inggris', 'PLBJ', 'Seni Rupa', 'PAI', 'Bahasa Arab', 'PJOK'];
 
       allBtns.forEach((s) => {
@@ -35201,17 +36271,22 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       const selectedBabId = babEl ? babEl.value : 'ALL';
 
       const asasSched = window.ASAS_SEM1_SCHEDULE || {};
+      const asasDateEl = document.getElementById('curr-asas-date');
+      const asasDateVal = asasDateEl ? asasDateEl.value : 'ALL';
+
       const filtered = (window.KURIKULUM_SD6 || []).filter((m) => {
         if (currSelectedSubject !== 'ALL' && m.subject !== currSelectedSubject) return false;
-        if (sem === 'ASAS1') {
+        if (asasDateVal === 'ASAS_ALL' || sem === 'ASAS1') {
           if (!asasSched[m.id]) return false;
+        } else if (asasDateVal !== 'ALL') {
+          if (!asasSched[m.id] || asasSched[m.id].day !== asasDateVal) return false;
         } else if (sem !== 'ALL' && String(m.semester) !== String(sem)) {
           return false;
         }
         if (selectedBabId !== 'ALL' && m.id !== selectedBabId) return false;
         return true;
       });
-      if (sem === 'ASAS1') {
+      if (asasDateVal !== 'ALL' || sem === 'ASAS1') {
         filtered.sort((a, b) => (asasSched[a.id]?.order || 999) - (asasSched[b.id]?.order || 999));
       }
 
@@ -37036,6 +38111,14 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     } catch(e) {}
     loadData();
     updateSidebarMapelBadges();
+    try {
+      const dateEl = document.getElementById('curr-asas-date');
+      if (dateEl) {
+        dateEl.value = getAutoTargetAsasDay();
+        updateCurriculumBabDropdown();
+        renderCurriculum();
+      }
+    } catch(e) {}
     
     // =========================================================================
     // FITUR KENYAMANAN BARU: FONT SCALER, TTS, BOOKMARK, GLOBAL SEARCH, PRINT
