@@ -735,7 +735,8 @@
             <div>
               <label class="block text-[11px] font-bold text-slate-500 mb-1">Status Kelengkapan:</label>
               <select id="matrix-filter-status" onchange="renderMatrixTable()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800 focus:outline-indigo-500">
-                <option value="ALL">🌟 Semua Bab (19 Bab)</option>
+                <option value="ALL">🌟 Semua Bab (63 Bab)</option>
+                <option value="DONE_LOVELY">✅ Hanya yang Sudah Dikerjakan Lovely</option>
                 <option value="NEED_MODULE">⚠️ Butuh Modul Mendalam</option>
                 <option value="NEED_QUESTIONS">⚠️ Butuh Soal Kuis (0 Soal)</option>
                 <option value="READY_ALL">⭐ Siap Lengkap (Modul + Soal)</option>
@@ -781,7 +782,25 @@
 
       <!-- Table Section -->
       <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xs">
-        <div class="overflow-x-auto">
+        
+          <!-- PANEL KHUSUS AYAH: DAFTAR PAKET YANG SUDAH DIKERJAKAN LOVELY -->
+          <div id="matrix-lovely-completed-panel" class="mb-4 p-4 rounded-2xl bg-gradient-to-br from-amber-50 via-white to-emerald-50 border border-amber-200 shadow-xs space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <div class="text-xs font-extrabold text-amber-900 flex items-center gap-1.5">
+                  <span>📋</span> Paket Soal yang Sudah Dikerjakan Lovely (Sinkron Cloud)
+                </div>
+                <p class="text-[11px] text-slate-600">Langsung lihat skor, tanggal pengerjaan, dan klik untuk memeriksa soal yang masih salah tanpa mencari satu per satu per bab.</p>
+              </div>
+              <button onclick="pullStatsFromCloud(true)" class="px-3 py-1.5 rounded-xl text-[11px] font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs transition">
+                ☁️ Refresh Data Terbaru
+              </button>
+            </div>
+            <div id="matrix-lovely-completed-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
+              <div class="text-xs text-slate-500 italic">Memuat data pengerjaan Lovely...</div>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
           <table class="w-full text-left text-xs border-collapse">
             <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 uppercase text-[11px] font-bold tracking-wider">
               <tr>
@@ -34476,7 +34495,101 @@ function getLovelyModuleProgress(modId) {
   return { best, attempts };
 }
 
+
+function toggleMatrixDoneOnly() {
+  const st = document.getElementById('matrix-filter-status');
+  const sb = document.getElementById('matrix-filter-subject');
+  const sm = document.getElementById('matrix-filter-semester');
+  const btn = document.getElementById('btn-matrix-done-only');
+  if (!st) return;
+  if (st.value === 'DONE_LOVELY') {
+    st.value = 'ALL';
+    if (btn) btn.textContent = '✅ Lihat Hanya yang Sudah Dikerjakan';
+  } else {
+    st.value = 'DONE_LOVELY';
+    if (sb) sb.value = 'ALL';
+    if (sm) sm.value = 'ALL';
+    if (btn) btn.textContent = '🌟 Tampilkan Semua Bab Lagi';
+  }
+  renderMatrixTable();
+}
+
+function openAyahWrongReview(setId) {
+  const res = (studentStats && studentStats.setResults) ? studentStats.setResults[setId] : null;
+  if (!res) return;
+  const wrongIds = Array.isArray(res.wrongQuestionIds) ? res.wrongQuestionIds : [];
+  const modal = document.getElementById('ayah-wrong-review-modal');
+  const titleEl = document.getElementById('ayah-wrong-modal-title');
+  const bodyEl = document.getElementById('ayah-wrong-modal-body');
+  if (!modal || !bodyEl) return;
+
+  titleEl.textContent = (res.title || setId) + ' — ' + wrongIds.length + ' Soal Salah (Nilai: ' + res.lastScore + '/100)';
+  if (wrongIds.length === 0) {
+    bodyEl.innerHTML = '<div class="p-6 text-center text-emerald-700 font-bold text-sm bg-emerald-50 rounded-2xl border border-emerald-200">🎉 Luar biasa! Tidak ada soal yang salah pada percobaan terakhir paket ini!</div>';
+  } else {
+    const letters = ['A', 'B', 'C', 'D'];
+    bodyEl.innerHTML = wrongIds.map((qId, i) => {
+      const q = (questions || []).find(item => item.id === qId);
+      if (!q) return '<div class="p-3 rounded-xl bg-white border text-xs text-slate-500">Soal ID ' + qId + ' tidak ditemukan.</div>';
+      const ansLetter = letters[q.correctIndex] || '';
+      const ansText = (q.options && q.options[q.correctIndex]) ? q.options[q.correctIndex] : '-';
+      return `
+        <div class="p-4 rounded-2xl bg-white border border-rose-200 shadow-xs space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800">Salah #${i + 1} • ${escapeHtml(q.subject || '')}</span>
+            <span class="text-[10px] text-slate-400">${escapeHtml(q.topic || '')}</span>
+          </div>
+          <div class="text-xs sm:text-sm font-bold text-slate-900 whitespace-pre-line">${escapeHtml(q.question)}</div>
+          <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900">
+            <strong>✅ Jawaban Benar (${ansLetter}):</strong> ${escapeHtml(ansText)}
+          </div>
+          ${q.explanation ? `<div class="text-xs text-slate-600 leading-relaxed"><strong>💡 Pembahasan:</strong> ${escapeHtml(q.explanation)}</div>` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+  modal.classList.remove('hidden');
+}
+
+function renderCompletedSetsPanel() {
+  const listEl = document.getElementById('matrix-lovely-completed-list');
+  if (!listEl) return;
+  const results = (studentStats && studentStats.setResults) ? studentStats.setResults : {};
+  const entries = Object.entries(results).filter(([_, r]) => r && r.bestScore !== undefined);
+
+  if (entries.length === 0) {
+    listEl.innerHTML = '<div class="col-span-full p-4 rounded-xl bg-white border border-slate-200 text-xs text-slate-500 text-center">Belum ada paket soal yang dikerjakan Lovely. Begitu Lovely selesai kuis di HP, hasilnya langsung muncul di sini!</div>';
+    return;
+  }
+
+  // Sort newest first by lastDate or attempts
+  listEl.innerHTML = entries.map(([setId, r]) => {
+    const wrongCount = Array.isArray(r.wrongQuestionIds) ? r.wrongQuestionIds.length : 0;
+    const scoreColor = r.bestScore >= 85 ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : (r.bestScore >= 70 ? 'bg-amber-100 text-amber-900 border-amber-300' : 'bg-rose-100 text-rose-800 border-rose-300');
+    return `
+      <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between gap-2.5">
+        <div class="space-y-1">
+          <div class="flex items-start justify-between gap-2">
+            <div class="text-xs font-extrabold text-slate-900 leading-snug">${escapeHtml(r.title || setId)}</div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-black border shrink-0 ${scoreColor}">${r.bestScore}/100</span>
+          </div>
+          <div class="text-[11px] text-slate-500">
+            Benar: <strong>${r.correctCount ?? '-'} / ${r.totalCount ?? '-'}</strong> • Dikerjakan <strong>${r.attempts || 1}x</strong>
+          </div>
+          ${r.lastDate ? `<div class="text-[10px] text-slate-400">🕒 ${escapeHtml(r.lastDate)}</div>` : ''}
+        </div>
+        <div class="flex items-center gap-1.5 pt-1 border-t border-slate-100">
+          ${wrongCount > 0
+            ? `<button onclick="openAyahWrongReview('${setId}')" class="w-full px-2.5 py-1.5 rounded-lg text-[11px] font-bold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition">🔍 Lihat ${wrongCount} Soal yang Salah</button>`
+            : `<div class="w-full text-center px-2.5 py-1.5 rounded-lg text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">🎉 Semua Benar (100%)</div>`}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
 function renderMatrixTable() {
+  renderCompletedSetsPanel();
   const tbody = document.getElementById('matrix-table-body');
   if (!tbody) return;
 
@@ -34553,6 +34666,7 @@ function renderMatrixTable() {
     if (filterStatus === 'NEED_MODULE' && hasRich) return;
     if (filterStatus === 'NEED_QUESTIONS' && qCount > 0) return;
     if (filterStatus === 'READY_ALL' && (!hasRich || qCount === 0)) return;
+    if (filterStatus === 'DONE_LOVELY' && getLovelyModuleProgress(m.id).best === null) return;
 
     // Filter search
     if (searchQuery) {
@@ -38692,6 +38806,24 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
   <div id="eye-protection-overlay" class="fixed inset-0 pointer-events-none z-[60] transition-opacity duration-300 hidden" style="background-color: rgba(245, 158, 11, 0.14); mix-blend-mode: multiply;"></div>
   <!-- CONFETTI CELEBRATION CANVAS -->
   <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-[70] hidden"></canvas>
+
+  <!-- MODAL PERIKSA SOAL SALAH PER PAKET UNTUK AYAH -->
+  <div id="ayah-wrong-review-modal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-xs z-50 hidden flex items-center justify-center p-2 sm:p-6">
+    <div class="bg-white rounded-2xl sm:rounded-3xl max-w-3xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="bg-gradient-to-r from-rose-600 to-amber-600 text-white p-4 sm:p-5 flex items-center justify-between shrink-0">
+        <div>
+          <div class="text-[10px] font-extrabold uppercase tracking-wider text-rose-100">Evaluasi Khusus Ayah & Lovely</div>
+          <h3 id="ayah-wrong-modal-title" class="text-sm sm:text-base font-extrabold">Daftar Soal yang Masih Salah</h3>
+        </div>
+        <button onclick="document.getElementById('ayah-wrong-review-modal').classList.add('hidden')" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white font-bold">✕</button>
+      </div>
+      <div id="ayah-wrong-modal-body" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3 bg-slate-50"></div>
+      <div class="p-3.5 bg-white border-t border-slate-200 flex justify-end shrink-0">
+        <button onclick="document.getElementById('ayah-wrong-review-modal').classList.add('hidden')" class="px-5 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-white">Tutup</button>
+      </div>
+    </div>
+  </div>
+
 </body>
         </html>
       `);
