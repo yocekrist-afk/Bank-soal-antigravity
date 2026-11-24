@@ -37552,7 +37552,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
           const defaultMap = new Map((window.DEFAULT_QUESTIONS_SD6 || []).map(q => [q.id, q]));
           for (let i = 0; i < loaded.length; i++) {
             const defQ = defaultMap.get(loaded[i].id);
-            if (defQ && /^SPEKTA-/.test(defQ.id)) {
+            if (defQ && (/^(SPEKTA-|ASAS1-MTK-B4-|MTK-B4-ASAS-|PHB-MTK-|PHB-PJOK-)/.test(defQ.id) || (defQ.imageUrl && !loaded[i].imageUrl))) {
               loaded[i] = defQ;
             }
           }
