@@ -36571,7 +36571,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       const el = document.getElementById('cloud-sync-badge');
       if (!el) return;
       el.textContent = stateText;
-      el.className = 'px-2.5 py-1 rounded-full text-[11px] font-bold transition cursor-pointer flex items-center gap-1 ' + colorCls;
+      el.className = 'px-2.5 py-1 rounded-full text-[11px] font-bold transition cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ' + colorCls;
     }
 
     function mergeStudentStats(localS, cloudS) {
@@ -36644,9 +36644,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
     function refreshAllCloudViews() {
       if (typeof updateGamificationHeader === 'function') updateGamificationHeader();
       if (typeof updateMistakeBadges === 'function') updateMistakeBadges();
-      if (typeof pushStatsToCloud === "function") pushStatsToCloud();
       if (typeof updateTanyaAyahBadges === 'function') updateTanyaAyahBadges();
-      if (typeof pushStatsToCloud === "function") pushStatsToCloud();
       if (typeof renderAnalytics === 'function') renderAnalytics();
       if (typeof renderMatrixTable === 'function') renderMatrixTable();
     }
