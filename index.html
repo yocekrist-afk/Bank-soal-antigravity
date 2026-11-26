@@ -751,7 +751,9 @@
               </select>
             </div>
             <button id="btn-prediksi-snr-asas" onclick="startPrediksiASASSnr()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">🎨 Prediksi ASAS Seni Rupa (Bab 3 & 4 • 30 Soal)</button>
-            <button id="btn-prediksi-plbj-asas" onclick="startPrediksiASASPlbj()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">⭐ Sumatif III, IV & V PLBJ Sekolah (30 Soal)</button>
+            <button id="btn-sumatif3-plbj" onclick="startSumatif3Plbj()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">⭐ Sumatif III PLBJ: Palang Pintu (25 Soal)</button>
+            <button id="btn-sumatif4-plbj" onclick="startSumatif4Plbj()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">⭐ Sumatif IV PLBJ: Kampung & Wilayah (25 Soal)</button>
+            <button id="btn-sumatif5-plbj" onclick="startSumatif5Plbj()" class="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm hover:opacity-95 transition mb-1 sm:mb-0 sm:mr-2 text-center">⭐ Sumatif V PLBJ: Batik Betawi (25 Soal)</button>
             <label class="text-xs font-semibold text-slate-500 mr-1">Semester:</label>
             <select id="curr-semester" onchange="onCurriculumSemesterChange()" class="px-3 py-1.5 rounded-xl text-xs bg-slate-50 border border-slate-200 font-semibold text-slate-800 shadow-xs">
               <option value="ALL">🌟 Semua Semester</option>
@@ -37952,74 +37954,1129 @@
     "timeMinutes": 2
   },
   {
-    "id": "SUMATIF-PLBJ-01",
-    "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Ciri Khas Batik Betawi",
+    "id": "SUMATIF3-PLBJ-01",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 1) — Waktu Pelaksanaan Palang Pintu",
+    "type": "PG",
     "difficulty": "Mudah",
-    "bloom": "C1",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Waktu pelaksanaan prosesi \"Palang Pintu\" dalam upacara pernikahan Betawi adalah ....",
+    "options": [
+      "setelah akad nikah",
+      "sebelum akad nikah",
+      "pada saat resepsi",
+      "sebelum acara lamaran"
+    ],
+    "correctIndex": 1,
+    "explanation": "Prosesi Palang Pintu dilaksanakan SEBELUM akad nikah sebagai ujian pembuka bagi rombongan mempelai pria."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-02",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 2) — Makna Kata \"Palang\"",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Makna dari kata \"Palang\" dalam istilah Palang Pintu adalah ....",
+    "options": [
+      "pintu",
+      "penyambutan",
+      "penghalang",
+      "perayaan"
+    ],
+    "correctIndex": 2,
+    "explanation": "Kata \"Palang\" berarti penghalang yang harus dilewati jawara pihak mempelai pria sebelum diterima masuk."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-03",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 3) — Dua Seni dalam Tradisi Palang Pintu",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Terdapat dua seni yang dipadukan dalam tradisi Palang Pintu, yaitu ....",
+    "options": [
+      "seni bela diri pencak silat dan seni pantun",
+      "adat pernikahan Betawi dan seni pantun",
+      "seni tari Betawi dan seni keindahan bertutur",
+      "seni sastra dan seni tari"
+    ],
+    "correctIndex": 0,
+    "explanation": "Palang Pintu memadukan dua seni khas Betawi: seni bela diri pencak silat dan seni balas pantun."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-04",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 4) — Atraksi Bernilai Keagamaan",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Atraksi yang memiliki nilai keagamaan dalam prosesi Palang Pintu yaitu ....",
+    "options": [
+      "balas pantun",
+      "beklai",
+      "silat",
+      "selawat dustur"
+    ],
+    "correctIndex": 3,
+    "explanation": "Selawat Dustur adalah lantunan salawat/azan di awal prosesi yang memuat nilai keagamaan."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-05",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 5) — Jenis Silat dalam Palang Pintu",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Jenis silat khas Betawi yang biasanya digunakan dalam prosesi Palang Pintu adalah ....",
+    "options": [
+      "silat kuntao",
+      "silat harimau",
+      "silat cingkrik",
+      "silat pencak"
+    ],
+    "correctIndex": 2,
+    "explanation": "Jurus silat khas Betawi yang biasa digunakan dalam Palang Pintu adalah Silat Cingkrik."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-06",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 6) — Pelestarian Tradisi Palang Pintu",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dua pernyataan yang mendukung pelestarian tradisi Palang Pintu yaitu ....",
+    "options": [
+      "melaksanakan festival Palang Pintu rutin setiap tahun dan menampilkan Palang Pintu dalam pertunjukan resmi di Jakarta",
+      "menghapus pantun Betawi dan mengganti seluruh gerakannya dengan tarian modern",
+      "melarang anak muda menonton Palang Pintu dan hanya menampilkannya di luar negeri",
+      "menjadikan Palang Pintu acara tertutup tanpa penonton"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pelestarian Palang Pintu didukung dengan mengadakan Festival Palang Pintu rutin setiap tahun dan menampilkannya pada acara/pertunjukan resmi di Jakarta."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-07",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 7) — Makna Simbol Roti Buaya",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Makna utama dari simbol sepasang Roti Buaya dalam pernikahan Betawi adalah ....",
+    "options": [
+      "tanda berakhirnya pesta pernikahan",
+      "hiasan meja yang tidak boleh dibagikan",
+      "simbol peperangan antarjawara",
+      "ungkapan kesetiaan pasangan sehidup semati serta kemapanan ekonomi dan harapan"
+    ],
+    "correctIndex": 3,
+    "explanation": "Roti Buaya melambangkan kesetiaan pasangan sehidup semati (buaya setia pada satu pasangan) serta kemapanan ekonomi dan harapan."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-08",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 8) — Tujuan Silat dalam Palang Pintu",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dua tujuan utama atraksi silat dalam prosesi Palang Pintu yaitu ....",
+    "options": [
+      "menjaga keamanan rumah dan menampilkan mempelai pengantin",
+      "memperkenalkan budaya Betawi kepada masyarakat yang hadir dan menjadi acara yang menghibur",
+      "mencari musuh baru dan memamerkan senjata tajam",
+      "menunda waktu akad nikah agar lebih lama"
+    ],
+    "correctIndex": 1,
+    "explanation": "Atraksi silat dalam Palang Pintu bertujuan memperkenalkan budaya Betawi kepada tamu yang hadir sekaligus menjadi hiburan yang menarik."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-09",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 9) — Isi Pantun dalam Palang Pintu",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Isi pantun yang disajikan pada tahapan adu pantun Palang Pintu meliputi ....",
+    "options": [
+      "penerimaan mempelai wanita terhadap kehadiran mempelai pria, kesiapan pihak mempelai pria berkunjung, serta nasihat bagi kedua mempelai",
+      "pamer kekayaan dan jumlah harta keluarga mempelai pria",
+      "daftar menu makanan resepsi pernikahan",
+      "cerita rakyat dari luar negeri"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pantun Palang Pintu berisi maksud/kesiapan kunjungan pihak mempelai pria, penerimaan pihak mempelai wanita, serta nasihat baik bagi kedua mempelai."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-10",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 10) — Benar/Salah Tahapan Palang Pintu",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Manakah pernyataan yang BENAR tentang tahapan tradisi Palang Pintu?",
+    "options": [
+      "Para jawara hanya melakukan sandiwara tanpa pantun maupun silat",
+      "Aksi silat hanya dilakukan oleh penjaga pengantin perempuan seorang diri",
+      "Selawat Dustur adalah tahapan pertama (melantunkan azan/salawat sebelum berangkat), dan balas pantun dilakukan antarjawara tiap pihak mempelai",
+      "Selawat Dustur dilakukan setelah resepsi selesai"
+    ],
+    "correctIndex": 2,
+    "explanation": "Selawat Dustur adalah tahapan pertama sebelum berangkat, dan balas pantun adalah komunikasi antarjawara dari pihak mempelai pria dan wanita."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-11",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 11) — Komunikasi Antarjawara",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dalam prosesi Palang Pintu, komunikasi antara para jawara dari tiap pihak mempelai dilakukan dengan ....",
+    "options": [
+      "berbisik pelan",
+      "bahasa isyarat",
+      "surat tertulis",
+      "balas pantun"
+    ],
+    "correctIndex": 3,
+    "explanation": "Komunikasi antarjawara kedua pihak mempelai dilakukan secara santun dan jenaka melalui balas pantun."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-12",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 12) — Atraksi Upaya Keras Mempelai Pria",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Atraksi adat Betawi yang menunjukkan upaya keras dan kesungguhan mempelai pria untuk menikahi mempelai wanita disebut ....",
+    "options": [
+      "Ondel-ondel",
+      "Palang Pintu",
+      "Tanjidor",
+      "Gambang Kromong"
+    ],
+    "correctIndex": 1,
+    "explanation": "Palang Pintu melambangkan ujian dan upaya sungguh-sungguh mempelai pria agar diterima oleh keluarga mempelai wanita."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-13",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 13) — Tahapan Permulaan Selawat Dustur",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Selawat Dustur adalah tahapan permulaan dalam Palang Pintu yang dilakukan dengan melantunkan ... bagi pengantin laki-laki.",
+    "options": [
+      "lagu daerah",
+      "puisi bebas",
+      "azan / salawat",
+      "pidato resmi"
+    ],
+    "correctIndex": 2,
+    "explanation": "Selawat Dustur dilakukan dengan melantunkan azan/salawat bagi pengantin laki-laki sebelum berangkat menuju rumah pengantin perempuan."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-14",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 14) — Setelah Adu Pantun & Silat",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Setelah jawara pihak pria berhasil melewati adu pantun dan adu silat (beklai), keluarga mempelai pria dipersilahkan ....",
+    "options": [
+      "masuk ke rumah mempelai wanita",
+      "mengulang silat dari awal",
+      "pulang ke rumah",
+      "membagikan roti buaya di jalan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Setelah lulus ujian pantun, silat, dan lantun sike, keluarga mempelai pria dipersilahkan MASUK ke rumah mempelai wanita."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-15",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 15) — Tahapan Setelah Jawara Laki-Laki Menang",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dalam prosesi Palang Pintu, setelah jawara laki-laki menang adu silat, dilakukan tahapan ....",
+    "options": [
+      "arak-arakan ulang",
+      "lantun sike (membaca Al-Qur’an)",
+      "selawat dustur",
+      "membagi suvenir"
+    ],
+    "correctIndex": 1,
+    "explanation": "Setelah jawara pria menang beklai, dilakukan tahapan Lantun Sike (pembacaan ayat suci Al-Qur’an) sebagai bukti kemampuan ilmu agama."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-16",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 16) — Suasana Pantun Jenaka",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pantun jenaka dalam prosesi Palang Pintu membuat suasana pertunjukan menjadi lebih ....",
+    "options": [
+      "tegang dan menakutkan",
+      "sepi dan hening",
+      "sedih dan haru",
+      "riang dan seru (meriah)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pantun jenaka membuat suasana pertunjukan Palang Pintu menjadi riang, seru, dan menghibur para tamu."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-17",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 17) — Nama Jurus Silat Betawi",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Jurus silat khas Betawi yang digunakan dalam Palang Pintu disebut juga silat ....",
+    "options": [
+      "Cingkrik",
+      "Karate",
+      "Taekwondo",
+      "Wushu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jurus silat khas Betawi yang populer dalam Palang Pintu disebut Silat Cingkrik."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-18",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 18) — Bulan Pelaksanaan Festival Palang Pintu",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Festival Palang Pintu di Jakarta biasanya dilaksanakan rutin setiap bulan ....",
+    "options": [
+      "Januari",
+      "April",
+      "Juni",
+      "Desember"
+    ],
+    "correctIndex": 2,
+    "explanation": "Festival Palang Pintu dilaksanakan setiap bulan JUNI, bertepatan dengan peringatan Hari Ulang Tahun (HUT) Kota Jakarta."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-19",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 19) — Arti Kata \"Beklai\"",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Yang dimaksud dengan \"Beklai\" dalam prosesi Palang Pintu adalah ....",
+    "options": [
+      "bernyanyi bersama",
+      "berkelahi (adu silat)",
+      "membaca pantun",
+      "berjalan beriringan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Beklai dalam bahasa Betawi berarti berkelahi, yaitu atraksi adu jurus pencak silat antara jawara mempelai pria dan jawara tuan rumah."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-20",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 20) — Tahapan Pertama Palang Pintu",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tahapan PERTAMA yang dilakukan dalam prosesi Palang Pintu adalah ....",
+    "options": [
+      "Lantun Sike",
+      "Beklai",
+      "Adu Pantun",
+      "Selawat Dustur"
+    ],
+    "correctIndex": 3,
+    "explanation": "Urutan tahapan Palang Pintu diawali dengan Selawat Dustur, lalu balas pantun, beklai (silat), dan lantun sike."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-21",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 21) — Makna Tradisi Palang Pintu (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Apakah makna sejati dari tradisi pertunjukan khas Betawi Palang Pintu dalam upacara pernikahan?",
+    "options": [
+      "sekadar hiburan semata bagi para tamu",
+      "perlombaan olahraga antar-RW",
+      "ujian ketangguhan, kesiapan ilmu bela diri, dan ilmu agama mempelai pria untuk melindungi serta membimbing keluarganya",
+      "acara pamer kekayaan keluarga mempelai"
+    ],
+    "correctIndex": 2,
+    "explanation": "Palang Pintu bukan hiburan semata, melainkan simbol ujian kesiapan mempelai pria dalam menjaga (silat), bertutur santun (pantun), dan membimbing agama (sike) keluarganya."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-22",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 22) — Urutan Lengkap Tahapan Palang Pintu (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Urutan tahapan yang benar dalam prosesi Palang Pintu sebelum akad nikah adalah ....",
+    "options": [
+      "Selawat Dustur → Balas Pantun → Beklai (berkelahi silat) → Lantun Sike",
+      "Lantun Sike → Beklai → Balas Pantun → Selawat Dustur",
+      "Balas Pantun → Selawat Dustur → Lantun Sike → Beklai",
+      "Beklai → Selawat Dustur → Balas Pantun → Lantun Sike"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tahapan Palang Pintu secara berurutan: (1) Selawat Dustur, (2) Balas Pantun, (3) Beklai/silat, (4) Lantun Sike."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-23",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 23) — Isi Pokok Pantun Palang Pintu (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Apa saja yang biasa menjadi isi pantun dalam prosesi Palang Pintu?",
+    "options": [
+      "berita cuaca harian",
+      "daftar harga bahan pokok di pasar",
+      "jadwal pertandingan olahraga",
+      "maksud kedatangan mempelai pria, syarat penerimaan pihak wanita, dan nasihat pernikahan"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pantun Palang Pintu berisi maksud kedatangan mempelai pria, syarat/penerimaan keluarga mempelai wanita, serta nasihat rumah tangga."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-24",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 24) — Dua Atraksi Pengiring Palang Pintu (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dua atraksi utama yang mengiringi prosesi Palang Pintu adalah ....",
+    "options": [
+      "tari balet dan menyanyi solo",
+      "beklai (berkelahi silat) dan balas pantun",
+      "main layangan dan lompat tali",
+      "lomba makan kerupuk dan tarik tambang"
+    ],
+    "correctIndex": 1,
+    "explanation": "Dua atraksi inti pengiring Palang Pintu adalah beklai (adu silat) dan balas pantun."
+  },
+  {
+    "id": "SUMATIF3-PLBJ-25",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B3",
+    "topic": "Sumatif III Sekolah (No. 25) — Kontribusi Festival Palang Pintu (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bagaimana Festival Palang Pintu berkontribusi dalam melestarikan budaya Betawi?",
+    "options": [
+      "dengan mengadakan Festival Palang Pintu rutin setiap bulan Juni bertepatan dengan HUT Jakarta agar generasi muda mengenal dan mencintai budaya Betawi",
+      "dengan melarang masyarakat umum menonton pertunjukan",
+      "dengan mengganti seluruh bahasa Betawi menjadi bahasa asing",
+      "dengan menghentikan pelaksanaan Palang Pintu saat pernikahan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Festival Palang Pintu setiap bulan Juni (HUT Jakarta) menjadi sarana edukasi, promosi, dan pelestarian seni bela diri serta pantun Betawi bagi generasi muda."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-01",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 1) — Asal Nama Karet Tengsin",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Nama daerah berikut yang berasal dari nama orang Tionghoa yang kaya raya dan baik hati bernama Tan Teng Sien adalah ....",
+    "options": [
+      "Kebon Sirih",
+      "Karet Tengsin",
+      "Warung Buncit",
+      "Kwitang"
+    ],
+    "correctIndex": 1,
+    "explanation": "Karet Tengsin berasal dari nama seorang warga Tionghoa kaya raya dan dermawan bernama Tan Teng Sien."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-02",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 2) — Asal Nama Lebak Bulus",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Banyaknya kura-kura (bulus) yang mendiami suatu kawasan di Jakarta menjadi asal-usul penyebutan daerah ....",
+    "options": [
+      "Mampang Prapatan",
+      "Ragunan",
+      "Lebak Bulus",
+      "Warung Buncit"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lebak berarti lembah/daerah rendah dan Bulus berarti kura-kura air tawar — kawasan itu dulu banyak dihuni bulus."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-03",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 3) — Kecamatan di Jakarta Timur",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kecamatan (1) Cakung, (2) Matraman, dan (3) Pulo Gadung berada di wilayah administratif ....",
+    "options": [
+      "Jakarta Timur",
+      "Jakarta Pusat",
+      "Jakarta Selatan",
+      "Jakarta Barat"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cakung, Matraman, dan Pulo Gadung seluruhnya berada di wilayah administratif JAKARTA TIMUR."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-04",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 4) — Wilayah Administratif Kawasan GBK Senayan",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kawasan Stadion Utama Gelora Bung Karno (GBK) Senayan berada di wilayah administratif ....",
+    "options": [
+      "Jakarta Utara",
+      "Jakarta Barat",
+      "Jakarta Timur",
+      "Jakarta Pusat"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kawasan GBK Senayan berada di wilayah administratif JAKARTA PUSAT."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-05",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 5) — Asal Kata \"Wangsanayan\" (Senayan)",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kawasan Senayan merupakan salah satu area penting di Jakarta. Nama Senayan berasal dari kata \"Wangsanayan\" yang berarti ....",
+    "options": [
+      "dataran rendah yang subur",
+      "tempat berkumpulnya para pemuda",
+      "tanah tempat tinggal atau milik seseorang bernama Wangsanayan",
+      "danau tempat penampungan air"
+    ],
+    "correctIndex": 2,
+    "explanation": "Senayan berasal dari kata Wangsanayan, yaitu tanah tempat tinggal atau milik seseorang bernama Wangsanayan."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-06",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 6) — Asal-Usul Daerah Glodok",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dua pernyataan yang TEPAT mengenai asal-usul daerah Glodok adalah ....",
+    "options": [
+      "mayoritas warga Glodok keturunan Tionghoa dan nama Glodok berasal dari kata \"grojok\" (bunyi air pancuran)",
+      "Glodok terletak di Jakarta Utara dan terkenal sebagai pasar bunga",
+      "Glodok adalah daerah pusat penjualan buku-buku lama",
+      "Glodok berasal dari kata De Nabang"
+    ],
+    "correctIndex": 0,
+    "explanation": "Glodok (Jakarta Barat) mayoritas dihuni warga keturunan Tionghoa dan namanya berasal dari bunyi pancuran air \"grojok\"."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-07",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 7) — Kecamatan di Jakarta Utara",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pasangan kecamatan berikut yang berada di wilayah administratif Jakarta Utara adalah ....",
+    "options": [
+      "Tebet dan Matraman",
+      "Tebet dan Cilincing",
+      "Matraman dan Pademangan",
+      "Cilincing dan Pademangan"
+    ],
+    "correctIndex": 3,
+    "explanation": "Cilincing dan Pademangan berada di Jakarta Utara. (Tebet di Jakarta Selatan, Matraman di Jakarta Timur!)"
+  },
+  {
+    "id": "SUMATIF4-PLBJ-08",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 8) — Faktor Dasar Penamaan Jalan & Kampung Jakarta",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dua faktor yang menjadi dasar penamaan jalan dan kampung di Jakarta meliputi ....",
+    "options": [
+      "jumlah bangunan dan jumlah penduduk",
+      "peristiwa saat itu dan jenis tanaman",
+      "tinggi gedung dan warna rumah",
+      "luas jalan dan jumlah kendaraan"
+    ],
+    "correctIndex": 1,
+    "explanation": "Penamaan kampung/jalan di Jakarta dipengaruhi jenis tanaman (Menteng, Kebon Sirih), peristiwa sejarah, tokoh, suku pendatang, dan bentang alam."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-09",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 9) — Fakta Kampung Rawa Belong",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Manakah pernyataan yang BENAR tentang Kampung Rawa Belong?",
+    "options": [
+      "Kampung Rawa Belong terkenal dengan pasar bunganya dan ciri khas silat asli Betawi (maen pukul)",
+      "Kampung Rawa Belong awalnya perkebunan tanaman sirih",
+      "Kampung Rawa Belong berasal dari kata De Nabang",
+      "Kampung Rawa Belong adalah pusat elektronik di Jakarta Barat"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rawa Belong terkenal sebagai pasar bunga terbesar di Jakarta dan memiliki tradisi silat asli maen pukul. (De Nabang = Tanah Abang!)"
+  },
+  {
+    "id": "SUMATIF4-PLBJ-10",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 10) — Benar/Salah Asal Penamaan Daerah Jakarta",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Manakah pasangan asal penamaan daerah di Jakarta yang BENAR?",
+    "options": [
+      "Tanah Abang berasal dari kata \"gerojok\" dan Menteng adalah wilayah Kerajaan Mataram",
+      "Kwitang berasal dari kata Wiraguna dan Ragunan dari Daeng Menteng",
+      "Ragunan berasal dari kata Wiraguna dan Kwitang berasal dari nama tuan tanah Kwik Tang Kiam",
+      "Menteng berasal dari kata De Nabang"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ragunan berasal dari Pangeran Wiraguna, Kwitang dari tuan tanah Kwik Tang Kiam. (Yang terkait Kerajaan Mataram adalah Matraman, bukan Menteng!)"
+  },
+  {
+    "id": "SUMATIF4-PLBJ-11",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 11) — Asal Nama Tanah Abang",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Nama pasar tekstil terbesar di Asia Tenggara, yaitu Tanah Abang, konon berasal dari kata sebutan penduduk setempat untuk pohon nabang, yaitu ....",
+    "options": [
+      "Wiraguna",
+      "Gerojok",
+      "Wangsanayan",
+      "De Nabang"
+    ],
+    "correctIndex": 3,
+    "explanation": "Tanah Abang berasal dari kata \"De Nabang\" (pohon nabang / enau yang banyak tumbuh di kawasan itu)."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-12",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 12) — Daerah Terkait Kerajaan Mataram",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Nama daerah di Jakarta yang berkaitan erat dengan sejarah pasukan Kerajaan Mataram yang ada di Jawa adalah ....",
+    "options": [
+      "Menteng",
+      "Matraman",
+      "Glodok",
+      "Kwitang"
+    ],
+    "correctIndex": 1,
+    "explanation": "MATRAMAN berasal dari kata Mataram — dulu menjadi markas/persinggahan pasukan Kerajaan Mataram saat menyerang Batavia."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-13",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 13) — Perubahan Terminal Lebak Bulus",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Lebak Bulus merupakan kelurahan di Kecamatan Cilandak, Jakarta Selatan. Salah satu fasilitasnya adalah Terminal Lebak Bulus yang kini telah berubah menjadi stasiun ....",
+    "options": [
+      "Pelabuhan Laut",
+      "Bandara",
+      "MRT (Moda Raya Terpadu)",
+      "Kereta Gantung"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bekas Terminal Lebak Bulus kini telah berubah menjadi Stasiun MRT Lebak Bulus (titik awal jalur MRT Jakarta)."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-14",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 14) — Wilayah Pusat Toko Buku Kwitang",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kawasan pusat toko buku legendaris Kwitang (seperti Toko Buku Restu di Jl. Kwitang) berada di wilayah administratif ....",
+    "options": [
+      "Jakarta Pusat",
+      "Jakarta Timur",
+      "Jakarta Utara",
+      "Jakarta Barat"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kwitang berada di Kecamatan Senen, JAKARTA PUSAT."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-15",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 15) — Kampung Budaya Betawi di Jagakarsa",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kampung budaya Betawi yang sangat terkenal dan berada di Kecamatan Jagakarsa, Jakarta Selatan adalah ....",
+    "options": [
+      "Rawa Belong",
+      "Setu Babakan",
+      "Glodok",
+      "Kota Tua"
+    ],
+    "correctIndex": 1,
+    "explanation": "Perkampungan Budaya Betawi Setu Babakan terletak di Kecamatan Jagakarsa, Jakarta Selatan."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-16",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 16) — Asal Suku Daeng Menteng",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Menteng adalah kecamatan di Jakarta Pusat. Awalnya Menteng merupakan daerah yang diberikan kepada Daeng Menteng yang berasal dari ....",
+    "options": [
+      "Kerajaan Mataram",
+      "Portugis",
+      "Tiongkok",
+      "Bugis"
+    ],
+    "correctIndex": 3,
+    "explanation": "Daeng Menteng berasal dari BUGIS (ingat: gelar \"Daeng\" adalah gelar khas suku Bugis/Makassar, bukan Mataram!)."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-17",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 17) — Kawasan Penjualan Elektronik Terkenal",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kawasan di Jakarta Barat yang dahulu hingga kini tersohor sebagai lokasi penjualan barang elektronik adalah ....",
+    "options": [
+      "Glodok",
+      "Setu Babakan",
+      "Tanah Abang",
+      "Ragunan"
+    ],
+    "correctIndex": 0,
+    "explanation": "Glodok (Jakarta Barat) sangat tersohor sebagai pusat perdagangan barang elektronik terbesar di Jakarta."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-18",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 18) — Jumlah Wilayah Administratif DKI Jakarta",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Secara administratif, Provinsi DKI Jakarta terbagi menjadi ... wilayah.",
+    "options": [
+      "4 wilayah",
+      "5 wilayah",
+      "6 wilayah",
+      "7 wilayah"
+    ],
+    "correctIndex": 2,
+    "explanation": "DKI Jakarta terdiri dari 6 wilayah administratif: 5 Kota Administrasi (Pusat, Utara, Barat, Selatan, Timur) + 1 Kabupaten Administrasi Kepulauan Seribu."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-19",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 19) — Kebun Binatang di Daerah Ragunan",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Daerah Ragunan di Jakarta Selatan sangat terkenal dengan taman margasatwa / kebun binatang yang bernama Kebun Binatang ....",
+    "options": [
+      "Johor",
+      "Ragunan",
+      "Ancol",
+      "Monas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Kebun binatang terkenal di daerah Ragunan adalah Kebun Binatang Ragunan (Taman Margasatwa Ragunan)."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-20",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 20) — Wilayah Administratif Kebon Sirih",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Daerah Kebon Sirih dikenal sebagai kawasan perkantoran dan lokasi Balai Kota serta Gedung DPRD DKI Jakarta. Daerah tersebut terletak di ....",
+    "options": [
+      "Jakarta Barat",
+      "Jakarta Timur",
+      "Jakarta Selatan",
+      "Jakarta Pusat"
+    ],
+    "correctIndex": 3,
+    "explanation": "Kebon Sirih (lokasi Balai Kota & Gedung DPRD) terletak di JAKARTA PUSAT (bukan Jakarta Barat!)."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-21",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 21) — 4 Kecamatan di Jakarta Utara (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Kelompok 4 kecamatan yang SELURUHNYA berada di wilayah administratif Jakarta Utara adalah ....",
+    "options": [
+      "Cakung, Matraman, Cipayung, dan Pulo Gadung",
+      "Tebet, Cilandak, Jagakarsa, dan Pasar Minggu",
+      "Cilincing, Kelapa Gading, Tanjung Priok, dan Koja",
+      "Gambir, Menteng, Senen, dan Kemayoran"
+    ],
+    "correctIndex": 2,
+    "explanation": "6 kecamatan di Jakarta Utara: Cilincing, Kelapa Gading, Tanjung Priok, Koja, Pademangan, dan Penjaringan."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-22",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 22) — Penjelasan Asal-Usul Karet Tengsin (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Mengapa kawasan di Jakarta Pusat tersebut dinamakan Karet Tengsin?",
+    "options": [
+      "karena dulu ada orang Tionghoa kaya raya dan sangat baik hati bernama Tan Teng Sien yang bermukim di daerah kebun karet tersebut",
+      "karena merupakan pabrik ban karet terbesar",
+      "karena dulu menjadi markas pasukan Mataram",
+      "karena banyak kura-kura di sana"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nama Karet Tengsin berasal dari kawasan kebun karet yang dihuni tokoh Tionghoa kaya dan dermawan bernama Tan Teng Sien."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-23",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 23) — Pengaruh Kerajaan Mataram di Jakarta (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Mengapa beberapa penamaan wilayah di Jakarta (seperti Matraman) banyak terkait dengan Kerajaan Mataram?",
+    "options": [
+      "karena seluruh warga Betawi berasal dari satu desa di Mataram",
+      "karena ibu kota Kerajaan Mataram berada di Kepulauan Seribu",
+      "karena Kerajaan Mataram membeli seluruh tanah Jakarta dari Belanda",
+      "karena pasukan Kerajaan Mataram dulu pernah datang menyerang VOC di Batavia dan mendirikan permukiman/markas di Jakarta"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pada abad ke-17, pasukan Sultan Agung dari Kerajaan Mataram menyerang VOC di Batavia dan banyak pasukannya menetap sehingga meninggalkan jejak nama seperti Matraman."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-24",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 24) — 3 Fakta Tentang Kecamatan Tanah Abang (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Tiga hal penting yang menjadi ciri khas Kecamatan Tanah Abang adalah ....",
+    "options": [
+      "terkenal dengan pasar bunga, silat maen pukul, dan kebun binatang",
+      "awalnya dinamai De Nabang (pohon nabang), merupakan pusat perdagangan tekstil terbesar se-Asia Tenggara, dan terletak di Jakarta Pusat",
+      "merupakan pulau wisata di Kepulauan Seribu",
+      "merupakan kawasan toko buku bekas di Jakarta Timur"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tanah Abang (Jakarta Pusat) berasal dari nama De Nabang, dulu kawasan perkebunan/persinggahan, dan kini menjadi pusat perdagangan tekstil terbesar di Asia Tenggara."
+  },
+  {
+    "id": "SUMATIF4-PLBJ-25",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B5",
+    "topic": "Sumatif IV Sekolah (No. 25) — Pasangan Wilayah Administratif & Kecamatannya (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pasangan wilayah administratif DKI Jakarta dan contoh kecamatannya yang SELURUHNYA BENAR adalah ....",
+    "options": [
+      "Jakarta Pusat: Gambir; Jakarta Timur: Cipayung; Jakarta Selatan: Cilandak (atau Tebet/Jagakarsa)",
+      "Jakarta Pusat: Gambir; Jakarta Timur: Cipayung; Jakarta Selatan: Depok",
+      "Jakarta Pusat: Cilincing; Jakarta Timur: Tebet; Jakarta Selatan: Cakung",
+      "Jakarta Pusat: Glodok; Jakarta Timur: Menteng; Jakarta Selatan: Bekasi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ingat! Depok adalah kota di Jawa Barat (BUKAN kecamatan Jakarta Selatan!). Contoh kecamatan Jakarta Selatan adalah Cilandak, Tebet, Jagakarsa, Pasar Minggu, dan Kebayoran Baru."
+  },
+  {
+    "id": "SUMATIF5-PLBJ-01",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 1) — Ciri Khas Batik Betawi",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
     "question": "Batik Betawi memiliki ciri khas yang membedakannya dari batik daerah lain. Salah satu ciri khas tersebut adalah ....",
     "options": [
-      "penggunaan warna cerah dan motif tumpal",
       "penggunaan pewarna alami dan motif bunga-bunga kecil",
+      "penggunaan warna cerah dan motif tumpal",
       "motif yang penuh dengan gambar binatang",
       "motif abstrak dan penggunaan warna gelap"
     ],
-    "correctIndex": 0,
-    "explanation": "Ciri khas utama Batik Betawi (batik pesisir) adalah penggunaan warna-warna cerah (kuning, merah, hijau, oranye) dan motif tumpal berbentuk segitiga.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "correctIndex": 1,
+    "explanation": "Batik Betawi berciri khas warna-warna cerah mencolok dan motif tumpal (segitiga pucuk rebung)."
   },
   {
-    "id": "SUMATIF-PLBJ-02",
+    "id": "SUMATIF5-PLBJ-02",
+    "subject": "PLBJ",
+    "semester": 1,
     "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Motif Kerajaan Pertama (Aki Tirem)",
-    "difficulty": "Sedang",
+    "topic": "Sumatif V Sekolah (No. 2) — Motif Kerajaan Pertama (Aki Tirem)",
+    "type": "PG",
+    "difficulty": "Mudah",
     "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
     "question": "Motif batik Betawi yang mengangkat cerita atau tema kerajaan pertama di tanah Betawi yang didirikan oleh Aki Tirem digambarkan dengan motif ....",
     "options": [
       "nusa kelapa",
-      "salakanagara",
       "rasamala",
+      "salakanagara",
       "pucuk rebung"
     ],
-    "correctIndex": 1,
-    "explanation": "Salakanagara adalah kerajaan pertama di tanah Betawi yang didirikan oleh Aki Tirem (ingat: Rasamala itu pohon/kedatangan Belanda ke Sunda Kelapa!).",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-03",
-    "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Motif Tumpal / Pucuk Rebung (Abang-None)",
-    "difficulty": "Sedang",
-    "bloom": "C2",
-    "question": "Motif batik Betawi yang tersusun dari bentuk-bentuk segitiga saling berhadapan/berlawanan dan menjadi seragam wajib bawahan Abang-None Jakarta adalah ....",
-    "options": [
-      "Motif Ciliwung",
-      "Motif Rasamala",
-      "Motif Pucuk Rebung (Tumpal)",
-      "Motif Mega Mendung"
-    ],
     "correctIndex": 2,
-    "explanation": "Motif Pucuk Rebung (Tumpal) berciri deretan segitiga yang saling berhadapan/berlawanan dan wajib dipakai pada busana bawahan Abang-None Jakarta.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Salakanagara adalah kerajaan pertama di tanah Betawi yang didirikan oleh Aki Tirem."
   },
   {
-    "id": "SUMATIF-PLBJ-04",
+    "id": "SUMATIF5-PLBJ-03",
+    "subject": "PLBJ",
+    "semester": 1,
     "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Batik Cap",
+    "topic": "Sumatif V Sekolah (No. 3) — Mengenali Motif Pucuk Rebung (Tumpal)",
+    "type": "PG",
     "difficulty": "Mudah",
-    "bloom": "C1",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Motif batik Betawi yang berbentuk deretan segitiga runcing seperti tunas bambu dan sering menghiasi tepi kain adalah ....",
+    "options": [
+      "Motif Pucuk Rebung",
+      "Motif Rasamala",
+      "Motif Ciliwung",
+      "Motif Nusa Kelapa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Motif Pucuk Rebung (Tumpal) berbentuk deretan segitiga seperti tunas bambu yang melambangkan pertumbuhan dan harapan."
+  },
+  {
+    "id": "SUMATIF5-PLBJ-04",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 4) — Pengertian Batik Cap",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
     "question": "Proses membatik dengan menggunakan alat yang menyerupai stempel dari kuningan atau besi dinamakan batik ....",
     "options": [
       "lukis",
@@ -38028,558 +39085,448 @@
       "cap"
     ],
     "correctIndex": 3,
-    "explanation": "Batik cap dibuat menggunakan stempel (canting cap) dari tembaga/kuningan/besi sehingga prosesnya lebih cepat dan motifnya seragam dibanding batik tulis.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Batik cap dibuat dengan mengecapkan stempel tembaga/kuningan/besi yang dicelup malam cair ke atas kain mori."
   },
   {
-    "id": "SUMATIF-PLBJ-05",
-    "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Urutan Langkah Membatik Setelah Lilin/Malam",
-    "difficulty": "Sedang",
-    "bloom": "C3",
-    "question": "Setelah pola dibuat dan digambar menggunakan lilin (malam) pada kain mori, langkah berikutnya dalam proses pembuatan batik adalah ....",
-    "options": [
-      "memasukkan kain ke dalam pewarna (pewarnaan)",
-      "menjemur kain di bawah sinar matahari terik",
-      "menyetrika kain mori",
-      "melipat kain menjadi pakaian"
-    ],
-    "correctIndex": 0,
-    "explanation": "Urutan membatik: (1) Buat pola/nyorek, (2) Canting dengan malam, (3) Pewarnaan (memasukkan kain ke dalam pewarna), (4) Nglorot (meluruhkan lilin), (5) Cuci & jemur.",
+    "id": "SUMATIF5-PLBJ-05",
     "subject": "PLBJ",
     "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-06",
     "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Fungsi Canting",
+    "topic": "Sumatif V Sekolah (No. 5) — Langkah Setelah Menggambar Lilin/Malam",
+    "type": "PG",
     "difficulty": "Mudah",
     "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Setelah pola dibuat dan digambar menggunakan lilin (malam), langkah berikutnya dalam proses pembuatan batik adalah ....",
+    "options": [
+      "mencuci kain",
+      "menjemur kain di bawah sinar matahari",
+      "memasukkan kain ke dalam pewarna",
+      "menyetrika kain"
+    ],
+    "correctIndex": 2,
+    "explanation": "Setelah pola ditutup lilin malam, tahap selanjutnya adalah pewarnaan (memasukkan kain ke dalam larutan pewarna) agar bagian yang tidak tertutup malam menyerap warna."
+  },
+  {
+    "id": "SUMATIF5-PLBJ-06",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 6) — Fungsi Alat Canting",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
     "question": "Canting merupakan alat penting dalam pembuatan batik tulis. Dua pernyataan yang TEPAT mengenai penggunaan canting adalah ....",
     "options": [
-      "digunakan untuk memanaskan malam dan mengeringkan kain",
       "digunakan untuk mengambil malam dari wadah dan menorehkan malam pada kain sesuai pola",
-      "digunakan untuk mencelupkan kain ke pewarna dan menyetrika kain",
-      "digunakan untuk memotong kain mori dan menjahit baju"
+      "digunakan untuk memanaskan malam hingga mencair dan mewarnai kain",
+      "digunakan untuk mencuci kain dan menjemur kain",
+      "digunakan untuk mengecap motif secara massal"
     ],
-    "correctIndex": 1,
-    "explanation": "Canting dipakai untuk mengambil malam cair dari wajan lalu menorehkannya ke kain mori mengikuti pola. (Yang memanaskan malam adalah kompor!)",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "correctIndex": 0,
+    "explanation": "Canting berfungsi mengambil malam cair dari wajan dan menorehkannya ke kain mengikuti pola gambar."
   },
   {
-    "id": "SUMATIF-PLBJ-07",
-    "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Motif Asli Betawi vs Bukan Betawi",
-    "difficulty": "Sedang",
-    "bloom": "C3",
-    "question": "Manakah di antara motif batik berikut yang BUKAN merupakan motif khas Batik Betawi?",
-    "options": [
-      "Motif Salakanagara",
-      "Motif Loreng Ondel-Ondel",
-      "Motif Mega Mendung",
-      "Motif Pucuk Rebung"
-    ],
-    "correctIndex": 2,
-    "explanation": "Hati-hati! Motif Mega Mendung adalah motif khas CIREBON (bukan Betawi!). Motif khas Betawi antara lain Pucuk Rebung, Salakanagara, Ondel-Ondel, Rasamala, Nusa Kelapa, dan Ciliwung.",
+    "id": "SUMATIF5-PLBJ-07",
     "subject": "PLBJ",
     "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-08",
     "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Istilah Nyorek/Memola & Nglorot",
-    "difficulty": "Sedang",
+    "topic": "Sumatif V Sekolah (No. 7) — Motif Asli Batik Betawi",
+    "type": "PG",
+    "difficulty": "Mudah",
     "bloom": "C2",
-    "question": "Proses pertama menggambar pola/desain motif batik di atas kain mori disebut ..., sedangkan teknik merebus kain untuk menghilangkan lapisan lilin agar motif terlihat jelas disebut ....",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pasangan motif berikut yang KEDUANYA merupakan motif asli Batik Betawi adalah ....",
     "options": [
-      "nglorot dan cap",
-      "mencelup dan menjemur",
-      "menenun dan menyulam",
-      "nyorek (molani) dan nglorot"
+      "Motif Mega Mendung dan Motif Pa’Barre Allo",
+      "Motif Kawung dan Motif Pa’Barre Allo",
+      "Motif Parang dan Motif Mega Mendung",
+      "Motif Pucuk Rebung dan Motif Salakanagara"
     ],
     "correctIndex": 3,
-    "explanation": "Nyorek (molani) = menggambar pola awal pada kain mori; Nglorot = menghilangkan/meluruhkan lapisan lilin malam dengan air panas agar motif tampak jelas.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Motif Pucuk Rebung dan Salakanagara adalah motif khas Betawi. (Mega Mendung = Cirebon, Pa’Barre Allo = Toraja!)"
   },
   {
-    "id": "SUMATIF-PLBJ-09",
+    "id": "SUMATIF5-PLBJ-08",
+    "subject": "PLBJ",
+    "semester": 1,
     "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Motif Rasamala (Kedatangan Belanda)",
+    "topic": "Sumatif V Sekolah (No. 8) — Ciri Motif Kain Bertumpal / Pucuk Rebung",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dua pernyataan yang SESUAI dengan ciri bentuk motif kain bertumpal (Pucuk Rebung) adalah ....",
+    "options": [
+      "memiliki gambar burung hong dan menggambarkan wanita menarikan tari ngarojeng",
+      "tersusun dari bentuk-bentuk segitiga dan bentuk segitiganya saling berhadapan atau berlawanan",
+      "berbentuk awan berarak warna biru",
+      "berbentuk lingkaran polos tanpa garis"
+    ],
+    "correctIndex": 1,
+    "explanation": "Motif tumpal/Pucuk Rebung tersusun dari deretan bentuk segitiga yang saling berhadapan atau berlawanan."
+  },
+  {
+    "id": "SUMATIF5-PLBJ-09",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 9) — Benar/Salah Proses Pembuatan Batik",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Manakah pernyataan yang BENAR mengenai proses pembuatan batik?",
+    "options": [
+      "Malam digunakan untuk menutup bagian kain agar tidak terkena zat warna, dan kompor digunakan untuk memanaskan malam hingga mencair",
+      "Kain mori digunakan sebagai bahan pewarna dan canting untuk mengeringkan kain",
+      "Kompor digunakan untuk menjemur kain dan malam sebagai bahan pencuci",
+      "Canting digunakan untuk memanaskan malam tanpa kompor"
+    ],
+    "correctIndex": 0,
+    "explanation": "Malam menutup kain agar tidak terkena warna; kompor memanaskan malam hingga cair. (Kain mori adalah media kainnya, bukan pewarna!)"
+  },
+  {
+    "id": "SUMATIF5-PLBJ-10",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 10) — Benar/Salah Motif Batik Betawi",
+    "type": "PG",
+    "difficulty": "Mudah",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Manakah pernyataan yang SALAH mengenai motif batik Betawi?",
+    "options": [
+      "Motif Salakanagara berkaitan dengan kerajaan pertama di tanah Betawi",
+      "Motif Loreng Ondel-Ondel terinspirasi dari ikon budaya Betawi",
+      "Motif Mega Mendung merupakan motif khas Batik Betawi",
+      "Motif Pucuk Rebung berbentuk segitiga menyerupai tunas bambu"
+    ],
+    "correctIndex": 2,
+    "explanation": "SALAH karena Motif Mega Mendung adalah motif khas CIREBON (Jawa Barat), bukan motif khas Batik Betawi!"
+  },
+  {
+    "id": "SUMATIF5-PLBJ-11",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 11) — Bahan Penutup/Pelindung Warna",
+    "type": "PG",
     "difficulty": "Sedang",
     "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Bahan yang digunakan sebagai bahan penutup atau pelindung kain terhadap zat warna pada batik tulis adalah ....",
+    "options": [
+      "tepung kanji",
+      "lem kayu",
+      "cat minyak",
+      "lilin (malam)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Lilin batik atau malam berfungsi menutup bagian kain agar tidak terserap zat pewarna."
+  },
+  {
+    "id": "SUMATIF5-PLBJ-12",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 12) — Motif Seragam Wajib Abang-None",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Motif batik Betawi yang menjadi seragam wajib saat pemilihan Abang-None Jakarta dan biasa dipakai sebagai busana bawahan None Jakarta adalah motif ....",
+    "options": [
+      "Mega Mendung",
+      "Pucuk Rebung (Tumpal)",
+      "Ciliwung",
+      "Parang"
+    ],
+    "correctIndex": 1,
+    "explanation": "Motif Pucuk Rebung (Tumpal) adalah motif wajib pada kain bawahan busana None Jakarta."
+  },
+  {
+    "id": "SUMATIF5-PLBJ-13",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 13) — Motif Sejarah Kedatangan Belanda",
+    "type": "PG",
+    "difficulty": "Sedang",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
     "question": "Batik Betawi yang menggambarkan sejarah kedatangan bangsa Belanda ketika masuk ke wilayah Sunda Kelapa adalah batik motif ....",
     "options": [
+      "Salakanagara",
+      "Ondel-ondel",
       "Rasamala",
-      "Mega Mendung",
-      "Parang Rusak",
-      "Pa’Barre Allo"
+      "Pucuk Rebung"
     ],
-    "correctIndex": 0,
-    "explanation": "Motif Rasamala mengangkat kisah sejarah kedatangan bangsa Belanda ke Sunda Kelapa (diambil dari nama pohon rasamala yang tumbuh subur di sana).",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "correctIndex": 2,
+    "explanation": "Motif Rasamala menggambarkan sejarah masuknya bangsa Belanda ke Sunda Kelapa yang dulunya banyak ditumbuhi pohon rasamala."
   },
   {
-    "id": "SUMATIF-PLBJ-10",
+    "id": "SUMATIF5-PLBJ-14",
+    "subject": "PLBJ",
+    "semester": 1,
     "moduleId": "PLBJ-B6",
-    "topic": "Sumatif V Sekolah — Fungsi Malam & Kompor dalam Membatik",
-    "difficulty": "Mudah",
-    "bloom": "C2",
-    "question": "Bahan yang digunakan sebagai penutup/pelindung bagian kain agar tidak terkena zat warna adalah ..., sedangkan alat untuk memanaskannya hingga mencair adalah ....",
-    "options": [
-      "kain mori dan canting",
-      "lilin (malam) dan kompor",
-      "pewarna dan ember",
-      "stempel besi dan wajan dingin"
-    ],
-    "correctIndex": 1,
-    "explanation": "Malam (lilin batik) berfungsi menutup bagian kain agar tidak terkena warna, dan kompor digunakan untuk memanaskan malam di wajan kecil hingga mencair.",
-    "subject": "PLBJ",
-    "semester": 1,
+    "topic": "Sumatif V Sekolah (No. 14) — Teknik Nglorot",
     "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-11",
-    "moduleId": "PLBJ-B3",
-    "topic": "Sumatif III Sekolah — Waktu & Arti Kata \"Palang\"",
-    "difficulty": "Mudah",
-    "bloom": "C1",
-    "question": "Prosesi \"Palang Pintu\" dalam upacara pernikahan adat Betawi dilaksanakan pada waktu ..., dan makna kata \"Palang\" adalah ....",
-    "options": [
-      "setelah akad nikah; perayaan",
-      "saat resepsi; penyambutan",
-      "sebelum akad nikah; penghalang",
-      "sebelum lamaran; pintu rumah"
-    ],
-    "correctIndex": 2,
-    "explanation": "Palang Pintu dilakukan SEBELUM akad nikah. Kata \"Palang\" berarti penghalang (ujian bagi mempelai pria sebelum diterima masuk oleh keluarga mempelai wanita).",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-12",
-    "moduleId": "PLBJ-B3",
-    "topic": "Sumatif III Sekolah — Dua Seni & Jurus Silat Palang Pintu",
-    "difficulty": "Mudah",
-    "bloom": "C1",
-    "question": "Dua seni yang dipadukan dalam tradisi Palang Pintu adalah seni bela diri pencak silat dan seni pantun. Jenis jurus silat khas Betawi yang biasa digunakan adalah ....",
-    "options": [
-      "silat harimau",
-      "silat kuntao",
-      "silat merpati putih",
-      "silat cingkrik"
-    ],
-    "correctIndex": 3,
-    "explanation": "Tradisi Palang Pintu memadukan seni silat dan balas pantun. Jurus silat khas Betawi yang paling terkenal dipakai adalah Silat Cingkrik (dan Beksi).",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-13",
-    "moduleId": "PLBJ-B3",
-    "topic": "Sumatif III Sekolah — Tahapan Pertama (Selawat Dustur) & Lantun Sike",
     "difficulty": "Sedang",
     "bloom": "C2",
-    "question": "Atraksi yang memiliki nilai keagamaan sekaligus menjadi tahapan PERTAMA Palang Pintu (melantunkan azan/salawat sebelum berangkat) disebut ..., sedangkan bacaan Al-Qur’an setelah jawara laki-laki menang disebut ....",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Teknik dalam pembuatan batik Betawi untuk menghilangkan lapisan lilin dengan air panas sehingga motif pada kain terlihat jelas disebut teknik ....",
     "options": [
-      "Selawat Dustur dan Lantun Sike",
-      "Beklai dan Balas Pantun",
-      "Arak-arakan dan Roti Buaya",
-      "Tanjidor dan Gambang Kromong"
+      "nglorot",
+      "nyorek",
+      "menenun",
+      "menyulam"
     ],
     "correctIndex": 0,
-    "explanation": "Tahapan Palang Pintu: (1) Selawat Dustur (nilai keagamaan), (2) Balas Pantun, (3) Beklai/berkelahi silat, (4) Lantun Sike (bacaan Al-Qur’an) setelah jawara pria menang.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Nglorot adalah proses merebus kain batik di air mendidih untuk meluruhkan/menghilangkan lapisan lilin malam."
   },
   {
-    "id": "SUMATIF-PLBJ-14",
-    "moduleId": "PLBJ-B3",
-    "topic": "Sumatif III Sekolah — Setelah Adu Pantun & Silat",
+    "id": "SUMATIF5-PLBJ-15",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 15) — Alat Stempel Kuningan/Besi",
+    "type": "PG",
     "difficulty": "Sedang",
     "bloom": "C2",
-    "question": "Setelah jawara pihak mempelai pria memenangkan adu pantun dan adu silat (beklai) serta melantunkan sike, keluarga mempelai pria dipersilahkan ....",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Proses membatik dengan menggunakan alat yang menyerupai stempel dari kuningan atau besi dinamakan batik ....",
     "options": [
-      "pulang kembali ke rumah masing-masing",
-      "masuk ke rumah mempelai wanita untuk melaksanakan akad nikah",
-      "mengulang adu silat dari awal",
-      "membuat roti buaya bersama"
+      "batik tulis",
+      "batik cap",
+      "batik celup",
+      "batik sablon"
     ],
     "correctIndex": 1,
-    "explanation": "Jika jawara pria berhasil melewati ujian pantun, silat (beklai), dan lantun sike, barulah rombongan mempelai pria dipersilahkan MASUK ke rumah mempelai wanita!",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Membatik dengan stempel kuningan/besi disebut batik cap."
   },
   {
-    "id": "SUMATIF-PLBJ-15",
-    "moduleId": "PLBJ-B3",
-    "topic": "Sumatif III Sekolah — Makna Roti Buaya",
-    "difficulty": "Mudah",
+    "id": "SUMATIF5-PLBJ-16",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 16) — Istilah Menggambar Pola Awal",
+    "type": "PG",
+    "difficulty": "Sedang",
     "bloom": "C2",
-    "question": "Dalam seserahan pernikahan Betawi, sepasang Roti Buaya melambangkan ....",
-    "options": [
-      "kekuasaan dan kekayaan semata",
-      "keberanian melawan musuh di sungai",
-      "kesetiaan pasangan yang menikah sehidup semati serta kemapanan ekonomi dan harapan",
-      "hiasan meja makan yang tidak boleh dimakan"
-    ],
-    "correctIndex": 2,
-    "explanation": "Roti Buaya melambangkan kesetiaan pasangan sehidup semati (buaya setia pada satu pasangan) serta kemapanan ekonomi dan harapan baik.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
     "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-16",
-    "moduleId": "PLBJ-B3",
-    "topic": "Sumatif III Sekolah — Arti Beklai & Bulan Festival Palang Pintu",
-    "difficulty": "Mudah",
-    "bloom": "C1",
-    "question": "Yang dimaksud dengan \"Beklai\" dalam prosesi Palang Pintu adalah ..., dan Festival Palang Pintu biasanya dilaksanakan setiap bulan ....",
+    "timeMinutes": 2,
+    "question": "Proses pertama dalam pembuatan batik Betawi berupa menggambar pola atau desain motif batik di atas kain mori disebut ....",
     "options": [
-      "bernyanyi; Januari",
-      "berdoa; Desember",
-      "menari; Agustus",
-      "berkelahi (adu silat); Juni"
+      "menjemur",
+      "nglorot",
+      "mencelup",
+      "nyorek (molani / memola)"
     ],
     "correctIndex": 3,
-    "explanation": "Beklai berarti berkelahi (adu silat antara jawara kedua pihak). Festival Palang Pintu rutin diadakan setiap bulan JUNI (menyambut HUT DKI Jakarta).",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Proses awal membuat pola/desain motif di atas kain mori disebut nyorek atau molani (memola)."
   },
   {
-    "id": "SUMATIF-PLBJ-17",
-    "moduleId": "PLBJ-B3",
-    "topic": "Sumatif III Sekolah — Makna Sejati Tradisi Palang Pintu",
+    "id": "SUMATIF5-PLBJ-17",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 17) — Ciri Daerah Motif Tumpal Cerah",
+    "type": "PG",
     "difficulty": "Sedang",
-    "bloom": "C3",
-    "question": "Apakah makna utama dari tradisi pertunjukan Palang Pintu dalam pernikahan Betawi?",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Terdapat motif tumpal berbentuk segitiga dan berwarna cerah pada kain batik merupakan ciri khas batik dari daerah ....",
     "options": [
-      "Ujian ketangguhan, kesiapan ilmu bela diri, dan ilmu agama mempelai pria agar mampu melindungi serta membimbing keluarganya",
-      "Sekadar hiburan semata tanpa makna adat apa pun",
-      "Ajang pamer kekayaan rombongan mempelai pria",
-      "Pertandingan olahraga resmi tingkat nasional"
+      "Betawi (Jakarta)",
+      "Yogyakarta",
+      "Solo",
+      "Pekalongan"
     ],
     "correctIndex": 0,
-    "explanation": "Palang Pintu bukan sekadar hiburan semata, melainkan simbol ujian kesiapan mempelai pria dalam menjaga (silat), berkomunikasi santun (pantun), dan membimbing agama (sike) keluarganya.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Motif tumpal segitiga berpadu warna cerah merupakan ciri khas Batik Betawi (Jakarta)."
   },
   {
-    "id": "SUMATIF-PLBJ-18",
-    "moduleId": "PLBJ-B3",
-    "topic": "Sumatif III Sekolah — Isi Pantun Palang Pintu",
-    "difficulty": "Mudah",
+    "id": "SUMATIF5-PLBJ-18",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 18) — Motif Ikon Boneka Besar Jakarta",
+    "type": "PG",
+    "difficulty": "Sedang",
     "bloom": "C2",
-    "question": "Dalam tahapan adu pantun Palang Pintu, isi pantun yang disajikan biasanya memuat ....",
-    "options": [
-      "ejekan kasar dan pamer harta kekayaan keluarga",
-      "maksud kedatangan/kesiapan mempelai pria, penerimaan pihak wanita, serta nasihat bagi kedua mempelai",
-      "daftar harga barang belanjaan di pasar",
-      "cerita dongeng kerajaan luar negeri"
-    ],
-    "correctIndex": 1,
-    "explanation": "Pantun Palang Pintu berisi maksud kedatangan & kesiapan pihak mempelai pria, syarat penerimaan pihak wanita, serta nasihat baik dengan gaya jenaka agar suasana riang dan seru.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
     "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-19",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Karet Tengsin & Lebak Bulus",
-    "difficulty": "Mudah",
-    "bloom": "C1",
-    "question": "Nama daerah yang berasal dari nama orang Tionghoa kaya raya & baik hati bernama Tan Teng Sien adalah ..., sedangkan daerah yang berasal dari banyaknya kura-kura (bulus) adalah ....",
+    "timeMinutes": 2,
+    "question": "Motif batik Betawi yang menggambarkan simbol budaya Jakarta berupa boneka besar yang digunakan dalam berbagai acara adat Betawi adalah motif ....",
     "options": [
-      "Kebon Sirih dan Ragunan",
-      "Warung Buncit dan Mampang Prapatan",
-      "Karet Tengsin dan Lebak Bulus",
-      "Kwitang dan Senayan"
+      "Rasamala",
+      "Salakanagara",
+      "Ondel-ondel",
+      "Nusa Kelapa"
     ],
     "correctIndex": 2,
-    "explanation": "Karet Tengsin berasal dari nama Tan Teng Sien. Lebak Bulus berasal dari banyaknya kura-kura (bulus) di lembah/lebak kawasan tersebut.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Boneka raksasa ikon budaya Betawi yang diangkat ke motif batik adalah Ondel-ondel."
   },
   {
-    "id": "SUMATIF-PLBJ-20",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Kecamatan di Jakarta Timur",
+    "id": "SUMATIF5-PLBJ-19",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 19) — Alat Pemanas Lilin Malam",
+    "type": "PG",
     "difficulty": "Sedang",
     "bloom": "C2",
-    "question": "Kecamatan Cakung, Matraman, Pulo Gadung, dan Cipayung berada di wilayah administratif ....",
-    "options": [
-      "Jakarta Barat",
-      "Jakarta Pusat",
-      "Jakarta Selatan",
-      "Jakarta Timur"
-    ],
-    "correctIndex": 3,
-    "explanation": "Ingat baik-baik! Cakung, Matraman, Pulo Gadung, dan Cipayung semuanya berada di JAKARTA TIMUR (bukan Jakarta Selatan!).",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
     "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-21",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Asal Nama Senayan & Wilayahnya",
-    "difficulty": "Mudah",
-    "bloom": "C2",
-    "question": "Kawasan Senayan (lokasi stadion GBK) terletak di Jakarta Pusat. Nama Senayan berasal dari kata \"Wangsanayan\" yang berarti ....",
+    "timeMinutes": 2,
+    "question": "Alat yang digunakan untuk memanaskan lilin (malam) di wajan kecil agar bentuknya menjadi cairan adalah ....",
     "options": [
-      "tanah tempat tinggal atau milik seseorang bernama Wangsanayan",
-      "dataran rendah yang subur",
-      "tempat berkumpulnya para pemuda",
-      "danau tempat penampungan air"
-    ],
-    "correctIndex": 0,
-    "explanation": "Senayan berasal dari kata Wangsanayan, yaitu tanah tempat tinggal atau milik seseorang bernama Wangsanayan.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-22",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Asal Nama Glodok",
-    "difficulty": "Sedang",
-    "bloom": "C2",
-    "question": "Pernyataan yang TEPAT mengenai asal-usul dan ciri daerah Glodok (Jakarta Barat) adalah ....",
-    "options": [
-      "terletak di Jakarta Utara dan terkenal dengan pasar bunga",
-      "mayoritas warga keturunan Tionghoa, berasal dari kata \"grojok\" (bunyi air pancuran), dan tersohor sebagai pusat elektronik",
-      "berasal dari kata \"De Nabang\" dan merupakan pasar tekstil terbesar",
-      "merupakan kampung budaya Betawi di Kecamatan Jagakarsa"
+      "canting",
+      "kompor",
+      "gawangan",
+      "ember"
     ],
     "correctIndex": 1,
-    "explanation": "Glodok (Jakarta Barat) berasal dari bunyi pancuran air \"grojok\", mayoritas dihuni warga keturunan Tionghoa, dan tersohor sebagai pusat penjualan elektronik.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Kompor kecil (kompor batik) digunakan untuk memanaskan lilin malam di wajan hingga mencair."
   },
   {
-    "id": "SUMATIF-PLBJ-23",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Kecamatan di Jakarta Utara",
+    "id": "SUMATIF5-PLBJ-20",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 20) — Contoh Warna Cerah Batik Betawi",
+    "type": "PG",
     "difficulty": "Sedang",
     "bloom": "C2",
-    "question": "Pasangan kecamatan yang SELURUHNYA berada di wilayah administratif Jakarta Utara adalah ....",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Pada umumnya, Batik Betawi menggunakan warna-warna yang cerah dan kaya seperti ....",
     "options": [
-      "Tebet dan Matraman",
-      "Cilandak dan Jagakarsa",
-      "Cilincing, Pademangan, Kelapa Gading, Tanjung Priok, dan Koja",
-      "Kebon Sirih dan Tanah Abang"
+      "hitam, abu-abu, dan cokelat tua saja",
+      "cokelat sogan gelap saja",
+      "putih polos tanpa warna",
+      "kuning, merah, dan hijau (serta oranye/biru cerah)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Batik Betawi menonjolkan warna cerah dan meriah seperti kuning, merah, hijau, oranye, dan biru terang."
+  },
+  {
+    "id": "SUMATIF5-PLBJ-21",
+    "subject": "PLBJ",
+    "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 21) — 6 Macam Motif Batik Betawi (Uraian)",
+    "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Enam macam motif khas Batik Betawi yang mencerminkan kekayaan budaya Jakarta adalah ....",
+    "options": [
+      "Pucuk Rebung, Mega Mendung, Parang, Barong, Cendrawasih, dan Toraja",
+      "Mega Mendung, Parang, Kawung, Truntum, Sidomukti, dan Sekar Jagad",
+      "Pucuk Rebung, Rasamala, Nusa Kelapa, Ciliwung, Ondel-Ondel, dan Salakanagara",
+      "Ciliwung, Kawung, Parang Rusak, Ulos, Songket, dan Tenun Ikat"
     ],
     "correctIndex": 2,
-    "explanation": "Kecamatan di Jakarta Utara: Cilincing, Pademangan, Kelapa Gading, Tanjung Priok, Koja, dan Penjaringan. (Tebet = Jaksel, Matraman = Jaktim!)",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "6 motif khas Batik Betawi: Pucuk Rebung (Tumpal), Rasamala, Nusa Kelapa, Ciliwung, Ondel-Ondel, dan Salakanagara."
   },
   {
-    "id": "SUMATIF-PLBJ-24",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Kampung Rawa Belong",
-    "difficulty": "Sedang",
-    "bloom": "C2",
-    "question": "Pernyataan yang BENAR mengenai Kampung Rawa Belong adalah ....",
-    "options": [
-      "berasal dari kata De Nabang dan terkenal dengan perkebunan sirih",
-      "terletak di Kepulauan Seribu dan terkenal dengan kebun binatang",
-      "merupakan pusat penjualan barang elektronik terbesar",
-      "terkenal dengan pasar bunganya dan memiliki ciri khas silat asli bernama maen pukul"
-    ],
-    "correctIndex": 3,
-    "explanation": "Kampung Rawa Belong terkenal dengan PASAR BUNGA-nya dan tradisi silat asli Betawi (maen pukul). Yang berasal dari \"De Nabang\" adalah Tanah Abang!",
+    "id": "SUMATIF5-PLBJ-22",
     "subject": "PLBJ",
     "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 22) — 2 Perbedaan Batik Tulis & Batik Cap (Uraian)",
     "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-25",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Tanah Abang (De Nabang) & Matraman",
-    "difficulty": "Sedang",
+    "difficulty": "Sulit",
     "bloom": "C2",
-    "question": "Nama pasar tekstil terbesar di Asia Tenggara, Tanah Abang, berasal dari sebutan pohon nabang yaitu ..., sedangkan nama daerah di Jakarta yang berkaitan dengan Kerajaan Mataram adalah ....",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Dua perbedaan utama antara batik tulis dan batik cap adalah ....",
     "options": [
-      "De Nabang dan Matraman",
-      "Gerojok dan Menteng",
-      "Wiraguna dan Glodok",
-      "Kwik Tang Kiam dan Ragunan"
+      "batik tulis dibuat manual dengan canting (waktu lama, motif unik/lebih mahal), sedangkan batik cap dibuat dengan stempel logam (lebih cepat dan motif seragam)",
+      "batik tulis memakai mesin cetak pabrik, sedangkan batik cap digambar pakai pensil",
+      "batik tulis tidak memakai malam, sedangkan batik cap tidak memakai pewarna",
+      "keduanya sama-sama dibuat tanpa kain mori"
     ],
     "correctIndex": 0,
-    "explanation": "Tanah Abang berasal dari kata \"De Nabang\" (pohon nabang). Daerah yang berkaitan dengan pasukan Kerajaan Mataram di Jakarta adalah MATRAMAN (bukan Menteng!).",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Batik tulis digambar manual satu per satu dengan canting (lama & eksklusif), sedangkan batik cap dicap memakai stempel kuningan/besi (lebih cepat & seragam)."
   },
   {
-    "id": "SUMATIF-PLBJ-26",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Asal Nama Menteng (Daeng Menteng dari Bugis)",
-    "difficulty": "Sedang",
-    "bloom": "C2",
-    "question": "Menteng adalah kecamatan yang terletak di Jakarta Pusat. Awalnya Menteng merupakan daerah yang diberikan kepada Daeng Menteng yang berasal dari ....",
-    "options": [
-      "Kerajaan Mataram",
-      "Bugis (Sulawesi Selatan)",
-      "Tiongkok",
-      "Belanda"
-    ],
-    "correctIndex": 1,
-    "explanation": "Hati-hati jangan tertukar dengan Matraman! Daeng Menteng berasal dari BUGIS (gelar \"Daeng\" adalah gelar khas suku Bugis/Makassar!).",
+    "id": "SUMATIF5-PLBJ-23",
     "subject": "PLBJ",
     "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 23) — Langkah-Langkah Membuat Batik Tulis (Uraian)",
     "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-27",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Ragunan (Wiraguna) & Kwitang (Kwik Tang Kiam)",
-    "difficulty": "Sedang",
+    "difficulty": "Sulit",
     "bloom": "C2",
-    "question": "Nama daerah Ragunan (terkenal dengan Kebun Binatang Ragunan) berasal dari nama ..., sedangkan Kwitang (pusat toko buku di Jakarta Pusat) berasal dari nama tuan tanah ....",
-    "options": [
-      "Tan Teng Sien dan Daeng Menteng",
-      "Wangsanayan dan Mayor Isaac",
-      "Wiraguna dan Kwik Tang Kiam",
-      "Aki Tirem dan Pangeran Jayakarta"
-    ],
-    "correctIndex": 2,
-    "explanation": "Ragunan berasal dari Pangeran Wiraguna (dan terkenal dengan Kebun Binatang Ragunan). Kwitang berasal dari nama tuan tanah Kwik Tang Kiam.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
     "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-28",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Kebon Sirih, Setu Babakan & Terminal Lebak Bulus",
-    "difficulty": "Sedang",
-    "bloom": "C2",
-    "question": "Daerah Kebon Sirih (lokasi Balai Kota & Gedung DPRD) terletak di ..., sedangkan kampung budaya Betawi di Kecamatan Jagakarsa (Jakarta Selatan) adalah ....",
+    "timeMinutes": 2,
+    "question": "Urutan singkat langkah-langkah membuat kain batik tulis yang benar adalah ....",
     "options": [
-      "Jakarta Barat dan Glodok",
-      "Jakarta Timur dan Rawa Belong",
-      "Jakarta Utara dan Ancol",
-      "Jakarta Pusat dan Setu Babakan"
+      "cuci kain → setrika → canting tanpa pola",
+      "jemur kain → nglorot → buat pola → pewarnaan",
+      "pewarnaan dulu → nglorot → baru buat pola",
+      "siapkan bahan → buat pola (nyorek) → mencanting dengan malam → pewarnaan → nglorot (hilangkan lilin) → cuci & jemur"
     ],
     "correctIndex": 3,
-    "explanation": "Kebon Sirih (Balai Kota & DPRD) berada di JAKARTA PUSAT (bukan Jakarta Barat!). Kampung budaya Betawi di Jagakarsa adalah Setu Babakan. Terminal Lebak Bulus kini telah berubah menjadi Stasiun MRT.",
-    "subject": "PLBJ",
-    "semester": 1,
-    "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
+    "explanation": "Langkah batik tulis: siapkan alat & bahan → buat pola (nyorek) → torehkan malam dengan canting → celup pewarna → nglorot (rebus hilangkan lilin) → cuci & jemur."
   },
   {
-    "id": "SUMATIF-PLBJ-29",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Jumlah Wilayah Administratif DKI Jakarta",
-    "difficulty": "Mudah",
-    "bloom": "C1",
-    "question": "Secara administratif, Provinsi DKI Jakarta terdiri atas ... wilayah (5 Kota Administrasi + 1 Kabupaten Administrasi Kepulauan Seribu).",
-    "options": [
-      "6 wilayah",
-      "4 wilayah",
-      "5 wilayah",
-      "8 wilayah"
-    ],
-    "correctIndex": 0,
-    "explanation": "DKI Jakarta memiliki 6 wilayah administratif: Jakarta Pusat, Jakarta Utara, Jakarta Barat, Jakarta Selatan, Jakarta Timur, dan Kabupaten Administrasi Kepulauan Seribu.",
+    "id": "SUMATIF5-PLBJ-24",
     "subject": "PLBJ",
     "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 24) — Makna Motif Ciliwung / Ondel-Ondel (Uraian)",
     "type": "PG",
-    "points": 10,
-    "timeMinutes": 2
-  },
-  {
-    "id": "SUMATIF-PLBJ-30",
-    "moduleId": "PLBJ-B5",
-    "topic": "Sumatif IV Sekolah — Contoh Kecamatan Jakarta Selatan",
-    "difficulty": "Sedang",
+    "difficulty": "Sulit",
     "bloom": "C2",
-    "question": "Manakah yang merupakan kecamatan resmi di wilayah administratif JAKARTA SELATAN?",
+    "points": 10,
+    "timeMinutes": 2,
+    "question": "Motif batik Betawi seperti Ciliwung dan Ondel-Ondel mengandung makna filosofis yang indah, yaitu ....",
     "options": [
-      "Depok dan Bekasi",
-      "Cilandak, Tebet, Jagakarsa, dan Kebayoran Baru",
-      "Cakung, Matraman, dan Pulo Gadung",
-      "Cilincing, Koja, dan Kelapa Gading"
+      "melambangkan kesedihan dan perpisahan",
+      "membawa daya tarik/menjadi pusat perhatian, kemakmuran, serta simbol penolak bala dan penjaga kebaikan",
+      "menunjukkan larangan berkunjung ke Jakarta",
+      "menggambarkan peperangan di laut lepas"
     ],
     "correctIndex": 1,
-    "explanation": "Ingat! Depok adalah kota di Jawa Barat (bukan kecamatan di Jakarta Selatan!). Kecamatan di Jakarta Selatan antara lain Cilandak, Tebet, Jagakarsa, Kebayoran Baru, dan Pasar Minggu.",
+    "explanation": "Motif Ciliwung melambangkan sumber kehidupan/kemakmuran dan daya tarik (pusat perhatian), sedangkan Ondel-ondel melambangkan penolak bala dan kebaikan."
+  },
+  {
+    "id": "SUMATIF5-PLBJ-25",
     "subject": "PLBJ",
     "semester": 1,
+    "moduleId": "PLBJ-B6",
+    "topic": "Sumatif V Sekolah (No. 25) — 5 Peralatan & Bahan Batik Tulis (Uraian)",
     "type": "PG",
+    "difficulty": "Sulit",
+    "bloom": "C2",
     "points": 10,
-    "timeMinutes": 2
+    "timeMinutes": 2,
+    "question": "Lima peralatan dan bahan utama yang digunakan untuk membuat batik tulis adalah ....",
+    "options": [
+      "canting, kain mori, wajan kecil, kompor, dan lilin (malam)",
+      "kuas cat tembok, papan kayu, gergaji, palu, dan paku",
+      "stempel karet, kertas HVS, spidol, penggaris, dan lem",
+      "jarum jahit, benang wol, gunting kain, kancing, dan resleting"
+    ],
+    "correctIndex": 0,
+    "explanation": "5 alat & bahan utama batik tulis: canting, kain mori, wajan kecil, kompor, dan lilin (malam) — ditambah gawangan & zat pewarna."
   }
 ];
 
@@ -38987,6 +39934,42 @@
         questionIds: predQs.map(q => q.id)
       }];
       startSetQuiz('SNR-ASAS-PREDIKSI-30', 'PREDIKSI-SNR-ASAS', false, 'STUDY');
+    }
+
+    function startSumatif3Plbj() {
+      const qs = (questions || []).filter(q => /^SUMATIF3-PLBJ-/.test(q.id));
+      if (!qs.length) { alert('Soal Sumatif III PLBJ belum dimuat.'); return; }
+      CHAPTER_SETS['SUMATIF3-PLBJ-SET'] = [{
+        id: 'PLBJ-SUMATIF3-25', code: '⭐ SUMATIF III • Palang Pintu', badgeBg: 'bg-amber-100 text-amber-900 border-amber-300',
+        title: 'Tes Sumatif III PLBJ — Palang Pintu (25 Soal Lengkap No. 1–25)',
+        desc: 'Seluruh 25 soal asli Tes Sumatif III PLBJ SDIT Harum (PG, PG Kompleks, Isian & Uraian).',
+        questionIds: qs.map(q => q.id)
+      }];
+      startSetQuiz('PLBJ-SUMATIF3-25', 'SUMATIF3-PLBJ-SET', false, 'STUDY');
+    }
+
+    function startSumatif4Plbj() {
+      const qs = (questions || []).filter(q => /^SUMATIF4-PLBJ-/.test(q.id));
+      if (!qs.length) { alert('Soal Sumatif IV PLBJ belum dimuat.'); return; }
+      CHAPTER_SETS['SUMATIF4-PLBJ-SET'] = [{
+        id: 'PLBJ-SUMATIF4-25', code: '⭐ SUMATIF IV • Kampung & Wilayah Jakarta', badgeBg: 'bg-rose-100 text-rose-900 border-rose-300',
+        title: 'Tes Sumatif IV PLBJ — Nama Kampung & Wilayah Jakarta (25 Soal Lengkap No. 1–25)',
+        desc: 'Seluruh 25 soal asli Tes Sumatif IV PLBJ SDIT Harum (PG, PG Kompleks, Isian & Uraian).',
+        questionIds: qs.map(q => q.id)
+      }];
+      startSetQuiz('PLBJ-SUMATIF4-25', 'SUMATIF4-PLBJ-SET', false, 'STUDY');
+    }
+
+    function startSumatif5Plbj() {
+      const qs = (questions || []).filter(q => /^SUMATIF5-PLBJ-/.test(q.id));
+      if (!qs.length) { alert('Soal Sumatif V PLBJ belum dimuat.'); return; }
+      CHAPTER_SETS['SUMATIF5-PLBJ-SET'] = [{
+        id: 'PLBJ-SUMATIF5-25', code: '⭐ SUMATIF V • Batik Betawi', badgeBg: 'bg-emerald-100 text-emerald-900 border-emerald-300',
+        title: 'Tes Sumatif V PLBJ — Batik Betawi (25 Soal Lengkap No. 1–25)',
+        desc: 'Seluruh 25 soal asli Tes Sumatif V PLBJ SDIT Harum (PG, PG Kompleks, Isian & Uraian).',
+        questionIds: qs.map(q => q.id)
+      }];
+      startSetQuiz('PLBJ-SUMATIF5-25', 'SUMATIF5-PLBJ-SET', false, 'STUDY');
     }
 
     function startPrediksiASASPlbj() {
@@ -41004,7 +41987,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
           const defaultMap = new Map((window.DEFAULT_QUESTIONS_SD6 || []).map(q => [q.id, q]));
           for (let i = 0; i < loaded.length; i++) {
             const defQ = defaultMap.get(loaded[i].id);
-            if (defQ && (/^(SPEKTA-|ASAS1-MTK-B4-|MTK-B4-ASAS-|PHB-MTK-|PHB-PJOK-|SUMATIF4-MTK-|ARB-B2-|PKN-B2-|PKN-B3-|ASAS1-ARB-|ASAS1-PKN-|SUMATIF-PKN-|SUMATIF2-ARB-|ASAS1-SNR-|ASAS1-PLBJ-|SD6-SNR-|SD6-PLBJ-|SNR-B3-PPT-|SNR-B4-PPT-|SUMATIF-PLBJ-)/.test(defQ.id) || (defQ.imageUrl && !loaded[i].imageUrl))) {
+            if (defQ && (/^(SPEKTA-|ASAS1-MTK-B4-|MTK-B4-ASAS-|PHB-MTK-|PHB-PJOK-|SUMATIF4-MTK-|ARB-B2-|PKN-B2-|PKN-B3-|ASAS1-ARB-|ASAS1-PKN-|SUMATIF-PKN-|SUMATIF2-ARB-|ASAS1-SNR-|ASAS1-PLBJ-|SD6-SNR-|SD6-PLBJ-|SNR-B3-PPT-|SNR-B4-PPT-|SUMATIF-PLBJ-|SUMATIF3-PLBJ-|SUMATIF4-PLBJ-|SUMATIF5-PLBJ-)/.test(defQ.id) || (defQ.imageUrl && !loaded[i].imageUrl))) {
               loaded[i] = defQ;
             }
           }
