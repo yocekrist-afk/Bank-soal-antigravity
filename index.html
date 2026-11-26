@@ -1003,7 +1003,7 @@
               </div>
               <div class="my-auto text-center space-y-3 px-4">
                 <div class="font-extrabold text-xl sm:text-2xl text-emerald-400" id="fc-back-title">...</div>
-                <div class="text-xs sm:text-sm text-indigo-100 leading-relaxed max-h-40 overflow-y-auto custom-scroll" id="fc-back-desc">...</div>
+                <div class="text-xs sm:text-sm text-indigo-100 leading-relaxed max-h-56 overflow-y-auto custom-scroll" id="fc-back-desc">...</div>
               </div>
               <div class="text-center text-xs text-indigo-300 font-medium">
                 ✨ Hebat! Hafal terus untuk kuasai konsep materi
@@ -39785,7 +39785,13 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       if (frontTag) frontTag.textContent = card.frontTag || card.subject;
       if (frontText) frontText.innerHTML = card.front;
       if (backTitle) backTitle.innerHTML = card.backTitle;
-      if (backDesc) backDesc.innerHTML = card.backDesc;
+      if (backDesc) {
+        const imgMatch = String(card.front || '').match(/<img[^>]+src="([^"]+)"[^>]*>/i);
+        const backImgHtml = imgMatch
+          ? '<img src="' + imgMatch[1] + '" alt="Ilustrasi" class="mx-auto max-h-28 sm:max-h-32 w-auto rounded-xl border border-white/25 bg-white p-1 object-contain mb-2 shadow-sm" />'
+          : '';
+        backDesc.innerHTML = backImgHtml + '<div>' + card.backDesc + '</div>';
+      }
 
       triggerKaTeXRender();
       if (tab === 'matrix') renderMatrixTable();
