@@ -40432,7 +40432,22 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
       // 1. Merge Bank Soal Salah (local + cloud + wrongQuestionIds from setResults)
       let localMistakes = {};
       try { localMistakes = JSON.parse(localStorage.getItem('pintarsd6_mistake_bank') || '{}'); } catch(e) {}
-      const cloudMistakes = (cloudData && cloudData._mistakeBank && typeof cloudData._mistakeBank === 'object') ? cloudData._mistakeBank : {};
+      const forcedResetAt = '2026-11-26T13:02:00.000Z';
+      const cloudClearedAt = (cloudData && cloudData._mistakeClearedAt) ? String(cloudData._mistakeClearedAt) : '';
+      const effectiveClearedAt = cloudClearedAt > forcedResetAt ? cloudClearedAt : forcedResetAt;
+      const localClearedAt = localStorage.getItem('pintarsd6_mistake_cleared_at') || '';
+      let cloudMistakes = (cloudData && cloudData._mistakeBank && typeof cloudData._mistakeBank === 'object') ? cloudData._mistakeBank : {};
+      if (effectiveClearedAt && effectiveClearedAt > localClearedAt) {
+        localMistakes = {};
+        if (!cloudClearedAt || cloudClearedAt < forcedResetAt) cloudMistakes = {};
+        try {
+          localStorage.setItem('pintarsd6_mistake_bank', '{}');
+          localStorage.setItem('pintarsd6_mistake_cleared_at', effectiveClearedAt);
+        } catch(e) {}
+        if (studentStats && studentStats.setResults) {
+          Object.values(studentStats.setResults).forEach(r => { if (r && Array.isArray(r.wrongQuestionIds)) r.wrongQuestionIds = []; });
+        }
+      }
       const mergedMistakes = { ...cloudMistakes, ...localMistakes };
 
       // Juga otomatis tarik wrongQuestionIds yang terekam di studentStats.setResults!
@@ -40480,6 +40495,7 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
           const payload = {
             ...studentStats,
             _mistakeBank: mergedMistakes,
+            _mistakeClearedAt: localStorage.getItem('pintarsd6_mistake_cleared_at') || '2026-11-26T13:02:00.000Z',
             _tanyaAyah: mergedFlags,
             _updatedAt: new Date().toISOString()
           };
@@ -40527,7 +40543,8 @@ function _old_startQuizForBab_unused(subject, moduleId, babTitle) {
             body: JSON.stringify({
               ...studentStats,
               _mistakeBank: mergedMistakes,
-              _tanyaAyah: mergedFlags,
+            _mistakeClearedAt: localStorage.getItem('pintarsd6_mistake_cleared_at') || '2026-11-26T13:02:00.000Z',
+            _tanyaAyah: mergedFlags,
               _updatedAt: new Date().toISOString()
             })
           });
